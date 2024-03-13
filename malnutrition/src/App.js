@@ -23,6 +23,7 @@ import Home from "./components/Home";
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup.jsx';
+import Form from './components/Form.jsx';
 
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/form" element={<Form />} />
       </Routes>
       <Footer/>
     </Router>

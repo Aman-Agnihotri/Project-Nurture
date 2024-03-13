@@ -12,7 +12,7 @@ const headingOptions={
 
   pos:"absolute",
   left:"50%",
-  top:"40%",
+  top:"35%",
   transform:"translate(-50%,-50%)",
   textTransform:"uppercase",
   p:'4'
@@ -33,7 +33,7 @@ const Home = () => {
            borderBottom={'5px solid teal'}
            m='auto'
           >
-            jkhlik</Heading>
+            HI</Heading>
         </Container>
 
       </Box>
@@ -41,7 +41,7 @@ const Home = () => {
 };
 
 const MyCarousel = () => (
-  <Carousel width={"100vh"}  height={"40vh"}
+  <Carousel 
     autoPlay={true}
     infiniteLoop
     interval={1000}
@@ -51,20 +51,21 @@ const MyCarousel = () => (
       
     <Box w="full" h={'100vh'}>
       <Image src={img4} h="full" w={['full','50%']}  objectFit={'cover'} />
-      <Heading bgColor={'whiteAlpha.400'} color={'white'} {...headingOptions}>
+      <Heading bgColor={'blackAlpha.700'} color={'white'} fontSize="30px" {...headingOptions}>
+        "Welcome"
       </Heading>
-      </Box>
+    </Box>
 
     <Box w="full" h={'100vh'}>
       <Image src={img1} h="full" w={['full','50%']}  objectFit={'cover'} />
-      <Heading bgColor={'whiteAlpha.400'} color={'white'} {...headingOptions}>
+      <Heading bgColor={'blackAlpha.400'} color={'white'} {...headingOptions}>
       "Empty Bowl, Full Heart: A Cry for Compassion"
       </Heading>
-      </Box>
+    </Box>
 
     <Box w="full" h={'100vh'}>
       <Image src={img2} h="full" w={'full'} objectFit={'cover'} />
-      <Heading bgColor={'whiteAlpha.500'} color={'black'} {...headingOptions}>
+      <Heading bgColor={'blackAlpha.500'} color={'white'} {...headingOptions}>
       "Nutrient Deficiency Impacting Child Growth"
       </Heading>
 
@@ -72,7 +73,7 @@ const MyCarousel = () => (
 
     <Box w="full" h={'100vh'}>
       <Image src={img3} h="full" w={'full'} objectFit={'cover'} />
-      <Heading bgColor={'whiteAlpha.600'} color={'black'} {...headingOptions}>
+      <Heading bgColor={'whiteAlpha.700'} color={'black'} {...headingOptions}>
       "Unequal Childhoods: From Screens to Empty Stomachs"
       </Heading>
       <Heading>POWER</Heading>
