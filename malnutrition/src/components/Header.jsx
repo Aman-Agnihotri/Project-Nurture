@@ -53,8 +53,8 @@ return (
                     </Button>
 
                     <Button onClick={onClose} variant={'ghost'} colorScheme={'teal'}>
-                <Link to="/about">ABOUT US</Link>
-              </Button>
+                        <Link to="/about">ABOUT US</Link>
+                    </Button>
 
                     <Button onClick={onClose}  variant={"ghost"} colorScheme={"teal"} >
                         <Link to="/" >FEED</Link>
@@ -62,6 +62,10 @@ return (
 
                     <Button  onClick={onClose}  variant={"ghost"} colorScheme={"teal"} >
                         <Link to="/" >MORE</Link>
+                    </Button>
+
+                    <Button  onClick={onClose}  variant={"ghost"} colorScheme={"teal"} >
+                        <Link to="/form" >USER FORM</Link>
                     </Button>
 
                 </VStack>
