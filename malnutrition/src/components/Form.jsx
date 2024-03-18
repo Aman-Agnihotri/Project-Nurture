@@ -34,10 +34,7 @@ const Form = () => {
     };
 
     return (
-        // <Container maxW={'container.xl'} h={'150vh'} p={'16'} display={'flex'} justifyContent={'center'}>
-        <Container maxW={'container.xl'} h={'120vh'} p={'16'} 
-        display={'flex'}
-        >
+        <Container maxW={'container.xl'} h={'120vh'} p={'16'} display={'flex'} justifyContent={'center'}>
             <form onSubmit={handleSubmit}>
                 <VStack
                     alignItems={'stretch'}
@@ -75,6 +72,7 @@ const Form = () => {
                         required
                         focusBorderColor={'teal.500'}
                     />
+                    
                     <Input
                         name="bmi"
                         placeholder={'BMI Index'}
@@ -105,8 +103,6 @@ const Form = () => {
                    <Button colorScheme={'teal'} type={'submit'}>
                         Submit
                     </Button>
-
-                    
                 </VStack>
             </form>
         </Container>

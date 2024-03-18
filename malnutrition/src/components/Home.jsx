@@ -30,10 +30,11 @@ const Home = () => {
           <Heading 
            textTransform={"uppercase"} 
            py='2' w="fit-content" 
-           borderBottom={'5px solid teal'}
-           m='auto'
+           borderBottom={'2px solid teal'}
+           m='auto' fontSize='2xl'
           >
-            HI</Heading>
+            "Experience the transformative power of our platform as we work together to end childhood malnutrition. With your support, we can create a world where every child has access to the nourishment they need to live healthy, vibrant lives."
+            </Heading>
         </Container>
 
       </Box>
