@@ -12,8 +12,8 @@ const {
     authenticateUser, 
     verifyToken, 
     getAllUsers, 
-    UserNotFoundError,
-    InvalidPasswordError } = require('./user_operations');
+    deleteUser,
+    UserNotFoundError } = require('./user_operations');
 
 /**
  * Route for getting all users.
@@ -30,7 +30,34 @@ router.get('/users', async (req, res, next) => {
         res.json(users);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Failed to retrieve users', error: error.message });
+        res.status(500).json({ message: 'Failed to retrieve users!', error: error.message });
+    }
+});
+
+/**
+ * Route for deleting a user.
+ * @name DELETE /users/:id
+ * @function
+ * @async
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ * @param {Function} next - Express next middleware function.
+ */
+router.delete('/users/:id', async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const affectedRows = await deleteUser(id);
+        if (affectedRows === 0) {
+            throw new UserNotFoundError(`User with ID ${id} not found!`);
+        }
+        res.json({ message: 'User deleted successfully!' });
+    } catch (error) {
+        if (error instanceof UserNotFoundError) {
+            res.status(404).json({ message: error.message });
+        } else {
+            console.error(error);
+            res.status(500).json({ message: 'Failed to delete user!', error: error.message });
+        }
     }
 });
 
@@ -51,7 +78,7 @@ router.post('/users/register', async (req, res, next) => {
         console.log('User registered!');
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: 'Internal server error', error: err.message });
+        res.status(500).json({ message: 'Internal server error!', error: err.message });
     }
 });
 
@@ -121,7 +148,7 @@ router.get('/users/protected', authenticateJWT, (req, res) => {
  */
 router.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).json({ message: 'Internal server error', error: err.message });
+    res.status(500).json({ message: 'Internal server error!', error: err.message });
 });
 
 module.exports = router;

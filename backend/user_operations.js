@@ -28,9 +28,8 @@ async function verifyPassword(password, hash) {
     return await bcrypt.compare(password, hash);
 }
 
-// Function to register a new user
 /**
- * Registers a new user by inserting the provided username and hashed password into the database.
+ * Registers a new user by inserting the provided username, email address and hashed password into the database.
  * @param {string} username - The username of the user to register.
  * @param {string} email - The email of the user to register.
  * @param {string} password - The password of the user to register.
@@ -51,7 +50,6 @@ async function registerUser(username, email, password) {
     });
 }
 
-// Function to authenticate a user and return a JWT
 /**
  * Authenticates a user by checking the provided username and password against the database.
  * If the user is found and the password is valid, a JSON Web Token (JWT) is generated and returned.
@@ -93,7 +91,11 @@ function verifyToken(token) {
     }
 }
 
-// Function to get all users
+/**
+ * Retrieves all users from the database.
+ * @returns {Promise<Array>} A promise that resolves to an array of user objects.
+ * @throws {Error} If there is an error while retrieving the users.
+ */
 async function getAllUsers() {
     return new Promise((resolve, reject) => {
         const query = 'SELECT * FROM users';
@@ -107,11 +109,32 @@ async function getAllUsers() {
     });
 }
 
+/**
+ * Deletes a user from the database based on the provided ID.
+ *
+ * @param {number} id - The ID of the user to delete.
+ * @returns {Promise<number>} A promise that resolves with the number of affected rows (1 if successful).
+ * @throws {Error} If there is an error while deleting the user.
+ */
+async function deleteUser(id) {
+    return new Promise((resolve, reject) => {
+        const query = 'DELETE FROM users WHERE id = ?';
+        pool.query(query, [id], (error, results) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(results.affectedRows);
+            }
+        });
+    });
+}
+
 module.exports = {
     registerUser,
     authenticateUser,
     verifyToken,
     getAllUsers,
+    deleteUser,
     UserNotFoundError,
     InvalidPasswordError
 };
