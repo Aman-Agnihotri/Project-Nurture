@@ -34,15 +34,6 @@ router.get('/users', async (req, res, next) => {
     }
 });
 
-/**
- * Route for deleting a user.
- * @name DELETE /users/:id
- * @function
- * @async
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @param {Function} next - Express next middleware function.
- */
 router.delete('/users/:id', async (req, res, next) => {
     try {
         const id = parseInt(req.params.id);
