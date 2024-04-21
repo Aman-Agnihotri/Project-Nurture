@@ -23,8 +23,6 @@ const MapComponent = () => {
       ]
     });
 
-    // Add any additional Leaflet functionalities here
-
     return () => {
       map.remove();
     };
