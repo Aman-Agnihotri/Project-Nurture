@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import * as d3 from 'd3';
 
 const MapComponent = () => {
     const mapRef = useRef(null);
@@ -23,7 +24,37 @@ const MapComponent = () => {
             ]
         });
 
+        const customIcon = L.icon({
+            iconUrl: './marker.png', // Adjust the path as necessary
+            iconSize: [25, 41], // Size of the icon
+            iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
+            popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
+        });
+
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        fetch('./minor2final.csv', { signal })
+            .then(response => response.text())
+            .then(data => {
+                const parsedData = d3.csvParse(data);
+                parsedData.forEach(row => {
+                    const lat = row.Latitude;
+                    const lon = row.Longitude;
+
+                    if (lat && lon && map && mapRef.current) {
+                        L.marker([lat, lon], { icon: customIcon }).addTo(map);
+                    }
+                });
+            })
+            .catch(err => {
+                if (err.name !== 'AbortError') {
+                    console.error(err);
+                }
+            });
+
         return () => {
+            controller.abort();
             map.remove();
         };
     }, []);
