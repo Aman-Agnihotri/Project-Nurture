@@ -7,26 +7,28 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const response = await axios.post('/users/login', {
-        username,
+        email,
         password,
       });
 
       if (response.status === 200) {
         console.log('Login successful');
+        navigate('/dashboard');
       } else {
         console.error('Login failed');
       }
@@ -48,12 +50,12 @@ const Login = () => {
           <Heading>Welcome Back</Heading>
 
           <Input
-            placeholder={'Username'}
-            type={'username'}
+            placeholder={'Email Address'}
+            type={'email'}
             required
             focusBorderColor={' teal.500'}
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
           <Input
             placeholder={'Password'}

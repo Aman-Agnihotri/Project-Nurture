@@ -84,8 +84,8 @@ router.post('/users/register', async (req, res, next) => {
  */
 router.post('/users/login', async (req, res, next) => {
     try {
-        const { username, password } = req.body;
-        const token = await authenticateUser(username, password);
+        const { email, password } = req.body;
+        const token = await authenticateUser(email, password);
         res.send({ token });
         console.log('User logged in!');
         console.log('Token:', token);

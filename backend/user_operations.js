@@ -51,18 +51,18 @@ async function registerUser(username, email, password) {
 }
 
 /**
- * Authenticates a user by checking the provided username and password against the database.
+ * Authenticates a user by checking the provided email and password against the database.
  * If the user is found and the password is valid, a JSON Web Token (JWT) is generated and returned.
- * @param {string} username - The username of the user to authenticate.
+ * @param {string} email - The email of the user to authenticate.
  * @param {string} password - The password of the user to authenticate.
  * @returns {Promise<string>} - A Promise that resolves to a JWT if the authentication is successful.
- * @throws {UserNotFoundError} - If the user with the provided username is not found in the database.
+ * @throws {UserNotFoundError} - If the user with the provided email is not found in the database.
  * @throws {InvalidPasswordError} - If the provided password is invalid.
  */
 
-async function authenticateUser(username, password) {
+async function authenticateUser(email, password) {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM users WHERE username = ?', [username], async (error, results) => {
+        pool.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
             if (error) {
                 reject(error);
             } else if (results.length === 0) {
