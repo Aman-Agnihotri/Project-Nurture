@@ -6,18 +6,14 @@ import csv
 # initialize MapBox API 
 geolocator = MapBox(api_key="pk.eyJ1Ijoic2FjaDgxNDEiLCJhIjoiY2x1cXQ2MGdlMDFyYTJsbzJpd2k2c2hrZCJ9.Exjb8uFz7gboyXpa4MlNVw")
 
-json_file_path = '/home/hunterhhh412/Local Stuff/Minor 2/Minor_2/malnutrition/public/coordinates.json'
-
-with open(json_file_path, 'r') as file:
+with open('coordinates.json', 'r') as file:
     data = json.load(file)
 
 # Extract the coordinates into a list
 coordinates = [(item['Latitude'], item['Longitude']) for item in data]
  
-# Prepare the CSV file
-csv_file_path = '/home/hunterhhh412/Local Stuff/Minor 2/Minor_2/python_backend/coordinates_with_city_state.csv'
-with open(csv_file_path, 'w', newline='') as csvfile:
-    fieldnames = [ 'City', 'State', 'Latitude', 'Longitude']
+with open('coordinates_with_city_state.csv', 'w', newline='') as csvfile:
+    fieldnames = [ 'Area', 'State', 'Latitude', 'Longitude']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
@@ -31,13 +27,13 @@ with open(csv_file_path, 'w', newline='') as csvfile:
                 # Reverse geocode the coordinates
                 location = geolocator.reverse(coord_str, exactly_one=True)
                 
-                # Extract city and state from the address string
+                # Extract area and state from the address string
                 address_parts = location.address.split(', ')
-                city = address_parts[-3]
+                area = address_parts[-3]
                 state = address_parts[-2]
                 
                 # Write to CSV
-                writer.writerow({'City': city, 'State': state, 'Latitude': coord[0], 'Longitude': coord[1]})
+                writer.writerow({'Area': area, 'State': state, 'Latitude': coord[0], 'Longitude': coord[1]})
                 
                 print("Processed 1 coordinate." if i == 1 else f"Processed {i} coordinates.")
                 break # Break the loop if successful

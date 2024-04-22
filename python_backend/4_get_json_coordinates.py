@@ -1,10 +1,10 @@
 import pandas as pd
 
 # Load the CSV data
-df = pd.read_csv('/home/hunterhhh412/Local Stuff/Minor 2/Minor_2/minor2final.csv')
+df = pd.read_csv('updated_file.csv')
 
 # Select the columns
-selected_columns = df[["Latitude", "Longitude"]]
+selected_columns = df[["Latitude", "Longitude", "Scale of Malnutrition"]]
 
 # Convert to JSON
 json_data = selected_columns.to_json(orient='records')

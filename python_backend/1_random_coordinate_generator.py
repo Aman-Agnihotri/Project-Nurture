@@ -13,5 +13,5 @@ for point in points:
     longitude = coordinates[0]
     coordinates_list.append({"Latitude": latitude, "Longitude": longitude})
 
-with open('/home/hunterhhh412/Local Stuff/Minor 2/Minor_2/malnutrition/public/coordinates.json', 'w') as f:
+with open('coordinates.json', 'w') as f:
     json.dump(coordinates_list, f)
