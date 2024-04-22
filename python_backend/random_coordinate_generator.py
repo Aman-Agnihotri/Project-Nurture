@@ -5,7 +5,6 @@ country = pyc.get_shape("India")
 
 points = pyc.geoloc_generation(country, 1385, "India")
 
-# Assuming points is the list of points
 coordinates_list = []
 
 for point in points:
