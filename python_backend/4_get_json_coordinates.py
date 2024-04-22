@@ -4,7 +4,7 @@ import pandas as pd
 df = pd.read_csv('updated_file.csv')
 
 # Select the columns
-selected_columns = df[["Latitude", "Longitude", "Scale of Malnutrition"]]
+selected_columns = df[["Latitude", "Longitude", "Scale"]]
 
 # Convert to JSON
 json_data = selected_columns.to_json(orient='records')

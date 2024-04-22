@@ -4,6 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import MarkerClusterGroup from 'react-leaflet-cluster'
+import 'leaflet.heat';
 
 const MapComponent = () => {
     const mapRef = useRef(null);
@@ -32,22 +33,27 @@ const MapComponent = () => {
             popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
         });
 
+        var heat = L.heatLayer([], { radius: 25 });
+
         const fetchData = async () => {
             try {
                 const response = await fetch('./coordinates.json');
                 const data = await response.json();
-                let i=0;
+                // let i=0;
                 data.forEach(row => {
-                    i++;
+                    // i++;
                     const lat = row.Latitude;
                     const lon = row.Longitude;
-                    
+                    const scale = row.Scale;
+
                     if (lat && lon && map && mapRef.current) {
                         // console.log("Adding the marker!",i);
+                        heat.addLatLng([lat, lon, scale]);
                         markers.addLayer(L.marker([lat, lon], { icon: customIcon }));
                         // console.log("Marker added!");
                     }
                 });
+                heat.addTo(map);
                 map.addLayer(markers);
             } catch (err) {
                 console.error(err);

@@ -1,4 +1,4 @@
-Name of Children,Guardian Name,Area,Weight (kg),Height (cm),Health Portfolio,Age (1-11),Household Income,Urban or Rural,State,Latitude,Longitude,Gender,Scale of Malnutrition
+Name of Children,Guardian Name,Area,Weight (kg),Height (cm),Health Portfolio,Age (1-11),Household Income,Urban or Rural,State,Latitude,Longitude,Gender,Scale
 Aarav Sharma,Ritu Sharma,Gariadhar,14.2,95,Normal,5,15000,Urban,Gujarat,21.58526640363018,71.67668387420619,Male,0.12
 Ananya Patel,Sunil Patel,Jaisalmer,16.8,102,Allergies,8,12000,Urban,Rajasthan,27.991877488770456,70.55820652481644,Female,0.18
 Arjun Reddy,Nandini Reddy,Pailani,18.5,98,Excellent,6,9000,Urban,Uttar Pradesh,25.860704316214704,80.40888305576162,Male,0.09
