@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import * as d3 from 'd3';
 
 const MapComponent = () => {
     const mapRef = useRef(null);
@@ -34,27 +33,28 @@ const MapComponent = () => {
         const controller = new AbortController();
         const signal = controller.signal;
 
-        fetch('./minor2final.csv', { signal })
-            .then(response => response.text())
-            .then(data => {
-                const parsedData = d3.csvParse(data);
-                parsedData.forEach(row => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('./coordinates.json', { signal });
+                const data = await response.json();
+                data.forEach(row => {
                     const lat = row.Latitude;
                     const lon = row.Longitude;
-
+    
                     if (lat && lon && map && mapRef.current) {
                         L.marker([lat, lon], { icon: customIcon }).addTo(map);
                     }
                 });
-            })
-            .catch(err => {
+            } catch (err) {
                 if (err.name !== 'AbortError') {
                     console.error(err);
                 }
-            });
+            }
+        };
+        
+        fetchData();
 
         return () => {
-            controller.abort();
             map.remove();
         };
     }, []);
