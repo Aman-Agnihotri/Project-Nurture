@@ -1,22 +1,3 @@
-// import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
-// import Header from "./components/Header";
-// import Home from "./components/Home";
-// import About from "./components/About";
-
-// function App() {
-//   return (
-//     <Router>
-//       <Header/>
-//       {/* <About/> */}
-//       <Routes>
-//         <Route  path="/" element={<Home/>} />
-//       </Routes>
-//     </Router>
-//   );
-// }
-
-// export default App
-
 import { BrowserRouter as Router,Route,Routes } from 'react-router-dom';
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -25,9 +6,6 @@ import Login from './components/Login';
 import Signup from './components/Signup.jsx';
 import Form from './components/Form.jsx';
 import Dashboard from './components/Dashboard.jsx';
-
-
-
 
 function App() {
   return (

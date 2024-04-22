@@ -3,52 +3,54 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import MarkerClusterGroup from 'react-leaflet-cluster'
 
 const MapComponent = () => {
     const mapRef = useRef(null);
 
     useEffect(() => {
+        const markers = new L.MarkerClusterGroup();
+
         const map = L.map(mapRef.current, {
             center: [20.5937, 78.9629], // Center coordinates
-            zoom: 6,
-            layers: [
-                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                    maxZoom: 18,
-                    id: 'mapbox/streets-v11', // Example style
-                    tileSize: 512,
-                    zoomOffset: -1,
-                    accessToken: 'pk.eyJ1Ijoic2FjaDgxNDEiLCJhIjoiY2x1cXQ2MGdlMDFyYTJsbzJpd2k2c2hrZCJ9.Exjb8uFz7gboyXpa4MlNVw'
-                })
-            ]
+            zoom: 6
         });
 
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11', // Example style
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1Ijoic2FjaDgxNDEiLCJhIjoiY2x1cXQ2MGdlMDFyYTJsbzJpd2k2c2hrZCJ9.Exjb8uFz7gboyXpa4MlNVw'
+        }).addTo(map);
+
         const customIcon = L.icon({
-            iconUrl: './marker.png', // Adjust the path as necessary
+            iconUrl: './marker.png',
             iconSize: [25, 41], // Size of the icon
             iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
             popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
         });
 
-        const controller = new AbortController();
-        const signal = controller.signal;
-
         const fetchData = async () => {
             try {
-                const response = await fetch('./coordinates.json', { signal });
+                const response = await fetch('./coordinates.json');
                 const data = await response.json();
+                let i=0;
                 data.forEach(row => {
+                    i++;
                     const lat = row.Latitude;
                     const lon = row.Longitude;
-    
+                    
                     if (lat && lon && map && mapRef.current) {
-                        L.marker([lat, lon], { icon: customIcon }).addTo(map);
+                        // console.log("Adding the marker!",i);
+                        markers.addLayer(L.marker([lat, lon], { icon: customIcon }));
+                        // console.log("Marker added!");
                     }
                 });
+                map.addLayer(markers);
             } catch (err) {
-                if (err.name !== 'AbortError') {
-                    console.error(err);
-                }
+                console.error(err);
             }
         };
         
@@ -59,7 +61,22 @@ const MapComponent = () => {
         };
     }, []);
 
-    return <div ref={mapRef} style={{ height: '100vh', width: '100%' }} />;
+    return (
+        <>
+            <style>
+                {`
+                    .map-container {
+                        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                        transition: 0.3s;
+                        border-radius: 15px; /* Add rounded corners */
+                        overflow: hidden; /* Ensure the map follows the rounded corners */
+                    }
+                `}
+            </style>
+            <div ref={mapRef} className="map-container" style={{ height: '100vh', width: '100%' }} >
+            </div>
+        </>
+    );
 };
 
 export default MapComponent;
