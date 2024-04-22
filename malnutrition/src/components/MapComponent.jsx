@@ -33,7 +33,7 @@ const MapComponent = () => {
             popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
         });
 
-        var heat = L.heatLayer([], { radius: 25 });
+        const heat = L.heatLayer([], { radius: 25 });
 
         const fetchData = async () => {
             try {
