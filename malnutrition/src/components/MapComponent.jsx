@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import MarkerClusterGroup from 'react-leaflet-cluster'
+import { MarkerClusterGroup } from 'react-leaflet-cluster'
 import 'leaflet.heat';
 
 const MapComponent = () => {

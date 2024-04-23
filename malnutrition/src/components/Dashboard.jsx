@@ -1,5 +1,5 @@
 // Dashboard.jsx
-import { Container, Heading} from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 import React from 'react';
 import MapComponent from './MapComponent';
 

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Box, Button, HStack, Heading, Input, Stack, VStack} from '@chakra-ui/react';
-import {AiOutlineSend,AiOutlineInstagram,AiFillLinkedin,AiFillGithub,LuSendHorizonal} from 'react-icons/ai'
-import { Text } from '@chakra-ui/react';
+import { Box, Button, HStack, Heading, Input, Stack, VStack, Text } from '@chakra-ui/react';
+import {AiOutlineSend,AiOutlineInstagram,AiFillLinkedin,AiFillGithub } from 'react-icons/ai'
 
 const Footer = () => {
   return (

@@ -1,11 +1,11 @@
 import React from 'react'
-import {Box} from "@chakra-ui/react"
 import {
     Accordion,
     AccordionItem,
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
+    Box
   } from '@chakra-ui/react'
 
 const About = () => {
