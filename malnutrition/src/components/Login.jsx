@@ -6,40 +6,34 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'http://localhost:3000';
+// import { toast } from "react-toastify";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../lib/firebase";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await axios.post('/users/login', {
-        email,
-        password,
-      });
+    const formData = new FormData(event.target);
+    const { email, password } = Object.fromEntries(formData);
 
-      if (response.status === 200) {
-        console.log('Login successful');
-        navigate('/dashboard');
-      } else {
-        console.error('Login failed');
-      }
-    } catch (error) {
-      console.error('An error occurred while logging in:', error);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log('Login successful');
+      navigate('/dashboard');
+      } catch (err) {
+      // toast.warn(err.message);
+      console.log(err);
     }
   };
 
   return (
     <Container maxW={'container.xl'} h={'100vh'} p={'16'}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <VStack
           alignItems={'stretch'}
           spacing={'8'}
@@ -51,19 +45,17 @@ const Login = () => {
 
           <Input
             placeholder={'Email Address'}
-            type={'email'}
-            required
+            type={'text'}
+            required = {true}
             focusBorderColor={' teal.500'}
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            name= {"email"}
           />
           <Input
             placeholder={'Password'}
             type={'password'}
-            required
+            required = {true}
             focusBorderColor={' teal.500'}
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            name={"password"}
           />
 
           <Button variant={'link'} alignSelf={'flex-end'}>

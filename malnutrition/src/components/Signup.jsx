@@ -7,42 +7,57 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'http://localhost:3000';
+// import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../lib/firebase";
+import { collection, query, where, doc, setDoc, getDocs } from "firebase/firestore";
 
 const Signup = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const { username, email, password } = Object.fromEntries(formData);
+
+    // // VALIDATE INPUTS
+    // if (!username || !email || !password)
+    //   return toast.warn("Please enter inputs!");
+
+    // // VALIDATE UNIQUE USERNAME
+    // const usersRef = collection(db, "users");
+    // const q = query(usersRef, where("username", "==", username));
+    // const querySnapshot = await getDocs(q);
+    // if (!querySnapshot.empty) {
+    //   return toast.warn("Select another username");
+    // }
 
     try {
-      const response = await axios.post('/users/register', {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+
+      await setDoc(doc(db, "users", res.user.uid), {
         username,
         email,
-        password,
+        id: res.user.uid,
+        blocked: [],
       });
 
-      if (response.status === 201) {
-        console.log('Signup successful');
-        navigate('/login');
-      } else {
-        console.error('Signup failed');
-      }
-    } catch (error) {
-      console.error('An error occurred while signing up:', error);
+      // toast.success("Account created! You can login now!");
+      console.log('Signup successful');
+      navigate('/login');
+
+    } catch (err) {
+      console.log(err);
+      // toast.error(err.message);
     }
   };
 
   return (
     <Container maxW={'container.xl'} h={'100vh'} p={'16'}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleRegister}>
         <VStack
           alignItems={'stretch'}
           spacing={'8'}
@@ -56,26 +71,23 @@ const Signup = () => {
           <Input
             placeholder={'Name'}
             type={'text'}
-            required
+            required = {true}
             focusBorderColor={' teal.500'}
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            name = {"username"}
           />
           <Input
             placeholder={'Email'}
-            type={'email'}
-            required
+            type={'text'}
+            required = {true}
             focusBorderColor={' teal.500'}
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            name = {"email"}
           />
           <Input
             placeholder={'Password'}
             type={'password'}
-            required
+            required = {true}
             focusBorderColor={' teal.500'}
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            name = {"password"}
           />
           <Text textAlign={'right'}>
               Already Signed Up?{' '}
