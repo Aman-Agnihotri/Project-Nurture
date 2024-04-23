@@ -28,7 +28,7 @@
   },
   "scripts": {
     "predeploy": "react-scripts build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b main -d malnutrition",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
