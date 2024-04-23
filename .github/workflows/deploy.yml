@@ -39,9 +39,15 @@ jobs:
             working-directory: project_nurture
             run: npm run build
 
-          - name: Deploy to GitHub Pages
-            uses: actions/deploy-gh-pages@v4
+          - name: Setup Pages
+            uses: actions/configure-pages@v4
+
+          - name: Upload artifact
+            uses: actions/upload-pages-artifact@v3
             with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                branch: gh-pages  # Change if you use a different branch for deployment
-                build_dir: project_nurture/dist  # Adjust path if your build output differs
+                # Upload dist folder
+                path: 'project_nurture/dist'
+
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v4
