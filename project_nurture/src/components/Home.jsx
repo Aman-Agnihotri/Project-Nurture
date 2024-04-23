@@ -1,5 +1,4 @@
 import { Box, Container, Heading, Image } from '@chakra-ui/react';
-import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -33,7 +32,7 @@ const Home = () => {
            borderBottom={'2px solid teal'}
            m='auto' fontSize='2xl'
           >
-            "Experience the transformative power of our platform as we work together to end childhood malnutrition. With your support, we can create a world where every child has access to the nourishment they need to live healthy, vibrant lives."
+            &quot;Experience the transformative power of our platform as we work together to end childhood malnutrition. With your support, we can create a world where every child has access to the nourishment they need to live healthy, vibrant lives.&quot;
             </Heading>
         </Container>
 
@@ -53,21 +52,21 @@ const MyCarousel = () => (
     <Box w="full" h={'100vh'}>
       <Image src={img4} h="full" w={['full','50%']}  objectFit={'cover'} />
       <Heading bgColor={'blackAlpha.700'} color={'white'} fontSize="30px" {...headingOptions}>
-        "Welcome"
+      &quot;Welcome&quot;
       </Heading>
     </Box>
 
     <Box w="full" h={'100vh'}>
       <Image src={img1} h="full" w={['full','50%']}  objectFit={'cover'} />
       <Heading bgColor={'blackAlpha.400'} color={'white'} {...headingOptions}>
-      "Empty Bowl, Full Heart: A Cry for Compassion"
+      &quot;Empty Bowl, Full Heart: A Cry for Compassion&quot;
       </Heading>
     </Box>
 
     <Box w="full" h={'100vh'}>
       <Image src={img2} h="full" w={'full'} objectFit={'cover'} />
       <Heading bgColor={'blackAlpha.500'} color={'white'} {...headingOptions}>
-      "Nutrient Deficiency Impacting Child Growth"
+      &quot;Nutrient Deficiency Impacting Child Growth&quot;
       </Heading>
 
     </Box>
@@ -75,7 +74,7 @@ const MyCarousel = () => (
     <Box w="full" h={'100vh'}>
       <Image src={img3} h="full" w={'full'} objectFit={'cover'} />
       <Heading bgColor={'whiteAlpha.700'} color={'black'} {...headingOptions}>
-      "Unequal Childhoods: From Screens to Empty Stomachs"
+      &quot;Unequal Childhoods: From Screens to Empty Stomachs&quot;
       </Heading>
       <Heading>POWER</Heading>
     </Box>

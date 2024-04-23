@@ -7,12 +7,12 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../lib/firebase";
-import { collection, query, where, doc, setDoc, getDocs } from "firebase/firestore";
+// import { collection, query, where, doc, setDoc, getDocs } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 const Signup = () => {
   const navigate = useNavigate();

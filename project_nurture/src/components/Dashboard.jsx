@@ -1,6 +1,5 @@
 // Dashboard.jsx
 import { Container } from '@chakra-ui/react';
-import React from 'react';
 import MapComponent from './MapComponent';
 
 const Dashboard = () => {

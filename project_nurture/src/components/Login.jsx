@@ -6,7 +6,6 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -26,7 +25,7 @@ const Login = () => {
       console.log('Login successful');
       navigate('/dashboard');
       } catch (err) {
-      // toast.warn(err.message);
+      // toast.err(err.message);
       console.log(err);
     }
   };

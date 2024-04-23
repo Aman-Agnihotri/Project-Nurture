@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, Button, HStack, Heading, Input, Stack, VStack, Text } from '@chakra-ui/react';
 import {AiOutlineSend,AiOutlineInstagram,AiFillLinkedin,AiFillGithub } from 'react-icons/ai'
 
