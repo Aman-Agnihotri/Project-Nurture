@@ -65,7 +65,9 @@ const Signup = () => {
           m={'auto'}
           my={'16'}
         >
-          <Heading>VIDEO HUB</Heading>
+          <Heading
+          lineHeight={"38px"}
+          >MAKE AN ACCOUNT TO ACCESS MAP</Heading>
           <Avatar alignSelf={'center'} boxSize={'32'} />
 
           <Input
