@@ -2,6 +2,7 @@ from geopy.geocoders import MapBox
 from geopy.exc import GeocoderTimedOut
 import json
 import csv
+import random
 
 # initialize MapBox API 
 geolocator = MapBox(api_key="pk.eyJ1Ijoic2FjaDgxNDEiLCJhIjoiY2x1cXQ2MGdlMDFyYTJsbzJpd2k2c2hrZCJ9.Exjb8uFz7gboyXpa4MlNVw")
@@ -13,7 +14,7 @@ with open('coordinates.json', 'r') as file:
 coordinates = [(item['Latitude'], item['Longitude']) for item in data]
  
 with open('coordinates_with_city_state.csv', 'w', newline='') as csvfile:
-    fieldnames = [ 'Area', 'State', 'Latitude', 'Longitude']
+    fieldnames = [ 'Area', 'State', 'Latitude', 'Longitude', 'Scale']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
@@ -24,6 +25,8 @@ with open('coordinates_with_city_state.csv', 'w', newline='') as csvfile:
                 # Format the coordinates as a string separated by a comma
                 coord_str = f"{coord[0]},{coord[1]}"
                 
+                scale = random.random()
+                
                 # Reverse geocode the coordinates
                 location = geolocator.reverse(coord_str, exactly_one=True)
                 
@@ -33,7 +36,7 @@ with open('coordinates_with_city_state.csv', 'w', newline='') as csvfile:
                 state = address_parts[-2]
                 
                 # Write to CSV
-                writer.writerow({'Area': area, 'State': state, 'Latitude': coord[0], 'Longitude': coord[1]})
+                writer.writerow({'Area': area, 'State': state, 'Latitude': coord[0], 'Longitude': coord[1], 'Scale': scale})
                 
                 print("Processed 1 coordinate." if i == 1 else f"Processed {i} coordinates.")
                 break # Break the loop if successful
