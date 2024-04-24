@@ -5,7 +5,6 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
-  Center
 } from '@chakra-ui/react';
 
 const About = () => {
@@ -36,7 +35,7 @@ const About = () => {
             <h2>
             <AccordionButton _expanded={{ bg: 'teal', color: 'white' }}>
                 <Box as="span" flex='1' textAlign='left'>
-                PRANNATI AGNIHOTRI
+                PRANNTI AGNIHOTRI
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
