@@ -13,19 +13,15 @@ const MapComponent = () => {
     useEffect(() => {
         const markers = new L.MarkerClusterGroup();
 
-        const map = L.map(mapRef.current, {
-            center: [20.5937, 78.9629], // Center coordinates
-            zoom: 6
-        });
-
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        const tile = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
+            minZoom: 3,
             id: 'mapbox/streets-v11', // Example style
             tileSize: 512,
             zoomOffset: -1,
             accessToken: 'pk.eyJ1Ijoic2FjaDgxNDEiLCJhIjoiY2x1cXQ2MGdlMDFyYTJsbzJpd2k2c2hrZCJ9.Exjb8uFz7gboyXpa4MlNVw'
-        }).addTo(map);
+        });
 
         const customIcon = L.icon({
             iconUrl: './marker.png',
@@ -34,11 +30,11 @@ const MapComponent = () => {
             popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
         });
 
-        const heat = L.heatLayer([], { 
-            radius: 25,
-            gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1.0: 'red'},
-            scaleRadius: true,
-        });
+        // const heat = L.heatLayer([], { 
+        //     radius: 25,
+        //     gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1.0: 'red'},
+        //     scaleRadius: true,
+        // });
 
         const fetchData = async () => {
             try {
@@ -49,21 +45,25 @@ const MapComponent = () => {
 
                     const lat = row.Latitude;
                     const lon = row.Longitude;
-                    const scale = row.Scale;
+                    // const scale = row.Scale;
 
-                    if (lat && lon && map && mapRef.current) {
-                        heat.addLatLng([lat, lon, scale]);
+                    if (lat && lon) {
                         markers.addLayer(L.marker([lat, lon], { icon: customIcon }));
+                        // heat.addLatLng([lat, lon, scale]);
                     }
                 });
-                heat.addTo(map);
-                map.addLayer(markers);
             } catch (err) {
                 console.error(err);
             }
         };
         
         fetchData();
+
+        const map = L.map(mapRef.current, {
+            center: [20.5937, 78.9629], // Center coordinates
+            zoom: 6,
+            layers: [tile, markers]
+        });
 
         return () => {
             map.remove();
