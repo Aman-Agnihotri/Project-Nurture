@@ -10,5 +10,5 @@ selected_columns = df[["Latitude", "Longitude", "Scale"]]
 json_data = selected_columns.to_json(orient='records')
 
 # Write to a file
-with open('/home/hunterhhh412/Local Stuff/Minor 2/Minor_2/project_nurture/public/coordinates.json', 'w') as f:
+with open('../project_nurture/public/coordinates.json', 'w') as f:
     f.write(json_data)

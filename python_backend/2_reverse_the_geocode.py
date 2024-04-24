@@ -6,7 +6,7 @@ import csv
 # initialize MapBox API 
 geolocator = MapBox(api_key="pk.eyJ1Ijoic2FjaDgxNDEiLCJhIjoiY2x1cXQ2MGdlMDFyYTJsbzJpd2k2c2hrZCJ9.Exjb8uFz7gboyXpa4MlNVw")
 
-with open('coordinates.json', 'r') as file:
+with open('../project_nurture/public/coordinates.json', 'r') as file:
     data = json.load(file)
 
 # Extract the coordinates into a list

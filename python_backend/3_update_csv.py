@@ -27,4 +27,4 @@ def replace_columns(source_file, target_file):
         writer.writerow(target_header)
         writer.writerows(target_data)
 
-replace_columns('coordinates_with_city_state.csv', '/home/hunterhhh412/Local Stuff/Minor 2/Minor_2/minor2final.csv')
+replace_columns('coordinates_with_city_state.csv', '../minor2final.csv')
