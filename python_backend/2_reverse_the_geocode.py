@@ -2,7 +2,6 @@ from geopy.geocoders import MapBox
 from geopy.exc import GeocoderTimedOut
 import json
 import csv
-import random
 
 # initialize MapBox API 
 geolocator = MapBox(api_key="pk.eyJ1Ijoic2FjaDgxNDEiLCJhIjoiY2x1cXQ2MGdlMDFyYTJsbzJpd2k2c2hrZCJ9.Exjb8uFz7gboyXpa4MlNVw")
