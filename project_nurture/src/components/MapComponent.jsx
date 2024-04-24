@@ -29,12 +29,8 @@ const MapComponent = () => {
             iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
             popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
         });
-
-        // const heat = L.heatLayer([], { 
-        //     radius: 25,
-        //     gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1.0: 'red'},
-        //     scaleRadius: true,
-        // });
+        
+        const coordinates = [];
 
         const fetchData = async () => {
             try {
@@ -45,11 +41,12 @@ const MapComponent = () => {
 
                     const lat = row.Latitude;
                     const lon = row.Longitude;
-                    // const scale = row.Scale;
+                    const scale = row.Scale;
+
+                    coordinates.push([lat, lon, scale]);
 
                     if (lat && lon) {
                         markers.addLayer(L.marker([lat, lon], { icon: customIcon }));
-                        // heat.addLatLng([lat, lon, scale]);
                     }
                 });
             } catch (err) {
@@ -64,6 +61,12 @@ const MapComponent = () => {
             zoom: 6,
             layers: [tile, markers]
         });
+
+        L.heatLayer(coordinates, {
+            radius: 30,
+            gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1.0: 'red'},
+            scaleRadius: true,
+        }).addTo(map);
 
         return () => {
             map.remove();
