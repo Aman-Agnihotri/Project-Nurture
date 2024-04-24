@@ -32,12 +32,12 @@ jobs:
                 cache: 'npm'
 
           - name: Install dependencies
-            # working-directory: project_nurture
-            run: npm install --prefix project_nurture
+            run: npm ci
+            working-directory: project_nurture
 
           - name: Build for production
-            # working-directory: project_nurture
-            run: npm run build --prefix project_nurture
+            run: npm run build
+            working-directory: project_nurture
 
           - name: Deploy to GitHub Pages
             uses: peaceiris/actions-gh-pages@v4
