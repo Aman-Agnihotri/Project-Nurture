@@ -37,6 +37,7 @@ const MapComponent = () => {
         const heat = L.heatLayer([], { 
             radius: 25,
             gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1.0: 'red'},
+            scaleRadius: true,
         });
 
         const fetchData = async () => {
@@ -45,7 +46,7 @@ const MapComponent = () => {
                 const data = await response.json();
 
                 data.forEach(row => {
-                    
+
                     const lat = row.Latitude;
                     const lon = row.Longitude;
                     const scale = row.Scale;
