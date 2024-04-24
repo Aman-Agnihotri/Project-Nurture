@@ -23,7 +23,7 @@ with open('coordinates_with_city_state.csv', 'w', newline='') as csvfile:
             try:
                 # Format the coordinates as a string separated by a comma
                 coord_str = f"{coord[0]},{coord[1]}"
-                
+                                
                 # Reverse geocode the coordinates
                 location = geolocator.reverse(coord_str, exactly_one=True)
                 

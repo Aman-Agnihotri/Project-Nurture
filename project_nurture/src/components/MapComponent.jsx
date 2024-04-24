@@ -13,19 +13,15 @@ const MapComponent = () => {
     useEffect(() => {
         const markers = new L.MarkerClusterGroup();
 
-        const map = L.map(mapRef.current, {
-            center: [20.5937, 78.9629], // Center coordinates
-            zoom: 6
-        });
-
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        const tile = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
+            minZoom: 2,
             id: 'mapbox/streets-v11', // Example style
             tileSize: 512,
             zoomOffset: -1,
             accessToken: 'pk.eyJ1Ijoic2FjaDgxNDEiLCJhIjoiY2x1cXQ2MGdlMDFyYTJsbzJpd2k2c2hrZCJ9.Exjb8uFz7gboyXpa4MlNVw'
-        }).addTo(map);
+        });
 
         const customIcon = L.icon({
             iconUrl: './marker.png',
@@ -33,35 +29,45 @@ const MapComponent = () => {
             iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
             popupAnchor: [1, -34], // Point from which the popup should open relative to the iconAnchor
         });
-
-        const heat = L.heatLayer([], { radius: 25 });
+        
+        const coordinates = [];
 
         const fetchData = async () => {
             try {
                 const response = await fetch('./coordinates.json');
                 const data = await response.json();
-                // let i=0;
+
                 data.forEach(row => {
-                    // i++;
+
                     const lat = row.Latitude;
                     const lon = row.Longitude;
-                    const scale = row.Scale;
+                    const scale = row.Scale/10;
 
-                    if (lat && lon && map && mapRef.current) {
-                        // console.log("Adding the marker!",i);
-                        heat.addLatLng([lat, lon, scale]);
+                    coordinates.push([lat, lon, scale]);
+
+                    if (lat && lon) {
                         markers.addLayer(L.marker([lat, lon], { icon: customIcon }));
-                        // console.log("Marker added!");
                     }
                 });
-                heat.addTo(map);
-                map.addLayer(markers);
             } catch (err) {
                 console.error(err);
             }
         };
         
         fetchData();
+
+        const map = L.map(mapRef.current, {
+            center: [20.5937, 78.9629], // Center coordinates
+            zoom: 6,
+            zoomSnap: 0.25,
+            layers: [tile, markers]
+        });
+
+        L.heatLayer(coordinates, {
+            radius: 30,
+            gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1.0: 'red'},
+            scaleRadius: true,
+        }).addTo(map);
 
         return () => {
             map.remove();
