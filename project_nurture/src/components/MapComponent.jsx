@@ -59,6 +59,7 @@ const MapComponent = () => {
         const map = L.map(mapRef.current, {
             center: [20.5937, 78.9629], // Center coordinates
             zoom: 6,
+            zoomSnap: 0.25,
             layers: [tile, markers]
         });
 
