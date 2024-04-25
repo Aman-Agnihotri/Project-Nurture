@@ -5,7 +5,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import img1 from '../assets/img1.webp';
 import img2 from '../assets/img2.png';
 import img3 from '../assets/img3.webp';
-import img4 from '../assets/logo.jpeg';
+import img4 from '../assets/img4.jpg';
+import logo from '../assets/logo.jpeg';
 
 const headingOptions={
 
@@ -44,14 +45,14 @@ const MyCarousel = () => (
   <Carousel 
     autoPlay={true}
     infiniteLoop
-    interval={1000}
+    interval={1300}
     showStatus={false}
     showThumbs={false}
     >
       
-    <Box w="full" h={'100vh'}>
-      <Image src={img4} h="full" w={['full','50%']}  objectFit={'cover'} />
-      <Heading bgColor={'blackAlpha.700'} color={'white'} fontSize="30px" {...headingOptions}>
+    <Box w="full" h={"100vh"}  >
+      <Image src={logo} h="full" w={['full','50%']}  objectFit={'cover'} />
+      <Heading bgColor={'blackAlpha.700'} color={'white'} fontSize="30px" {...headingOptions} justifyContent={"center"}  textAlign={"center"} >
       &quot;Welcome&quot;
       </Heading>
     </Box>
