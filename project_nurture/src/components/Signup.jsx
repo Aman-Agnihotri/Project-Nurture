@@ -8,7 +8,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../lib/firebase";
 // import { collection, query, where, doc, setDoc, getDocs } from "firebase/firestore";
@@ -45,14 +45,30 @@ const Signup = () => {
         blocked: [],
       });
 
-      // toast.success("Account created! You can login now!");
-      console.log('Signup successful');
+      toast.success('Account created!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       navigate('/login');
-
     } catch (err) {
       console.log(err);
-      // toast.error(err.message);
+
+      toast.error('Signup failed: ' + err.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
+   
   };
 
   return (

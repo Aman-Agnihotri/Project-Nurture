@@ -16,18 +16,39 @@ const Login = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-
+  
     const formData = new FormData(event.target);
     const { email, password } = Object.fromEntries(formData);
-
+  
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Login successful');
+      // Show a notification on successful login
+      toast.success('Login successful!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       navigate('/dashboard');
-      } catch (err) {
-      // toast.err(err.message);
-      console.log(err);
+    } catch (err) {
+      // Show an error notification on failed login
+      toast.error('Login failed: ' + err.message, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
+      
+  
+      
   };
 
   return (
