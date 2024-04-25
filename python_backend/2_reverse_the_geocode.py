@@ -12,8 +12,8 @@ with open('coordinates.json', 'r') as file:
 # Extract the coordinates into a list
 coordinates = [(item['Latitude'], item['Longitude']) for item in data]
  
-with open('coordinates_with_city_state.csv', 'w', newline='') as csvfile:
-    fieldnames = [ 'Area', 'State', 'Latitude', 'Longitude']
+with open('coordinates_with_city.csv', 'w', newline='') as csvfile:
+    fieldnames = [ 'Area', 'Latitude', 'Longitude']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
@@ -30,10 +30,9 @@ with open('coordinates_with_city_state.csv', 'w', newline='') as csvfile:
                 # Extract area and state from the address string
                 address_parts = location.address.split(', ')
                 area = address_parts[-3]
-                state = address_parts[-2]
                 
                 # Write to CSV
-                writer.writerow({'Area': area, 'State': state, 'Latitude': coord[0], 'Longitude': coord[1]})
+                writer.writerow({'Area': area, 'Latitude': coord[0], 'Longitude': coord[1]})
                 
                 print("Processed 1 coordinate." if i == 1 else f"Processed {i} coordinates.")
                 break # Break the loop if successful
