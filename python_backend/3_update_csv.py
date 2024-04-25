@@ -22,9 +22,9 @@ def replace_columns(source_file, target_file):
             target_row[index] = source_row[source_header.index(target_header[index])]
 
     # Write the updated rows to a new CSV file
-    with open('updated_file.csv', 'w', newline='') as output:
+    with open('./updated_file.csv', 'w', newline='') as output:
         writer = csv.writer(output)
         writer.writerow(target_header)
         writer.writerows(target_data)
 
-replace_columns('coordinates_with_city.csv', '../Minor2data.csv')
+replace_columns('coordinates_with_city.csv', './Minor2data.csv')

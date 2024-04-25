@@ -46,7 +46,23 @@ const MapComponent = () => {
                     coordinates.push([lat, lon, scale]);
 
                     if (lat && lon) {
-                        markers.addLayer(L.marker([lat, lon], { icon: customIcon }));
+                        
+                        const marker = L.marker([lat, lon], { icon: customIcon });
+                        // Bind a popup to the marker with the desired information
+                        marker.bindPopup(`
+                            <b>Name:</b> ${row['Name of Children']}<br>
+                            <b>Guardian Name:</b> ${row['Guardian Name']}<br>
+                            <b>Area:</b> ${row.Area}<br>
+                            <b>Weight (kg):</b> ${row['Weight (kg)']}<br>
+                            <b>Height (cm):</b> ${row['Height (cm)']}<br>
+                            <b>Health Portfolio:</b> ${row['Health Portfolio']}<br>
+                            <b>Age (1-11):</b> ${row['Age (1-11)']}<br>
+                            <b>Gender:</b> ${row.Gender}<br>
+                            <b>Scale:</b> ${scale}<br>
+                        `);
+                        // Add the marker to the MarkerClusterGroup
+                        markers.addLayer(marker);
+
                     }
                 });
             } catch (err) {

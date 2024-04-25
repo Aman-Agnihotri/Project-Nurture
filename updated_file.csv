@@ -1,0 +1,1386 @@
+Name of Children,Guardian Name,Area,Weight (kg),Height (cm),Health Portfolio,Age (1-11),Household Income,Urban or Rural,State,Latitude,Longitude,Gender,Scale
+Aarav Sharma,Ritu Sharma,Burgampahad,14.2,95,Normal,5,15000,Urban,Telangana,17.71738722744648,80.77176169252434,Male,7.228024281
+Ananya Patel,Sunil Patel,Suigam,16.8,102,Allergies,8,12000,Urban,Gujarat,24.149049873183806,71.47623466850465,Female,8.814250614
+Arjun Reddy,Nandini Reddy,Pindwara,18.5,98,Excellent,6,9000,Urban,Rajasthan,24.707283628128923,72.95888740986352,Male,8.518716578
+Aisha Khan,Sameer Khan,Chandua,12,85,Normal,4,11000,Rural,Odisha,22.037833530627452,86.80459857539947,Female,6.185503686
+Diya Singh,Raj Singh,Mathura,14.7,92,Asthma,7,8000,Rural,Uttar Pradesh,27.367157412735168,77.83009367428268,Female,7.79335164
+Advait Desai,Neha Desai,Hapur,17.3,100,Good,9,13000,Urban,Uttar Pradesh,28.704911864246267,77.776866447134,Male,9.136262466
+Kavya Joshi,Rahul Joshi,Ahmednagar,15.5,96,Normal,3,11000,Rural,Maharashtra,19.220723273333018,75.31314371481102,Female,6.993062581
+Vir Malhotra,Meera Malhotra,Bailhongal,16.9,98,Excellent,6,9500,Urban,Karnataka,15.788529601024788,74.92060111442512,Male,8.172770632
+Rohan Singh,Priya Singh,Vyara,13.4,88,Normal,6,14000,Urban,Gujarat,20.999955987856865,73.48877450375139,Male,7.121896228
+Aditi Gupta,Sameer Gupta,Tiruppur,15.8,95,Allergies,8,12000,Urban,Tamil Nadu,11.098872880286798,77.3866071688253,Female,8.392152045
+Kritika Sharma,Rakesh Sharma,Kalyanasingpur,12.3,90,Asthma,5,11000,Rural,Odisha,19.619197891062296,83.37044856425402,Female,6.670154647
+Rajeev Verma,Seema Verma,Prayagraj,14.5,93,Excellent,7,13000,Urban,Uttar Pradesh,25.090324144444143,81.71119212491564,Male,7.779520162
+Ishaan Kapoor,Sneha Kapoor,Gadag,16.2,98,Normal,9,15000,Urban,Karnataka,15.41742136434179,75.55498786945803,Male,8.839601098
+Tanvi Shah,Vikram Shah,Pullampeta,11.8,85,Good,4,10000,Rural,Andhra Pradesh,13.818342061000752,79.27699126892466,Female,6.142260442
+Arnav Singh,Anjali Singh,Shrivardhan,14.6,93,Normal,7,14000,Urban,Maharashtra,18.266003278344094,72.94369391099953,Male,7.801141783
+Kabir Mehta,Deepak Mehta,Rudauli,13.8,92,Good,6,13000,Urban,Uttar Pradesh,26.70744560500649,81.71936325443086,Male,7.326029773
+Arnav Sharma,Ritu Sharma,Turuvekere,14.3,94,Excellent,5,15000,Urban,Karnataka,13.126749408914442,76.74816222389799,Male,7.220234138
+Anaya Patel,Sunil Patel,Georai,16.7,101,Normal,8,12000,Urban,Maharashtra,19.187393357589443,75.67710776749024,Female,8.763217228
+Arjun Reddy,Nandini Reddy,Kaza,18.4,97,Good,6,9000,Urban,Himachal Pradesh,32.03168555112394,78.39251015420871,Male,8.467683191
+Aisha Khan,Sameer Khan,Pokaran,12.2,86,Normal,4,11000,Rural,Rajasthan,26.998539554020162,71.97097566433823,Female,6.258158693
+Diya Singh,Raj Singh,YSR,14.8,93,Asthma,7,8000,Rural,Andhra Pradesh,14.65503730618238,78.59985567778104,Female,7.844385027
+Advait Desai,Neha Desai,Ichhawar,17.4,99,Good,9,13000,Urban,Madhya Pradesh,23.009809463157318,77.07948083937929,Male,9.128472323
+Kavya Joshi,Rahul Joshi,Harij,15.6,97,Normal,3,11000,Rural,Gujarat,23.825243355311883,71.85467967548922,Female,7.044095968
+Vir Malhotra,Meera Malhotra,Leh,17,99,Excellent,6,9500,Urban,Ladakh,33.60671594682522,78.36594066356741,Male,8.223804018
+Rohan Singh,Priya Singh,Pauni,13.3,87,Normal,6,14000,Urban,Maharashtra,20.833905553094755,79.59428259199237,Male,7.070862841
+Aditi Gupta,Sameer Gupta,Shahpur,15.9,96,Allergies,8,12000,Urban,Karnataka,16.687551529619583,76.64639058601311,Female,8.443185431
+Kritika Sharma,Rakesh Sharma,Siruguppa,12.4,91,Asthma,5,11000,Rural,Karnataka,15.722088587692014,77.00841565064528,Female,6.721188033
+Rajeev Verma,Seema Verma,Kamjong,14.6,94,Excellent,7,13000,Urban,Manipur,24.588740487386865,94.37107535734863,Male,7.830553548
+Ishaan Kapoor,Sneha Kapoor,Bhamragad,16.3,99,Normal,9,15000,Urban,Maharashtra,19.463425700790737,80.8677787325286,Male,8.890634485
+Tanvi Shah,Vikram Shah,Dondi Luhara,11.9,86,Good,4,10000,Rural,Chhattisgarh,20.825556057023118,81.16583236342181,Female,6.193293829
+Arnav Singh,Anjali Singh,Pashchim Champaran,14.7,94,Normal,7,14000,Urban,Bihar,26.793712632824782,84.5268256757086,Male,7.85217517
+Kabir Mehta,Deepak Mehta,Sakoli,13.9,93,Good,6,13000,Urban,Maharashtra,21.00509705419869,80.09584214962553,Male,7.377063159
+Arnav Sharma,Ritu Sharma,Satari,14.4,93,Excellent,5,15000,Urban,Goa,15.587224113600888,74.18522178861865,Male,7.212443995
+Anaya Patel,Sunil Patel,Rann Of Kachchh,16.6,100,Normal,8,12000,Urban,Gujarat,24.185036124340186,68.88062323175413,Female,8.712183842
+Arjun Reddy,Nandini Reddy,Tikamgarh,18.3,96,Good,6,9000,Urban,Madhya Pradesh,25.07327186503392,78.84308190486455,Male,8.416649805
+Aisha Khan,Sameer Khan,Khamgaon,12.1,87,Normal,4,11000,Rural,Maharashtra,20.54789407651161,76.72957023982484,Female,6.265948837
+Diya Singh,Raj Singh,Warisaliganj,14.9,94,Asthma,7,8000,Rural,Bihar,25.022029237295886,85.66878624932862,Female,7.895418413
+Advait Desai,Neha Desai,Nilambar-Pitambarpur,17.5,101,Good,9,13000,Urban,Jharkhand,23.977455997127173,84.27951284615621,Male,9.208917474
+Kavya Joshi,Rahul Joshi,Ratnagiri,15.7,98,Normal,3,11000,Rural,Maharashtra,17.321686649922025,73.3848287759082,Female,7.095129354
+Vir Malhotra,Meera Malhotra,West Jaintia Hills,17.1,100,Excellent,6,9500,Urban,Meghalaya,25.19479638297996,92.02346218000643,Male,8.274837404
+Rohan Singh,Priya Singh,Sawai Madhopur,13.2,86,Normal,6,14000,Urban,Rajasthan,25.871848528846815,76.35409908255068,Male,7.019829455
+Aditi Gupta,Sameer Gupta,Hasanparthy,16,97,Allergies,8,12000,Urban,Telangana,18.067460836722717,79.47336512463593,Female,8.494218818
+Kritika Sharma,Rakesh Sharma,Sadak-Arjuni,12.5,92,Asthma,5,11000,Rural,Maharashtra,21.119265037478414,80.20291805197782,Female,6.772221419
+Rajeev Verma,Seema Verma,Rae Bareli,14.7,95,Excellent,7,13000,Urban,Uttar Pradesh,26.316860868224918,81.09882679209052,Male,7.881586935
+Ishaan Kapoor,Sneha Kapoor,Mangrol,16.4,100,Normal,9,15000,Urban,Gujarat,21.55431044181184,73.07240607851044,Male,8.941667871
+Tanvi Shah,Vikram Shah,Leh,12,87,Good,4,10000,Rural,Ladakh,33.89531762064829,78.35133801602598,Female,6.244327215
+Arnav Singh,Anjali Singh,Bindki,14.8,95,Normal,7,14000,Urban,Uttar Pradesh,26.135805545402448,80.63448812526167,Male,7.903208556
+Kabir Mehta,Deepak Mehta,Etalin,14,94,Good,6,13000,Urban,Arunachal Pradesh,28.550503010760618,96.3288624966862,Male,7.428096546
+Aditya Kumar,Shalini Kumar,Kochadhamin,13.5,88,Normal,6,10000,Rural,Bihar,26.13446933640594,87.7914485776314,Male,7.143517849
+Avni Gupta,Rajesh Gupta,Jalaun,12.8,92,Asthma,4,9500,Rural,Uttar Pradesh,26.417854290031283,79.45512072637008,Female,6.564359011
+Aaradhya Sharma,Anita Sharma,Kamalnagar,14.6,96,Good,7,11000,Urban,Karnataka,18.1841416526349,77.56838734378198,Female,7.889377078
+Rohan Patel,Anjali Patel,Sathyamangalam,15.7,98,Allergies,8,12000,Urban,Tamil Nadu,11.587827931635397,77.36936840352853,Male,8.458765718
+Aadya Singh,Vivek Singh,Maham,14.2,94,Normal,5,10500,Urban,Haryana,28.911964341149247,76.32863269415446,Female,7.198612516
+Ansh Sharma,Monika Sharma,Kishangarh,13.8,90,Excellent,7,12500,Urban,Rajasthan,26.4397364028782,74.88033878803569,Male,7.539933516
+Vivaan Kapoor,Anita Kapoor,Prayagraj,12.9,92,Asthma,5,10000,Rural,Uttar Pradesh,25.366289854171207,82.16347133792536,Male,6.858707906
+Advika Gupta,Rajat Gupta,Bhamragad,14.4,95,Good,7,11000,Urban,Maharashtra,19.53323056449419,80.72179865276702,Female,7.81672207
+Arjun Yadav,Shreya Yadav,Giridih,16.5,100,Normal,9,14000,Urban,Jharkhand,24.0892561625763,86.29255065687063,Male,8.963289493
+Ananya Sharma,Rakesh Sharma,Mat,15.3,98,Normal,7,12000,Urban,Uttar Pradesh,27.720231901675334,77.76197060941878,Female,8.099551958
+Aarav Singh,Ananya Singh,Kamrup,13.6,94,Excellent,5,10500,Urban,Assam,26.265874362161462,91.47755071370038,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Silonijan,12.7,90,Asthma,4,9500,Rural,Assam,26.457199926078125,93.57180958631994,Male,6.48391386
+Avani Sharma,Naveen Sharma,Satara,13.9,96,Allergies,6,10000,Rural,Maharashtra,17.649897592077192,74.71977560277077,Female,7.465298454
+Riya Patel,Raj Patel,Leh,15.8,99,Normal,8,12000,Urban,Ladakh,33.61325324236395,77.59539682770871,Female,8.509799104
+Aadi Singh,Vikram Singh,Nawabpet,14.5,95,Good,6,10500,Urban,Telangana,16.98898027235365,78.08163195972419,Male,7.565616419
+Anika Sharma,Manoj Sharma,Lundra,14,92,Excellent,8,12500,Urban,Chhattisgarh,23.169332097781957,83.41830848125774,Female,7.914727562
+Vedant Kapoor,Anita Kapoor,Narharpur,12.6,90,Asthma,4,10000,Rural,Chhattisgarh,20.42146613328203,81.49249509789122,Male,6.462292239
+Advaita Gupta,Rajat Gupta,Lailunga,14.2,94,Good,7,11000,Urban,Chhattisgarh,22.317701229456365,83.5480801854787,Female,7.744067062
+Aryan Yadav,Shreya Yadav,Dechu,16.2,98,Normal,9,14000,Urban,Rajasthan,26.641579084760764,72.17292100089415,Male,8.839601098
+Ananya Sharma,Rakesh Sharma,Palanpur,15,97,Normal,7,12000,Urban,Gujarat,24.17110064217247,72.48953902289897,Female,8.005275329
+Aadi Singh,Ananya Singh,Rashmi,13.5,94,Excellent,5,10500,Urban,Rajasthan,25.12485150159775,74.49340171978093,Male,7.047261165
+Ishaan Gupta,Renu Gupta,Ballah,12.8,91,Asthma,4,9500,Rural,Haryana,29.54293220925126,76.84712092021566,Male,6.534947247
+Avani Sharma,Naveen Sharma,Bargarh,14,97,Allergies,6,10000,Rural,Odisha,21.16712025202863,83.62469130142566,Female,7.51633184
+Riya Patel,Raj Patel,Bhiwani,16,100,Normal,8,12000,Urban,Haryana,28.825601145682498,76.13492142645025,Female,8.582454112
+Aadi Singh,Vikram Singh,Devadurga,14.7,96,Good,6,10500,Urban,Karnataka,16.245384945266863,76.93843019927027,Male,7.638271427
+Anika Sharma,Manoj Sharma,Banigochha,14.3,93,Excellent,8,12500,Urban,Odisha,20.25803543335028,84.61322307942122,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Padum,12.7,91,Asthma,4,10000,Rural,Ladakh,33.30624409059603,77.02119339576333,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Padum,14.5,95,Good,7,11000,Urban,Ladakh,33.14201101728639,76.96849677812695,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Nising,16.1,97,Normal,9,14000,Urban,Haryana,29.63469166408752,76.73535984606957,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Ratnagiri,14.9,96,Normal,7,12000,Urban,Maharashtra,17.009967991145416,73.48095923336633,Female,7.954241942
+Aadi Singh,Ananya Singh,Pandharpur,13.4,93,Excellent,5,10500,Urban,Maharashtra,17.738002627390088,75.382008921166,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Darrang,12.9,91,Asthma,4,9500,Rural,Assam,26.558590490330506,91.81400409820453,Male,6.556568868
+Avani Sharma,Naveen Sharma,Khajuwala,14.2,97,Allergies,6,10000,Rural,Rajasthan,28.656995773329232,72.33861995666469,Female,7.559575083
+Riya Patel,Raj Patel,মৌলভীবাজার,15.9,100,Normal,8,12000,Urban,Sylhet,24.624566555340333,92.20224390604747,Female,8.56083249
+Aadi Singh,Vikram Singh,Pandariya,14.6,97,Good,6,10500,Urban,Chhattisgarh,22.40263788537506,81.26890777091387,Male,7.64606157
+Anika Sharma,Manoj Sharma,Longchem,14.1,94,Excellent,8,12500,Urban,Nagaland,26.666103321790906,94.51053045702689,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Kalamnuri,12.8,92,Asthma,4,10000,Rural,Maharashtra,19.63623640973006,77.30621150182682,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Leh,14.3,95,Good,7,11000,Urban,Ladakh,33.427540169485766,78.37766297669826,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Aspur,16,98,Normal,9,14000,Urban,Rajasthan,23.95682424029445,74.09184261213923,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Kolayat,14.8,96,Normal,7,12000,Urban,Rajasthan,28.044309007175983,73.13051086796807,Female,7.932620321
+Aadi Singh,Ananya Singh,Kanakapura,13.6,94,Excellent,5,10500,Urban,Karnataka,12.568850071288965,77.55739398319838,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Sinapali,12.7,91,Asthma,4,9500,Rural,Odisha,20.141361947683414,82.41993334036283,Male,6.513325625
+Avani Sharma,Naveen Sharma,Vaishali,14,97,Allergies,6,10000,Rural,Bihar,25.937396831559035,85.27363030859799,Female,7.51633184
+Riya Patel,Raj Patel,Pachpadra,16.1,100,Normal,8,12000,Urban,Rajasthan,26.016924753141794,72.64519553739179,Female,8.604075733
+Aadi Singh,Vikram Singh,Pangi,14.7,97,Good,6,10500,Urban,Himachal Pradesh,33.11155066278597,76.5482261851808,Male,7.667683191
+Anika Sharma,Manoj Sharma,Pokaran,14.3,93,Excellent,8,12500,Urban,Rajasthan,27.225286201884472,71.66779429076168,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Padum,12.7,91,Asthma,4,10000,Rural,Ladakh,33.35452049239209,77.10581892526791,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Atpadi,14.5,95,Good,7,11000,Urban,Maharashtra,17.39556075036197,74.80754057443113,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Paithan,16.1,97,Normal,9,14000,Urban,Maharashtra,19.54642619869339,75.51013718943953,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Kandhar,14.9,96,Normal,7,12000,Urban,Maharashtra,18.737575094445294,77.28019874688567,Female,7.954241942
+Aadi Singh,Ananya Singh,Sambalpur,13.4,93,Excellent,5,10500,Urban,Odisha,22.051953147239672,84.31115866397717,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Goharganj,12.9,91,Asthma,4,9500,Rural,Madhya Pradesh,23.145621701176868,77.60613194786282,Male,6.556568868
+Avani Sharma,Naveen Sharma,Amreli,14.2,97,Allergies,6,10000,Rural,Gujarat,21.454990171930937,71.2668900163776,Female,7.559575083
+Riya Patel,Raj Patel,Chamarajanagar,15.9,100,Normal,8,12000,Urban,Karnataka,11.842261279118123,76.84913313499165,Female,8.56083249
+Aadi Singh,Vikram Singh,Mahanga,14.6,97,Good,6,10500,Urban,Odisha,20.62129586972975,86.16720355061958,Male,7.64606157
+Anika Sharma,Manoj Sharma,Jalaun,14.1,94,Excellent,8,12500,Urban,Uttar Pradesh,25.952271192726695,79.66463571988477,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Haridwar,12.8,92,Asthma,4,10000,Rural,Uttarakhand,29.924951178012048,78.04643630834077,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Dunguripali,14.3,95,Good,7,11000,Urban,Odisha,20.935163073083935,83.70194032884366,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Sankarapuram,16,98,Normal,9,14000,Urban,Tamil Nadu,11.897118931051336,78.95850023301833,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Mutharam,14.8,96,Normal,7,12000,Urban,Telangana,18.41026927808663,80.07704306340258,Female,7.932620321
+Aadi Singh,Ananya Singh,Muddebihal,13.6,94,Excellent,5,10500,Urban,Karnataka,16.21578635519255,76.22960505973609,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Assandh,12.7,91,Asthma,4,9500,Rural,Haryana,29.59210361466019,76.7312232815403,Male,6.513325625
+Avani Sharma,Naveen Sharma,Rajgarhi,14,97,Allergies,6,10000,Rural,Uttarakhand,30.98154799285486,78.46893636386902,Female,7.51633184
+Riya Patel,Raj Patel,Tikken,16.1,100,Normal,8,12000,Urban,Himachal Pradesh,32.03518616067838,76.82197260361002,Female,8.604075733
+Aadi Singh,Vikram Singh,Jaisalmer,14.7,97,Good,6,10500,Urban,Rajasthan,26.941579663520805,71.136428728824,Male,7.667683191
+Anika Sharma,Manoj Sharma,Asifabad,14.3,93,Excellent,8,12500,Urban,Telangana,19.36209551373889,79.13442967057907,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Hansot,12.7,91,Asthma,4,10000,Rural,Gujarat,21.623823285439485,72.8165179620682,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Butibori,14.5,95,Good,7,11000,Urban,Maharashtra,20.892486420595063,79.03236893282804,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Kadayanallur,16.1,97,Normal,9,14000,Urban,Tamil Nadu,9.098017901238672,77.26839954606577,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,West Bunghmun,14.9,96,Normal,7,12000,Urban,Mizoram,23.14215051972774,92.58966484010749,Female,7.954241942
+Aadi Singh,Ananya Singh,Sudhagad,13.4,93,Excellent,5,10500,Urban,Maharashtra,18.504851236515222,73.34226532978995,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Mahmudabad,12.9,91,Asthma,4,9500,Rural,Uttar Pradesh,27.46628783173052,81.17290063033462,Male,6.556568868
+Avani Sharma,Naveen Sharma,Murbad,14.2,97,Allergies,6,10000,Rural,Maharashtra,19.32872350773296,73.64397466636787,Female,7.559575083
+Riya Patel,Raj Patel,Potashpur,15.9,100,Normal,8,12000,Urban,West Bengal,22.09534049749068,87.61733075645549,Female,8.56083249
+Aadi Singh,Vikram Singh,Sikar,14.6,97,Good,6,10500,Urban,Rajasthan,27.594864650043558,74.78076066644594,Male,7.64606157
+Anika Sharma,Manoj Sharma,Barhait,14.1,94,Excellent,8,12500,Urban,Jharkhand,24.948015464157628,87.5025340793269,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,New Delhi,12.8,92,Asthma,4,10000,Rural,Delhi 110039,28.756640585856708,77.06117831310526,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Gumla,14.3,95,Good,7,11000,Urban,Jharkhand,22.899694962311855,84.64968676032538,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Mankapur,16,98,Normal,9,14000,Urban,Uttar Pradesh,26.932320207750088,82.45001842086651,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Sardarshahar,14.8,96,Normal,7,12000,Urban,Rajasthan,28.798560315448427,74.53331930030254,Female,7.932620321
+Aadi Singh,Ananya Singh,Leh,13.6,94,Excellent,5,10500,Urban,Ladakh,33.95653764007034,78.68794964999628,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Gadarwara,12.7,91,Asthma,4,9500,Rural,Madhya Pradesh,22.719591515402946,78.73326752295881,Male,6.513325625
+Avani Sharma,Naveen Sharma,Tiruppur,14,97,Allergies,6,10000,Rural,Tamil Nadu,11.073228374761369,77.43528950413956,Female,7.51633184
+Riya Patel,Raj Patel,Ajmer,16.1,100,Normal,8,12000,Urban,Rajasthan,26.2874005250968,74.878465829157,Female,8.604075733
+Aadi Singh,Vikram Singh,Gool,14.7,97,Good,6,10500,Urban,Jammu and Kashmir,33.2863032688535,75.02063433573312,Male,7.667683191
+Anika Sharma,Manoj Sharma,Katihar,14.3,93,Excellent,8,12500,Urban,Bihar,25.547065227398388,87.60424730846812,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Mopidevi,12.7,91,Asthma,4,10000,Rural,Andhra Pradesh,16.096767978306097,80.97802256102216,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Dharmapuri,14.5,95,Good,7,11000,Urban,Tamil Nadu,12.026400441723961,78.43082364146613,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Sarmathura,16.1,97,Normal,9,14000,Urban,Rajasthan,26.508463660269413,77.47497520630183,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Kutiyana,14.9,96,Normal,7,12000,Urban,Gujarat,21.513943475626572,69.92018419159821,Female,7.954241942
+Aadi Singh,Ananya Singh,Dabra,13.4,93,Excellent,5,10500,Urban,Madhya Pradesh,25.924681813095127,78.29221423476476,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Kumargram,12.9,91,Asthma,4,9500,Rural,West Bengal,26.602074693805,89.78036363518171,Male,6.556568868
+Avani Sharma,Naveen Sharma,Bhainsdehi,14.2,97,Allergies,6,10000,Rural,Madhya Pradesh,21.590843193258767,77.59415004313942,Female,7.559575083
+Riya Patel,Raj Patel,Parbhani,15.9,100,Normal,8,12000,Urban,Maharashtra,19.12067877089728,76.77625669326525,Female,8.56083249
+Aadi Singh,Vikram Singh,Kashipur,14.6,97,Good,6,10500,Urban,West Bengal,23.463775818355614,86.63488846489736,Male,7.64606157
+Anika Sharma,Manoj Sharma,Phuloni,14.1,94,Excellent,8,12500,Urban,Assam,26.287959257709346,93.18257408376988,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Riyan Badi,12.8,92,Asthma,4,10000,Rural,Rajasthan,26.474989706509614,74.21352156820932,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Uttarkashi,14.3,95,Good,7,11000,Urban,Uttarakhand,30.71593841490311,78.3515690391343,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Chikkamagaluru,16,98,Normal,9,14000,Urban,Karnataka,13.424853866922987,75.78237577961377,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Ukhimath,14.8,96,Normal,7,12000,Urban,Uttarakhand,30.630467952664027,79.30903551205076,Female,7.932620321
+Aadi Singh,Ananya Singh,Nashik,13.6,94,Excellent,5,10500,Urban,Maharashtra,19.941245000863255,73.8989478238913,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Bongaon,12.7,91,Asthma,4,9500,Rural,West Bengal,23.155583909259438,88.86086141546778,Male,6.513325625
+Avani Sharma,Naveen Sharma,Mauranipur,14,97,Allergies,6,10000,Rural,Uttar Pradesh,25.257851663660162,78.98207611809067,Female,7.51633184
+Riya Patel,Raj Patel,Thalavadi,16.1,100,Normal,8,12000,Urban,Tamil Nadu,11.629367986411015,76.95793043341786,Female,8.604075733
+Aadi Singh,Vikram Singh,Jabera,14.7,97,Good,6,10500,Urban,Madhya Pradesh,23.74002784419727,79.65171373294577,Male,7.667683191
+Anika Sharma,Manoj Sharma,Kundhit,14.3,93,Excellent,8,12500,Urban,Jharkhand,23.933477460493258,87.14273523205827,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Anjad,12.7,91,Asthma,4,10000,Rural,Madhya Pradesh,22.040506198064044,75.19071207088807,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Kodur,14.5,95,Good,7,11000,Urban,Andhra Pradesh,14.004425576679902,79.35009154408799,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Gadraroad,16.1,97,Normal,9,14000,Urban,Rajasthan,25.68680185831674,70.50074026255861,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Bagicha,14.9,96,Normal,7,12000,Urban,Chhattisgarh,22.898534410930118,83.82329006671138,Female,7.954241942
+Aadi Singh,Ananya Singh,Daryapur,13.4,93,Excellent,5,10500,Urban,Maharashtra,20.862749882996134,77.32629299380213,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Udayarpalayam,12.9,91,Asthma,4,9500,Rural,Tamil Nadu,11.108040601825541,79.26263306732905,Male,6.556568868
+Avani Sharma,Naveen Sharma,Agar,14.2,97,Allergies,6,10000,Rural,Madhya Pradesh,23.76101880035256,76.05855289846482,Female,7.559575083
+Riya Patel,Raj Patel,Islampur,15.9,100,Normal,8,12000,Urban,West Bengal,26.293258990023197,88.25254061602969,Female,8.56083249
+Aadi Singh,Vikram Singh,Kalvarayan Hills,14.6,97,Good,6,10500,Urban,Tamil Nadu,11.707295127864388,78.71108332783957,Male,7.64606157
+Anika Sharma,Manoj Sharma,Wankaner,14.1,94,Excellent,8,12500,Urban,Gujarat,22.606113306488556,70.83598333894008,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Lahul and Spiti,12.8,92,Asthma,4,10000,Rural,Himachal Pradesh,32.65598164827813,77.19416794112934,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Jaynagar,14.3,95,Good,7,11000,Urban,West Bengal,22.016003481222125,88.52279658487473,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Chalisgaon,16,98,Normal,9,14000,Urban,Maharashtra,20.489459382527855,74.88037421040433,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Rehti,14.8,96,Normal,7,12000,Urban,Madhya Pradesh,22.755658779368634,77.53024670552774,Female,7.932620321
+Aadi Singh,Ananya Singh,Rajanna Sircilla,13.6,94,Excellent,5,10500,Urban,Telangana,18.276119822235113,78.8122228175164,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Nokha,12.7,91,Asthma,4,9500,Rural,Rajasthan,27.340024711908956,73.26710872716386,Male,6.513325625
+Avani Sharma,Naveen Sharma,Singur,14,97,Allergies,6,10000,Rural,West Bengal,22.841234293844366,88.21250008754781,Female,7.51633184
+Riya Patel,Raj Patel,Debai,16.1,100,Normal,8,12000,Urban,Uttar Pradesh,28.29733120096873,78.26691957126229,Female,8.604075733
+Aadi Singh,Vikram Singh,Jalandhar,14.7,97,Good,6,10500,Urban,Punjab,31.40664611028449,75.75922858726084,Male,7.667683191
+Anika Sharma,Manoj Sharma,Danta Ramgarh,14.3,93,Excellent,8,12500,Urban,Rajasthan,27.338894039557356,75.36707936853783,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Ekma,12.7,91,Asthma,4,10000,Rural,Bihar,26.00164621208763,84.5828524025834,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Poundi-Uproda,14.5,95,Good,7,11000,Urban,Chhattisgarh,22.923880608340234,82.30868418974208,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Bhavnagar,16.1,97,Normal,9,14000,Urban,Gujarat,21.705162150177795,71.95655390371853,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Musafirkhana,14.9,96,Normal,7,12000,Urban,Uttar Pradesh,26.50990549736573,81.57537375497179,Female,7.954241942
+Aadi Singh,Ananya Singh,Tulail,13.4,93,Excellent,5,10500,Urban,Jammu and Kashmir,34.49131615999808,74.98654748461996,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Deoband,12.9,91,Asthma,4,9500,Rural,Uttar Pradesh,29.706199729404666,77.74646324992703,Male,6.556568868
+Avani Sharma,Naveen Sharma,Umbergaon,14.2,97,Allergies,6,10000,Rural,Gujarat,20.307690947172286,72.92690974904946,Female,7.559575083
+Riya Patel,Raj Patel,Khordha,15.9,100,Normal,8,12000,Urban,Odisha,20.2450584086305,85.77224206866538,Female,8.56083249
+Aadi Singh,Vikram Singh,Namakkal,14.6,97,Good,6,10500,Urban,Tamil Nadu,11.245556451481063,78.01469720526244,Male,7.64606157
+Anika Sharma,Manoj Sharma,Haflong,14.1,94,Excellent,8,12500,Urban,Assam,25.27938236175054,92.8262786703726,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Ahmadabad,12.8,92,Asthma,4,10000,Rural,Gujarat,23.06806376687203,72.49056763804612,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Ojili,14.3,95,Good,7,11000,Urban,Andhra Pradesh,14.005719841491825,79.78961720907537,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Saswad,16,98,Normal,9,14000,Urban,Maharashtra,18.228776643267388,74.03085475915833,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Sikar,14.8,96,Normal,7,12000,Urban,Rajasthan,27.657939466157963,75.1985185919129,Female,7.932620321
+Aadi Singh,Ananya Singh,Nagpur,13.6,94,Excellent,5,10500,Urban,Maharashtra,21.37126300977974,79.33813224051549,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Deori,12.7,91,Asthma,4,9500,Rural,Madhya Pradesh,23.224269399245486,78.98987770408539,Male,6.513325625
+Avani Sharma,Naveen Sharma,Shivpuri,14,97,Allergies,6,10000,Rural,Madhya Pradesh,25.507441318450848,77.53191332360842,Female,7.51633184
+Riya Patel,Raj Patel,Sivaganga,16.1,100,Normal,8,12000,Urban,Tamil Nadu,9.918532274267282,78.65047155037207,Female,8.604075733
+Aadi Singh,Vikram Singh,Majuli,14.7,97,Good,6,10500,Urban,Assam,26.87559873901808,94.07465629002797,Male,7.667683191
+Anika Sharma,Manoj Sharma,Madgul,14.3,93,Excellent,8,12500,Urban,Telangana,16.837117011696424,78.68910145063158,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Chhibramau,12.7,91,Asthma,4,10000,Rural,Uttar Pradesh,27.066917296662407,79.71056977519453,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Shimla,14.5,95,Good,7,11000,Urban,Himachal Pradesh,31.03265494888872,77.4632730347607,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Tumakuru,16.1,97,Normal,9,14000,Urban,Karnataka,13.330443069862044,77.20437580915187,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Nsong,14.9,96,Normal,7,12000,Urban,Nagaland,25.24905434148646,93.58153630104295,Female,7.954241942
+Aadi Singh,Ananya Singh,Jaisalmer,13.4,93,Excellent,5,10500,Urban,Rajasthan,27.067504748427755,69.9903156886212,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Balangir,12.9,91,Asthma,4,9500,Rural,Odisha,20.609366394758112,83.5643184137315,Male,6.556568868
+Avani Sharma,Naveen Sharma,Sagar,14.2,97,Allergies,6,10000,Rural,Karnataka,14.06701745760381,75.19095893341677,Female,7.559575083
+Riya Patel,Raj Patel,Rajpura,15.9,100,Normal,8,12000,Urban,Punjab,30.37697677543976,76.68735847651004,Female,8.56083249
+Aadi Singh,Vikram Singh,Vedasandur,14.6,97,Good,6,10500,Urban,Tamil Nadu,10.473822637748935,78.08170885374642,Male,7.64606157
+Anika Sharma,Manoj Sharma,Nandurbar,14.1,94,Excellent,8,12500,Urban,Maharashtra,21.115671914643226,73.92867817660948,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Nizamsagar,12.8,92,Asthma,4,10000,Rural,Telangana,18.281672860773142,77.90142337268946,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Jaisalmer,14.3,95,Good,7,11000,Urban,Rajasthan,26.982715244989787,70.50593781582023,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Pandarak,16,98,Normal,9,14000,Urban,Bihar,25.46420792829949,85.81225799926013,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Seoni,14.8,96,Normal,7,12000,Urban,Madhya Pradesh,22.493227239779443,79.60215774553173,Female,7.932620321
+Aadi Singh,Ananya Singh,Umri,13.6,94,Excellent,5,10500,Urban,Maharashtra,19.07197053473259,77.74417332377686,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Nowshera,12.7,91,Asthma,4,9500,Rural,Jammu and Kashmir,33.22338734398285,74.29060183076797,Male,6.513325625
+Avani Sharma,Naveen Sharma,Solapur,14,97,Allergies,6,10000,Rural,Maharashtra,17.514498134241485,76.21309726106712,Female,7.51633184
+Riya Patel,Raj Patel,লালমনিরহাট,16.1,100,Normal,8,12000,Urban,Rangpur,26.362375880195163,89.06294793307353,Female,8.604075733
+Aadi Singh,Vikram Singh,Kurai,14.7,97,Good,6,10500,Urban,Madhya Pradesh,21.8826589833376,79.56935165603635,Male,7.667683191
+Anika Sharma,Manoj Sharma,Chhatarpur,14.3,93,Excellent,8,12500,Urban,Madhya Pradesh,24.912005726781214,79.76308592727909,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Satna,12.7,91,Asthma,4,10000,Rural,Madhya Pradesh,24.75588565627007,80.77230266513341,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Mugpal,14.5,95,Good,7,11000,Urban,Telangana,18.595062147925105,78.11287139590607,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Panna,16.1,97,Normal,9,14000,Urban,Madhya Pradesh,24.821590569428984,80.22982062341714,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Nokha,14.9,96,Normal,7,12000,Urban,Rajasthan,27.72713300121598,73.15444650079479,Female,7.954241942
+Aadi Singh,Ananya Singh,Palvoncha,13.4,93,Excellent,5,10500,Urban,Telangana,17.621121066952,80.73503749504573,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Ashti,12.9,91,Asthma,4,9500,Rural,Maharashtra,19.020890031602004,75.0864818396332,Male,6.556568868
+Avani Sharma,Naveen Sharma,Machavaram,14.2,97,Allergies,6,10000,Rural,Andhra Pradesh,16.58660396524187,79.82011868627396,Female,7.559575083
+Riya Patel,Raj Patel,Washim,15.9,100,Normal,8,12000,Urban,Maharashtra,20.162332952799385,77.15391163810658,Female,8.56083249
+Aadi Singh,Vikram Singh,Bichhiya,14.6,97,Good,6,10500,Urban,Madhya Pradesh,22.508547783285792,80.78849203735028,Male,7.64606157
+Anika Sharma,Manoj Sharma,Mahoba,14.1,94,Excellent,8,12500,Urban,Uttar Pradesh,25.38770738141552,79.88438790921171,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Sira,12.8,92,Asthma,4,10000,Rural,Karnataka,13.827877707313947,76.88420316242025,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Jaisinagar,14.3,95,Good,7,11000,Urban,Madhya Pradesh,23.632573172244356,78.69784574038853,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Adampur,16,98,Normal,9,14000,Urban,Haryana,29.347438223015256,75.50281166337129,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Talala,14.8,96,Normal,7,12000,Urban,Gujarat,21.024999751299045,70.51318653651171,Female,7.932620321
+Aadi Singh,Ananya Singh,Harapanahalli,13.6,94,Excellent,5,10500,Urban,Karnataka,14.775290470149887,76.08894412874761,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Bhalki,12.7,91,Asthma,4,9500,Rural,Karnataka,18.041260948097577,77.14305903238908,Male,6.513325625
+Avani Sharma,Naveen Sharma,Jansath,14,97,Allergies,6,10000,Rural,Uttar Pradesh,29.485767843774696,77.91708908270341,Female,7.51633184
+Riya Patel,Raj Patel,Bharmour,16.1,100,Normal,8,12000,Urban,Himachal Pradesh,32.53121672292052,76.78429865484885,Female,8.604075733
+Aadi Singh,Vikram Singh,Palakkad,14.7,97,Good,6,10500,Urban,Kerala,10.982710758963034,76.53294138512248,Male,7.667683191
+Anika Sharma,Manoj Sharma,Berla,14.3,93,Excellent,8,12500,Urban,Chhattisgarh,21.3646099798709,81.55716390328229,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Sohagpur,12.7,91,Asthma,4,10000,Rural,Madhya Pradesh,22.729404224223252,78.15212941585035,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Masturi,14.5,95,Good,7,11000,Urban,Chhattisgarh,21.878813627074397,82.3083318177735,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Nainpur,16.1,97,Normal,9,14000,Urban,Madhya Pradesh,22.578221114096728,80.04648373616811,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Haflong,14.9,96,Normal,7,12000,Urban,Assam,25.49686349764503,92.70032326545032,Female,7.954241942
+Aadi Singh,Ananya Singh,Hasanparthy,13.4,93,Excellent,5,10500,Urban,Telangana,18.104374185174112,79.57396163065576,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Jaynagar,12.9,91,Asthma,4,9500,Rural,West Bengal,22.018300750679813,88.49369482619849,Male,6.556568868
+Avani Sharma,Naveen Sharma,Bijni,14.2,97,Allergies,6,10000,Rural,Assam,26.71327902608651,90.58091405906009,Female,7.559575083
+Riya Patel,Raj Patel,Beed,15.9,100,Normal,8,12000,Urban,Maharashtra,19.04750490378823,75.68326557111347,Female,8.56083249
+Aadi Singh,Vikram Singh,Jang,14.6,97,Good,6,10500,Urban,Arunachal Pradesh,27.55596873123039,92.08208032246984,Male,7.64606157
+Anika Sharma,Manoj Sharma,Darsi,14.1,94,Excellent,8,12500,Urban,Andhra Pradesh,15.674921241720673,79.68710136092525,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Kolayat,12.8,92,Asthma,4,10000,Rural,Rajasthan,27.63364570370315,72.98411898002912,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Mangan,14.3,95,Good,7,11000,Urban,Sikkim,27.625004787163796,88.62799737412912,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Kharsawan,16,98,Normal,9,14000,Urban,Jharkhand,22.784975706780045,85.77813970912305,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Saharanpur,14.8,96,Normal,7,12000,Urban,Uttar Pradesh,30.084973905359874,77.3956285293245,Female,7.932620321
+Aadi Singh,Ananya Singh,Boram,13.6,94,Excellent,5,10500,Urban,Jharkhand,22.970572722888797,86.30000422673629,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Tisayanvilai,12.7,91,Asthma,4,9500,Rural,Tamil Nadu,8.293418901071071,77.82436996635396,Male,6.513325625
+Avani Sharma,Naveen Sharma,Vembakottai,14,97,Allergies,6,10000,Rural,Tamil Nadu,9.298469594718572,77.76543949174018,Female,7.51633184
+Riya Patel,Raj Patel,Andirakanch,16.1,100,Normal,8,12000,Urban,Odisha,19.264067529498274,83.01763285433537,Female,8.604075733
+Aadi Singh,Vikram Singh,Santalpur,14.7,97,Good,6,10500,Urban,Gujarat,23.86020700919417,71.37520643023655,Male,7.667683191
+Anika Sharma,Manoj Sharma,Bagbahra,14.3,93,Excellent,8,12500,Urban,Chhattisgarh,20.93938326547327,82.38997253352986,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Niali,12.7,91,Asthma,4,10000,Rural,Odisha,20.20230991489814,86.14636783224316,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Timarni,14.5,95,Good,7,11000,Urban,Madhya Pradesh,22.451923897152223,77.16043701012971,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Lingsugur,16.1,97,Normal,9,14000,Urban,Karnataka,16.129243211361743,76.26895873184745,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Devbhumi Dwarka,14.9,96,Normal,7,12000,Urban,Gujarat,22.201882338112476,69.16164284510712,Female,7.954241942
+Aadi Singh,Ananya Singh,Ramnagar,13.4,93,Excellent,5,10500,Urban,Bihar,27.222479589378352,84.28372312442026,Male,6.996227779
+Ishaan Gupta,Renu Gupta,Tarn Taran,12.9,91,Asthma,4,9500,Rural,Punjab,31.227428723247026,74.98979849303487,Male,6.556568868
+Avani Sharma,Naveen Sharma,Jodhpur,14.2,97,Allergies,6,10000,Rural,Rajasthan,26.573731160775136,72.32296437367233,Female,7.559575083
+Riya Patel,Raj Patel,Bijepur,15.9,100,Normal,8,12000,Urban,Odisha,21.147657288227627,83.50352449431051,Female,8.56083249
+Aadi Singh,Vikram Singh,Gomia,14.6,97,Good,6,10500,Urban,Jharkhand,23.88653489369604,85.78208442232703,Male,7.64606157
+Anika Sharma,Manoj Sharma,Keylang,14.1,94,Excellent,8,12500,Urban,Himachal Pradesh,32.57415783880228,77.44126834501414,Female,7.995172713
+Vedant Kapoor,Anita Kapoor,Nandgaon-Khandeshwar,12.8,92,Asthma,4,10000,Rural,Maharashtra,20.60942253126602,77.93749874826509,Male,6.564359011
+Advaita Gupta,Rajat Gupta,Mankote,14.3,95,Good,7,11000,Urban,Jammu and Kashmir,33.71069552323445,74.12658236763119,Female,7.795100448
+Aryan Yadav,Shreya Yadav,Malappuram,16,98,Normal,9,14000,Urban,Kerala,10.993085138618909,76.23907441198823,Male,8.796357855
+Ananya Sharma,Rakesh Sharma,Jambusar,14.8,96,Normal,7,12000,Urban,Gujarat,22.099678187120507,72.71783170917772,Female,7.932620321
+Aadi Singh,Ananya Singh,Rajavommangi,13.6,94,Excellent,5,10500,Urban,Andhra Pradesh,17.60065329759981,82.17020128429088,Male,7.068882787
+Ishaan Gupta,Renu Gupta,Karauli,12.7,91,Asthma,4,9500,Rural,Rajasthan,26.697227189995658,76.95585045179246,Male,6.513325625
+Avani Sharma,Naveen Sharma,Bilari,14,97,Allergies,6,10000,Rural,Uttar Pradesh,28.583373554251658,78.7625892517468,Female,7.51633184
+Riya Patel,Raj Patel,Savar Kundla,16.1,100,Normal,8,12000,Urban,Gujarat,21.2310095457698,71.49324018832785,Female,8.604075733
+Aadi Singh,Vikram Singh,Dhorimanna,14.7,97,Good,6,10500,Urban,Rajasthan,25.164609505355212,71.51432488789438,Male,7.667683191
+Anika Sharma,Manoj Sharma,Giridih,14.3,93,Excellent,8,12500,Urban,Jharkhand,24.317552102942322,85.94672094531069,Female,8.009004191
+Vedant Kapoor,Anita Kapoor,Boden,12.7,91,Asthma,4,10000,Rural,Odisha,20.33992554237723,82.50332349629923,Male,6.513325625
+Advaita Gupta,Rajat Gupta,Dzongu,14.5,95,Good,7,11000,Urban,Sikkim,27.639635606943113,88.31811133264459,Female,7.838343691
+Aryan Yadav,Shreya Yadav,Kalyanasingpur,16.1,97,Normal,9,14000,Urban,Odisha,19.489929622262117,83.25019032251897,Male,8.788567712
+Ananya Sharma,Rakesh Sharma,Pachmarhi,14.9,96,Normal,7,12000,Urban,Madhya Pradesh,22.449647717477127,78.42209113245613,Female,7.954241942
+Aadi Singh,Ananya Singh,Piriyapatna,13.4,93,Excellent,5,10500,Urban,Karnataka,12.468927453983842,76.15671980337689,Male,6.996227779
+Aarav Singh,Aditi Singh,Kheri,13.5,92,Normal,5,15000,Urban,Uttar Pradesh,28.586050852401705,80.5936856217887,Male,6.988437635
+Anika Patel,Vivek Patel,Etalin,14.8,95,Allergies,8,13000,Urban,Arunachal Pradesh,28.590690605759086,95.9497645887136,Female,8.175935829
+Arjun Reddy,Swati Reddy,Hooghly,16.2,98,Excellent,6,11000,Urban,West Bengal,22.709881902924327,88.29770050176089,Male,8.02141928
+Aisha Gupta,Saurabh Gupta,Denkanikottai,12.3,88,Normal,4,9000,Rural,Tamil Nadu,12.459560068403624,77.87641035183601,Female,6.338603844
+Diya Sharma,Ravi Sharma,Tijara,14.5,93,Asthma,7,10000,Rural,Rajasthan,27.997436365799082,76.78864328316067,Female,7.779520162
+Advaita Desai,Rohan Desai,Haflong,16.3,97,Good,9,14000,Urban,Assam,25.185090511228232,93.22100120316406,Male,8.831810955
+Kavya Joshi,Arvind Joshi,Kinjirkela,15.9,96,Normal,3,10000,Rural,Odisha,22.29431384087688,83.8659706930865,Female,7.079549068
+Vir Malhotra,Anita Malhotra,Malthon,16.5,98,Excellent,6,12000,Urban,Madhya Pradesh,24.192316582759126,78.46618212863355,Male,8.086284145
+Riya Singh,Sanjay Singh,Junagadh,13.2,90,Allergies,5,10500,Urban,Gujarat,21.361093213666376,70.52049335046803,Female,6.864749241
+Arnav Shah,Komal Shah,Garhwa,12.7,88,Asthma,4,9500,Rural,Jharkhand,24.19130557958499,83.67290797905329,Male,6.425090331
+Anaya Gupta,Manish Gupta,Pullampeta,15.1,94,Normal,7,11000,Urban,Andhra Pradesh,13.912293156279734,79.30387511418921,Female,7.938661656
+Aarav Singh,Akanksha Singh,Samba,16.2,96,Good,8,13000,Urban,Jammu and Kashmir,32.7152190149302,75.0793434190584,Male,8.508050296
+Rohan Patel,Monika Patel,Mandsaur,14.3,93,Excellent,8,12500,Urban,Madhya Pradesh,24.021637522264758,75.14080666150356,Male,8.009004191
+Ananya Kapoor,Siddharth Kapoor,Roorkee,12.5,89,Asthma,4,9000,Rural,Uttarakhand,29.847594968926636,77.81803273423202,Female,6.411258852
+Ayaan Sharma,Neeta Sharma,Payal,16.8,99,Good,7,11500,Urban,Punjab,30.69520603262377,76.00687760856192,Male,8.453288047
+Ria Singh,Rajiv Singh,Kunkuri,13.8,91,Allergies,5,10500,Urban,Chhattisgarh,22.696148447996297,83.9407928089363,Female,7.023890736
+Arnav Shah,Komal Shah,Jamkhed,12.6,88,Asthma,4,9500,Rural,Maharashtra,18.538254914756678,75.41364581729233,Male,6.403468709
+Anaya Gupta,Manish Gupta,Kodair,15.2,94,Normal,7,11000,Urban,Telangana,16.17422008035132,78.23597248426356,Female,7.960283278
+Aarav Singh,Akanksha Singh,Najibabad,16.1,96,Good,8,13000,Urban,Uttar Pradesh,29.72844292177673,78.43963753891764,Male,8.486428675
+Rohan Patel,Monika Patel,Marakanam,14.4,93,Excellent,8,12500,Urban,Tamil Nadu,12.167693852007575,79.8853849288039,Male,8.030625813
+Ananya Kapoor,Siddharth Kapoor,Parasia,12.7,89,Asthma,4,9000,Rural,Madhya Pradesh,22.294521159514886,78.79623042543577,Female,6.454502096
+Ayaan Sharma,Neeta Sharma,Nighasan,16.7,99,Good,7,11500,Urban,Uttar Pradesh,28.36383688257741,80.91361344041863,Male,8.431666426
+Ria Singh,Rajiv Singh,Koppal,13.9,91,Allergies,5,10500,Urban,Karnataka,15.83243136971061,76.42588386312781,Female,7.045512357
+Arnav Shah,Komal Shah,Malakhera,12.5,88,Asthma,4,9500,Rural,Rajasthan,27.367616308554542,76.5893022035155,Male,6.381847088
+Anaya Gupta,Manish Gupta,Morinda,15.3,94,Normal,7,11000,Urban,Punjab,30.810293676583193,76.53420807967862,Female,7.9819049
+Aarav Singh,Akanksha Singh,Umbergaon,16,96,Good,8,13000,Urban,Gujarat,20.273438292955532,72.76860304900826,Male,8.464807053
+Rohan Patel,Monika Patel,Henglep,14.5,93,Excellent,8,12500,Urban,Manipur,24.391703082164227,93.3725420421079,Male,8.052247435
+Ananya Kapoor,Siddharth Kapoor,Chhatarpur,12.8,89,Asthma,4,9000,Rural,Madhya Pradesh,25.279553077092203,80.21431162396031,Female,6.476123717
+Ayaan Sharma,Neeta Sharma,Kamrej,16.6,99,Good,7,11500,Urban,Gujarat,21.194961267831754,72.92941628923953,Male,8.410044804
+Ria Singh,Rajiv Singh,Mariyang,14,91,Allergies,5,10500,Urban,Arunachal Pradesh,28.53391885069721,95.29625951065009,Female,7.067133979
+Arnav Shah,Komal Shah,Ashoknagar,12.4,88,Asthma,4,9500,Rural,Madhya Pradesh,24.470040184415314,77.78424635129721,Male,6.360225466
+Anaya Gupta,Manish Gupta,Rayagada,15.4,94,Normal,7,11000,Urban,Odisha,18.954423934744195,84.27020484744133,Female,8.003526521
+Aarav Singh,Akanksha Singh,Dasua,15.9,96,Good,8,13000,Urban,Punjab,31.778233969110875,75.87548465315479,Male,8.443185431
+Rohan Patel,Monika Patel,Anjar,14.6,93,Excellent,8,12500,Urban,Gujarat,23.35453138686908,70.08318199498416,Male,8.073869056
+Ananya Kapoor,Siddharth Kapoor,Farakka,12.9,89,Asthma,4,9000,Rural,West Bengal,24.740385574427116,87.89780148890954,Female,6.497745339
+Ayaan Sharma,Neeta Sharma,Shikarpur,16.5,99,Good,7,11500,Urban,Karnataka,14.204774926406001,75.523953884014,Male,8.388423183
+Ria Singh,Rajiv Singh,Deomali,14.1,91,Allergies,5,10500,Urban,Arunachal Pradesh,27.20123568101483,95.4656822701348,Female,7.088755601
+Arnav Shah,Komal Shah,Sadak-Arjuni,12.6,88,Asthma,4,9500,Rural,Maharashtra,21.042047143828253,80.16660042995413,Male,6.403468709
+Anaya Gupta,Manish Gupta,Berinag,15.5,94,Normal,7,11000,Urban,Uttarakhand,29.716757927249233,80.10708249543171,Female,8.025148143
+Aarav Singh,Akanksha Singh,Gudur,15.8,96,Good,8,13000,Urban,Telangana,17.77684149227797,80.0239866306695,Male,8.42156381
+Rohan Patel,Monika Patel,Chhatarpur,14.7,93,Excellent,8,12500,Urban,Madhya Pradesh,24.85525638639196,79.46879798399875,Male,8.095490678
+Ananya Kapoor,Siddharth Kapoor,Jamwa Ramgarh,13,89,Asthma,4,9000,Rural,Rajasthan,27.0163015367526,76.03958666641412,Female,6.519366961
+Ayaan Sharma,Neeta Sharma,Vaishali,16.4,99,Good,7,11500,Urban,Bihar,25.934937916481466,85.13012040564621,Male,8.366801561
+Ria Singh,Rajiv Singh,Bhagalpur,14.2,91,Allergies,5,10500,Urban,Bihar,25.523156175824766,84.53617510178695,Female,7.110377222
+Arnav Shah,Komal Shah,Satyavedu,12.7,88,Asthma,4,9500,Rural,Andhra Pradesh,13.49762246155604,79.88928480834761,Male,6.425090331
+Anaya Gupta,Manish Gupta,Nafra,15.6,94,Normal,7,11000,Urban,Arunachal Pradesh,27.418557248332753,92.78158769652642,Female,8.046769764
+Aarav Singh,Akanksha Singh,Pavagada,15.7,96,Good,8,13000,Urban,Karnataka,13.997399024853829,77.35249129711745,Male,8.399942188
+Rohan Patel,Monika Patel,Amravati,14.8,93,Excellent,8,12500,Urban,Maharashtra,21.11259886108372,77.87096848466324,Male,8.117112299
+Ananya Kapoor,Siddharth Kapoor,Aruppukkottai,13.1,89,Asthma,4,9000,Rural,Tamil Nadu,9.475175604281333,78.03812064293643,Female,6.540988582
+Ayaan Sharma,Neeta Sharma,Gairsain,16.3,99,Good,7,11500,Urban,Uttarakhand,30.085901584208727,79.23859018401775,Male,8.345179939
+Ria Singh,Rajiv Singh,Phalodi,14.3,91,Allergies,5,10500,Urban,Rajasthan,27.08944547275189,72.35536256654466,Female,7.131998844
+Arnav Shah,Komal Shah,Bhum,12.8,88,Asthma,4,9500,Rural,Maharashtra,18.386567633321054,75.5244991274016,Male,6.446711953
+Anaya Gupta,Manish Gupta,Simdega,15.7,94,Normal,7,11000,Urban,Jharkhand,22.696225002376337,84.55938861127329,Female,8.068391386
+Aarav Singh,Akanksha Singh,Vijaypura,15.6,96,Good,8,13000,Urban,Karnataka,16.640878809274657,75.69783276503045,Male,8.378320567
+Rohan Patel,Monika Patel,Phullen,14.9,93,Excellent,8,12500,Urban,Mizoram,24.025691125360545,93.09422520741485,Male,8.138733921
+Ananya Kapoor,Siddharth Kapoor,Niphad,13.2,89,Asthma,4,9000,Rural,Maharashtra,20.129403561189758,74.25549714510767,Female,6.562610204
+Ayaan Sharma,Neeta Sharma,Kaimur,16.2,99,Good,7,11500,Urban,Bihar,25.016365232808756,83.80614593594498,Male,8.323558318
+Ria Singh,Rajiv Singh,Narayanpur,14.4,91,Allergies,5,10500,Urban,Chhattisgarh,19.567996714619838,81.06571562933212,Female,7.153620465
+Arnav Shah,Komal Shah,Satara,12.9,88,Asthma,4,9500,Rural,Maharashtra,17.856622198051333,74.23241384202436,Male,6.468333574
+Anaya Gupta,Manish Gupta,Tankara,15.8,94,Normal,7,11000,Urban,Gujarat,22.734887413075185,70.70766149321433,Female,8.090013008
+Aarav Singh,Akanksha Singh,Lakhpat,15.5,96,Good,8,13000,Urban,Gujarat,23.428636897305612,68.5787655586671,Male,8.356698945
+Rohan Patel,Monika Patel,Mysuru,15,93,Excellent,8,12500,Urban,Karnataka,12.06856131301797,76.35007469002652,Male,8.160355543
+Ananya Kapoor,Siddharth Kapoor,Biswan,13.3,89,Asthma,4,9000,Rural,Uttar Pradesh,27.417690015719156,80.88815617420957,Female,6.584231825
+Ayaan Sharma,Neeta Sharma,Tiruchirappalli,16.1,99,Good,7,11500,Urban,Tamil Nadu,11.100342439286027,78.47384567549032,Male,8.301936696
+Ria Singh,Rajiv Singh,Budaun,14.5,91,Allergies,5,10500,Urban,Uttar Pradesh,27.876844313483108,78.93210997913391,Female,7.175242087
+Arnav Shah,Komal Shah,Aruppukkottai,13,88,Asthma,4,9500,Rural,Tamil Nadu,9.375874880859524,78.1516405276168,Male,6.489955196
+Anaya Gupta,Manish Gupta,Bhagawangola,15.9,94,Normal,7,11000,Urban,West Bengal,24.30839970336676,88.42910559091592,Female,8.111634629
+Aarav Singh,Akanksha Singh,Basti,15.4,96,Good,8,13000,Urban,Uttar Pradesh,26.781070651930325,82.77455038160336,Male,8.335077323
+Rohan Patel,Monika Patel,Haflong,15.1,93,Excellent,8,12500,Urban,Assam,25.666994737219635,92.94557166823273,Male,8.181977164
+Ananya Kapoor,Siddharth Kapoor,Hanur,13.4,89,Asthma,4,9000,Rural,Karnataka,12.0634976991233,77.69153691183321,Female,6.605853447
+Ayaan Sharma,Neeta Sharma,Kalavad,16,99,Good,7,11500,Urban,Gujarat,22.130353028393543,70.49681528254968,Male,8.280315074
+Ria Singh,Rajiv Singh,Chikkamagaluru,14.6,91,Allergies,5,10500,Urban,Karnataka,13.238513695430004,75.54286681593845,Female,7.196863709
+Arnav Shah,Komal Shah,Latehar,13.1,88,Asthma,4,9500,Rural,Jharkhand,23.8578169645176,84.22206749199282,Male,6.511576817
+Anaya Gupta,Manish Gupta,Varanasi,16,94,Normal,7,11000,Urban,Uttar Pradesh 221007,25.373147711050553,82.988223497858,Female,8.133256251
+Aarav Singh,Akanksha Singh,Bengaluru Urban,15.3,96,Good,8,13000,Urban,Karnataka,12.869024595129556,77.80636401723133,Male,8.313455702
+Rohan Patel,Monika Patel,Gohad,15.2,93,Excellent,8,12500,Urban,Madhya Pradesh,26.34259313041755,78.52702368795575,Male,8.203598786
+Ananya Kapoor,Siddharth Kapoor,Raipur - Karchuliyan,13.5,89,Asthma,4,9000,Rural,Madhya Pradesh,24.557665632966327,81.4424722101187,Female,6.627475069
+Ayaan Sharma,Neeta Sharma,Bhadradri Kothagudem,15.9,99,Good,7,11500,Urban,Telangana,17.24971352461042,80.95979544729765,Male,8.258693453
+Ria Singh,Rajiv Singh,Pherzawl,14.7,91,Allergies,5,10500,Urban,Manipur,24.30113732355271,93.28255900788446,Female,7.21848533
+Arnav Shah,Komal Shah,Aurangabad,13.2,88,Asthma,4,9500,Rural,Maharashtra,20.100253220000333,75.52390432642594,Male,6.533198439
+Anaya Gupta,Manish Gupta,Omalur,16.1,94,Normal,7,11000,Urban,Tamil Nadu,11.93139875405003,78.14090084386653,Female,8.154877873
+Aarav Singh,Akanksha Singh,Vidisha,15.2,96,Good,8,13000,Urban,Madhya Pradesh,23.564479322806427,77.62991279866782,Male,8.29183408
+Rohan Patel,Monika Patel,Rania,15.3,93,Excellent,8,12500,Urban,Jharkhand,22.778481194899797,85.07071830772793,Male,8.225220408
+Ananya Kapoor,Siddharth Kapoor,Kasom Khullen,13.6,89,Asthma,4,9000,Rural,Manipur,24.73890139326968,94.18547152952037,Female,6.64909669
+Ayaan Sharma,Neeta Sharma,Kargahar,15.8,99,Good,7,11500,Urban,Bihar,25.050696156278885,83.96140845953666,Male,8.237071831
+Ria Singh,Rajiv Singh,Belagavi,14.8,91,Allergies,5,10500,Urban,Karnataka,15.84352725627586,75.06458413498697,Female,7.240106952
+Arnav Shah,Komal Shah,Banda,13.3,88,Asthma,4,9500,Rural,Madhya Pradesh,23.919021452696654,78.94281950781422,Male,6.554820061
+Anaya Gupta,Manish Gupta,Ghaat,16.2,94,Normal,7,11000,Urban,Uttarakhand,30.282930330569588,79.51372490663694,Female,8.176499494
+Aarav Singh,Akanksha Singh,Amet,15.1,96,Good,8,13000,Urban,Rajasthan,25.370077206219833,73.9101197306565,Male,8.270212458
+Rohan Patel,Monika Patel,Balod,15.4,93,Excellent,8,12500,Urban,Chhattisgarh,20.721127416319412,81.19932379935587,Male,8.246842029
+Ananya Kapoor,Siddharth Kapoor,Pusad,13.7,89,Asthma,4,9000,Rural,Maharashtra,19.905151608040825,77.36300112755752,Female,6.670718312
+Ayaan Sharma,Neeta Sharma,Taraso,15.7,99,Good,7,11500,Urban,Arunachal Pradesh,27.014066300785487,93.46615315411522,Male,8.21545021
+Ria Singh,Rajiv Singh,Alauli,14.9,91,Allergies,5,10500,Urban,Bihar,25.576322117353083,86.4070210345402,Female,7.261728573
+Arnav Shah,Komal Shah,Milkipur,13.4,88,Asthma,4,9500,Rural,Uttar Pradesh,26.70471786671706,81.91424793106631,Male,6.576441682
+Anaya Gupta,Manish Gupta,Sandur,16.3,94,Normal,7,11000,Urban,Karnataka,14.998122512285574,76.49733077380967,Female,8.198121116
+Aarav Singh,Akanksha Singh,Anantapur,15,96,Good,8,13000,Urban,Andhra Pradesh,15.128809300321166,77.40195416003996,Male,8.248590837
+Rohan Patel,Monika Patel,Pipu Dipu,15.5,93,Excellent,8,12500,Urban,Arunachal Pradesh,27.56568551143886,93.29773260908861,Male,8.268463651
+Ananya Kapoor,Siddharth Kapoor,Mahasi,13.8,89,Asthma,4,9000,Rural,Uttar Pradesh,27.508959615075828,81.51156303045921,Female,6.692339934
+Ayaan Sharma,Neeta Sharma,Jaisalmer,15.6,99,Good,7,11500,Urban,Rajasthan,27.135369163878757,70.96430723363756,Male,8.193828588
+Ria Singh,Rajiv Singh,Khambha,15,91,Allergies,5,10500,Urban,Gujarat,21.18928251331608,71.23055370982433,Female,7.283350195
+Arnav Shah,Komal Shah,Ghograpar,13.5,88,Asthma,4,9500,Rural,Assam,26.502563268349597,91.43872430967518,Male,6.598063304
+Anaya Gupta,Manish Gupta,Khajuripada,16.4,94,Normal,7,11000,Urban,Odisha,20.384527282433474,84.39577387132891,Female,8.219742737
+Aarav Singh,Akanksha Singh,Leh,14.9,96,Good,8,13000,Urban,Ladakh,33.224789415600306,77.81097639681742,Male,8.226969215
+Rohan Patel,Monika Patel,Mandla,15.6,93,Excellent,8,12500,Urban,Madhya Pradesh,22.608728648984567,80.47521411307473,Male,8.290085272
+Ananya Kapoor,Siddharth Kapoor,Sangameshwar,13.9,89,Asthma,4,9000,Rural,Maharashtra,17.10747613908821,73.75603913160803,Female,6.713961555
+Ayaan Sharma,Neeta Sharma,Bangana,15.5,99,Good,7,11500,Urban,Himachal Pradesh,31.542495580933764,76.39164193744082,Male,8.172206966
+Ria Singh,Rajiv Singh,Budaun,15.1,91,Allergies,5,10500,Urban,Uttar Pradesh,28.156996876833908,79.23894481014663,Female,7.304971817
+Arnav Shah,Komal Shah,Belagavi,13.6,88,Asthma,4,9500,Rural,Karnataka,16.19621006605334,75.2790054077847,Male,6.619684926
+Anaya Gupta,Manish Gupta,Indi,16.5,94,Normal,7,11000,Urban,Karnataka,17.05574645759383,75.89219826117292,Female,8.241364359
+Aarav Singh,Akanksha Singh,Poundi-Uproda,14.8,96,Good,8,13000,Urban,Chhattisgarh,22.81802439070018,82.27162764775817,Male,8.205347594
+Rohan Patel,Monika Patel,Umaria,15.7,93,Excellent,8,12500,Urban,Madhya Pradesh,23.722603346230905,81.00648515241187,Male,8.311706894
+Ananya Kapoor,Siddharth Kapoor,Tumakuru,14,89,Asthma,4,9000,Rural,Karnataka,13.290309311807906,77.13284624131293,Female,6.735583177
+Ayaan Sharma,Neeta Sharma,Kushtagi,15.4,99,Good,7,11500,Urban,Karnataka,15.88883819197849,75.9192173534618,Male,8.150585345
+Ria Singh,Rajiv Singh,Joshimath,15.2,91,Allergies,5,10500,Urban,Uttarakhand,30.59610521344103,79.95455565997301,Female,7.326593438
+Arnav Shah,Komal Shah,Morigaon,13.7,88,Asthma,4,9500,Rural,Assam,26.306243033474214,92.29033979992535,Male,6.641306547
+Anaya Gupta,Manish Gupta,Kariapatti,16.6,94,Normal,7,11000,Urban,Tamil Nadu,9.707058713863672,78.19026616622905,Female,8.262985981
+Aarav Singh,Akanksha Singh,Wazeerpur,14.7,96,Good,8,13000,Urban,Rajasthan,26.50739872372697,76.80569609425619,Male,8.183725972
+Rohan Patel,Monika Patel,Doda,15.8,93,Excellent,8,12500,Urban,Jammu and Kashmir,33.066842634385694,75.50452415356901,Male,8.333328516
+Ananya Kapoor,Siddharth Kapoor,Kolayat,14.1,89,Asthma,4,9000,Rural,Rajasthan,27.81925512715012,72.64510522006775,Female,6.757204798
+Ayaan Sharma,Neeta Sharma,Palakkad,15.3,99,Good,7,11500,Urban,Kerala,10.735597885063203,76.82623492245926,Male,8.128963723
+Ria Singh,Rajiv Singh,Talikoti,15.3,91,Allergies,5,10500,Urban,Karnataka,16.58114042446572,76.38014199509095,Female,7.34821506
+Arnav Shah,Komal Shah,Mahuva,13.8,88,Asthma,4,9500,Rural,Gujarat,21.19342472296259,71.80229690817808,Male,6.662928169
+Anaya Gupta,Manish Gupta,Heggadadevankote,16.7,94,Normal,7,11000,Urban,Karnataka,11.965719223083893,76.21118170199267,Female,8.284607602
+Aarav Singh,Akanksha Singh,Seijosa,14.6,96,Good,8,13000,Urban,Arunachal Pradesh,27.127173399359464,92.8795377634565,Male,8.16210435
+Rohan Patel,Monika Patel,Sindgi,15.9,93,Excellent,8,12500,Urban,Karnataka,17.15137830635487,76.36269035909284,Male,8.354950137
+Ananya Kapoor,Siddharth Kapoor,Kondapuram,14.2,89,Asthma,4,9000,Rural,Andhra Pradesh,14.965920525211649,79.62150291490292,Female,6.77882642
+Ayaan Sharma,Neeta Sharma,Sirsa,15.2,99,Good,7,11500,Urban,Haryana,29.576032449127908,74.92972447638417,Male,8.107342101
+Ria Singh,Rajiv Singh,Farasgaon,15.4,91,Allergies,5,10500,Urban,Chhattisgarh,19.679549208419076,81.54362823233994,Female,7.369836682
+Arnav Shah,Komal Shah,Howrah,13.9,88,Asthma,4,9500,Rural,West Bengal,22.57880986705571,88.28380880775661,Male,6.68454979
+Anaya Gupta,Manish Gupta,Deganga,16.8,94,Normal,7,11000,Urban,West Bengal,22.72620448506292,88.60303417831089,Female,8.306229224
+Aarav Singh,Akanksha Singh,Dambuen,14.5,96,Good,8,13000,Urban,Arunachal Pradesh,28.87207473890438,96.06497280546469,Male,8.140482729
+Rohan Patel,Monika Patel,Karauli,16,93,Excellent,8,12500,Urban,Rajasthan,26.577623688695095,76.9852623971927,Male,8.376571759
+Ananya Kapoor,Siddharth Kapoor,Galsi,14.3,89,Asthma,4,9000,Rural,West Bengal,23.325556408729742,87.53470701745898,Female,6.800448042
+Ayaan Sharma,Neeta Sharma,Shahapur,15.1,99,Good,7,11500,Urban,Maharashtra,19.568901059298003,73.47618229280121,Male,8.08572048
+Ria Singh,Rajiv Singh,Sanku,15.5,91,Allergies,5,10500,Urban,Ladakh,34.20879067806874,75.85854846659963,Female,7.391458303
+Arnav Shah,Komal Shah,Pratapgarh,14,88,Asthma,4,9500,Rural,Rajasthan,24.021758578773845,74.91521068439982,Male,6.706171412
+Anaya Gupta,Manish Gupta,Cherukupalle,16.9,94,Normal,7,11000,Urban,Andhra Pradesh,15.996086865991389,80.6538666196072,Female,8.327850845
+Aarav Singh,Akanksha Singh,Laskein,14.4,96,Good,8,13000,Urban,Meghalaya,25.532178058074013,92.36803027508289,Male,8.118861107
+Rohan Patel,Monika Patel,Ballari,16.1,93,Excellent,8,12500,Urban,Karnataka,15.067859829219664,77.10504231524658,Male,8.398193381
+Ananya Kapoor,Siddharth Kapoor,Dindigul,14.4,89,Asthma,4,9000,Rural,Tamil Nadu,10.413299411010492,77.68648699807551,Female,6.822069663
+Ayaan Sharma,Neeta Sharma,Churah,15,99,Good,7,11500,Urban,Himachal Pradesh,32.8984353232959,76.03388052806292,Male,8.064098858
+Ria Singh,Rajiv Singh,Kantang,15.6,91,Allergies,5,10500,Urban,Arunachal Pradesh,27.121985004370764,95.8829558007781,Female,7.413079925
+Arnav Shah,Komal Shah,Rahuri,14.1,88,Asthma,4,9500,Rural,Maharashtra,19.53014970447729,74.8200206095481,Male,6.727793034
+Anaya Gupta,Manish Gupta,Kanakapura,17,94,Normal,7,11000,Urban,Karnataka,12.550223354507954,77.36706650684104,Female,8.349472467
+Aarav Singh,Akanksha Singh,Majhauli,14.3,96,Good,8,13000,Urban,Madhya Pradesh,24.025969267364733,81.81145116212873,Male,8.097239485
+Rohan Patel,Monika Patel,Kundei,16.2,93,Excellent,8,12500,Urban,Odisha,19.918364092603497,81.93424706497362,Male,8.419815002
+Ananya Kapoor,Siddharth Kapoor,Udhampur,14.5,89,Asthma,4,9000,Rural,Jammu and Kashmir,32.95108077599402,75.22603539410892,Female,6.843691285
+Ayaan Sharma,Neeta Sharma,Jaisinghnagar,14.9,99,Good,7,11500,Urban,Madhya Pradesh,23.69777151567024,81.431004569646,Male,8.042477237
+Ria Singh,Rajiv Singh,Bhagawanpur,15.7,91,Allergies,5,10500,Urban,West Bengal,21.97915127994159,87.71103290089279,Female,7.434701546
+Arnav Shah,Komal Shah,Narasimharajapura,14.2,88,Asthma,4,9500,Rural,Karnataka,13.560494674849767,75.52859948710879,Male,6.749414655
+Anaya Gupta,Manish Gupta,Kannur,17.1,94,Normal,7,11000,Urban,Kerala,11.790085617327108,75.57202443707853,Female,8.371094089
+Aarav Singh,Akanksha Singh,Burhanpur,14.2,96,Good,8,13000,Urban,Madhya Pradesh,21.31302682004017,76.20514245102564,Male,8.075617864
+Rohan Patel,Monika Patel,Palakkad,16.3,93,Excellent,8,12500,Urban,Kerala,10.527287057562766,76.67552494901953,Male,8.441436624
+Ananya Kapoor,Siddharth Kapoor,Siwani,14.6,89,Asthma,4,9000,Rural,Haryana,28.793034135005424,75.59306013765938,Female,6.865312906
+Ayaan Sharma,Neeta Sharma,Katni,14.8,99,Good,7,11500,Urban,Madhya Pradesh,23.884865892192867,79.9892763209284,Male,8.020855615
+Ria Singh,Rajiv Singh,Sirohi,15.8,91,Allergies,5,10500,Urban,Rajasthan,24.72005692511756,73.09315662626423,Female,7.456323168
+Arnav Shah,Komal Shah,Nighasan,14.3,88,Asthma,4,9500,Rural,Uttar Pradesh,28.262899897837105,80.94779172344522,Male,6.771036277
+Anaya Gupta,Manish Gupta,Korba,17.2,94,Normal,7,11000,Urban,Chhattisgarh,22.677851797315586,82.74401749003606,Female,8.39271571
+Aarav Singh,Akanksha Singh,Gudalur,14.1,96,Good,8,13000,Urban,Tamil Nadu,11.42248291393256,76.51251943153082,Male,8.053996242
+Rohan Patel,Monika Patel,Dondi,16.4,93,Excellent,8,12500,Urban,Chhattisgarh,20.497538584274857,81.20129866066559,Male,8.463058245
+Ananya Kapoor,Siddharth Kapoor,Pune,14.7,89,Asthma,4,9000,Rural,Maharashtra,18.597202865013145,73.9743249429671,Female,6.886934528
+Ayaan Sharma,Neeta Sharma,Murbad,14.7,99,Good,7,11500,Urban,Maharashtra,19.239886884214652,73.44327745441036,Male,7.999233993
+Ria Singh,Rajiv Singh,Poshina,15.9,91,Allergies,5,10500,Urban,Gujarat,24.29688906731336,73.07537603357942,Female,7.47794479
+Arnav Shah,Komal Shah,Lunkaransar,14.4,88,Asthma,4,9500,Rural,Rajasthan,28.90930894474467,73.93267307210438,Male,6.792657899
+Anaya Gupta,Manish Gupta,Kultali,17.3,94,Normal,7,11000,Urban,West Bengal,21.842915904958954,88.60842729306627,Female,8.414337332
+Aarav Singh,Akanksha Singh,Jamalpur,14,96,Good,8,13000,Urban,Bihar,25.362802031739324,86.44751731046213,Male,8.032374621
+Rohan Patel,Monika Patel,Sindhnur,16.5,93,Excellent,8,12500,Urban,Karnataka,15.772789346955399,76.64506810432898,Male,8.484679867
+Ananya Kapoor,Siddharth Kapoor,Rann Of Kachchh,14.8,89,Asthma,4,9000,Rural,Gujarat,23.074332585428195,70.23101205132551,Female,6.90855615
+Ayaan Sharma,Neeta Sharma,Fatehgarh,14.6,99,Good,7,11500,Urban,Rajasthan,26.30285143426888,71.04091869895015,Male,7.977612372
+Ria Singh,Rajiv Singh,Kolhapur,16,91,Allergies,5,10500,Urban,Maharashtra,16.247800088152612,74.27768413427218,Female,7.499566411
+Arnav Shah,Komal Shah,Jarmundi,14.5,88,Asthma,4,9500,Rural,Jharkhand,24.448075597634666,86.99368432832128,Male,6.81427952
+Anaya Gupta,Manish Gupta,Naraingarh,17.4,94,Normal,7,11000,Urban,Haryana,30.493220518021722,77.14294983405144,Female,8.435958954
+Aarav Singh,Akanksha Singh,Ballia,13.9,96,Good,8,13000,Urban,Uttar Pradesh,25.687501688042904,84.29159239909768,Male,8.010752999
+Rohan Patel,Monika Patel,Laksar,16.6,93,Excellent,8,12500,Urban,Uttarakhand,29.60399209012004,78.00238461372591,Male,8.506301489
+Ananya Kapoor,Siddharth Kapoor,Koyyuru,14.9,89,Asthma,4,9000,Rural,Andhra Pradesh,17.777443942855204,82.10398483266958,Female,6.930177771
+Ayaan Sharma,Neeta Sharma,Ngari Diqu,14.5,99,Good,7,11500,Urban,Tibet Autonomous Region,30.668991286928286,80.14224110778491,Male,7.95599075
+Ria Singh,Rajiv Singh,Sathupalli,16.1,91,Allergies,5,10500,Urban,Telangana,17.347516432670403,80.85798010899529,Female,7.521188033
+Arnav Shah,Komal Shah,Teliamura,14.6,88,Asthma,4,9500,Rural,Tripura,23.773256687268383,91.77138990199448,Male,6.835901142
+Anaya Gupta,Manish Gupta,Bundi,17.5,94,Normal,7,11000,Urban,Rajasthan,25.350162074039968,75.48603194335176,Female,8.457580575
+Aarav Singh,Akanksha Singh,Mahasi,13.8,96,Good,8,13000,Urban,Uttar Pradesh,27.590599671605265,81.44627313899336,Male,7.989131377
+Rohan Patel,Monika Patel,Ngari Diqu,16.7,93,Excellent,8,12500,Urban,Tibet Autonomous Region,32.825062747180795,79.25134513761577,Male,8.52792311
+Ananya Kapoor,Siddharth Kapoor,Pulkal,15,89,Asthma,4,9000,Rural,Telangana,17.77940492656157,77.90773882786175,Female,6.951799393
+Ayaan Sharma,Neeta Sharma,Kakinada,14.4,99,Good,7,11500,Urban,Andhra Pradesh,17.302944825174713,82.3640692806911,Male,7.934369128
+Ria Singh,Rajiv Singh,Kachchh,16.2,91,Allergies,5,10500,Urban,Gujarat,23.199134686831904,69.84975409630557,Female,7.542809655
+Arnav Shah,Komal Shah,Dadenggiri,14.7,88,Asthma,4,9500,Rural,Meghalaya,25.762092796657406,90.16764691856295,Male,6.857522763
+Anaya Gupta,Manish Gupta,Sardarpur,17.6,94,Normal,7,11000,Urban,Madhya Pradesh,22.765031261393784,74.95009952082563,Female,8.479202197
+Aarav Singh,Akanksha Singh,Sarankul,13.7,96,Good,8,13000,Urban,Odisha,20.035509112092733,85.25274688554964,Male,7.967509756
+Rohan Patel,Monika Patel,Harrai,16.8,93,Excellent,8,12500,Urban,Madhya Pradesh,22.439800161649174,79.06845605263781,Male,8.549544732
+Ananya Kapoor,Siddharth Kapoor,Kosya Kutauli,15.1,89,Asthma,4,9000,Rural,Uttarakhand,29.420348651695612,79.50338106719707,Female,6.973421015
+Ayaan Sharma,Neeta Sharma,Maharajganj,14.3,99,Good,7,11500,Urban,Uttar Pradesh,27.231880801664513,83.5511571525755,Male,7.912747507
+Ria Singh,Rajiv Singh,Ghansawangi,16.3,91,Allergies,5,10500,Urban,Maharashtra,19.687642085353147,75.98130832075641,Female,7.564431276
+Arnav Shah,Komal Shah,Padum,14.8,88,Asthma,4,9500,Rural,Ladakh,33.32894489042868,76.94428557983224,Male,6.879144385
+Anaya Gupta,Manish Gupta,Bemetara,17.7,94,Normal,7,11000,Urban,Chhattisgarh,21.955935370408426,81.4890141048941,Female,8.500823818
+Aarav Singh,Akanksha Singh,Kanchanpur,13.6,96,Good,8,13000,Urban,Tripura,23.93437772965328,92.20603175250761,Male,7.945888134
+Rohan Patel,Monika Patel,Kunda,16.9,93,Excellent,8,12500,Urban,Uttar Pradesh,25.683523987534144,81.64846254031619,Male,8.571166354
+Ananya Kapoor,Siddharth Kapoor,Bokaro,15.2,89,Asthma,4,9000,Rural,Jharkhand,23.550036821985262,86.16164015195716,Female,6.995042636
+Ayaan Sharma,Neeta Sharma,Lunkaransar,14.2,99,Good,7,11500,Urban,Rajasthan,28.518497523158132,73.6655499816925,Male,7.891125885
+Ria Singh,Rajiv Singh,Harrai,16.4,91,Allergies,5,10500,Urban,Madhya Pradesh,22.48960818071099,79.1276862731038,Female,7.586052898
+Arnav Shah,Komal Shah,Bainduru,14.9,88,Asthma,4,9500,Rural,Karnataka,13.77970008031545,74.75536489656979,Male,6.900766007
+Anaya Gupta,Manish Gupta,Bhuntar,17.8,94,Normal,7,11000,Urban,Himachal Pradesh,31.879899444396298,77.62557605497413,Female,8.52244544
+Aarav Singh,Akanksha Singh,Lalitpur,13.5,96,Good,8,13000,Urban,Uttar Pradesh,24.468983396862157,78.3789629493969,Male,7.924266513
+Rohan Patel,Monika Patel,Rudraprayag,17,93,Excellent,8,12500,Urban,Uttarakhand,30.260529244248318,79.04099964921066,Male,8.592787975
+Ananya Kapoor,Siddharth Kapoor,Nanded,15.3,89,Asthma,4,9000,Rural,Maharashtra,19.667507885193906,78.1973262866675,Female,7.016664258
+Ayaan Sharma,Neeta Sharma,Jaisalmer,14.1,99,Good,7,11500,Urban,Rajasthan,27.046457297927557,70.41591504637438,Male,7.869504264
+Ria Singh,Rajiv Singh,Miao,16.5,91,Allergies,5,10500,Urban,Arunachal Pradesh,27.6102936908816,96.63682569377035,Female,7.607674519
+Arnav Shah,Komal Shah,Baori,15,88,Asthma,4,9500,Rural,Rajasthan,26.714242477268655,73.22693439792658,Male,6.922387628
+Anaya Gupta,Manish Gupta,Siswan,17.9,94,Normal,7,11000,Urban,Bihar,26.027789974264838,84.4031573930755,Female,8.544067062
+Aarav Singh,Akanksha Singh,Boram,13.4,96,Good,8,13000,Urban,Jharkhand,22.957974974747263,86.23669823227335,Male,7.902644891
+Rohan Patel,Monika Patel,Desuri,17.1,93,Excellent,8,12500,Urban,Rajasthan,25.29417108226672,73.46197819666854,Male,8.614409597
+Ananya Kapoor,Siddharth Kapoor,Garhshankar,15.4,89,Asthma,4,9000,Rural,Punjab,31.25679530648393,76.06300042166339,Female,7.038285879
+Ayaan Sharma,Neeta Sharma,Kurnool,14,99,Good,7,11500,Urban,Andhra Pradesh,15.863316061068865,77.7680542661216,Male,7.847882642
+Ria Singh,Rajiv Singh,Mirzapur,16.6,91,Allergies,5,10500,Urban,Uttar Pradesh,24.90211498886662,82.18080661161169,Female,7.629296141
+Arnav Shah,Komal Shah,Mothey,15.1,88,Asthma,4,9500,Rural,Telangana,17.18086886638387,79.79515714152976,Male,6.94400925
+Anaya Gupta,Manish Gupta,Pennagaram,18,94,Normal,7,11000,Urban,Tamil Nadu,12.266744449723351,77.89929520210988,Female,8.565688683
+Aarav Singh,Akanksha Singh,Sankari,13.3,96,Good,8,13000,Urban,Uttarakhand,31.116564668366262,78.32836783844196,Male,7.881023269
+Rohan Patel,Monika Patel,Bengabad,17.2,93,Excellent,8,12500,Urban,Jharkhand,24.408854475089274,86.37440896954774,Male,8.636031218
+Ananya Kapoor,Siddharth Kapoor,Pombhurna,15.5,89,Asthma,4,9000,Rural,Maharashtra,19.884795910814532,79.62578825949736,Female,7.059907501
+Ayaan Sharma,Neeta Sharma,Arvalli,13.9,99,Good,7,11500,Urban,Gujarat,23.380144589103182,73.42893974465036,Male,7.82626102
+Ria Singh,Rajiv Singh,Shivamogga,16.7,91,Allergies,5,10500,Urban,Karnataka,13.829400131880343,75.02314593955413,Female,7.650917763
+Arnav Shah,Komal Shah,Barkagaon,15.2,88,Asthma,4,9500,Rural,Jharkhand,23.735896650780553,85.23395321912781,Male,6.965630872
+Anaya Gupta,Manish Gupta,Solan,18.1,94,Normal,7,11000,Urban,Himachal Pradesh,31.045448455490945,76.99666294998174,Female,8.587310305
+Aarav Singh,Akanksha Singh,Bhokardan,13.2,96,Good,8,13000,Urban,Maharashtra,20.064942895514225,75.89153254907482,Male,7.859401648
+Rohan Patel,Monika Patel,Vijaypur,17.3,93,Excellent,8,12500,Urban,Madhya Pradesh,26.096655375939058,77.26188755665599,Male,8.65765284
+Ananya Kapoor,Siddharth Kapoor,Harrai,15.6,89,Asthma,4,9000,Rural,Madhya Pradesh,22.372140046571445,79.08838577305819,Female,7.081529123
+Ayaan Sharma,Neeta Sharma,Chamarajanagar,13.8,99,Good,7,11500,Urban,Karnataka,11.90051754452884,76.81225200021315,Male,7.804639399
+Ria Singh,Rajiv Singh,Gokak,16.8,91,Allergies,5,10500,Urban,Karnataka,16.04164264424821,74.93649661822539,Female,7.672539384
+Arnav Shah,Komal Shah,Virajpet,15.3,88,Asthma,4,9500,Rural,Karnataka,12.137532632441255,75.85601276367692,Male,6.987252493
+Anaya Gupta,Manish Gupta,Panna,18.2,94,Normal,7,11000,Urban,Madhya Pradesh,24.464154754182818,80.1492366861097,Female,8.608931927
+Aarav Singh,Akanksha Singh,Sallar,13.1,96,Good,8,13000,Urban,Jammu and Kashmir,33.96004870310185,75.23960579447005,Male,7.837780026
+Rohan Patel,Monika Patel,Amreli,17.4,93,Excellent,8,12500,Urban,Gujarat,21.098688602196678,71.25741842303835,Male,8.679274462
+Ananya Kapoor,Siddharth Kapoor,Rann Of Kachchh,15.7,89,Asthma,4,9000,Rural,Gujarat,23.983317708540635,70.08712849187197,Female,7.103150744
+Ayaan Sharma,Neeta Sharma,Bangapani,13.7,99,Good,7,11500,Urban,Uttarakhand,30.012992051553056,80.39566707400571,Male,7.783017777
+Ria Singh,Rajiv Singh,Sangli,16.9,91,Allergies,5,10500,Urban,Maharashtra,17.180110533151534,75.24976403626042,Female,7.694161006
+Arnav Shah,Komal Shah,Harrai,15.4,88,Asthma,4,9500,Rural,Madhya Pradesh,22.800526306029795,79.21044502988414,Male,7.008874115
+Anaya Gupta,Manish Gupta,Chongkham,18.3,94,Normal,7,11000,Urban,Arunachal Pradesh,27.747875637943704,95.98178613897728,Female,8.630553548
+Aarav Singh,Akanksha Singh,Betul,13,96,Good,8,13000,Urban,Madhya Pradesh,21.876870074508517,78.04347738650746,Male,7.816158404
+Rohan Patel,Monika Patel,Muddebihal,17.5,93,Excellent,8,12500,Urban,Karnataka,16.2998650911742,76.0509742961372,Male,8.700896083
+Ananya Kapoor,Siddharth Kapoor,Fatehgarh,15.8,89,Asthma,4,9000,Rural,Rajasthan,26.427775080805116,70.82217365078266,Female,7.124772366
+Ayaan Sharma,Neeta Sharma,Belagavi,13.6,99,Good,7,11500,Urban,Karnataka,16.402371968817125,74.49201964468965,Male,7.761396156
+Ria Singh,Rajiv Singh,Saraikela-Kharsawan,17,91,Allergies,5,10500,Urban,Jharkhand,22.77136183806333,85.90749176304335,Female,7.715782628
+Arnav Shah,Komal Shah,Nasirabad,15.5,88,Asthma,4,9500,Rural,Rajasthan,26.259672279770115,74.5827435992454,Male,7.030495736
+Anaya Gupta,Manish Gupta,Nagbhir,18.4,94,Normal,7,11000,Urban,Maharashtra,20.454587393279773,79.57422256156269,Female,8.65217517
+Aarav Singh,Akanksha Singh,Somvarpet,12.9,96,Good,8,13000,Urban,Karnataka,12.448710774602404,75.80492330511828,Male,7.794536783
+Rohan Patel,Monika Patel,Washim,17.6,93,Excellent,8,12500,Urban,Maharashtra,20.03362704517167,77.27870769534891,Male,8.722517705
+Ananya Kapoor,Siddharth Kapoor,Hole Narsipur,15.9,89,Asthma,4,9000,Rural,Karnataka,12.788987201850215,76.16707394136529,Female,7.146393988
+Ayaan Sharma,Neeta Sharma,Nohar,13.5,99,Good,7,11500,Urban,Rajasthan,29.11501463174552,74.87873863121439,Male,7.739774534
+Ria Singh,Rajiv Singh,Koyilandy,17.1,91,Allergies,5,10500,Urban,Kerala,11.585547020114873,75.89331242365887,Female,7.737404249
+Arnav Shah,Komal Shah,Saraguru,15.6,88,Asthma,4,9500,Rural,Karnataka,11.931392045081886,76.40470842037809,Male,7.052117358
+Anaya Gupta,Manish Gupta,Nokha,18.5,94,Normal,7,11000,Urban,Rajasthan,27.82991389607929,73.6573373475749,Female,8.673796791
+Aarav Singh,Akanksha Singh,Nubra,12.8,96,Good,8,13000,Urban,Ladakh,34.781957296938955,78.10452196250125,Male,7.772915161
+Rohan Patel,Monika Patel,Patancheru,17.7,93,Excellent,8,12500,Urban,Telangana 502307,17.540656393104932,78.2001635838055,Male,8.744139326
+Ananya Kapoor,Siddharth Kapoor,Hardoi,16,89,Asthma,4,9000,Rural,Uttar Pradesh,27.321342655526895,79.85487885245257,Female,7.168015609
+Ayaan Sharma,Neeta Sharma,Dharwad,13.4,99,Good,7,11500,Urban,Karnataka,15.280516309582449,75.28355461636659,Male,7.718152912
+Ria Singh,Rajiv Singh,Gundlupet,17.2,91,Allergies,5,10500,Urban,Karnataka,11.787625706800991,76.75951557186698,Female,7.759025871
+Arnav Shah,Komal Shah,Tehri Garhwal,15.7,88,Asthma,4,9500,Rural,Uttarakhand,30.391832383563532,78.71528936917126,Male,7.07373898
+Anaya Gupta,Manish Gupta,Subansiri,18.6,94,Normal,7,11000,Urban,Assam,27.589536407956402,94.27696381142462,Female,8.695418413
+Aarav Singh,Akanksha Singh,Chikkamagaluru,12.7,96,Good,8,13000,Urban,Karnataka,13.24790952755092,75.73146231494384,Male,7.75129354
+Rohan Patel,Monika Patel,Koraput,17.8,93,Excellent,8,12500,Urban,Odisha,18.622646727296715,82.57799013451134,Male,8.765760948
+Ananya Kapoor,Siddharth Kapoor,Krishnagiri,16.1,89,Asthma,4,9000,Rural,Andhra Pradesh,15.594512444382438,77.89544242278166,Female,7.189637231
+Ayaan Sharma,Neeta Sharma,Pandhurna,13.3,99,Good,7,11500,Urban,Madhya Pradesh,21.78762219142204,78.57721237079635,Male,7.696531291
+Ria Singh,Rajiv Singh,Jannaram,17.3,91,Allergies,5,10500,Urban,Telangana,19.069184977036095,79.05021211750937,Female,7.780647492
+Arnav Shah,Komal Shah,Jaisinagar,15.8,88,Asthma,4,9500,Rural,Madhya Pradesh,23.706170943883997,78.5528083174653,Male,7.095360601
+Anaya Gupta,Manish Gupta,Bhojpur,18.7,94,Normal,7,11000,Urban,Bihar,25.433747008782742,84.75065426141947,Female,8.717040035
+Aarav Singh,Akanksha Singh,Sakleshpur,12.6,96,Good,8,13000,Urban,Karnataka,12.996098223953798,75.8484092691872,Male,7.729671918
+Rohan Patel,Monika Patel,Jhajha,17.9,93,Excellent,8,12500,Urban,Bihar,24.878342488917262,86.42408924382978,Male,8.78738257
+Ananya Kapoor,Siddharth Kapoor,Jengging,16.2,89,Asthma,4,9000,Rural,Arunachal Pradesh,28.53810324756096,94.89611603381866,Female,7.211258852
+Ayaan Sharma,Neeta Sharma,Sami,13.2,99,Good,7,11500,Urban,Gujarat,23.700201436614435,71.80434008913367,Male,7.674909669
+Ria Singh,Rajiv Singh,Dhekiajuli,17.4,91,Allergies,5,10500,Urban,Assam,26.75631904924209,92.57709620151316,Female,7.802269114
+Arnav Shah,Komal Shah,Paparahandi,15.9,88,Asthma,4,9500,Rural,Odisha,19.423300219387595,82.66292916206342,Male,7.116982223
+Anaya Gupta,Manish Gupta,Malavalli,18.8,94,Normal,7,11000,Urban,Karnataka,12.333891025740979,77.30602569262128,Female,8.738661656
+Aarav Singh,Akanksha Singh,Bhopalpattnam,12.5,96,Good,8,13000,Urban,Chhattisgarh,19.075583750096197,80.43085981152743,Male,7.708050296
+Rohan Patel,Monika Patel,Loharu,18,93,Excellent,8,12500,Urban,Haryana,28.54195916812114,75.65277849901692,Male,8.809004191
+Ananya Kapoor,Siddharth Kapoor,Gunderdehi,16.3,89,Asthma,4,9000,Rural,Chhattisgarh,20.97626350153096,81.25858819465215,Female,7.232880474
+Ayaan Sharma,Neeta Sharma,Sillod,13.1,99,Good,7,11500,Urban,Maharashtra,20.29916938249201,75.64070259381818,Male,7.653288047
+Ria Singh,Rajiv Singh,Jalog,17.5,91,Allergies,5,10500,Urban,Himachal Pradesh,31.21342245597755,77.24958855264425,Female,7.823890736
+Arnav Shah,Komal Shah,Chamba,16,88,Asthma,4,9500,Rural,Himachal Pradesh,32.53007973076103,76.05988407582753,Male,7.138603844
+Anaya Gupta,Manish Gupta,Saoner,18.9,94,Normal,7,11000,Urban,Maharashtra 441101,21.474148757015147,78.99608906131002,Female,8.760283278
+Aarav Singh,Akanksha Singh,Fatehpur,12.4,96,Good,8,13000,Urban,Uttar Pradesh,26.11552203340615,80.57866366406024,Male,7.686428675
+Rohan Patel,Monika Patel,Vijaypur,18.1,93,Excellent,8,12500,Urban,Madhya Pradesh,26.0142329107447,77.6176867026298,Male,8.830625813
+Ananya Kapoor,Siddharth Kapoor,Pipar Shahar,16.4,89,Asthma,4,9000,Rural,Rajasthan,26.45707830224805,73.60558971701231,Female,7.254502096
+Ayaan Sharma,Neeta Sharma,Jorebunglow Sukiapokhri,13,99,Good,7,11500,Urban,West Bengal,26.921013721626817,88.24272812044936,Male,7.631666426
+Ria Singh,Rajiv Singh,Orchha,17.6,91,Allergies,5,10500,Urban,Chhattisgarh,19.868554990829224,80.82258909317233,Female,7.845512357
+Arnav Shah,Komal Shah,Tenkasi,16.1,88,Asthma,4,9500,Rural,Tamil Nadu,9.134780774485334,77.37327109080896,Male,7.160225466
+Anaya Gupta,Manish Gupta,Dibrugarh,19,94,Normal,7,11000,Urban,Assam,27.307797284810004,94.89442187015207,Female,8.7819049
+Aarav Singh,Akanksha Singh,Morigaon,12.3,96,Good,8,13000,Urban,Assam,26.33127469854753,92.46919222578055,Male,7.664807053
+Rohan Patel,Monika Patel,Nashik,18.2,93,Excellent,8,12500,Urban,Maharashtra,20.036226288093033,73.8861049125223,Male,8.852247435
+Ananya Kapoor,Siddharth Kapoor,Karmala,16.5,89,Asthma,4,9000,Rural,Maharashtra,18.12227952913285,75.10459567865874,Female,7.276123717
+Ayaan Sharma,Neeta Sharma,Jashpur,12.9,99,Good,7,11500,Urban,Chhattisgarh,23.00694723190408,84.02671775964237,Male,7.610044804
+Ria Singh,Rajiv Singh,Dharmapuri,17.7,91,Allergies,5,10500,Urban,Tamil Nadu,12.09946368369096,78.1917173486978,Female,7.867133979
+Arnav Shah,Komal Shah,Chhatarpur,16.2,88,Asthma,4,9500,Rural,Madhya Pradesh,24.643704023662167,79.65692058683192,Male,7.181847088
+Anaya Gupta,Manish Gupta,Georai,19.1,94,Normal,7,11000,Urban,Maharashtra,19.345645694723526,75.56112511109373,Female,8.803526521
+Aarav Singh,Akanksha Singh,Udupi,12.2,96,Good,8,13000,Urban,Karnataka,13.42406829401487,74.87981487032371,Male,7.643185431
+Rohan Patel,Monika Patel,Kanaganapalle,18.3,93,Excellent,8,12500,Urban,Andhra Pradesh,14.432990036665451,77.45582205192527,Male,8.873869056
+Ananya Kapoor,Siddharth Kapoor,Itahar,16.6,89,Asthma,4,9000,Rural,West Bengal,25.431302923227136,88.15103939019671,Female,7.297745339
+Ayaan Sharma,Neeta Sharma,Narkhed,12.8,99,Good,7,11500,Urban,Maharashtra,21.428974082420464,78.57012829681128,Male,7.588423183
+Ria Singh,Rajiv Singh,Potashpur,17.8,91,Allergies,5,10500,Urban,West Bengal,22.03364096759093,87.60766642374965,Female,7.888755601
+Arnav Shah,Komal Shah,Jobat,16.3,88,Asthma,4,9500,Rural,Madhya Pradesh,22.49556429684407,74.53765848267578,Male,7.203468709
+Anaya Gupta,Manish Gupta,Yavatmal,19.2,94,Normal,7,11000,Urban,Maharashtra,19.518326156523628,77.75793855123239,Female,8.825148143
+Aarav Singh,Akanksha Singh,Unnao,12.1,96,Good,8,13000,Urban,Uttar Pradesh,26.827473803729248,80.37978264288307,Male,7.62156381
+Rohan Patel,Monika Patel,Pawai,18.4,93,Excellent,8,12500,Urban,Madhya Pradesh,24.274815441366542,80.2317440223668,Male,8.895490678
+Ananya Kapoor,Siddharth Kapoor,Hingoli,16.7,89,Asthma,4,9000,Rural,Maharashtra,19.878821161703055,77.17684078922139,Female,7.319366961
+Ayaan Sharma,Neeta Sharma,Yadrami,12.7,99,Good,7,11500,Urban,Karnataka,16.807327923261326,76.70293690241405,Male,7.566801561
+Ria Singh,Rajiv Singh,Shimla,17.9,91,Allergies,5,10500,Urban,Himachal Pradesh,30.935591252927367,77.26278061902472,Female,7.910377222
+Arnav Shah,Komal Shah,Chandahandi,16.4,88,Asthma,4,9500,Rural,Odisha,19.810201484803102,82.48264182868299,Male,7.225090331
+Anaya Gupta,Manish Gupta,Tonk,19.3,94,Normal,7,11000,Urban,Rajasthan,26.06775356117136,75.46843807405787,Female,8.846769764
+Aarav Singh,Akanksha Singh,Jangareddigudem,12,96,Good,8,13000,Urban,Andhra Pradesh,17.11857892137523,81.27209752885311,Male,7.599942188
+Rohan Patel,Monika Patel,Ahmednagar,18.5,93,Excellent,8,12500,Urban,Maharashtra,19.423415356573145,75.34668463081108,Male,8.917112299
+Ananya Kapoor,Siddharth Kapoor,Chengam,16.8,89,Asthma,4,9000,Rural,Tamil Nadu,12.355652299775809,79.00065239885737,Female,7.340988582
+Ayaan Sharma,Neeta Sharma,Anugul,12.6,99,Good,7,11500,Urban,Odisha,21.216812477417292,85.16308212365536,Male,7.545179939
+Ria Singh,Rajiv Singh,Patna,18,91,Allergies,5,10500,Urban,Bihar,25.512847056983787,84.95442894591129,Female,7.931998844
+Arnav Shah,Komal Shah,Vikarabad,16.5,88,Asthma,4,9500,Rural,Telangana,17.31737670555433,77.8901779603811,Male,7.246711953
+Anaya Gupta,Manish Gupta,Kamareddy,19.4,94,Normal,7,11000,Urban,Telangana,18.493554137732342,77.61673961137637,Female,8.868391386
+Aarav Singh,Akanksha Singh,Prakasam,11.9,96,Good,8,13000,Urban,Andhra Pradesh,16.079800139012825,79.44572249087425,Male,7.578320567
+Rohan Patel,Monika Patel,Shravasti,18.6,93,Excellent,8,12500,Urban,Uttar Pradesh,27.792375302089106,82.01478558313474,Male,8.938733921
+Ananya Kapoor,Siddharth Kapoor,Sirikonda,16.9,89,Asthma,4,9000,Rural,Telangana,18.613292625751942,78.59083849130327,Female,7.362610204
+Ayaan Sharma,Neeta Sharma,Amritsar,12.5,99,Good,7,11500,Urban,Punjab,31.587174636729472,74.6535335145229,Male,7.523558318
+Ria Singh,Rajiv Singh,Chalisgaon,18.1,91,Allergies,5,10500,Urban,Maharashtra,20.611404190207853,74.82048597695942,Female,7.953620465
+Arnav Shah,Komal Shah,Chhatargarh,16.6,88,Asthma,4,9500,Rural,Rajasthan,28.665857469647143,72.96082052797735,Male,7.268333574
+Anaya Gupta,Manish Gupta,Rann Of Kachchh,19.5,94,Normal,7,11000,Urban,Gujarat,23.604056130190425,71.12445171150034,Female,8.890013008
+Aarav Singh,Akanksha Singh,Idar,11.8,96,Good,8,13000,Urban,Gujarat,23.809546562981105,73.02352112172332,Male,7.556698945
+Rohan Patel,Monika Patel,Yevla,18.7,93,Excellent,8,12500,Urban,Maharashtra,19.994319953835987,74.64435644967693,Male,8.960355543
+Ananya Kapoor,Siddharth Kapoor,Padum,17,89,Asthma,4,9000,Rural,Ladakh,33.38945436964623,76.83301166737492,Female,7.384231825
+Ayaan Sharma,Neeta Sharma,Garu,12.4,99,Good,7,11500,Urban,Jharkhand,23.613463037796635,84.2249383933971,Male,7.501936696
+Ria Singh,Rajiv Singh,Amethi,18.2,91,Allergies,5,10500,Urban,Uttar Pradesh,26.182904138053676,81.944392745943,Female,7.975242087
+Arnav Shah,Komal Shah,Kodala,16.7,88,Asthma,4,9500,Rural,Odisha,19.557791073603184,84.94401756507283,Male,7.289955196
+Anaya Gupta,Manish Gupta,Jampuijala,19.6,94,Normal,7,11000,Urban,Tripura,23.716599448233648,91.3672070337386,Female,8.911634629
+Aarav Singh,Akanksha Singh,Malpura,11.7,96,Good,8,13000,Urban,Rajasthan,26.40224521490969,75.35967683217882,Male,7.535077323
+Rohan Patel,Monika Patel,Atmakur,18.8,93,Excellent,8,12500,Urban,Andhra Pradesh,15.987007608646893,78.63449301871098,Male,8.981977164
+Aarav Kumar,Anita Kumar,Bavda,14.5,95,Normal,5,15000,Urban,Maharashtra,16.668884793375433,73.93818325299746,Male,7.292889146
+Ananya Pandey,Sunil Pandey,Sri Sathya Sai,16.2,102,Allergies,8,12000,Urban,Andhra Pradesh,14.44165773845905,77.7001012103307,Female,8.684520885
+Arjun Sharma,Nandini Sharma,Bhinga,18.8,98,Excellent,6,9000,Urban,Uttar Pradesh,27.81681744808872,82.12011728418467,Male,8.583581442
+Aisha Kumari,Sameer Kumari,Ratlam,11.5,85,Normal,4,11000,Rural,Madhya Pradesh,23.605509488503934,75.49199511893252,Female,6.077395577
+Diya Patel,Raj Patel,Hajo,14.3,92,Asthma,7,8000,Rural,Assam,26.200065388701972,91.49939198772107,Female,7.706865154
+Advait Gupta,Neha Gupta,Dhampur,17.6,100,Good,9,13000,Urban,Uttar Pradesh,29.40573544570133,78.66996900584806,Male,9.201127331
+Kavya Verma,Rahul Verma,Gwalior,15.3,96,Normal,3,11000,Rural,Madhya Pradesh,26.180183038343337,78.18847915549954,Female,6.949819338
+Vir Singh,Meera Singh,Pune,16.6,98,Excellent,6,9500,Urban,Maharashtra,18.388070352511917,73.83606056507234,Male,8.107905767
+Riya Reddy,Nandini Reddy,Asind,17.9,91,Allergies,5,10500,Urban,Rajasthan,25.73647808095506,74.28499238397319,Female,7.910377222
+Aryan Shah,Komal Shah,Palitana,16.7,88,Asthma,4,9500,Rural,Gujarat,21.535222527105304,71.69891950394401,Male,7.289955196
+Ananya Verma,Manish Verma,Baberu,19.1,94,Normal,7,11000,Urban,Uttar Pradesh,25.415148703647912,80.6479249076311,Female,8.803526521
+Aarav Patel,Akanksha Patel,Gangotri,12.3,96,Good,8,13000,Urban,Uttarakhand,30.79872530093741,79.07204189698253,Male,7.664807053
+Rohan Sharma,Monika Sharma,Pandariya,18.7,93,Excellent,8,12500,Urban,Chhattisgarh,22.465412988700127,81.32957112952394,Male,8.960355543
+Anaya Singh,Siddharth Singh,Bhokar,16.6,89,Asthma,4,9000,Rural,Maharashtra,19.152269409999352,77.7322894851823,Female,7.297745339
+Ayaan Singh,Neeta Singh,Rann Of Kachchh,12.4,99,Good,7,11500,Urban,Gujarat,23.794514993377252,68.59350150981298,Male,7.501936696
+Ria Shah,Raj Shah,Agra,18.3,91,Allergies,5,10500,Urban,Uttar Pradesh,27.309352899941462,77.98611449549482,Female,7.996863709
+Arnav Patel,Komal Patel,Raniwara,16.8,88,Asthma,4,9500,Rural,Rajasthan,24.813265358414164,72.20135379993565,Male,7.311576817
+Anushka Singh,Manish Singh,Pullalacheruvu,19.2,94,Normal,7,11000,Urban,Andhra Pradesh,16.09110464319783,79.2534242815355,Female,8.825148143
+Aarav Verma,Akanksha Verma,Sujangarh,12.2,96,Good,8,13000,Urban,Rajasthan,27.58943620560612,74.10121841019115,Male,7.643185431
+Rohan Sharma,Monika Sharma,Bhubaneswar,18.8,93,Excellent,8,12500,Urban,Odisha 751019,20.23057968994766,85.76617494393447,Male,8.981977164
+Ananya Singh,Siddharth Singh,Bathinda,16.7,89,Asthma,4,9000,Rural,Punjab,30.47822052825452,75.21920808513593,Female,7.319366961
+Ayaan Singh,Neeta Singh,Manur,12.3,99,Good,7,11500,Urban,Tamil Nadu,8.889808141327048,77.63186480695616,Male,7.480315074
+Ria Shah,Raj Shah,Maharajganj,18.4,91,Allergies,5,10500,Urban,Uttar Pradesh,27.267320548987527,83.54091159601337,Female,8.01848533
+Arnav Patel,Komal Patel,Simri Bakhtiarpur,16.9,88,Asthma,4,9500,Rural,Bihar,25.773006787971024,86.44914405231361,Male,7.333198439
+Anushka Singh,Manish Singh,Mechuka,19.3,94,Normal,7,11000,Urban,Arunachal Pradesh,28.671406553771373,94.12677326259255,Female,8.846769764
+Aarav Verma,Akanksha Verma,Pilibhit,12.1,96,Good,8,13000,Urban,Uttar Pradesh,28.680426279754737,79.88182695945267,Male,7.62156381
+Rohan Sharma,Monika Sharma,Sri Madhopur,18.9,93,Excellent,8,12500,Urban,Rajasthan,27.517890193205368,75.9358678153774,Male,9.003598786
+Ananya Singh,Siddharth Singh,Koppa,16.8,89,Asthma,4,9000,Rural,Karnataka,13.555871876041927,75.29431780975656,Female,7.340988582
+Ayaan Singh,Neeta Singh,Tulsipur,12.2,99,Good,7,11500,Urban,Uttar Pradesh,27.644860262745663,82.60324043853339,Male,7.458693453
+Ria Shah,Raj Shah,Padum,18.5,91,Allergies,5,10500,Urban,Ladakh,33.55213050899309,76.88619509885679,Female,8.040106952
+Arnav Patel,Komal Patel,Solan,17,88,Asthma,4,9500,Rural,Himachal Pradesh,30.839370178843467,77.08905012264522,Male,7.354820061
+Anushka Singh,Manish Singh,Nashik,19.4,94,Normal,7,11000,Urban,Maharashtra,20.108252072718265,73.94816234912088,Female,8.868391386
+Aarav Verma,Akanksha Verma,Saharanpur,12,96,Good,8,13000,Urban,Uttar Pradesh,30.11289393279289,77.4306390645305,Male,7.599942188
+Rohan Sharma,Monika Sharma,Mau,19,93,Excellent,8,12500,Urban,Madhya Pradesh,26.278912195422702,78.64777425296205,Male,9.025220408
+Ananya Singh,Siddharth Singh,Jaisalmer,16.9,89,Asthma,4,9000,Rural,Rajasthan,26.604568678543046,70.5758732748447,Female,7.362610204
+Ayaan Singh,Neeta Singh,Ballia,12.1,99,Good,7,11500,Urban,Uttar Pradesh,25.863880025251067,84.0717020998371,Male,7.437071831
+Ria Shah,Raj Shah,Lalbarra,18.6,91,Allergies,5,10500,Urban,Madhya Pradesh,22.04284031985279,80.08247392314127,Female,8.061728573
+Arnav Patel,Komal Patel,Nanjangud,17.1,88,Asthma,4,9500,Rural,Karnataka,12.075243837076643,76.63666139210952,Male,7.376441682
+Anushka Singh,Manish Singh,Degana,19.5,94,Normal,7,11000,Urban,Rajasthan,26.945136031397197,74.15391019883367,Female,8.890013008
+Aarav Verma,Akanksha Verma,Tamenglong,11.9,96,Good,8,13000,Urban,Manipur,24.909416655952015,93.39651960396773,Male,7.578320567
+Rohan Sharma,Monika Sharma,Shahkot,19.1,93,Excellent,8,12500,Urban,Punjab,31.0750303452521,75.38800900586926,Male,9.046842029
+Ananya Singh,Siddharth Singh,Jaipur,17,89,Asthma,4,9000,Rural,West Bengal,23.391621346203788,86.13302579857073,Female,7.384231825
+Ayaan Singh,Neeta Singh,Dapoli,12,99,Good,7,11500,Urban,Maharashtra,17.74743431602641,73.24627389293248,Male,7.41545021
+Ria Shah,Raj Shah,Chitvel,18.7,91,Allergies,5,10500,Urban,Andhra Pradesh,14.239197896696252,79.38410569874158,Female,8.083350195
+Arnav Patel,Komal Patel,Chanan*,17.2,88,Asthma,4,9500,Rural,Bihar,25.067956849706096,86.16485175657581,Male,7.398063304
+Anushka Singh,Manish Singh,Ramgarh,19.6,94,Normal,7,11000,Urban,Rajasthan,27.47145098222395,76.70796619002557,Female,8.911634629
+Aarav Verma,Akanksha Verma,Davanagere,11.8,96,Good,8,13000,Urban,Karnataka,13.855784192496852,75.92584850449181,Male,7.556698945
+Rohan Sharma,Monika Sharma,Banera,19.2,93,Excellent,8,12500,Urban,Rajasthan,25.599121675241335,74.58069642149788,Male,9.068463651
+Ananya Singh,Siddharth Singh,Garhbor,17.1,89,Asthma,4,9000,Rural,Rajasthan,25.289841415739346,73.6703219607299,Female,7.405853447
+Ayaan Singh,Neeta Singh,Junagadh,11.9,99,Good,7,11500,Urban,Gujarat,21.361715798986943,70.55633394530653,Male,7.393828588
+Ria Shah,Raj Shah,Bijapur,18.8,91,Allergies,5,10500,Urban,Chhattisgarh,18.99223121668441,80.56327341161219,Female,8.104971817
+Arnav Patel,Komal Patel,Kalaburagi,17.3,88,Asthma,4,9500,Rural,Karnataka,17.157793987905134,76.43591133842872,Male,7.419684926
+Anushka Singh,Manish Singh,Deglur,19.7,94,Normal,7,11000,Urban,Maharashtra,18.30745807083789,77.406936666375,Female,8.933256251
+Aarav Verma,Akanksha Verma,Kamarda,11.7,96,Good,8,13000,Urban,Odisha,21.753810913044788,87.43467417223108,Male,7.535077323
+Rohan Sharma,Monika Sharma,Dhanaulti,19.3,93,Excellent,8,12500,Urban,Uttarakhand,30.400200678448822,78.27949487277868,Male,9.090085272
+Ananya Singh,Siddharth Singh,Pethanaickanpalayam,17.2,89,Asthma,4,9000,Rural,Tamil Nadu,11.785867023343465,78.55166633406128,Female,7.427475069
+Ayaan Singh,Neeta Singh,Masturi,11.8,99,Good,7,11500,Urban,Chhattisgarh,22.18145035132966,82.42050176998504,Male,7.372206966
+Ria Shah,Raj Shah,Ahmednagar,18.9,91,Allergies,5,10500,Urban,Maharashtra,19.23303348820668,74.63159782622773,Female,8.126593438
+Arnav Patel,Komal Patel,Porsa,17.4,88,Asthma,4,9500,Rural,Madhya Pradesh,26.74244777669591,78.34877781660964,Male,7.441306547
+Anushka Singh,Manish Singh,Bihpuria,19.8,94,Normal,7,11000,Urban,Assam,26.988059486975676,94.00262339429241,Female,8.954877873
+Aarav Verma,Akanksha Verma,Valparai,11.6,96,Good,8,13000,Urban,Tamil Nadu,10.336269542941407,76.9898791686374,Male,7.513455702
+Rohan Sharma,Monika Sharma,Shergarh,19.4,93,Excellent,8,12500,Urban,Rajasthan,26.30828096108349,72.27885263811713,Male,9.111706894
+Ananya Singh,Siddharth Singh,Hameergarh,17.3,89,Asthma,4,9000,Rural,Rajasthan,25.173890601523144,74.63977435643913,Female,7.44909669
+Ayaan Singh,Neeta Singh,Hailakandi,11.7,99,Good,7,11500,Urban,Assam,24.45252648337368,92.54634936014475,Male,7.350585345
+Ria Shah,Raj Shah,Hazaribagh,19,91,Allergies,5,10500,Urban,Jharkhand,23.988726400192043,85.43233799200297,Female,8.14821506
+Arnav Patel,Komal Patel,Nalgonda,17.5,88,Asthma,4,9500,Rural,Telangana,17.246293952585035,79.12057829189594,Male,7.462928169
+Anushka Singh,Manish Singh,Aligarh,19.9,94,Normal,7,11000,Urban,Uttar Pradesh,27.851020590074974,78.3720222565246,Female,8.976499494
+Aarav Verma,Akanksha Verma,Lakhani,11.5,96,Good,8,13000,Urban,Maharashtra,21.146425266058394,79.85611255021749,Male,7.49183408
+Rohan Sharma,Monika Sharma,Atmakur,19.5,93,Excellent,8,12500,Urban,Andhra Pradesh,14.595822639775722,77.43892105488776,Male,9.133328516
+Ananya Singh,Siddharth Singh,Nizamabad,17.4,89,Asthma,4,9000,Rural,Telangana,18.64209603121257,78.21349318396136,Female,7.470718312
+Ayaan Singh,Neeta Singh,West Karbi Anglong,11.6,99,Good,7,11500,Urban,Assam,25.89309339063742,92.60505687869318,Male,7.328963723
+Ria Shah,Raj Shah,Katrenikona,19.1,91,Allergies,5,10500,Urban,Andhra Pradesh,16.54033713760957,82.19595196063274,Female,8.169836682
+Arnav Patel,Komal Patel,Guruharsahai,17.6,88,Asthma,4,9500,Rural,Punjab,30.791656775513395,74.36380315685625,Male,7.48454979
+Anushka Singh,Manish Singh,Simdega,20,94,Normal,7,11000,Urban,Jharkhand,22.67264843908544,84.61210720655806,Female,8.998121116
+Aarav Verma,Akanksha Verma,Rann Of Kachchh,11.4,96,Good,8,13000,Urban,Gujarat,23.61772171848528,69.91610725108502,Male,7.470212458
+Rohan Sharma,Monika Sharma,Chengalpattu,19.6,93,Excellent,8,12500,Urban,Tamil Nadu,12.366427594682634,79.7533846418911,Male,9.154950137
+Ananya Singh,Siddharth Singh,Haridwar,17.5,89,Asthma,4,9000,Rural,Uttarakhand,29.790759111075108,77.96255217579365,Female,7.492339934
+Ayaan Singh,Neeta Singh,Sri Sathya Sai,11.5,99,Good,7,11500,Urban,Andhra Pradesh,14.226507819701988,77.63010270226651,Male,7.307342101
+Ria Shah,Raj Shah,Kadapa,19.2,91,Allergies,5,10500,Urban,Andhra Pradesh,14.345497031016262,78.86220199193792,Female,8.191458303
+Arnav Patel,Komal Patel,Panna,17.7,88,Asthma,4,9500,Rural,Madhya Pradesh,24.41061487119855,80.14297104648928,Male,7.506171412
+Anushka Singh,Manish Singh,Nandivada,20.1,94,Normal,7,11000,Urban,Andhra Pradesh,16.51743390119594,81.0787065156033,Female,9.019742737
+Aarav Verma,Akanksha Verma,Chakapada,11.3,96,Good,8,13000,Urban,Odisha,20.204561284690037,84.56636023624574,Male,7.448590837
+Rohan Sharma,Monika Sharma,Hangrang,19.7,93,Excellent,8,12500,Urban,Himachal Pradesh,31.913027500157426,78.5146959117011,Male,9.176571759
+Ananya Singh,Siddharth Singh,Jujomura,17.6,89,Asthma,4,9000,Rural,Odisha,21.43012259262744,84.16350950987031,Female,7.513961555
+Ayaan Singh,Neeta Singh,Sultanpur,11.4,99,Good,7,11500,Urban,Madhya Pradesh,23.19790371648204,78.0080908736648,Male,7.28572048
+Ria Shah,Raj Shah,Varanasi,19.3,91,Allergies,5,10500,Urban,Uttar Pradesh,25.28501871055076,82.96615902811041,Female,8.213079925
+Arnav Patel,Komal Patel,Jaisalmer,17.8,88,Asthma,4,9500,Rural,Rajasthan,27.711450056404693,71.27128347797046,Male,7.527793034
+Anushka Singh,Manish Singh,Rann Of Kachchh,20.2,94,Normal,7,11000,Urban,Gujarat,24.101170784921752,70.29706757228846,Female,9.041364359
+Aarav Verma,Akanksha Verma,Tamar I,11.2,96,Good,8,13000,Urban,Jharkhand,22.958792748118203,85.73879144157378,Male,7.426969215
+Rohan Sharma,Monika Sharma,Dharmapuri,19.8,93,Excellent,8,12500,Urban,Tamil Nadu,12.362415393178953,78.08119389723117,Male,9.198193381
+Ananya Singh,Siddharth Singh,Birbhum,17.7,89,Asthma,4,9000,Rural,West Bengal,23.802260163753388,87.68882410730899,Female,7.535583177
+Ayaan Singh,Neeta Singh,Viluppuram,11.3,99,Good,7,11500,Urban,Tamil Nadu,12.29924115083642,79.73158528647437,Male,7.264098858
+Ria Shah,Raj Shah,Sambhal,19.4,91,Allergies,5,10500,Urban,Uttar Pradesh,28.689615217877485,78.55745565551611,Female,8.234701546
+Arnav Patel,Komal Patel,Perundurai,17.9,88,Asthma,4,9500,Rural,Tamil Nadu,11.413389970319162,77.51168642667074,Male,7.549414655
+Anushka Singh,Manish Singh,Gandhari,20.3,94,Normal,7,11000,Urban,Telangana,18.340951407535197,78.03506279733175,Female,9.062985981
+Aarav Verma,Akanksha Verma,Manikchak,11.1,96,Good,8,13000,Urban,West Bengal,25.04711489221935,87.88936825151666,Male,7.405347594
+Rohan Sharma,Monika Sharma,Mangalvedhe,19.9,93,Excellent,8,12500,Urban,Maharashtra,17.40839139611989,75.41345111065583,Male,9.219815002
+Ananya Singh,Siddharth Singh,Nubra,17.8,89,Asthma,4,9000,Rural,Ladakh,34.44545973336619,78.16570908503273,Female,7.557204798
+Ayaan Singh,Neeta Singh,Singrauli,11.2,99,Good,7,11500,Urban,Madhya Pradesh,24.010366030297387,82.63192809378191,Male,7.242477237
+Ria Shah,Raj Shah,Baliguda,19.5,91,Allergies,5,10500,Urban,Odisha,20.23977816695774,83.81061400591386,Female,8.256323168
+Arnav Patel,Komal Patel,Barghat,18,88,Asthma,4,9500,Rural,Madhya Pradesh,22.053364844991282,79.79243348975929,Male,7.571036277
+Anushka Singh,Manish Singh,Jintur,20.4,94,Normal,7,11000,Urban,Maharashtra,19.58187098102074,76.5781379464207,Female,9.084607602
+Aarav Verma,Akanksha Verma,Gotegaon,11,96,Good,8,13000,Urban,Madhya Pradesh,22.985939181046714,79.53412236773944,Male,7.383725972
+Rohan Sharma,Monika Sharma,Nagpur,20,93,Excellent,8,12500,Urban,Maharashtra,21.310376515719422,78.86396860417811,Male,9.241436624
+Ananya Singh,Siddharth Singh,Panvel,17.9,89,Asthma,4,9000,Rural,Maharashtra,18.853117806666873,73.18352667572886,Female,7.57882642
+Ayaan Singh,Neeta Singh,Chamba,11.1,99,Good,7,11500,Urban,Himachal Pradesh,32.66838370619611,76.19283685902194,Male,7.220855615
+Ria Shah,Raj Shah,Arani,19.6,91,Allergies,5,10500,Urban,Tamil Nadu,12.771634246667878,79.26733909100645,Female,8.27794479
+Arnav Patel,Komal Patel,Bikaner,18.1,88,Asthma,4,9500,Rural,Rajasthan,28.330438772143083,73.40392347121916,Male,7.592657899
+Anushka Singh,Manish Singh,Bhander,20.5,94,Normal,7,11000,Urban,Madhya Pradesh,25.8569577434386,78.64551430544154,Female,9.106229224
+Aarav Verma,Akanksha Verma,Shahpura,10.9,96,Good,8,13000,Urban,Madhya Pradesh,23.216124564252027,80.66549943357995,Male,7.36210435
+Rohan Sharma,Monika Sharma,Mohammdi,20.1,93,Excellent,8,12500,Urban,Uttar Pradesh,27.75695584055564,80.24740492942277,Male,9.263058245
+Ananya Singh,Siddharth Singh,Niali,18,89,Asthma,4,9000,Rural,Odisha,20.045625357888532,86.14720035899825,Female,7.600448042
+Ayaan Singh,Neeta Singh,Diphu,11,99,Good,7,11500,Urban,Assam,25.899400937223824,93.21971916990235,Male,7.199233993
+Ria Shah,Raj Shah,Kelapur,19.7,91,Allergies,5,10500,Urban,Maharashtra,20.22084010597363,78.483172443671,Female,8.299566411
+Arnav Patel,Komal Patel,Pune,18.2,88,Asthma,4,9500,Rural,Maharashtra,18.08410578591011,74.80121242607038,Male,7.61427952
+Anushka Singh,Manish Singh,Bijni,20.6,94,Normal,7,11000,Urban,Assam,26.612729312452586,90.64956647170425,Female,9.127850845
+Aarav Verma,Akanksha Verma,Amadagur,10.8,96,Good,8,13000,Urban,Andhra Pradesh,13.97883356245824,78.04940465776474,Male,7.340482729
+Rohan Sharma,Monika Sharma,Thirumayam,20.2,93,Excellent,8,12500,Urban,Tamil Nadu,10.195166326695979,78.84230191166223,Male,9.284679867
+Ananya Singh,Siddharth Singh,Koregaon,18.1,89,Asthma,4,9000,Rural,Maharashtra,17.844126513139198,74.17194742707528,Female,7.622069663
+Ayaan Singh,Neeta Singh,Srinagar,10.9,99,Good,7,11500,Urban,Bihar,25.91044544583938,87.35259871631366,Male,7.177612372
+Ria Shah,Raj Shah,Kannur,19.8,91,Allergies,5,10500,Urban,Kerala,11.807094042824646,75.58929998130236,Female,8.321188033
+Arnav Patel,Komal Patel,Chainpur,18.3,88,Asthma,4,9500,Rural,Jharkhand,24.01099569387279,83.9558736324073,Male,7.635901142
+Anushka Singh,Manish Singh,Sleemnbad,20.7,94,Normal,7,11000,Urban,Madhya Pradesh,23.688635338551997,80.17532239686489,Female,9.149472467
+Aarav Verma,Akanksha Verma,Ukhimath,10.7,96,Good,8,13000,Urban,Uttarakhand,30.684768548044243,79.19642581370069,Male,7.318861107
+Rohan Sharma,Monika Sharma,Chikkamagaluru,20.3,93,Excellent,8,12500,Urban,Karnataka,13.464450569863546,75.32456310875847,Male,9.306301489
+Ananya Singh,Siddharth Singh,Hassan,18.2,89,Asthma,4,9000,Rural,Karnataka,13.407915587884826,76.15971408651825,Female,7.643691285
+Ayaan Singh,Neeta Singh,Dharni,10.8,99,Good,7,11500,Urban,Maharashtra,21.590800839054367,76.88867355157826,Male,7.15599075
+Ria Shah,Raj Shah,Karbi Anglong,19.9,91,Allergies,5,10500,Urban,Assam,25.774189533555802,93.30902293976301,Female,8.342809655
+Arnav Patel,Komal Patel,Baghpat,18.4,88,Asthma,4,9500,Rural,Uttar Pradesh,29.0447696589637,77.36898212703399,Male,7.657522763
+Anushka Singh,Manish Singh,Budalur,20.8,94,Normal,7,11000,Urban,Tamil Nadu,10.760468465365584,78.88549988697255,Female,9.171094089
+Aarav Verma,Akanksha Verma,Ahmadabad,10.6,96,Good,8,13000,Urban,Gujarat,22.172735560477207,72.14675162787147,Male,7.297239485
+Rohan Sharma,Monika Sharma,Theni,20.4,93,Excellent,8,12500,Urban,Tamil Nadu,10.162032876948073,77.71097297819311,Male,9.32792311
+Ananya Singh,Siddharth Singh,Marwar,18.3,89,Asthma,4,9000,Rural,Rajasthan,25.58450920370544,73.60066707793777,Female,7.665312906
+Ayaan Singh,Neeta Singh,Thoothukudi,10.7,99,Good,7,11500,Urban,Tamil Nadu,9.137105351039821,78.06284029863033,Male,7.134369128
+Ria Shah,Raj Shah,Pokaran,20,91,Allergies,5,10500,Urban,Rajasthan,27.53555140650785,71.82162556116589,Female,8.364431276
+Arnav Patel,Komal Patel,Tuni,18.5,88,Asthma,4,9500,Rural,Andhra Pradesh,17.30240170049318,82.5186021669997,Male,7.679144385
+Anushka Singh,Manish Singh,Bhokardan,20.9,94,Normal,7,11000,Urban,Maharashtra,20.210630717445323,75.83886900942527,Female,9.19271571
+Aarav Verma,Akanksha Verma,Puruna Katak,10.5,96,Good,8,13000,Urban,Odisha,20.48129380020707,84.53767370006786,Male,7.275617864
+Rohan Sharma,Monika Sharma,Taliparamba,20.5,93,Excellent,8,12500,Urban,Kerala,12.08069156478451,75.70980233425486,Male,9.349544732
+Ananya Singh,Siddharth Singh,Dasamantapur,18.4,89,Asthma,4,9000,Rural,Odisha,19.048338298008503,83.00353170110775,Female,7.686934528
+Ayaan Singh,Neeta Singh,Memari,10.6,99,Good,7,11500,Urban,West Bengal,23.104161992731335,88.14538824948679,Male,7.112747507
+Ria Shah,Raj Shah,Sarwar,20.1,91,Allergies,5,10500,Urban,Rajasthan,25.84898716397143,74.99381863771173,Female,8.386052898
+Arnav Patel,Komal Patel,Kolar Gold Field,18.6,88,Asthma,4,9500,Rural,Karnataka,13.045493375307032,78.34954575711635,Male,7.700766007
+Anushka Singh,Manish Singh,Tadikonda,21,94,Normal,7,11000,Urban,Andhra Pradesh,16.43204335314712,80.42587829928402,Female,9.214337332
+Aarav Verma,Akanksha Verma,Devbhumi Dwarka,10.4,96,Good,8,13000,Urban,Gujarat,21.88697387669477,69.32552595019106,Male,7.253996242
+Rohan Sharma,Monika Sharma,Harrai,20.6,93,Excellent,8,12500,Urban,Madhya Pradesh,22.51385074526495,78.86113056203637,Male,9.371166354
+Ananya Singh,Siddharth Singh,Jaisalmer,18.5,89,Asthma,4,9000,Rural,Rajasthan,27.350796035965757,71.01143161025253,Female,7.70855615
+Ayaan Singh,Neeta Singh,Rann Of Kachchh,10.5,99,Good,7,11500,Urban,Gujarat,23.26519906058891,71.4971187238185,Male,7.091125885
+Ria Shah,Raj Shah,Ranchi,20.2,91,Allergies,5,10500,Urban,Jharkhand,23.412107581554178,85.26797271316914,Female,8.407674519
+Arnav Patel,Komal Patel,Khamnor,18.7,88,Asthma,4,9500,Rural,Rajasthan,24.96692063194817,73.68440084866253,Male,7.722387628
+Anushka Singh,Manish Singh,Mulug,21.1,94,Normal,7,11000,Urban,Telangana,17.721188508832093,78.70029194596631,Female,9.235958954
+Aarav Verma,Akanksha Verma,Malshiras,10.3,96,Good,8,13000,Urban,Maharashtra,17.923453709400587,74.71766674840818,Male,7.232374621
+Rohan Sharma,Monika Sharma,Srikakulam,20.7,93,Excellent,8,12500,Urban,Andhra Pradesh,18.365604119562455,84.00958944236098,Male,9.392787975
+Ananya Singh,Siddharth Singh,Joshimath,18.6,89,Asthma,4,9000,Rural,Uttarakhand,30.425788839353793,80.03998934405806,Female,7.730177771
+Ayaan Singh,Neeta Singh,Challakere,10.4,99,Good,7,11500,Urban,Karnataka,14.191479001476273,76.84586809840332,Male,7.069504264
+Ria Shah,Raj Shah,Keylang,20.3,91,Allergies,5,10500,Urban,Himachal Pradesh,32.29378626524092,77.58387138765494,Female,8.429296141
+Arnav Patel,Komal Patel,Nandgaon,18.8,88,Asthma,4,9500,Rural,Maharashtra,20.402463725578244,74.71204803158406,Male,7.74400925
+Anushka Singh,Manish Singh,Vidisha,21.2,94,Normal,7,11000,Urban,Madhya Pradesh,23.93759047146777,77.8760404835986,Female,9.257580575
+Aarav Verma,Akanksha Verma,Shajapur,10.2,96,Good,8,13000,Urban,Madhya Pradesh,23.59873380809021,76.35354055697837,Male,7.210752999
+Rohan Sharma,Monika Sharma,Lingsugur,20.8,93,Excellent,8,12500,Urban,Karnataka,16.123319615229885,76.34884824107615,Male,9.414409597
+Ananya Singh,Siddharth Singh,Modasa,18.7,89,Asthma,4,9000,Rural,Gujarat,23.563661079213315,73.2303779826599,Female,7.751799393
+Ayaan Singh,Neeta Singh,Chandipur,10.3,99,Good,7,11500,Urban,West Bengal,22.038398877800674,87.868426061593,Male,7.047882642
+Ria Shah,Raj Shah,Malthon,20.4,91,Allergies,5,10500,Urban,Madhya Pradesh,24.117219326842577,78.49811885789781,Female,8.450917763
+Arnav Patel,Komal Patel,Chhipabarod,18.9,88,Asthma,4,9500,Rural,Rajasthan,24.443375932308278,76.82510113265131,Male,7.765630872
+Anushka Singh,Manish Singh,Pendra,21.3,94,Normal,7,11000,Urban,Chhattisgarh,22.66664157790163,82.02005362464399,Female,9.279202197
+Aarav Verma,Akanksha Verma,Sawayajpur,10.1,96,Good,8,13000,Urban,Uttar Pradesh,27.351403473678992,79.87401956216402,Male,7.189131377
+Rohan Sharma,Monika Sharma,Mariahu,20.9,93,Excellent,8,12500,Urban,Uttar Pradesh,25.550301513703747,82.41852844080005,Male,9.436031218
+Ananya Singh,Siddharth Singh,Jamtara,18.8,89,Asthma,4,9000,Rural,Jharkhand,23.99381376137008,87.14559969638194,Female,7.773421015
+Ayaan Singh,Neeta Singh,Kolaras,10.2,99,Good,7,11500,Urban,Madhya Pradesh,25.242456738635838,77.66685551664284,Male,7.02626102
+Ria Shah,Raj Shah,Sikanderpur,20.5,91,Allergies,5,10500,Urban,Uttar Pradesh,25.97472339736709,83.96121807215064,Female,8.472539384
+Arnav Patel,Komal Patel,Ettayapuram,19,88,Asthma,4,9500,Rural,Tamil Nadu,9.078566003969295,78.02759695288064,Male,7.787252493
+Anushka Singh,Manish Singh,Polasara,21.4,94,Normal,7,11000,Urban,Odisha,19.764699190158062,84.9801851855437,Female,9.300823818
+Aarav Verma,Akanksha Verma,Khambhat,10,96,Good,8,13000,Urban,Gujarat,22.27317301152787,72.7792938207215,Male,7.167509756
+Rohan Sharma,Monika Sharma,Gelling,21,93,Excellent,8,12500,Urban,Arunachal Pradesh,29.063757248701062,94.93158491558307,Male,9.45765284
+Ananya Singh,Siddharth Singh,Leh,18.9,89,Asthma,4,9000,Rural,Ladakh,32.70423526532778,78.14987836939869,Female,7.795042636
+Ayaan Singh,Neeta Singh,Balod,10.1,99,Good,7,11500,Urban,Chhattisgarh,20.734398505141066,81.24624814692976,Male,7.004639399
+Ria Shah,Raj Shah,Bokakhat,20.6,91,Allergies,5,10500,Urban,Assam,26.70929070258363,93.51966234370823,Female,8.494161006
+Arnav Patel,Komal Patel,Birsa,19.1,88,Asthma,4,9500,Rural,Madhya Pradesh,21.724305189878624,80.72706195482432,Male,7.808874115
+Anushka Singh,Manish Singh,Ramanathapuram,21.5,94,Normal,7,11000,Urban,Tamil Nadu,9.385776748812363,78.90677037051363,Female,9.32244544
+Aarav Verma,Akanksha Verma,Deola,9.9,96,Good,8,13000,Urban,Maharashtra,20.46660658331538,74.09848835659014,Male,7.145888134
+Rohan Sharma,Monika Sharma,Dholka,21.1,93,Excellent,8,12500,Urban,Gujarat,22.6775179657321,72.4202105312636,Male,9.479274462
+Ananya Singh,Siddharth Singh,Suratgarh,19,89,Asthma,4,9000,Rural,Rajasthan,29.298632933704837,73.94331880076028,Female,7.816664258
+Ayaan Singh,Neeta Singh,Kachchh,10,99,Good,7,11500,Urban,Gujarat,23.47139741990609,68.56033120934997,Male,6.983017777
+Ria Shah,Raj Shah,Jaisalmer,20.7,91,Allergies,5,10500,Urban,Rajasthan,26.608252974576132,69.8889989399012,Female,8.515782628
+Arnav Patel,Komal Patel,Mahendragarh,19.2,88,Asthma,4,9500,Rural,Haryana,27.97027638174661,76.07648926387326,Male,7.830495736
+Anushka Singh,Manish Singh,Drabshalla,21.6,94,Normal,7,11000,Urban,Jammu and Kashmir,33.27466759789973,75.70345872962903,Female,9.344067062
+Aarav Verma,Akanksha Verma,Ujjain,9.8,96,Good,8,13000,Urban,Madhya Pradesh,23.166978744269347,75.87402475711923,Male,7.124266513
+Rohan Sharma,Monika Sharma,Saswad,21.2,93,Excellent,8,12500,Urban,Maharashtra,18.41736040322077,74.25520890260671,Male,9.500896083
+Ananya Singh,Siddharth Singh,Sawar,19.1,89,Asthma,4,9000,Rural,Rajasthan,25.812984000893845,75.1438976656844,Female,7.838285879
+Ayaan Singh,Neeta Singh,Kohir,9.9,99,Good,7,11500,Urban,Telangana,17.611700124072094,77.69061517922827,Male,6.961396156
+Ria Shah,Raj Shah,Itarsi,20.8,91,Allergies,5,10500,Urban,Madhya Pradesh,22.529179101881073,77.88642509502539,Female,8.537404249
+Arnav Patel,Komal Patel,Ganjam,19.3,88,Asthma,4,9500,Rural,Odisha,19.11746659984011,84.57169154907831,Male,7.852117358
+Anushka Singh,Manish Singh,Wadagera,21.7,94,Normal,7,11000,Urban,Karnataka,16.560399906401017,77.14429938622078,Female,9.365688683
+Aarav Verma,Akanksha Verma,Tiruvannamalai,9.7,96,Good,8,13000,Urban,Tamil Nadu,12.785445073850589,79.63441251222945,Male,7.102644891
+Rohan Sharma,Monika Sharma,Kondagaon,21.3,93,Excellent,8,12500,Urban,Chhattisgarh,19.688824958097523,81.87836257645628,Male,9.522517705
+Ananya Singh,Siddharth Singh,Neemrana,19.2,89,Asthma,4,9000,Rural,Rajasthan,28.03229134575644,76.41419608089092,Female,7.859907501
+Ayaan Singh,Neeta Singh,Bidar,9.8,99,Good,7,11500,Urban,Karnataka,18.291356524273137,77.4228446526556,Male,6.939774534
+Ria Shah,Raj Shah,Neeleshwaram,20.9,91,Allergies,5,10500,Urban,Kerala,12.349273692546124,75.27422670987502,Female,8.559025871
+Arnav Patel,Komal Patel,Bhanjanagar,19.4,88,Asthma,4,9500,Rural,Odisha,20.06597009164105,84.40998495676068,Male,7.87373898
+Anushka Singh,Manish Singh,Naraini,21.8,94,Normal,7,11000,Urban,Uttar Pradesh,25.247386962363514,80.46134686586538,Female,9.387310305
+Aarav Verma,Akanksha Verma,Udgir,9.6,96,Good,8,13000,Urban,Maharashtra,18.37684092041248,76.97737134724343,Male,7.081023269
+Rohan Sharma,Monika Sharma,Kosigi,21.4,93,Excellent,8,12500,Urban,Andhra Pradesh,15.827573763150335,77.2599393652087,Male,9.544139326
+Ananya Singh,Siddharth Singh,Y. Ramavaram,19.3,89,Asthma,4,9000,Rural,Andhra Pradesh,17.720147595275023,82.0107603875449,Female,7.881529123
+Ayaan Singh,Neeta Singh,Bhadra,9.7,99,Good,7,11500,Urban,Rajasthan,28.876695039133583,75.12350000795492,Male,6.918152912
+Ria Shah,Raj Shah,Howrah,21,91,Allergies,5,10500,Urban,West Bengal,22.632600504139,88.23576158155188,Female,8.580647492
+Arnav Patel,Komal Patel,Amreli,19.5,88,Asthma,4,9500,Rural,Gujarat,21.433611067722286,71.5480133871764,Male,7.895360601
+Anushka Singh,Manish Singh,Patera,21.9,94,Normal,7,11000,Urban,Madhya Pradesh,24.02887728470828,79.69776882194127,Female,9.408931927
+Aarav Verma,Akanksha Verma,Taliha,9.5,96,Good,8,13000,Urban,Arunachal Pradesh,28.256543501115686,94.33940772769147,Male,7.059401648
+Rohan Sharma,Monika Sharma,Akola,21.5,93,Excellent,8,12500,Urban,Maharashtra,20.41427256256597,76.8667555421033,Male,9.565760948
+Ananya Singh,Siddharth Singh,Haflong,19.4,89,Asthma,4,9000,Rural,Assam,25.3131024993857,93.0335257448123,Female,7.903150744
+Ayaan Singh,Neeta Singh,Goiliang,9.6,99,Good,7,11500,Urban,Arunachal Pradesh,28.358107879815012,96.86806607056481,Male,6.896531291
+Ria Shah,Raj Shah,Dungargarh,21.1,91,Allergies,5,10500,Urban,Rajasthan,28.024694464169617,73.96001684739524,Female,8.602269114
+Arnav Patel,Komal Patel,Lalbarra,19.6,88,Asthma,4,9500,Rural,Madhya Pradesh,21.881459311425466,80.13109817990463,Male,7.916982223
+Anushka Singh,Manish Singh,Peda Bayalu,22,94,Normal,7,11000,Urban,Andhra Pradesh,18.16040781310508,82.43185856264353,Female,9.430553548
+Aarav Verma,Akanksha Verma,Daspur,9.4,96,Good,8,13000,Urban,West Bengal,22.49607877211937,87.8079859572752,Male,7.037780026
+Rohan Sharma,Monika Sharma,Pangal,21.6,93,Excellent,8,12500,Urban,Telangana,16.27656462916496,78.08380507117508,Male,9.58738257
+Ananya Singh,Siddharth Singh,Lakhnadon,19.5,89,Asthma,4,9000,Rural,Madhya Pradesh,22.698335736143235,79.42751866276959,Female,7.924772366
+Ayaan Singh,Neeta Singh,Chhatapur,9.5,99,Good,7,11500,Urban,Bihar,26.358334270584994,86.9824324523295,Male,6.874909669
+Ria Shah,Raj Shah,Mayiladuthurai,21.2,91,Allergies,5,10500,Urban,Tamil Nadu,11.138168854808399,79.61672069524565,Female,8.623890736
+Arnav Patel,Komal Patel,Banei,19.7,88,Asthma,4,9500,Rural,Odisha,21.814698623223983,84.82462899348857,Male,7.938603844
+Anushka Singh,Manish Singh,Lingsugur,22.1,94,Normal,7,11000,Urban,Karnataka,16.179578484386145,76.48004540346632,Female,9.45217517
+Aarav Verma,Akanksha Verma,Bajag,9.3,96,Good,8,13000,Urban,Madhya Pradesh,22.802424840602537,81.4202233446997,Male,7.016158404
+Rohan Sharma,Monika Sharma,Yellapur,21.7,93,Excellent,8,12500,Urban,Karnataka,14.774184526546653,74.48527582934128,Male,9.609004191
+Ananya Singh,Siddharth Singh,Nala,19.6,89,Asthma,4,9000,Rural,Jharkhand,23.910369708591496,87.07018664917537,Female,7.946393988
+Ayaan Singh,Neeta Singh,Leh,9.4,99,Good,7,11500,Urban,Ladakh,33.916631636780366,77.9373199853428,Male,6.853288047
+Ria Shah,Raj Shah,Rampachodavaram,21.3,91,Allergies,5,10500,Urban,Andhra Pradesh,17.28888545135992,81.79308843399284,Female,8.645512357
+Arnav Patel,Komal Patel,Dapoli,19.8,88,Asthma,4,9500,Rural,Maharashtra,17.72504001074852,73.25842886881073,Male,7.960225466
+Anushka Singh,Manish Singh,Mairang,22.2,94,Normal,7,11000,Urban,Meghalaya,25.728701043591713,91.76475702977939,Female,9.473796791
+Aarav Verma,Akanksha Verma,Korha,9.2,96,Good,8,13000,Urban,Bihar,25.670364315413867,87.47896104086286,Male,6.994536783
+Rohan Sharma,Monika Sharma,Itarsi,21.8,93,Excellent,8,12500,Urban,Madhya Pradesh,22.447153568876683,77.7841523108731,Male,9.630625813
+Ananya Singh,Siddharth Singh,Mandvi,19.7,89,Asthma,4,9000,Rural,Gujarat,21.408561842315066,73.04590575595293,Female,7.968015609
+Ayaan Singh,Neeta Singh,Lm,9.3,99,Good,7,11500,Urban,Manipur,25.04104119024495,94.14922490868797,Male,6.831666426
+Ria Shah,Raj Shah,Fatehgarh,21.4,91,Allergies,5,10500,Urban,Rajasthan,26.734764206840815,71.19465707595282,Female,8.667133979
+Arnav Patel,Komal Patel,Chillakur,19.9,88,Asthma,4,9500,Rural,Andhra Pradesh,14.095820688901465,79.93808711921952,Male,7.981847088
+Anushka Singh,Manish Singh,Chirawa,22.3,94,Normal,7,11000,Urban,Rajasthan,28.296423025839413,75.55427449045031,Female,9.495418413
+Aarav Verma,Akanksha Verma,Mananthavady,9.1,96,Good,8,13000,Urban,Kerala,11.93702653347503,76.10540687555337,Male,6.972915161
+Rohan Sharma,Monika Sharma,Pouni,21.9,93,Excellent,8,12500,Urban,Jammu and Kashmir,33.17091063360505,74.65414293624708,Male,9.652247435
+Ananya Singh,Siddharth Singh,Dr BR Ambedkar Konaseema,19.8,89,Asthma,4,9000,Rural,Andhra Pradesh,16.73433790652171,81.83125083365044,Female,7.989637231
+Ayaan Singh,Neeta Singh,Kamba,9.2,99,Good,7,11500,Urban,Arunachal Pradesh,28.359562640728658,94.63211950853176,Male,6.810044804
+Ria Shah,Raj Shah,Annapureddypalli,21.5,91,Allergies,5,10500,Urban,Telangana,17.374798595518016,80.70606311935444,Female,8.688755601
+Arnav Patel,Komal Patel,Gondal,20,88,Asthma,4,9500,Rural,Gujarat,21.924667990151107,70.66622175049181,Male,8.003468709
+Anushka Singh,Manish Singh,Miao,22.4,94,Normal,7,11000,Urban,Arunachal Pradesh,27.40940247042169,96.29315643430976,Female,9.517040035
+Aarav Verma,Akanksha Verma,Ambedkar Nagar,9,96,Good,8,13000,Urban,Uttar Pradesh,26.4059685327244,82.47591111242892,Male,6.95129354
+Rohan Sharma,Monika Sharma,Kishanganj,22,93,Excellent,8,12500,Urban,Rajasthan,24.919076676128277,76.74993884506999,Male,9.673869056
+Ananya Singh,Siddharth Singh,Kalaburagi,19.9,89,Asthma,4,9000,Rural,Karnataka,17.510371431922295,76.95283464307461,Female,8.011258852
+Ayaan Singh,Neeta Singh,Milak,9.1,99,Good,7,11500,Urban,Uttar Pradesh,28.75478135719372,79.1750481701464,Male,6.788423183
+Ria Shah,Raj Shah,Dharbandora,21.6,91,Allergies,5,10500,Urban,Goa,15.3700466091178,74.30016804855994,Female,8.710377222
+Arnav Patel,Komal Patel,Kasaragod,20.1,88,Asthma,4,9500,Rural,Kerala,12.52960046591485,75.01196635610465,Male,8.025090331
+Anushka Singh,Manish Singh,Gochhapada,22.5,94,Normal,7,11000,Urban,Odisha,20.441614753531873,83.85123002068529,Female,9.538661656
+Aarav Verma,Akanksha Verma,Mahuva,8.9,96,Good,8,13000,Urban,Gujarat,21.057361788994307,73.12233979464779,Male,6.929671918
+Rohan Sharma,Monika Sharma,Amethi,22.1,93,Excellent,8,12500,Urban,Uttar Pradesh,26.06329069341896,81.98338209550211,Male,9.695490678
+Ananya Singh,Siddharth Singh,Raigad,20,89,Asthma,4,9000,Rural,Maharashtra,18.390866731666158,72.94911615731532,Female,8.032880474
+Ayaan Singh,Neeta Singh,Nagpur,9,99,Good,7,11500,Urban,Maharashtra,21.035919759232797,79.28065594516109,Male,6.766801561
+Ria Shah,Raj Shah,Shivamogga,21.7,91,Allergies,5,10500,Urban,Karnataka,14.024887833443236,75.74964505841703,Female,8.731998844
+Arnav Patel,Komal Patel,Bilhaur,20.2,88,Asthma,4,9500,Rural,Uttar Pradesh,26.638274314349562,80.09487260975345,Male,8.046711953
+Anushka Singh,Manish Singh,Bokakhat,22.6,94,Normal,7,11000,Urban,Assam,26.705161744859517,93.48098334806998,Female,9.560283278
+Aarav Verma,Akanksha Verma,Churu,8.8,96,Good,8,13000,Urban,Rajasthan,27.845285139310967,74.47290950415706,Male,6.908050296
+Rohan Sharma,Monika Sharma,Maski,22.2,93,Excellent,8,12500,Urban,Karnataka,15.962645183426595,76.6069829014781,Male,9.717112299
+Ananya Singh,Siddharth Singh,Chandel,20.1,89,Asthma,4,9000,Rural,Manipur,24.381637309400986,94.11158302824845,Female,8.054502096
+Ayaan Singh,Neeta Singh,Pawkidevi,8.9,99,Good,7,11500,Urban,Uttarakhand,30.19646510030853,78.43246414423426,Male,6.745179939
+Ria Shah,Raj Shah,Rann Of Kachchh,21.8,91,Allergies,5,10500,Urban,Gujarat,23.770506613506306,70.23791702699867,Female,8.753620465
+Arnav Patel,Komal Patel,Choudwar,20.3,88,Asthma,4,9500,Rural,Odisha,20.699484963988148,85.91801582548656,Male,8.068333574
+Anushka Singh,Manish Singh,Ranbir Singh Pura,22.7,94,Normal,7,11000,Urban,Jammu and Kashmir,32.580002762166544,74.80437781744826,Female,9.5819049
+Aarav Verma,Akanksha Verma,Chhatargarh,8.7,96,Good,8,13000,Urban,Rajasthan,28.917003361882983,73.37188681817989,Male,6.886428675
+Rohan Sharma,Monika Sharma,Lakhan Majra,22.3,93,Excellent,8,12500,Urban,Haryana,29.053064284918293,76.42316027476569,Male,9.738733921
+Ananya Singh,Siddharth Singh,Bairia,20.2,89,Asthma,4,9000,Rural,Uttar Pradesh,25.811343096312005,84.45854608481828,Female,8.076123717
+Ayaan Singh,Neeta Singh,Solapur,8.8,99,Good,7,11500,Urban,Maharashtra,18.02997033150581,74.72670578982016,Male,6.723558318
+Ria Shah,Raj Shah,Nanded,21.9,91,Allergies,5,10500,Urban,Maharashtra,19.072039920288873,77.31340742157472,Female,8.775242087
+Arnav Patel,Komal Patel,Badgam,20.4,88,Asthma,4,9500,Rural,Jammu and Kashmir,33.99315594493023,74.81428338115896,Male,8.089955196
+Anushka Singh,Manish Singh,Seoni,22.8,94,Normal,7,11000,Urban,Madhya Pradesh,22.169042730400083,80.0106728478678,Female,9.603526521
+Aarav Verma,Akanksha Verma,Mansa,8.6,96,Good,8,13000,Urban,Punjab,29.69405115617645,75.33293781510947,Male,6.864807053
+Rohan Sharma,Monika Sharma,Dudhi,22.4,93,Excellent,8,12500,Urban,Uttar Pradesh,24.27701899300598,83.01136127575204,Male,9.760355543
+Ananya Singh,Siddharth Singh,Khoirabari,20.3,89,Asthma,4,9000,Rural,Assam,26.535679571755598,91.79862023027655,Female,8.097745339
+Ayaan Singh,Neeta Singh,Rajula,8.7,99,Good,7,11500,Urban,Gujarat,20.991804289966808,71.3725714419864,Male,6.701936696
+Ria Shah,Raj Shah,Kawakol,22,91,Allergies,5,10500,Urban,Bihar,24.781417711889677,85.94669009299966,Female,8.796863709
+Arnav Patel,Komal Patel,Rajgarh,20.5,88,Asthma,4,9500,Rural,Rajasthan,28.400185915767956,75.53372718777621,Male,8.111576817
+Anushka Singh,Manish Singh,Ballah,22.9,94,Normal,7,11000,Urban,Haryana,29.562462559828692,76.73765429250014,Female,9.625148143
+Aarav Verma,Akanksha Verma,Darjeeling Pulbazar,8.5,96,Good,8,13000,Urban,West Bengal,27.083032547650408,88.28997028998188,Male,6.843185431
+Rohan Sharma,Monika Sharma,Palwal,22.5,93,Excellent,8,12500,Urban,Haryana,28.087802589170497,77.41261743692829,Male,9.781977164
+Ananya Singh,Siddharth Singh,Dharur,20.4,89,Asthma,4,9000,Rural,Telangana,17.283187305535087,77.82363247135144,Female,8.119366961
+Ayaan Singh,Neeta Singh,Patnagarh,8.6,99,Good,7,11500,Urban,Odisha,20.732821759003954,83.1809920154781,Male,6.680315074
+Ria Shah,Raj Shah,Anjar,22.1,91,Allergies,5,10500,Urban,Gujarat,23.012125997529644,70.07477892585142,Female,8.81848533
+Arnav Patel,Komal Patel,Bibhutpur,20.6,88,Asthma,4,9500,Rural,Bihar,25.70541157178692,85.93778974029159,Male,8.133198439
+Anushka Singh,Manish Singh,Ludhiana,23,94,Normal,7,11000,Urban,Punjab,30.647870151160255,75.74092365072691,Female,9.646769764
+Aarav Verma,Akanksha Verma,Mudigubba,8.4,96,Good,8,13000,Urban,Andhra Pradesh,14.372401294945135,78.08437460871059,Male,6.82156381
+Rohan Sharma,Monika Sharma,Sirathu,22.6,93,Excellent,8,12500,Urban,Uttar Pradesh,25.584257669415454,81.40829397704063,Male,9.803598786
+Ananya Singh,Siddharth Singh,Bhokardan,20.5,89,Asthma,4,9000,Rural,Maharashtra,20.41429966584599,75.848464511807,Female,8.140988582
+Ayaan Singh,Neeta Singh,Chhatarpur,8.5,99,Good,7,11500,Urban,Madhya Pradesh,24.59228262226649,79.37807666189964,Male,6.658693453
+Ria Shah,Raj Shah,Vangoor,22.2,91,Allergies,5,10500,Urban,Telangana,16.532855233761104,78.54055040008134,Female,8.840106952
+Arnav Patel,Komal Patel,Gangaram,20.7,88,Asthma,4,9500,Rural,Telangana,17.775381686499514,80.14257454975771,Male,8.154820061
+Anushka Singh,Manish Singh,Bikapur,23.1,94,Normal,7,11000,Urban,Uttar Pradesh,26.510114976190945,82.1827376683584,Female,9.668391386
+Aarav Verma,Akanksha Verma,Ngopa,8.3,96,Good,8,13000,Urban,Chin,23.841906059684494,93.3578689274466,Male,6.799942188
+Rohan Sharma,Monika Sharma,Khanapur,22.7,93,Excellent,8,12500,Urban,Karnataka,15.544249630558031,74.52759992233635,Male,9.825220408
+Ananya Singh,Siddharth Singh,Shujalpur,20.6,89,Asthma,4,9000,Rural,Madhya Pradesh,23.444730393196185,76.85101842382741,Female,8.162610204
+Ayaan Singh,Neeta Singh,Telkoi,8.4,99,Good,7,11500,Urban,Odisha,21.232423976656992,85.60685555932007,Male,6.637071831
+Ria Shah,Raj Shah,Ramsar,22.3,91,Allergies,5,10500,Urban,Rajasthan,25.62058314594204,71.1331950269819,Female,8.861728573
+Arnav Patel,Komal Patel,Golakganj,20.8,88,Asthma,4,9500,Rural,Assam,26.066547473534953,89.87879579889595,Male,8.176441682
+Anushka Singh,Manish Singh,Batiyagarh,23.2,94,Normal,7,11000,Urban,Madhya Pradesh,24.08789510940058,79.41928045541063,Female,9.690013008
+Aarav Verma,Akanksha Verma,Dhanora,8.2,96,Good,8,13000,Urban,Madhya Pradesh,22.51442196695931,79.70585648886862,Male,6.778320567
+Rohan Sharma,Monika Sharma,Neemuch,22.8,93,Excellent,8,12500,Urban,Madhya Pradesh,24.506836218246484,74.94176025657036,Male,9.846842029
+Ananya Singh,Siddharth Singh,Leh,20.7,89,Asthma,4,9000,Rural,Ladakh,33.37133661506449,78.1866033337667,Female,8.184231825
+Ayaan Singh,Neeta Singh,Khaltse,8.3,99,Good,7,11500,Urban,Ladakh,33.89926901826348,77.0877863132154,Male,6.61545021
+Ria Shah,Raj Shah,Dhandhuka,22.4,91,Allergies,5,10500,Urban,Gujarat,22.34871579874202,72.0672642611638,Female,8.883350195
+Arnav Patel,Komal Patel,Pune,20.9,88,Asthma,4,9500,Rural,Maharashtra,19.15087243661215,74.0391237563435,Male,8.198063304
+Anushka Singh,Manish Singh,Ambejogai,23.3,94,Normal,7,11000,Urban,Maharashtra,18.76992230347698,76.26416070515376,Female,9.711634629
+Aarav Verma,Akanksha Verma,Sagardighi,8.1,96,Good,8,13000,Urban,West Bengal,24.294289194448876,88.05405201896612,Male,6.756698945
+Rohan Sharma,Monika Sharma,Dewal,22.9,93,Excellent,8,12500,Urban,Uttarakhand,30.223192639278093,79.65774829759489,Male,9.868463651
+Ananya Singh,Siddharth Singh,Bhiloda,20.8,89,Asthma,4,9000,Rural,Gujarat,23.717761131475612,73.23180339403702,Female,8.205853447
+Ayaan Singh,Neeta Singh,Gudha Malani,8.2,99,Good,7,11500,Urban,Rajasthan,25.325124966763667,71.60119459126881,Male,6.593828588
+Ria Shah,Raj Shah,Munsiari,22.5,91,Allergies,5,10500,Urban,Uttarakhand,30.174412369596148,80.3473446390392,Female,8.904971817
+Arnav Patel,Komal Patel,Bisra,21,88,Asthma,4,9500,Rural,Odisha,22.349191135940593,84.9799268310666,Male,8.219684926
+Anushka Singh,Manish Singh,Kotagarh,23.4,94,Normal,7,11000,Urban,Odisha,19.733187826022636,83.89118275596591,Female,9.733256251
+Aarav Verma,Akanksha Verma,Nandipet,8,96,Good,8,13000,Urban,Telangana,18.99616161213188,78.23026006521226,Male,6.735077323
+Rohan Sharma,Monika Sharma,Chikhli,23,93,Excellent,8,12500,Urban,Maharashtra,20.47086516206006,76.48378631077115,Male,9.890085272
+Ananya Singh,Siddharth Singh,Koppal,20.9,89,Asthma,4,9000,Rural,Karnataka,15.294302449681348,75.9547429362118,Female,8.227475069
+Ayaan Singh,Neeta Singh,Simdega,8.1,99,Good,7,11500,Urban,Jharkhand,22.420469164086676,84.72792157495007,Male,6.572206966
+Ria Shah,Raj Shah,Kalimela,22.6,91,Allergies,5,10500,Urban,Odisha,17.96415183431732,81.73121196781611,Female,8.926593438
+Arnav Patel,Komal Patel,Nubra,21.1,88,Asthma,4,9500,Rural,Ladakh,34.12897670342875,78.04765886107582,Male,8.241306547
+Anushka Singh,Manish Singh,Umred,23.5,94,Normal,7,11000,Urban,Maharashtra,20.810262350787124,79.1377043885749,Female,9.754877873
+Aarav Verma,Akanksha Verma,Yawal,7.9,96,Good,8,13000,Urban,Maharashtra,21.366865312282748,75.59451859393296,Male,6.713455702
+Rohan Sharma,Monika Sharma,Rasulabad,23.1,93,Excellent,8,12500,Urban,Uttar Pradesh,26.665554633055137,79.78386949692599,Male,9.911706894
+Ananya Singh,Siddharth Singh,Bamangola,21,89,Asthma,4,9000,Rural,West Bengal,25.12433599304976,88.31549285705167,Female,8.24909669
+Ayaan Singh,Neeta Singh,Banga,8,99,Good,7,11500,Urban,Punjab,31.12686055124149,75.98304931728983,Male,6.550585345
+Ria Shah,Raj Shah,Amarpur,22.7,91,Allergies,5,10500,Urban,Tripura,23.688199253688577,91.70523098450812,Female,8.94821506
+Arnav Patel,Komal Patel,Kalchini,21.2,88,Asthma,4,9500,Rural,West Bengal,26.64917343916962,89.49937714468041,Male,8.262928169
+Anushka Singh,Manish Singh,Ramsar,23.6,94,Normal,7,11000,Urban,Rajasthan,25.68004976507546,71.14089448868671,Female,9.776499494
+Aarav Verma,Akanksha Verma,Karimnagar,7.8,96,Good,8,13000,Urban,Telangana,18.435308742270998,79.02281512636313,Male,6.69183408
+Rohan Sharma,Monika Sharma,Paddhari,23.2,93,Excellent,8,12500,Urban,Gujarat,22.311059842113984,70.51569916138824,Male,9.933328516
+Ananya Singh,Siddharth Singh,Karad,21.1,89,Asthma,4,9000,Rural,Maharashtra,17.413029818487836,74.20046380553063,Female,8.270718312
+Ayaan Singh,Neeta Singh,Sherghati,7.9,99,Good,7,11500,Urban,Bihar,24.59284471591984,84.83281427673948,Male,6.528963723
+Ria Shah,Raj Shah,Joshimath,22.8,91,Allergies,5,10500,Urban,Uttarakhand,30.828404661000413,79.72279140991708,Female,8.969836682
+Arnav Patel,Komal Patel,Yeldurthy,21.3,88,Asthma,4,9500,Rural,Telangana,17.913167681049146,78.31285382641047,Male,8.28454979
+Anushka Singh,Manish Singh,Bhuntar,23.7,94,Normal,7,11000,Urban,Himachal Pradesh,31.939904171667788,77.40344451289937,Female,9.798121116
+Aarav Verma,Akanksha Verma,Longleng,7.7,96,Good,8,13000,Urban,Nagaland,26.514928702023898,94.71497077281212,Male,6.670212458
+Rohan Sharma,Monika Sharma,Gajendragad,23.3,93,Excellent,8,12500,Urban,Karnataka,15.629894831504568,75.87207228136215,Male,9.954950137
+Ananya Singh,Siddharth Singh,Challapalle,21.2,89,Asthma,4,9000,Rural,Andhra Pradesh,16.158013548007,80.88152728769012,Female,8.292339934
+Ayaan Singh,Neeta Singh,Sarli,7.8,99,Good,7,11500,Urban,Arunachal Pradesh,28.007607498232012,93.16932098441545,Male,6.507342101
+Ria Shah,Raj Shah,Suratgarh,22.9,91,Allergies,5,10500,Urban,Rajasthan,28.98849442181164,73.8722578142679,Female,8.991458303
+Arnav Patel,Komal Patel,Keolari,21.4,88,Asthma,4,9500,Rural,Madhya Pradesh,22.489165113767278,79.99142466823461,Male,8.306171412
+Anushka Singh,Manish Singh,Bhokardan,23.8,94,Normal,7,11000,Urban,Maharashtra,20.19667246059953,75.7709791407193,Female,9.819742737
+Aarav Verma,Akanksha Verma,Leh,7.6,96,Good,8,13000,Urban,Ladakh,33.32775461367229,78.00166714555843,Male,6.648590837
+Rohan Sharma,Monika Sharma,Mantha,23.4,93,Excellent,8,12500,Urban,Maharashtra,19.71562859919422,76.20914574021813,Male,9.976571759
+Ananya Singh,Siddharth Singh,Pakhanjur,21.3,89,Asthma,4,9000,Rural,Chhattisgarh,20.031136669087758,81.07014271542954,Female,8.313961555
+Ayaan Singh,Neeta Singh,Gokak,7.7,99,Good,7,11500,Urban,Karnataka,16.210147214614434,74.71209008460366,Male,6.48572048
+Ria Shah,Raj Shah,Ahmednagar,23,91,Allergies,5,10500,Urban,Maharashtra,19.19208726687422,74.96151710510932,Female,9.013079925
+Arnav Patel,Komal Patel,Hodal,21.5,88,Asthma,4,9500,Rural,Haryana,27.95906146055539,77.36795373163822,Male,8.327793034
+Anushka Singh,Manish Singh,Aluva,23.9,94,Normal,7,11000,Urban,Kerala,10.280587015233575,76.49491160741054,Female,9.841364359
+Aarav Verma,Akanksha Verma,Salon,7.5,96,Good,8,13000,Urban,Uttar Pradesh,26.172277117192976,81.54873465175919,Male,6.626969215
+Rohan Sharma,Monika Sharma,Ranapur,23.5,93,Excellent,8,12500,Urban,Madhya Pradesh,22.57530380646073,74.6454256949448,Male,9.998193381
+Ananya Singh,Siddharth Singh,Nagar,21.4,89,Asthma,4,9000,Rural,Rajasthan,27.49444920119817,77.05288370431384,Female,8.335583177
+Ayaan Singh,Neeta Singh,Sagar,7.6,99,Good,7,11500,Urban,Madhya Pradesh,23.914305162706682,78.83767488938082,Male,6.464098858
+Ria Shah,Raj Shah,Chikhli,23.1,91,Allergies,5,10500,Urban,Maharashtra,20.379773779339022,76.27193511146402,Female,9.034701546
+Arnav Patel,Komal Patel,Bhopalpattnam,21.6,88,Asthma,4,9500,Rural,Chhattisgarh,19.19837201693393,80.49764555358263,Male,8.349414655
+Anushka Singh,Manish Singh,Mahuva,24,94,Normal,7,11000,Urban,Gujarat,20.808989682269168,73.26890689850121,Female,9.862985981
+Aarav Verma,Akanksha Verma,Kaij,7.4,96,Good,8,13000,Urban,Maharashtra,18.587519953534525,76.05533695493634,Male,6.605347594
+Rohan Sharma,Monika Sharma,Behror,23.6,93,Excellent,8,12500,Urban,Rajasthan,27.905535144873976,76.17284233884075,Male,10.019815
+Ananya Singh,Siddharth Singh,Damoh,21.5,89,Asthma,4,9000,Rural,Madhya Pradesh,23.702434752322493,79.32720195155294,Female,8.357204798
+Ayaan Singh,Neeta Singh,Sorab,7.5,99,Good,7,11500,Urban,Karnataka,14.51645084426764,74.92225495246254,Male,6.442477237
+Ria Shah,Raj Shah,Chitalwana,23.2,91,Allergies,5,10500,Urban,Rajasthan,24.82819226084213,71.34870465542217,Female,9.056323168
+Arnav Patel,Komal Patel,Oudgi,21.7,88,Asthma,4,9500,Rural,Chhattisgarh,23.50417643469041,82.9627130426722,Male,8.371036277
+Anushka Singh,Manish Singh,Gudalur,24.1,94,Normal,7,11000,Urban,Tamil Nadu,11.461609153330997,76.42295667589262,Female,9.884607602
+Aarav Verma,Akanksha Verma,Ahmednagar,7.3,96,Good,8,13000,Urban,Maharashtra,19.605640549485756,74.1058885143377,Male,6.583725972
+Rohan Sharma,Monika Sharma,Ahore,23.7,93,Excellent,8,12500,Urban,Rajasthan,25.596381994321522,72.7683989721742,Male,10.04143662
+Ananya Singh,Siddharth Singh,Phigsoo,21.6,89,Asthma,4,9000,Rural,Jammu and Kashmir,33.12585414412399,75.75361751764018,Female,8.37882642
+Ayaan Singh,Neeta Singh,Nighasan,7.4,99,Good,7,11500,Urban,Uttar Pradesh,28.40424187256552,80.95888069437211,Male,6.420855615
+Ria Shah,Raj Shah,Khaprakhol,23.3,91,Allergies,5,10500,Urban,Odisha,20.802803431999916,82.90727940073047,Female,9.07794479
+Arnav Patel,Komal Patel,Laharpur,21.8,88,Asthma,4,9500,Rural,Uttar Pradesh,27.683213096911107,80.89143458953458,Male,8.392657899
+Anushka Singh,Manish Singh,Dungargarh,24.2,94,Normal,7,11000,Urban,Rajasthan,27.87957620325131,73.8835855822707,Female,9.906229224
+Aarav Verma,Akanksha Verma,Chhindgarh,7.2,96,Good,8,13000,Urban,Chhattisgarh,18.53192338395523,81.65506863306851,Male,6.56210435
+Rohan Sharma,Monika Sharma,Shopian,23.8,93,Excellent,8,12500,Urban,Jammu and Kashmir,33.74400064240327,74.86166955551818,Male,10.06305825
+Ananya Singh,Siddharth Singh,Junagarh,21.7,89,Asthma,4,9000,Rural,Odisha,19.800232784527175,82.90626324163794,Female,8.400448042
+Ayaan Singh,Neeta Singh,Hamirpur,7.3,99,Good,7,11500,Urban,Uttar Pradesh 210301,25.906989858273388,80.14581643755395,Male,6.399233993
+Ria Shah,Raj Shah,Challakere,23.4,91,Allergies,5,10500,Urban,Karnataka,14.544183512488575,76.62281820350609,Female,9.099566411
+Arnav Patel,Komal Patel,Kudligi,21.9,88,Asthma,4,9500,Rural,Karnataka,14.68905177412165,76.58497777327014,Male,8.41427952
+Anushka Singh,Manish Singh,Uthukkottai,24.3,94,Normal,7,11000,Urban,Tamil Nadu,13.336587229090624,79.93132150666732,Female,9.927850845
+Aarav Verma,Akanksha Verma,Kurnool,7.1,96,Good,8,13000,Urban,Andhra Pradesh,15.387678436459401,77.21847916317783,Male,6.540482729
+Rohan Sharma,Monika Sharma,Vijoynagar,23.9,93,Excellent,8,12500,Urban,Arunachal Pradesh,27.196960917904175,96.95086169171694,Male,10.08467987
+Ananya Singh,Siddharth Singh,Deganga,21.8,89,Asthma,4,9000,Rural,West Bengal,22.741132626664793,88.70626857976671,Female,8.422069663
+Ayaan Singh,Neeta Singh,Soraon,7.2,99,Good,7,11500,Urban,Uttar Pradesh,25.61607884516237,81.79996244000253,Male,6.377612372
+Ria Shah,Raj Shah,Varanasi,23.5,91,Allergies,5,10500,Urban,Uttar Pradesh,25.42664981564761,82.88410178354756,Female,9.121188033
+Arnav Patel,Komal Patel,Bargur,22,88,Asthma,4,9500,Rural,Tamil Nadu,12.479602876405751,78.36656100974268,Male,8.435901142
+Anushka Singh,Manish Singh,Barshi,24.4,94,Normal,7,11000,Urban,Maharashtra,18.1689300935801,75.62641316550786,Female,9.949472467
+Aarav Verma,Akanksha Verma,Holi,7,96,Good,8,13000,Urban,Himachal Pradesh,32.33033049061457,76.42406361076272,Male,6.518861107
+Rohan Sharma,Monika Sharma,Jind,24,93,Excellent,8,12500,Urban,Haryana,29.41247367431466,76.34994278996045,Male,10.10630149
+Ananya Singh,Siddharth Singh,Purba Medinipur,21.9,89,Asthma,4,9000,Rural,West Bengal,22.370413868540947,87.73796846519328,Female,8.443691285
+Ayaan Singh,Neeta Singh,Gunupur,7.1,99,Good,7,11500,Urban,Odisha,19.131441996476998,83.76870135783375,Male,6.35599075
+Ria Shah,Raj Shah,Hingoli,23.6,91,Allergies,5,10500,Urban,Maharashtra,19.545084563534168,76.96765594786983,Female,9.142809655
+Arnav Patel,Komal Patel,Jamner,22.1,88,Asthma,4,9500,Rural,Maharashtra,20.64948186001792,75.97458748479657,Male,8.457522763
+Anushka Singh,Manish Singh,Muddebihal,24.5,94,Normal,7,11000,Urban,Karnataka,16.258767484047883,76.06759488004492,Female,9.971094089
+Aarav Verma,Akanksha Verma,Usur,6.9,96,Good,8,13000,Urban,Chhattisgarh,18.25256598026185,81.0176810295747,Male,6.497239485
+Rohan Sharma,Monika Sharma,Vijayanagara,24.1,93,Excellent,8,12500,Urban,Karnataka,14.6235001044463,75.98145073892859,Male,10.12792311
+Ananya Singh,Siddharth Singh,Sagar,22,89,Asthma,4,9000,Rural,Madhya Pradesh,23.99480472602112,78.65897878376079,Female,8.465312906
+Ayaan Singh,Neeta Singh,Laxmeshwar,7,99,Good,7,11500,Urban,Karnataka,15.262218161175529,75.43899755049384,Male,6.334369128
+Ria Shah,Raj Shah,Shahpura,23.7,91,Allergies,5,10500,Urban,Madhya Pradesh,22.842047423795627,80.7585923933335,Female,9.164431276
+Arnav Patel,Komal Patel,Pratapgarh,22.2,88,Asthma,4,9500,Rural,Rajasthan,24.031825971264517,74.96843665518426,Male,8.479144385
+Anushka Singh,Manish Singh,Pahalgam,24.6,94,Normal,7,11000,Urban,Jammu and Kashmir,34.036042898188526,75.2645808807398,Female,9.99271571
+Aarav Verma,Akanksha Verma,Veeraballe,6.8,96,Good,8,13000,Urban,Andhra Pradesh,14.030866288076759,78.98173169016486,Male,6.475617864
+Rohan Sharma,Monika Sharma,Ahmednagar,24.2,93,Excellent,8,12500,Urban,Maharashtra,19.190535838895592,74.69013479157655,Male,10.14954473
+Ananya Singh,Siddharth Singh,Palamu,22.1,89,Asthma,4,9000,Rural,Jharkhand,24.398090923385904,84.13108060481156,Female,8.486934528
+Ayaan Singh,Neeta Singh,Narnaul,6.9,99,Good,7,11500,Urban,Haryana,28.1516104523587,76.1267363728652,Male,6.312747507
+Ria Shah,Raj Shah,Hathin,23.8,91,Allergies,5,10500,Urban,Haryana,28.106073462287235,77.20875506620983,Female,9.186052898
+Arnav Patel,Komal Patel,Pune,22.3,88,Asthma,4,9500,Rural,Maharashtra,18.14711473783554,74.5874776926341,Male,8.500766007
+Anushka Singh,Manish Singh,Nagaon,24.7,94,Normal,7,11000,Urban,Assam,26.381182813850277,92.59029115116633,Female,10.01433733
+Aarav Verma,Akanksha Verma,Manjhanpur,6.7,96,Good,8,13000,Urban,Uttar Pradesh,25.45610589535887,81.39352575076914,Male,6.453996242
+Rohan Sharma,Monika Sharma,Champua,24.3,93,Excellent,8,12500,Urban,Odisha,21.963727687180125,85.65492048122888,Male,10.17116635
+Ananya Singh,Siddharth Singh,Vaniyambadi,22.2,89,Asthma,4,9000,Rural,Tamil Nadu,12.64169336390902,78.69729509423043,Female,8.50855615
+Ayaan Singh,Neeta Singh,Nawalgarh,6.8,99,Good,7,11500,Urban,Rajasthan,27.927690192231285,75.37989255649615,Male,6.291125885
+Ria Shah,Raj Shah,Sarangapur,23.9,91,Allergies,5,10500,Urban,Telangana,19.192984740183046,78.33315310691731,Female,9.207674519
+Arnav Patel,Komal Patel,Kannur,22.4,88,Asthma,4,9500,Rural,Kerala,12.080336595553891,75.19397143461457,Male,8.522387628
+Anushka Singh,Manish Singh,Abdasa,24.8,94,Normal,7,11000,Urban,Gujarat,23.24104025819744,68.80337104416549,Female,10.03595895
+Aarav Verma,Akanksha Verma,Barshitakli,6.6,96,Good,8,13000,Urban,Maharashtra,20.503167379577818,77.11169567332189,Male,6.432374621
+Rohan Sharma,Monika Sharma,Zira,24.4,93,Excellent,8,12500,Urban,Punjab,30.983203815280277,74.91275217489424,Male,10.19278798
+Ananya Singh,Siddharth Singh,Raikal,22.3,89,Asthma,4,9000,Rural,Telangana,18.978362162165826,78.82635497994298,Female,8.530177771
+Ayaan Singh,Neeta Singh,Dausa,6.7,99,Good,7,11500,Urban,Rajasthan,26.532573851560365,76.3108430019334,Male,6.269504264
+Ria Shah,Raj Shah,Kolkata,24,91,Allergies,5,10500,Urban,West Bengal 700024,22.53725196105089,88.29976323517202,Female,9.229296141
+Arnav Patel,Komal Patel,Indus,22.5,88,Asthma,4,9500,Rural,West Bengal,23.12917750969349,87.58321730601469,Male,8.54400925
+Anushka Singh,Manish Singh,R.Udayagiri,24.9,94,Normal,7,11000,Urban,Odisha,19.21365387662254,84.11825715568555,Female,10.05758058
+Aarav Verma,Akanksha Verma,Nashik,6.5,96,Good,8,13000,Urban,Maharashtra,20.704764410206334,74.10097648174873,Male,6.410752999
+Rohan Sharma,Monika Sharma,Seoni-Malwa,24.5,93,Excellent,8,12500,Urban,Madhya Pradesh,22.371488881807288,77.62713224415127,Male,10.2144096
+Ananya Singh,Siddharth Singh,Mathura,22.4,89,Asthma,4,9000,Rural,Uttar Pradesh,27.492685649739613,77.61390396475633,Female,8.551799393
+Ayaan Singh,Neeta Singh,Lalganj,6.6,99,Good,7,11500,Urban,Uttar Pradesh,25.883569815603572,81.6273264702873,Male,6.247882642
+Ria Shah,Raj Shah,Vijayapura,24.1,91,Allergies,5,10500,Urban,Karnataka,16.802227663707974,75.42146593754289,Female,9.250917763
+Arnav Patel,Komal Patel,Meerut,22.6,88,Asthma,4,9500,Rural,Uttar Pradesh,28.892606666938043,77.86787199777774,Male,8.565630872
+Anushka Singh,Manish Singh,Sivaganga,25,94,Normal,7,11000,Urban,Tamil Nadu,10.16546291716306,78.72365741026667,Female,10.0792022
+Aarav Verma,Akanksha Verma,Sanku,6.4,96,Good,8,13000,Urban,Ladakh,33.99409614985741,76.11524637233173,Male,6.389131377
+Rohan Sharma,Monika Sharma,Jaisalmer,24.6,93,Excellent,8,12500,Urban,Rajasthan,27.112577475982576,70.84926702994778,Male,10.23603122
+Ananya Singh,Siddharth Singh,Ratnagiri,22.5,89,Asthma,4,9000,Rural,Maharashtra,17.74522248275076,73.30963123841939,Female,8.573421015
+Ayaan Singh,Neeta Singh,Betul,6.5,99,Good,7,11500,Urban,Madhya Pradesh,22.233635197267176,77.73967705822977,Male,6.22626102
+Ria Shah,Raj Shah,Kankavli,24.2,91,Allergies,5,10500,Urban,Maharashtra,16.54634814657803,73.67531493624372,Female,9.272539384
+Arnav Patel,Komal Patel,Shivpuri,22.7,88,Asthma,4,9500,Rural,Madhya Pradesh,25.553261596255812,77.35138955710332,Male,8.587252493
+Anushka Singh,Manish Singh,Jalna,25.1,94,Normal,7,11000,Urban,Maharashtra,19.634083027903145,75.83525054589558,Female,10.10082382
+Aarav Verma,Akanksha Verma,Shamshabad,6.3,96,Good,8,13000,Urban,Madhya Pradesh,23.91021359930726,77.48683720264286,Male,6.367509756
+Rohan Sharma,Monika Sharma,Barun,24.7,93,Excellent,8,12500,Urban,Bihar,24.819492401786395,84.31118581003368,Male,10.25765284
+Ananya Singh,Siddharth Singh,Jhadol,22.6,89,Asthma,4,9000,Rural,Rajasthan,24.474676945645438,73.42918023794898,Female,8.595042636
+Ayaan Singh,Neeta Singh,Palghar,6.4,99,Good,7,11500,Urban,Maharashtra,19.758825870289915,72.89119541498091,Male,6.204639399
+Ria Shah,Raj Shah,Jagdevpur,24.3,91,Allergies,5,10500,Urban,Telangana,17.70807877374712,78.80341373575959,Female,9.294161006
+Arnav Patel,Komal Patel,Raniganj,22.8,88,Asthma,4,9500,Rural,Uttar Pradesh,25.786697374007694,82.14289852732618,Male,8.608874115
+Anushka Singh,Manish Singh,Devarakadra,25.2,94,Normal,7,11000,Urban,Telangana,16.588009431558813,77.88945364998085,Female,10.12244544
+Aarav Verma,Akanksha Verma,Kaliganj,6.2,96,Good,8,13000,Urban,West Bengal,23.68906181455483,88.2080947554121,Male,6.345888134
+Rohan Sharma,Monika Sharma,Sankari,24.8,93,Excellent,8,12500,Urban,Uttarakhand,31.09626248569109,78.29899524098276,Male,10.27927446
+Ananya Singh,Siddharth Singh,Mawshynrut,22.7,89,Asthma,4,9000,Rural,Meghalaya,25.581764920073315,91.12967053200501,Female,8.616664258
+Ayaan Singh,Neeta Singh,Thuamul Rampur,6.3,99,Good,7,11500,Urban,Odisha,19.496699633413662,83.17762217320103,Male,6.183017777
+Ria Shah,Raj Shah,Nowgong,24.4,91,Allergies,5,10500,Urban,Madhya Pradesh,25.150070236837653,79.34541231793273,Female,9.315782628
+Arnav Patel,Komal Patel,Chhapara,22.9,88,Asthma,4,9500,Rural,Madhya Pradesh,22.39670245431801,79.32056429505081,Male,8.630495736
+Anushka Singh,Manish Singh,Mandya,25.3,94,Normal,7,11000,Urban,Karnataka,12.533851425967345,76.9263070760295,Female,10.14406706
+Aarav Verma,Akanksha Verma,Morwa,6.1,96,Good,8,13000,Urban,Gujarat,23.039948669945176,73.78898415643489,Male,6.324266513
+Rohan Sharma,Monika Sharma,Rann Of Kachchh,24.9,93,Excellent,8,12500,Urban,Gujarat,23.785308232221748,69.16363429219291,Male,10.30089608
+Ananya Singh,Siddharth Singh,Narayangarh,22.8,89,Asthma,4,9000,Rural,West Bengal,22.24453831272399,87.43029819006584,Female,8.638285879
+Ayaan Singh,Neeta Singh,Pokhari,6.2,99,Good,7,11500,Urban,Uttarakhand,30.354759601894845,79.1559767176576,Male,6.161396156
+Ria Shah,Raj Shah,Kherwara,24.5,91,Allergies,5,10500,Urban,Rajasthan,23.965988394367926,73.61507568918869,Female,9.337404249
+Arnav Patel,Komal Patel,Bheemadevarpalli,23,88,Asthma,4,9500,Rural,Telangana,18.12947710285043,79.3779659781827,Male,8.652117358
+Anushka Singh,Manish Singh,Leh,25.4,94,Normal,7,11000,Urban,Ladakh,34.22305150985609,77.71380942092291,Female,10.16568868
+Aarav Verma,Akanksha Verma,Kullu,6,96,Good,8,13000,Urban,Himachal Pradesh,32.12630561858708,77.27738160243408,Male,6.302644891
+Rohan Sharma,Monika Sharma,Sarada,25,93,Excellent,8,12500,Urban,Rajasthan,24.180543688632383,73.71474616664634,Male,10.3225177
+Ananya Singh,Siddharth Singh,Budhlada,22.9,89,Asthma,4,9000,Rural,Punjab,29.877550776521755,75.66621264180296,Female,8.659907501
+Ayaan Singh,Neeta Singh,Lunkaransar,6.1,99,Good,7,11500,Urban,Rajasthan,28.539283233981788,73.78760871992026,Male,6.139774534
+Ria Shah,Raj Shah,Bindranavagarh,24.6,91,Allergies,5,10500,Urban,Chhattisgarh,20.64024286015958,82.15568165285336,Female,9.359025871
+Arnav Patel,Komal Patel,Tirumakudal - Narsipur,23.1,88,Asthma,4,9500,Rural,Karnataka,12.262161456336296,76.86929628412541,Male,8.67373898
+Anushka Singh,Manish Singh,Solapur,25.5,94,Normal,7,11000,Urban,Maharashtra,17.463711726047485,75.66797670949816,Female,10.1873103
+Aarav Verma,Akanksha Verma,Chikkaballapura,5.9,96,Good,8,13000,Urban,Karnataka,13.355229945826025,78.01673714925381,Male,6.281023269
+Rohan Sharma,Monika Sharma,Jawa,25.1,93,Excellent,8,12500,Urban,Madhya Pradesh,24.97062126642832,81.33916267040921,Male,10.34413933
+Ananya Singh,Siddharth Singh,Lucknow,23,89,Asthma,4,9000,Rural,Uttar Pradesh,26.79997913235287,81.06604908945542,Female,8.681529123
+Ayaan Singh,Neeta Singh,Bhairamgarh,6,99,Good,7,11500,Urban,Chhattisgarh,19.077938067264775,81.13794185961484,Male,6.118152912
+Ria Shah,Raj Shah,Dharni,24.7,91,Allergies,5,10500,Urban,Maharashtra,21.59526141089384,77.12187712634167,Female,9.380647492
+Arnav Patel,Komal Patel,Thikri,23.2,88,Asthma,4,9500,Rural,Madhya Pradesh,21.97843452535179,75.31511204798512,Male,8.695360601
+Anushka Singh,Manish Singh,Jaisalmer,25.6,94,Normal,7,11000,Urban,Rajasthan,26.93067847860605,70.67084062785071,Female,10.20893193
+Aarav Verma,Akanksha Verma,Dudu,5.8,96,Good,8,13000,Urban,Rajasthan,26.676555584782704,75.04465045928072,Male,6.259401648
+Rohan Sharma,Monika Sharma,Khargram,25.2,93,Excellent,8,12500,Urban,West Bengal,24.14955206723068,87.97944049368836,Male,10.36576095
+Ananya Singh,Siddharth Singh,Lawngtlai,23.1,89,Asthma,4,9000,Rural,Mizoram,22.286787679705498,92.78715625870353,Female,8.703150744
+Ayaan Singh,Neeta Singh,Shahpura,5.9,99,Good,7,11500,Urban,Madhya Pradesh,23.081011350427357,80.55453945776749,Male,6.096531291
+Ria Shah,Raj Shah,Vikarabad,24.8,91,Allergies,5,10500,Urban,Telangana,17.05505340265743,77.55210233093602,Female,9.402269114
+Arnav Patel,Komal Patel,Kukshi,23.3,88,Asthma,4,9500,Rural,Madhya Pradesh,22.084926805299737,74.95085297986334,Male,8.716982223
+Anushka Singh,Manish Singh,Rann Of Kachchh,25.7,94,Normal,7,11000,Urban,Gujarat,24.088256719674593,68.99171863952348,Female,10.23055355
+Aarav Verma,Akanksha Verma,Khaltse,5.7,96,Good,8,13000,Urban,Ladakh,34.25057053553621,77.06294652322153,Male,6.237780026
+Rohan Sharma,Monika Sharma,Bilaspur,25.3,93,Excellent,8,12500,Urban,Haryana,30.445330792747917,77.45414472502375,Male,10.38738257
+Ananya Singh,Siddharth Singh,Ajra,23.2,89,Asthma,4,9000,Rural,Maharashtra,16.041042578331837,74.05014073774947,Female,8.724772366
+Ayaan Singh,Neeta Singh,Chillakur,5.8,99,Good,7,11500,Urban,Andhra Pradesh,14.071844343582866,79.86054801465414,Male,6.074909669
+Ria Shah,Raj Shah,Mechuka,24.9,91,Allergies,5,10500,Urban,Arunachal Pradesh,28.674886824246066,94.00389463728025,Female,9.423890736
+Arnav Patel,Komal Patel,Udarbond,23.4,88,Asthma,4,9500,Rural,Assam,24.867953795121817,92.88834092901546,Male,8.738603844
+Anushka Singh,Manish Singh,Hardoi,25.8,94,Normal,7,11000,Urban,Uttar Pradesh,27.678810912847847,79.92771334882967,Female,10.25217517
+Aarav Verma,Akanksha Verma,Nighasan,5.6,96,Good,8,13000,Urban,Uttar Pradesh,28.337335448016272,81.02253118419004,Male,6.216158404
+Rohan Sharma,Monika Sharma,Mungeli,25.4,93,Excellent,8,12500,Urban,Chhattisgarh,22.13320086415475,81.71841503441733,Male,10.40900419
+Ananya Singh,Siddharth Singh,Konijerla,23.3,89,Asthma,4,9000,Rural,Telangana,17.192815816324842,80.31467007798643,Female,8.746393988
+Ayaan Singh,Neeta Singh,Hanumanthuni Padu,5.7,99,Good,7,11500,Urban,Andhra Pradesh,15.467452581302688,79.31621664815287,Male,6.053288047
+Ria Shah,Raj Shah,Lonar,25,91,Allergies,5,10500,Urban,Maharashtra,19.947730327647168,76.60966188706074,Female,9.445512357
+Arnav Patel,Komal Patel,Jabera,23.5,88,Asthma,4,9500,Rural,Madhya Pradesh,23.702702860674425,79.79958103994227,Male,8.760225466
+Anushka Singh,Manish Singh,Amethi,25.9,94,Normal,7,11000,Urban,Uttar Pradesh,26.16553736188237,81.7939794647094,Female,10.27379679
+Aarav Verma,Akanksha Verma,East Singhbhum,5.5,96,Good,8,13000,Urban,Jharkhand,22.673958152149382,86.40410956895835,Male,6.194536783
+Rohan Sharma,Monika Sharma,Vav,25.5,93,Excellent,8,12500,Urban,Gujarat,24.547815302534097,71.48408449606544,Male,10.43062581
+Ananya Singh,Siddharth Singh,Muddebihal,23.4,89,Asthma,4,9000,Rural,Karnataka,16.383817365663134,76.10656343162093,Female,8.768015609
+Ayaan Singh,Neeta Singh,Kalghatgi,5.6,99,Good,7,11500,Urban,Karnataka,15.12101160514065,75.04683377260382,Male,6.031666426
+Ria Shah,Raj Shah,Khandwa,25.1,91,Allergies,5,10500,Urban,Madhya Pradesh,22.075828937600072,76.82656372004223,Female,9.467133979
+Arnav Patel,Komal Patel,Bharatpur,23.6,88,Asthma,4,9500,Rural,Chhattisgarh,23.648835433050316,82.17087631373262,Male,8.781847088
+Anushka Singh,Manish Singh,Guwahati,26,94,Normal,7,11000,Urban,Assam 781017,26.114029353093503,91.59818858641681,Female,10.29541841
+Aarav Verma,Akanksha Verma,Vaijapur,5.4,96,Good,8,13000,Urban,Maharashtra,19.78089145447298,74.67004844645025,Male,6.172915161
+Rohan Sharma,Monika Sharma,Morbi,25.6,93,Excellent,8,12500,Urban,Gujarat 363641,22.830145683124712,70.83707136660276,Male,10.45224743
+Ananya Singh,Siddharth Singh,Rann Of Kachchh,23.5,89,Asthma,4,9000,Rural,Gujarat,23.28636948143563,71.00865144291305,Female,8.789637231
+Ayaan Singh,Neeta Singh,Maudaha,5.5,99,Good,7,11500,Urban,Uttar Pradesh,25.64459994329749,79.71361162269416,Male,6.010044804
+Ria Shah,Raj Shah,Bankura,25.2,91,Allergies,5,10500,Urban,West Bengal,23.111816782404105,87.19354311325375,Female,9.488755601
+Arnav Patel,Komal Patel,Lm,23.7,88,Asthma,4,9500,Rural,Manipur,25.230697394391132,94.30362779880116,Male,8.803468709
+Anushka Singh,Manish Singh,Nalgonda,26.1,94,Normal,7,11000,Urban,Telangana,17.201071211626747,79.42135838581257,Female,10.31704003
+Aarav Verma,Akanksha Verma,Dungargarh,5.3,96,Good,8,13000,Urban,Rajasthan,27.98072531793074,73.86654509648568,Male,6.15129354
+Rohan Sharma,Monika Sharma,Sonbhadra,25.7,93,Excellent,8,12500,Urban,Uttar Pradesh,24.03563609902079,83.05124070729622,Male,10.47386906
+Ananya Singh,Siddharth Singh,Dindori,23.6,89,Asthma,4,9000,Rural,Madhya Pradesh,23.19659785444367,80.94777987605114,Female,8.811258852
+Ayaan Singh,Neeta Singh,Marwah,5.4,99,Good,7,11500,Urban,Jammu and Kashmir,33.67365069822772,76.05470435767154,Male,5.988423183
+Ria Shah,Raj Shah,Sedam,25.3,91,Allergies,5,10500,Urban,Karnataka,17.07710592829327,77.46117298689981,Female,9.510377222
+Arnav Patel,Komal Patel,Pauri,23.8,88,Asthma,4,9500,Rural,Uttarakhand,30.14154111029042,78.6157602422756,Male,8.825090331
+Anushka Singh,Manish Singh,Rapar,26.2,94,Normal,7,11000,Urban,Gujarat,23.50837197377223,70.9960571867521,Female,10.33866166
+Aarav Verma,Akanksha Verma,Saluni,5.2,96,Good,8,13000,Urban,Himachal Pradesh,32.72819023954139,75.9879673460915,Male,6.129671918
+Rohan Sharma,Monika Sharma,Ralegaon,25.8,93,Excellent,8,12500,Urban,Maharashtra,20.153591168953767,78.58155599955249,Male,10.49549068
+Ananya Singh,Siddharth Singh,Ghansawangi,23.7,89,Asthma,4,9000,Rural,Maharashtra,19.64786997552082,76.03730846990602,Female,8.832880474
+Ayaan Singh,Neeta Singh,Una,5.3,99,Good,7,11500,Urban,Gujarat,20.920509429506318,71.15988027315395,Male,5.966801561
+Ria Shah,Raj Shah,Lachhmangarh,25.4,91,Allergies,5,10500,Urban,Rajasthan,27.65136824015824,74.76265516303464,Female,9.531998844
+Arnav Patel,Komal Patel,Palari,23.9,88,Asthma,4,9500,Rural,Chhattisgarh,21.593356650407635,82.18678794591077,Male,8.846711953
+Anushka Singh,Manish Singh,Mohla,26.3,94,Normal,7,11000,Urban,Chhattisgarh,20.644368211017436,80.84833914873087,Female,10.36028328
+Aarav Verma,Akanksha Verma,Patan,5.1,96,Good,8,13000,Urban,Chhattisgarh,21.037805480137614,81.56690451043555,Male,6.108050296
+Rohan Sharma,Monika Sharma,Dindori,25.9,93,Excellent,8,12500,Urban,Madhya Pradesh,22.784328310716393,81.0417344837998,Male,10.5171123
+Ananya Singh,Siddharth Singh,Saran,23.8,89,Asthma,4,9000,Rural,Bihar,25.778408169584047,85.05017201178282,Female,8.854502096
+Ayaan Singh,Neeta Singh,Bokakhat,5.2,99,Good,7,11500,Urban,Assam,26.794163121186962,93.73988946576924,Male,5.945179939
+Ria Shah,Raj Shah,Vilathikulam,25.5,91,Allergies,5,10500,Urban,Tamil Nadu,9.064878442319376,78.35524354636871,Female,9.553620465
+Arnav Patel,Komal Patel,Aurangabad,24,88,Asthma,4,9500,Rural,Bihar,24.98847092356537,84.61897039607916,Male,8.868333574
+Anushka Singh,Manish Singh,Saraguru,26.4,94,Normal,7,11000,Urban,Karnataka,11.922047359724827,76.48992833770136,Female,10.3819049
+Aarav Verma,Akanksha Verma,Talcher,5,96,Good,8,13000,Urban,Odisha,20.98029097546298,85.25645900358288,Male,6.086428675
+Rohan Sharma,Monika Sharma,Phaltan,26,93,Excellent,8,12500,Urban,Maharashtra,17.855506485400525,74.34680997531504,Male,10.53873392
+Ananya Singh,Siddharth Singh,Jhargram,23.9,89,Asthma,4,9000,Rural,West Bengal,22.289098746536396,87.07550858737673,Female,8.876123717
+Ayaan Singh,Neeta Singh,Kokasara,5.1,99,Good,7,11500,Urban,Odisha,19.734876407277827,82.72828965782551,Male,5.923558318
+Ria Shah,Raj Shah,Phulambri,25.6,91,Allergies,5,10500,Urban,Maharashtra,20.162384163572412,75.43760163397363,Female,9.575242087
+Arnav Patel,Komal Patel,Hamirpur,24.1,88,Asthma,4,9500,Rural,Uttar Pradesh,25.791213883405685,79.60962562622578,Male,8.889955196
+Anushka Singh,Manish Singh,Bithan,26.5,94,Normal,7,11000,Urban,Bihar,25.71404746078714,86.36808723759668,Female,10.40352652
+Aarav Verma,Akanksha Verma,Kagal,4.9,96,Good,8,13000,Urban,Maharashtra,16.366592657570607,74.19069450543431,Male,6.064807053
+Rohan Sharma,Monika Sharma,Kolhapur,26.1,93,Excellent,8,12500,Urban,Maharashtra 416003,16.71512168002762,74.23916002957212,Male,10.56035554
+Ananya Singh,Siddharth Singh,Rann Of Kachchh,24,89,Asthma,4,9000,Rural,Gujarat,23.895216631488072,69.07975464328116,Female,8.897745339
+Ayaan Singh,Neeta Singh,Tinsukia,5,99,Good,7,11500,Urban,Assam,27.43554885637844,95.48900694338558,Male,5.901936696
+Ria Shah,Raj Shah,Ganderbal,25.7,91,Allergies,5,10500,Urban,Jammu and Kashmir,34.24763692821687,74.69162548772304,Female,9.596863709
+Arnav Patel,Komal Patel,Tyonda,24.2,88,Asthma,4,9500,Rural,Madhya Pradesh,23.872402534059166,78.24069239167879,Male,8.911576817
+Anushka Singh,Manish Singh,Desar,26.6,94,Normal,7,11000,Urban,Gujarat,22.72264394889946,73.28590863754957,Female,10.42514814
+Aarav Verma,Akanksha Verma,Abapura,4.8,96,Good,8,13000,Urban,Rajasthan,23.348592527127828,74.48806251261041,Male,6.043185431
+Rohan Sharma,Monika Sharma,Jawa,26.2,93,Excellent,8,12500,Urban,Madhya Pradesh,25.117704018530077,81.36952591956383,Male,10.58197716
+Ananya Singh,Siddharth Singh,Sudhagad,24.1,89,Asthma,4,9000,Rural,Maharashtra,18.674470946781565,73.36531539347737,Female,8.919366961
+Ayaan Singh,Neeta Singh,Luni,4.9,99,Good,7,11500,Urban,Rajasthan,26.112074997511247,73.18067626773419,Male,5.880315074
+Ria Shah,Raj Shah,Padum,25.8,91,Allergies,5,10500,Urban,Ladakh,33.18264754061311,77.25734223166575,Female,9.61848533
+Arnav Patel,Komal Patel,Rajgarh,24.3,88,Asthma,4,9500,Rural,Rajasthan,27.1397384042196,76.46198766510304,Male,8.933198439
+Anushka Singh,Manish Singh,Balikuda,26.7,94,Normal,7,11000,Urban,Odisha,20.080356308796922,86.36959104731596,Female,10.44676976
+Aarav Verma,Akanksha Verma,Chhindwara,4.7,96,Good,8,13000,Urban,Madhya Pradesh,21.51265319572854,78.76132284412775,Male,6.02156381
+Rohan Sharma,Monika Sharma,Chamorshi,26.3,93,Excellent,8,12500,Urban,Maharashtra,19.882768700988883,80.0938309161219,Male,10.60359879
+Ananya Singh,Siddharth Singh,Pahalgam,24.2,89,Asthma,4,9000,Rural,Jammu and Kashmir,34.08217757141512,75.28789262208927,Female,8.940988582
+Ayaan Singh,Neeta Singh,Thiruvallur,4.8,99,Good,7,11500,Urban,Tamil Nadu,13.20064986153202,79.96798858624447,Male,5.858693453
+Ria Shah,Raj Shah,Indora,25.9,91,Allergies,5,10500,Urban,Himachal Pradesh,32.13291172841331,75.86412198760142,Female,9.640106952
+Arnav Patel,Komal Patel,Ramdurg,24.4,88,Asthma,4,9500,Rural,Karnataka,16.155501523953255,75.28490786759475,Male,8.954820061
+Anushka Singh,Manish Singh,Malpura,26.8,94,Normal,7,11000,Urban,Rajasthan,26.186004714072325,75.46553359374725,Female,10.46839139
+Aarav Verma,Akanksha Verma,Chaglagam,4.6,96,Good,8,13000,Urban,Arunachal Pradesh,28.42315099412191,96.79532912803042,Male,5.999942188
+Rohan Sharma,Monika Sharma,Tulsipur,26.4,93,Excellent,8,12500,Urban,Uttar Pradesh,27.64589898075617,82.42425575926723,Male,10.62522041
+Ananya Singh,Siddharth Singh,Dharwala,24.3,89,Asthma,4,9000,Rural,Himachal Pradesh,32.34271238792715,76.35796140542817,Female,8.962610204
+Ayaan Singh,Neeta Singh,Khaltse,4.7,99,Good,7,11500,Urban,Ladakh,34.35840829216903,77.11418765755786,Male,5.837071831
+Ria Shah,Raj Shah,Orchha,26,91,Allergies,5,10500,Urban,Chhattisgarh,19.34943034343388,80.98818519340091,Female,9.661728573
+Arnav Patel,Komal Patel,Migging,24.5,88,Asthma,4,9500,Rural,Arunachal Pradesh,28.817017668881622,94.70893459764302,Male,8.976441682
+Anushka Singh,Manish Singh,Bhokardan,26.9,94,Normal,7,11000,Urban,Maharashtra,20.290405604002004,75.75786367891645,Female,10.49001301
+Aarav Verma,Akanksha Verma,Dholpur,4.5,96,Good,8,13000,Urban,Rajasthan,26.72731277861962,77.92394861929837,Male,5.978320567
+Rohan Sharma,Monika Sharma,Basoda,26.5,93,Excellent,8,12500,Urban,Madhya Pradesh,23.937557207525483,78.06175246087444,Male,10.64684203
+Ananya Singh,Siddharth Singh,Rapar,24.4,89,Asthma,4,9000,Rural,Gujarat,23.681462427816335,70.6760536623989,Female,8.984231825
+Ayaan Singh,Neeta Singh,Sunpura,4.6,99,Good,7,11500,Urban,Arunachal Pradesh,28.14015304181784,96.10505281153351,Male,5.81545021
+Ria Shah,Raj Shah,Gohparu,26.1,91,Allergies,5,10500,Urban,Madhya Pradesh,23.50072157493736,81.37966631523143,Female,9.683350195
+Arnav Patel,Komal Patel,Botad,24.6,88,Asthma,4,9500,Rural,Gujarat,22.271176097512303,71.7748479957956,Male,8.998063304
+Anushka Singh,Manish Singh,Mahendragarh,27,94,Normal,7,11000,Urban,Haryana,28.32733097976334,76.32182898684036,Female,10.51163463
+Aarav Verma,Akanksha Verma,Parvathipuram,4.4,96,Good,8,13000,Urban,Andhra Pradesh,18.73740367067883,83.4252610238194,Male,5.956698945
+Rohan Sharma,Monika Sharma,Leh,26.6,93,Excellent,8,12500,Urban,Ladakh,33.83243885252462,77.38525092863003,Male,10.66846365
+Ananya Singh,Siddharth Singh,Kallakurichi,24.5,89,Asthma,4,9000,Rural,Tamil Nadu,11.514739092426948,78.878764077456,Female,9.005853447
+Ayaan Singh,Neeta Singh,Bokaro,4.5,99,Good,7,11500,Urban,Jharkhand,23.529982854283602,86.2451050688077,Male,5.793828588
+Ria Shah,Raj Shah,Chhoti Sadri,26.2,91,Allergies,5,10500,Urban,Rajasthan,24.28314159954648,74.7096865231389,Female,9.704971817
+Arnav Patel,Komal Patel,Phassang,24.7,88,Asthma,4,9500,Rural,Arunachal Pradesh,27.764881527391072,93.25548047755476,Male,9.019684926
+Anushka Singh,Manish Singh,Chigurumamidi,27.1,94,Normal,7,11000,Urban,Telangana,18.226134819610685,79.19645904506247,Female,10.53325625
+Aarav Verma,Akanksha Verma,Habibpur,4.3,96,Good,8,13000,Urban,West Bengal,24.94990776856622,88.28626304916736,Male,5.935077323
+Rohan Sharma,Monika Sharma,Sheo,26.7,93,Excellent,8,12500,Urban,Rajasthan,26.327137889848487,71.70560530029508,Male,10.69008527
+Ananya Singh,Siddharth Singh,Laikera,24.6,89,Asthma,4,9000,Rural,Odisha,21.829521409281945,84.28276129590301,Female,9.027475069
+Ayaan Singh,Neeta Singh,Malegaon,4.4,99,Good,7,11500,Urban,Maharashtra,20.63039747594649,74.69808924571711,Male,5.772206966
+Ria Shah,Raj Shah,Dr BR Ambedkar Konaseema,26.3,91,Allergies,5,10500,Urban,Andhra Pradesh,16.68565069868224,81.9181806052507,Female,9.726593438
+Arnav Patel,Komal Patel,Saharanpur,24.8,88,Asthma,4,9500,Rural,Uttar Pradesh,30.03669565157289,77.51326063537343,Male,9.041306547
+Anushka Singh,Manish Singh,Kolayat,27.2,94,Normal,7,11000,Urban,Rajasthan,27.726943416834864,72.79378381176382,Female,10.55487787
+Aarav Verma,Akanksha Verma,Paddhari,4.2,96,Good,8,13000,Urban,Gujarat,22.321924502504412,70.54783799845978,Male,5.913455702
+Rohan Sharma,Monika Sharma,Solapur,26.8,93,Excellent,8,12500,Urban,Maharashtra,17.970347738934503,74.75286630100986,Male,10.71170689
+Ananya Singh,Siddharth Singh,Antagarh,24.7,89,Asthma,4,9000,Rural,Chhattisgarh,19.858169461209744,81.13967140113726,Female,9.04909669
+Ayaan Singh,Neeta Singh,Mada,4.3,99,Good,7,11500,Urban,Madhya Pradesh,24.047397247626098,82.50401585672435,Male,5.750585345
+Ria Shah,Raj Shah,Bhagalpur,26.4,91,Allergies,5,10500,Urban,Bihar,25.441532893239163,84.43027683289674,Female,9.74821506
+Arnav Patel,Komal Patel,Thanjavur,24.9,88,Asthma,4,9500,Rural,Tamil Nadu,10.947653420515131,79.41946929689728,Male,9.062928169
+Anushka Singh,Manish Singh,Chhatargarh,27.3,94,Normal,7,11000,Urban,Rajasthan,28.71191995877326,73.01031455794865,Female,10.57649949
+Aarav Verma,Akanksha Verma,Nagina,4.1,96,Good,8,13000,Urban,Uttar Pradesh,29.452056943054213,78.60560362351312,Male,5.89183408
+Rohan Sharma,Monika Sharma,Tirur,26.9,93,Excellent,8,12500,Urban,Kerala,10.850361640055766,75.9057089464466,Male,10.73332852
+Ananya Singh,Siddharth Singh,Mehdawal,24.8,89,Asthma,4,9000,Rural,Uttar Pradesh,26.92349772392053,83.18210595037313,Female,9.070718312
+Ayaan Singh,Neeta Singh,Shivamogga,4.2,99,Good,7,11500,Urban,Karnataka,13.765797120685546,75.62364892737716,Male,5.728963723
+Ria Shah,Raj Shah,Udaipur,26.5,91,Allergies,5,10500,Urban,Tripura,23.488760773165264,91.55202110561181,Female,9.769836682
+Arnav Patel,Komal Patel,Danthalapalle,25,88,Asthma,4,9500,Rural,Telangana,17.452635680808058,79.73269787658968,Male,9.08454979
+Anushka Singh,Manish Singh,Udgir,27.4,94,Normal,7,11000,Urban,Maharashtra,18.37342784299308,77.16628869878497,Female,10.59812112
+Aarav Verma,Akanksha Verma,Ambassa,4,96,Good,8,13000,Urban,Tripura,23.986077318746833,91.82784889841764,Male,5.870212458
+Rohan Sharma,Monika Sharma,Khumtai,27,93,Excellent,8,12500,Urban,Assam,26.808957318138084,93.76894493484646,Male,10.75495014
+Ananya Singh,Siddharth Singh,Supaul,24.9,89,Asthma,4,9000,Rural,Bihar,26.22030277654092,86.6790315037036,Female,9.092339934
+Ayaan Singh,Neeta Singh,Nubra,4.1,99,Good,7,11500,Urban,Ladakh,34.81618650489011,77.06077070197445,Male,5.707342101
+Ria Shah,Raj Shah,Gurundia,26.6,91,Allergies,5,10500,Urban,Odisha,21.915210004494114,84.7806029098615,Female,9.791458303
+Arnav Patel,Komal Patel,Baihar,25.1,88,Asthma,4,9500,Rural,Madhya Pradesh,21.902563999421574,80.45447057981096,Male,9.106171412
+Anushka Singh,Manish Singh,Bhairamgarh,27.5,94,Normal,7,11000,Urban,Chhattisgarh,18.999271042544336,80.89195540830515,Female,10.61974274
+Aarav Verma,Akanksha Verma,Wardha,3.9,96,Good,8,13000,Urban,Maharashtra,21.2655679064542,78.2333532450615,Male,5.848590837
+Rohan Sharma,Monika Sharma,Sirpur,27.1,93,Excellent,8,12500,Urban,Telangana,19.442727180195995,79.61994899929849,Male,10.77657176
+Ananya Singh,Siddharth Singh,Annapureddypalli,25,89,Asthma,4,9000,Rural,Telangana,17.356364707038736,80.8400708219637,Female,9.113961555
+Ayaan Singh,Neeta Singh,Tonk,4,99,Good,7,11500,Urban,Rajasthan,26.214811027852335,75.59401350967727,Male,5.68572048
+Ria Shah,Raj Shah,Bhuj,26.7,91,Allergies,5,10500,Urban,Gujarat,23.89721344577681,69.83158499812413,Female,9.813079925
+Arnav Patel,Komal Patel,Premnagar,25.2,88,Asthma,4,9500,Rural,Chhattisgarh,23.037838426597325,82.63832099243469,Male,9.127793034
+Anushka Singh,Manish Singh,Gossaigaon,27.6,94,Normal,7,11000,Urban,Assam,26.543010069071045,89.94144676795356,Female,10.64136436
+Aarav Verma,Akanksha Verma,Nainpur,3.8,96,Good,8,13000,Urban,Madhya Pradesh,22.508932574018836,80.08878943211485,Male,5.826969215
+Rohan Sharma,Monika Sharma,Lakhnadon,27.2,93,Excellent,8,12500,Urban,Madhya Pradesh,22.565195535560484,79.73911658000321,Male,10.79819338
+Ananya Singh,Siddharth Singh,Ludhiana,25.1,89,Asthma,4,9000,Rural,Punjab,30.954201824032882,76.1248020618331,Female,9.135583177
+Ayaan Singh,Neeta Singh,Deogarh,3.9,99,Good,7,11500,Urban,Odisha,21.623522587419764,84.96303425346397,Male,5.664098858
+Ria Shah,Raj Shah,Khalwa,26.8,91,Allergies,5,10500,Urban,Madhya Pradesh,21.669703502002328,76.94176459419377,Female,9.834701546
+Arnav Patel,Komal Patel,Saharanpur,25.3,88,Asthma,4,9500,Rural,Uttar Pradesh,30.191720389248218,77.66678364106701,Male,9.149414655
+Anushka Singh,Manish Singh,Surendranagar,27.7,94,Normal,7,11000,Urban,Gujarat,22.842655082000313,71.27045734819703,Female,10.66298598
+Aarav Verma,Akanksha Verma,Pokaran,3.7,96,Good,8,13000,Urban,Rajasthan,27.622213680774358,72.15230235870436,Male,5.805347594
+Rohan Sharma,Monika Sharma,Ernakulam,27.3,93,Excellent,8,12500,Urban,Kerala,10.01906855327331,76.66525691377605,Male,10.819815
+Ananya Singh,Siddharth Singh,Kothapalle,25.2,89,Asthma,4,9000,Rural,Andhra Pradesh,16.049488289802802,78.41960469119296,Female,9.157204798
+Ayaan Singh,Neeta Singh,Tharad,3.8,99,Good,7,11500,Urban,Gujarat,24.33810240714887,71.67166771000372,Male,5.642477237
+Ria Shah,Raj Shah,Pali,26.9,91,Allergies,5,10500,Urban,Madhya Pradesh,23.334636025890532,81.18164303448424,Female,9.856323168
+Arnav Patel,Komal Patel,Lundra,25.4,88,Asthma,4,9500,Rural,Chhattisgarh,23.213029611327286,83.48397598707926,Male,9.171036277
+Anushka Singh,Manish Singh,Vemula,27.8,94,Normal,7,11000,Urban,Andhra Pradesh,14.428982254694274,78.37248445497643,Female,10.6846076
+Aarav Verma,Akanksha Verma,Denkanikottai,3.6,96,Good,8,13000,Urban,Tamil Nadu,12.44413639442931,77.88972128085169,Male,5.783725972
+Rohan Sharma,Monika Sharma,Seoni-Malwa,27.4,93,Excellent,8,12500,Urban,Madhya Pradesh,22.25575390184187,77.4657383756939,Male,10.84143662
+Ananya Singh,Siddharth Singh,Sadiya,25.3,89,Asthma,4,9000,Rural,Assam,27.880015739477162,95.64799481417545,Female,9.17882642
+Ayaan Singh,Neeta Singh,Kaza,3.7,99,Good,7,11500,Urban,Himachal Pradesh,32.046306831527154,77.98282215919534,Male,5.620855615
+Ria Shah,Raj Shah,Budni,27,91,Allergies,5,10500,Urban,Madhya Pradesh,22.80632525230181,77.74156507475553,Female,9.87794479
+Arnav Patel,Komal Patel,Kedarnath,25.5,88,Asthma,4,9500,Rural,Uttarakhand,30.719358996666664,79.05229374594589,Male,9.192657899
+Anushka Singh,Manish Singh,Rewa,27.9,94,Normal,7,11000,Urban,Madhya Pradesh,24.360550889709195,81.3305121381297,Female,10.70622922
+Aarav Verma,Akanksha Verma,Saraikela-Kharsawan,3.5,96,Good,8,13000,Urban,Jharkhand,22.590475170457697,85.9211029589566,Male,5.76210435
+Rohan Sharma,Monika Sharma,Kadthal,27.5,93,Excellent,8,12500,Urban,Telangana,16.950629454466537,78.57979286868718,Male,10.86305825
+Ananya Singh,Siddharth Singh,Damoh,25.4,89,Asthma,4,9000,Rural,Madhya Pradesh,23.388735106712392,79.67108828239621,Female,9.200448042
+Ayaan Singh,Neeta Singh,Atchampet,3.6,99,Good,7,11500,Urban,Andhra Pradesh,16.6077091702907,80.1850531866474,Male,5.599233993
+Ria Shah,Raj Shah,Bhatapara,27.1,91,Allergies,5,10500,Urban,Chhattisgarh,21.81619986097905,82.0059998828596,Female,9.899566411
+Arnav Patel,Komal Patel,Nawada,25.6,88,Asthma,4,9500,Rural,Bihar,24.86321409541176,85.57479815539543,Male,9.21427952
+Anushka Singh,Manish Singh,Utkoor,28,94,Normal,7,11000,Urban,Telangana,16.70392416814417,77.47697608376157,Female,10.72785085
+Aarav Verma,Akanksha Verma,Tenali,3.4,96,Good,8,13000,Urban,Andhra Pradesh,16.25839446479278,80.6767320426712,Male,5.740482729
+Rohan Sharma,Monika Sharma,Krishna,27.6,93,Excellent,8,12500,Urban,Andhra Pradesh,16.362425476125374,81.52640506763942,Male,10.88467987
+Ananya Singh,Siddharth Singh,Amrabad,25.5,89,Asthma,4,9000,Rural,Telangana,16.18917990753416,78.71641071299922,Female,9.222069663
+Ayaan Singh,Neeta Singh,Nainwa,3.5,99,Good,7,11500,Urban,Rajasthan,25.71902999027169,75.71541859603651,Male,5.577612372
+Ria Shah,Raj Shah,Kohima,27.2,91,Allergies,5,10500,Urban,Nagaland,25.574035939867798,94.10141877962263,Female,9.921188033
+Arnav Patel,Komal Patel,Mansa,25.7,88,Asthma,4,9500,Rural,Gujarat,23.427105196558248,72.7576127598807,Male,9.235901142
+Anushka Singh,Manish Singh,Rumgong,28.1,94,Normal,7,11000,Urban,Arunachal Pradesh,28.363727771948533,94.82179405790616,Female,10.74947247
+Aarav Verma,Akanksha Verma,Adampur,3.3,96,Good,8,13000,Urban,Haryana,29.266847172724834,75.5153640325989,Male,5.718861107
+Rohan Sharma,Monika Sharma,Kota,27.7,93,Excellent,8,12500,Urban,Rajasthan,24.897456651202486,75.76258373906641,Male,10.90630149
+Ananya Singh,Siddharth Singh,Etawah,25.6,89,Asthma,4,9000,Rural,Uttar Pradesh,26.75031193082658,78.99588369094639,Female,9.243691285
+Ayaan Singh,Neeta Singh,Holalkere,3.4,99,Good,7,11500,Urban,Karnataka,13.91085901385534,76.15104835125219,Male,5.55599075
+Ria Shah,Raj Shah,Kundapura,27.3,91,Allergies,5,10500,Urban,Karnataka,13.590190363737797,74.92680140515853,Female,9.942809655
+Arnav Patel,Komal Patel,Dhule,25.8,88,Asthma,4,9500,Rural,Maharashtra,21.574472507311405,74.8092686223948,Male,9.257522763
+Anushka Singh,Manish Singh,Nungba,28.2,94,Normal,7,11000,Urban,Manipur,24.618035461976586,93.32742269802499,Female,10.77109409
+Aarav Verma,Akanksha Verma,Machilipatnam,3.2,96,Good,8,13000,Urban,Andhra Pradesh,16.162150045043813,81.16786785569471,Male,5.697239485
+Rohan Sharma,Monika Sharma,Dera Baba Nanak,27.8,93,Excellent,8,12500,Urban,Punjab,31.943497699298185,75.06061313680243,Male,10.92792311
+Ananya Singh,Siddharth Singh,Osmanabad,25.7,89,Asthma,4,9000,Rural,Maharashtra,17.911195181346304,75.91109723939817,Female,9.265312906
+Ayaan Singh,Neeta Singh,Fatehabad,3.3,99,Good,7,11500,Urban,Haryana,29.605735278793162,75.44981992176136,Male,5.534369128
+Ria Shah,Raj Shah,Goiliang,27.4,91,Allergies,5,10500,Urban,Arunachal Pradesh,28.10221936871176,96.66748883368045,Female,9.964431276
+Arnav Patel,Komal Patel,Panna,25.9,88,Asthma,4,9500,Rural,Madhya Pradesh,24.91358381794246,80.47767410895655,Male,9.279144385
+Anushka Singh,Manish Singh,Bighapur,28.3,94,Normal,7,11000,Urban,Uttar Pradesh,26.29286271244668,80.86627146669247,Female,10.79271571
+Aarav Verma,Akanksha Verma,West Garo Hills,3.1,96,Good,8,13000,Urban,Meghalaya,25.57433671098234,90.24223132016216,Male,5.675617864
+Rohan Sharma,Monika Sharma,Memari,27.9,93,Excellent,8,12500,Urban,West Bengal,23.35012171622307,88.07809657306022,Male,10.94954473
+Ananya Singh,Siddharth Singh,Pathalgaon,25.8,89,Asthma,4,9000,Rural,Chhattisgarh,22.45735670544518,83.62136228760865,Female,9.286934528
+Ayaan Singh,Neeta Singh,Arwal,3.2,99,Good,7,11500,Urban,Bihar,25.275604586610683,84.67935861567484,Male,5.512747507
+Ria Shah,Raj Shah,Jalore,27.5,91,Allergies,5,10500,Urban,Rajasthan,25.35133501828244,72.81471130974846,Female,9.986052898
+Arnav Patel,Komal Patel,Anuppur,26,88,Asthma,4,9500,Rural,Madhya Pradesh,23.412774959398675,82.0103770096792,Male,9.300766007
+Anushka Singh,Manish Singh,Khoyrasol,28.4,94,Normal,7,11000,Urban,West Bengal,23.84881946804143,87.25626461148961,Female,10.81433733
+Aarav Verma,Akanksha Verma,Afzalpur,3,96,Good,8,13000,Urban,Karnataka,17.341700918299143,76.24557278931256,Male,5.653996242
+Rohan Sharma,Monika Sharma,Paithan,28,93,Excellent,8,12500,Urban,Maharashtra,19.472413504418977,75.54081002451692,Male,10.97116635
+Ananya Singh,Siddharth Singh,Lakhnadon,25.9,89,Asthma,4,9000,Rural,Madhya Pradesh,22.67945346459976,79.66128482690402,Female,9.30855615
+Ayaan Singh,Neeta Singh,Nalkheda,3.1,99,Good,7,11500,Urban,Madhya Pradesh,23.95359375861352,76.26026277194767,Male,5.491125885
+Ria Shah,Raj Shah,Madhugiri,27.6,91,Allergies,5,10500,Urban,Karnataka,13.60816655888964,77.34734547953911,Female,10.00767452
+Arnav Patel,Komal Patel,Bukkapatnam,26.1,88,Asthma,4,9500,Rural,Andhra Pradesh,14.303315573930368,77.91677874808236,Male,9.322387628
+Anushka Singh,Manish Singh,Haflong,28.5,94,Normal,7,11000,Urban,Assam,25.202843118831225,92.89762313809767,Female,10.83595895
+Aarav Verma,Akanksha Verma,Obulavaripalle,2.9,96,Good,8,13000,Urban,Andhra Pradesh,14.065108737650618,79.35124770797867,Male,5.632374621
+Rohan Sharma,Monika Sharma,Jilasu,28.1,93,Excellent,8,12500,Urban,Uttarakhand,30.322944074114577,79.24466665158744,Male,10.99278798
+Ananya Singh,Siddharth Singh,Mohanur,26,89,Asthma,4,9000,Rural,Tamil Nadu,11.095587673900791,78.0293366264923,Female,9.330177771
+Ayaan Singh,Neeta Singh,Darbha,3,99,Good,7,11500,Urban,Chhattisgarh,18.853245268525015,81.6846750516633,Male,5.469504264
+Ria Shah,Raj Shah,Aizawl,27.7,91,Allergies,5,10500,Urban,Mizoram,24.05504307543019,92.9281629662152,Female,10.02929614
+Arnav Patel,Komal Patel,Antagarh,26.2,88,Asthma,4,9500,Rural,Chhattisgarh,20.051022905014904,81.36872730514045,Male,9.34400925
+Anushka Singh,Manish Singh,Gaya,28.6,94,Normal,7,11000,Urban,Bihar,24.961773203855262,84.98157353184808,Female,10.85758058
+Aarav Verma,Akanksha Verma,Payum,2.8,96,Good,8,13000,Urban,Arunachal Pradesh,28.77473096627189,94.44813361451925,Male,5.610752999
+Rohan Sharma,Monika Sharma,Suratgarh,28.2,93,Excellent,8,12500,Urban,Rajasthan,29.198786666439755,73.78725079824319,Male,11.0144096
+Ananya Singh,Siddharth Singh,Patharia,26.1,89,Asthma,4,9000,Rural,Madhya Pradesh,23.862188988127325,79.26819883787202,Female,9.351799393
+Ayaan Singh,Neeta Singh,Marigaon,2.9,99,Good,7,11500,Urban,Assam,26.27641213393138,92.35121185567002,Male,5.447882642
+Ria Shah,Raj Shah,Leh,27.8,91,Allergies,5,10500,Urban,Ladakh,33.87119199475019,77.4343051298692,Female,10.05091776
+Arnav Patel,Komal Patel,Bharatpur,26.3,88,Asthma,4,9500,Rural,Rajasthan,26.92860172664521,77.29332124068543,Male,9.365630872
+Anushka Singh,Manish Singh,Budni,28.7,94,Normal,7,11000,Urban,Madhya Pradesh,22.923419561063696,77.94895021647667,Female,10.8792022
+Aarav Verma,Akanksha Verma,Chengam,2.7,96,Good,8,13000,Urban,Tamil Nadu,12.222938921908124,78.98542343436236,Male,5.589131377
+Rohan Sharma,Monika Sharma,Sarangarh,28.3,93,Excellent,8,12500,Urban,Chhattisgarh,21.639305427727784,83.02923089194294,Male,11.03603122
+Ananya Singh,Siddharth Singh,Ajjampura,26.2,89,Asthma,4,9000,Rural,Karnataka,13.686112798325343,76.20540945747535,Female,9.373421015
+Ayaan Singh,Neeta Singh,Rann Of Kachchh,2.8,99,Good,7,11500,Urban,Gujarat,23.622655041154886,70.36629666712288,Male,5.42626102
+Ria Shah,Raj Shah,Kancheepuram,27.9,91,Allergies,5,10500,Urban,Tamil Nadu,12.906134339762016,79.70806082039411,Female,10.07253938
+Arnav Patel,Komal Patel,Tarn Taran,26.4,88,Asthma,4,9500,Rural,Punjab,31.275608540484768,75.03622968395433,Male,9.387252493
+Anushka Singh,Manish Singh,Beed,28.8,94,Normal,7,11000,Urban,Maharashtra,19.121680491489748,75.93462196660397,Female,10.90082382
+Aarav Verma,Akanksha Verma,Bareilly,2.6,96,Good,8,13000,Urban,Uttar Pradesh,28.59941609426921,79.38371540625285,Male,5.567509756
+Rohan Sharma,Monika Sharma,Jamai,28.4,93,Excellent,8,12500,Urban,Madhya Pradesh,22.384673965831354,78.39987656820009,Male,11.05765284
+Ananya Singh,Siddharth Singh,Ahmednagar,26.3,89,Asthma,4,9000,Rural,Maharashtra,18.525631275607626,74.99431429882922,Female,9.395042636
+Ayaan Singh,Neeta Singh,Faridpur,2.7,99,Good,7,11500,Urban,Uttar Pradesh,28.29529682745422,79.69271102362113,Male,5.404639399
+Ria Shah,Raj Shah,Jamkhandi,28,91,Allergies,5,10500,Urban,Karnataka,16.58829754544621,75.40914451754331,Female,10.09416101
+Arnav Patel,Komal Patel,Budaun,26.5,88,Asthma,4,9500,Rural,Uttar Pradesh,28.2918996130335,78.94551096131086,Male,9.408874115
+Anushka Singh,Manish Singh,Burmu,28.9,94,Normal,7,11000,Urban,Jharkhand,23.559831157939886,85.16971793350702,Female,10.92244544
+Aarav Verma,Akanksha Verma,Mahidpur,2.5,96,Good,8,13000,Urban,Madhya Pradesh,23.551287845488094,75.59510504486597,Male,5.545888134
+Rohan Sharma,Monika Sharma,Pohri,28.5,93,Excellent,8,12500,Urban,Madhya Pradesh,25.79054454449161,77.44127721307021,Male,11.07927446
+Ananya Singh,Siddharth Singh,Sanku,26.4,89,Asthma,4,9000,Rural,Ladakh,34.422820346278414,75.99253135170306,Female,9.416664258
+Ayaan Singh,Neeta Singh,North 24 Parganas,2.6,99,Good,7,11500,Urban,West Bengal,22.649431063600634,88.39884623512086,Male,5.383017777
+Ria Shah,Raj Shah,Burhanpur,28.1,91,Allergies,5,10500,Urban,Madhya Pradesh,21.45822840650574,76.38959447276166,Female,10.11578263
+Arnav Patel,Komal Patel,Sundarbani,26.6,88,Asthma,4,9500,Rural,Jammu and Kashmir,32.98111467711032,74.36858541779695,Male,9.430495736
+Anushka Singh,Manish Singh,Pushparajgarh,29,94,Normal,7,11000,Urban,Madhya Pradesh,22.967653377664398,81.66275974694179,Female,10.94406706
+Aarav Verma,Akanksha Verma,Leh,2.4,96,Good,8,13000,Urban,Ladakh,34.40149456613733,78.6514258059359,Male,5.524266513
+Rohan Sharma,Monika Sharma,Biswan,28.6,93,Excellent,8,12500,Urban,Uttar Pradesh,27.677779936305676,81.19324653397729,Male,11.10089608
+Ananya Singh,Siddharth Singh,Basna,26.5,89,Asthma,4,9000,Rural,Chhattisgarh,21.53535047880808,82.89567971915986,Female,9.438285879
+Ayaan Singh,Neeta Singh,Etalin,2.5,99,Good,7,11500,Urban,Arunachal Pradesh,28.556542913261875,96.55439698818579,Male,5.361396156
+Ria Shah,Raj Shah,Parli,28.2,91,Allergies,5,10500,Urban,Maharashtra,18.846792316807704,76.39921211890609,Female,10.13740425
+Arnav Patel,Komal Patel,Sandeshkhali,26.7,88,Asthma,4,9500,Rural,West Bengal,22.367019339004408,88.91862958756947,Male,9.452117358
+Anushka Singh,Manish Singh,Idukki,29.1,94,Normal,7,11000,Urban,Kerala,9.592639794004885,77.0132886268619,Female,10.96568868
+Aarav Verma,Akanksha Verma,Arnas,2.3,96,Good,8,13000,Urban,Jammu and Kashmir,33.21420455603703,74.93947806431,Male,5.502644891
+Rohan Sharma,Monika Sharma,Dharwad,28.7,93,Excellent,8,12500,Urban,Karnataka,15.53945832270104,74.88850596778681,Male,11.1225177
+Ananya Singh,Siddharth Singh,Garladinne,26.6,89,Asthma,4,9000,Rural,Andhra Pradesh,14.842959248595589,77.44917944868423,Female,9.459907501
+Ayaan Singh,Neeta Singh,Atarra,2.4,99,Good,7,11500,Urban,Uttar Pradesh,25.333352379426955,80.5298295386301,Male,5.339774534
+Ria Shah,Raj Shah,Bhattukalan,28.3,91,Allergies,5,10500,Urban,Haryana,29.36039117608188,75.3134424692744,Female,10.15902587
+Arnav Patel,Komal Patel,Jalgaon,26.8,88,Asthma,4,9500,Rural,Maharashtra,20.588470658261766,75.03983469453232,Male,9.47373898
+Anushka Singh,Manish Singh,Pulkal,29.2,94,Normal,7,11000,Urban,Telangana,17.725757397504736,78.11323784043479,Female,10.9873103
+Aarav Verma,Akanksha Verma,Malia,2.2,96,Good,8,13000,Urban,Gujarat,21.03157235634144,70.35888333221833,Male,5.481023269
+Rohan Sharma,Monika Sharma,Ahmednagar,28.8,93,Excellent,8,12500,Urban,Maharashtra,19.661677530331588,73.96705394131536,Male,11.14413933
+Ananya Singh,Siddharth Singh,Vadodara,26.7,89,Asthma,4,9000,Rural,Gujarat,22.19735325831209,73.2890487032951,Female,9.481529123
+Ayaan Singh,Neeta Singh,Gadhada,2.3,99,Good,7,11500,Urban,Gujarat,22.063883714465067,71.58925168945544,Male,5.318152912
+Ria Shah,Raj Shah,Kumbakonam,28.4,91,Allergies,5,10500,Urban,Tamil Nadu,10.912901593933977,79.36544603308829,Female,10.18064749
+Arnav Patel,Komal Patel,Thottambedu,26.9,88,Asthma,4,9500,Rural,Andhra Pradesh,13.6959625664075,79.79001292598953,Male,9.495360601
+Anushka Singh,Manish Singh,Agar Malwa,29.3,94,Normal,7,11000,Urban,Madhya Pradesh,23.616428044553135,75.96273364291105,Female,11.00893193
+Aarav Verma,Akanksha Verma,Latur,2.1,96,Good,8,13000,Urban,Maharashtra,18.44358099281037,76.7084716624182,Male,5.459401648
+Rohan Sharma,Monika Sharma,Beluguppa,28.9,93,Excellent,8,12500,Urban,Andhra Pradesh,14.637166312352878,77.17635335495842,Male,11.16576095
+Ananya Singh,Siddharth Singh,Aurangabad,26.8,89,Asthma,4,9000,Rural,Maharashtra,20.395910642690424,75.53669315267294,Female,9.503150744
+Ayaan Singh,Neeta Singh,Govardhan,2.2,99,Good,7,11500,Urban,Uttar Pradesh 281001,27.477044164932355,77.43299286597436,Male,5.296531291
+Ria Shah,Raj Shah,Darlawn,28.5,91,Allergies,5,10500,Urban,Mizoram,23.860390195653014,92.98370877474177,Female,10.20226911
+Arnav Patel,Komal Patel,Sahebganj,27,88,Asthma,4,9500,Rural,Jharkhand,24.857518527918824,87.86205332518776,Male,9.516982223
+Anushka Singh,Manish Singh,Basti,29.4,94,Normal,7,11000,Urban,Uttar Pradesh,26.745788876974714,82.94716712623176,Female,11.03055355
+Aarav Verma,Akanksha Verma,Karwi,2,96,Good,8,13000,Urban,Uttar Pradesh,25.320032760045354,81.02288585108695,Male,5.437780026
+Rohan Sharma,Monika Sharma,Brajarajnagar,29,93,Excellent,8,12500,Urban,Odisha,21.92084754239356,83.91860902487903,Male,11.18738257
+Ananya Singh,Siddharth Singh,Dadra and Nagar Haveli,26.9,89,Asthma,4,9000,Rural,Dadra and Nagar Haveli and Daman and Diu,20.253643695555382,72.98595045250426,Female,9.524772366
+Ayaan Singh,Neeta Singh,Bhiwapur,2.1,99,Good,7,11500,Urban,Maharashtra,20.752911979712575,79.25338116897022,Male,5.274909669
+Ria Shah,Raj Shah,Zachaldara,28.6,91,Allergies,5,10500,Urban,Jammu and Kashmir,34.353372929442045,74.0449460952098,Female,10.22389074
+Arnav Patel,Komal Patel,Bagora,27.1,88,Asthma,4,9500,Rural,Rajasthan,25.27558798055037,71.93351964710635,Male,9.538603844
+Anushka Singh,Manish Singh,Gobindpur,29.5,94,Normal,7,11000,Urban,Bihar,24.73513204810016,85.59200595158549,Female,11.05217517
+Aarav Verma,Akanksha Verma,Nashik,1.9,96,Good,8,13000,Urban,Maharashtra,19.918999846246585,73.63957260119258,Male,5.416158404
+Rohan Sharma,Monika Sharma,Sangli,29.1,93,Excellent,8,12500,Urban,Maharashtra,16.929363892613384,74.57261722683334,Male,11.20900419
+Ananya Singh,Siddharth Singh,Majhgaon,27,89,Asthma,4,9000,Rural,Jharkhand,22.02636140336621,85.88184070914454,Female,9.546393988
+Ayaan Singh,Neeta Singh,Nandipada,2,99,Good,7,11500,Urban,Odisha,21.084036085782724,86.28812976975091,Male,5.253288047
+Ria Shah,Raj Shah,Adapur,28.7,91,Allergies,5,10500,Urban,Bihar,26.884687372544754,84.86530053818909,Female,10.24551236
+Arnav Patel,Komal Patel,Leh,27.2,88,Asthma,4,9500,Rural,Ladakh,33.63752653988837,77.6778447956924,Male,9.560225466
+Anushka Singh,Manish Singh,Willong,29.6,94,Normal,7,11000,Urban,Manipur,25.458951529314604,93.92790141034926,Female,11.07379679
+Aarav Verma,Akanksha Verma,Telkoi,1.8,96,Good,8,13000,Urban,Odisha,21.299453822648058,85.35127377692625,Male,5.394536783
+Rohan Sharma,Monika Sharma,Saraikela-Kharsawan,29.2,93,Excellent,8,12500,Urban,Jharkhand,23.121810367596215,85.85632181480368,Male,11.23062581
+Ananya Singh,Siddharth Singh,Pusad,27.1,89,Asthma,4,9000,Rural,Maharashtra,19.779726492117042,77.59694867621634,Female,9.568015609
+Ayaan Singh,Neeta Singh,Sultanpur Lodhi,1.9,99,Good,7,11500,Urban,Punjab,31.253407352370953,75.25925742443343,Male,5.231666426
+Ria Shah,Raj Shah,Balumath,28.8,91,Allergies,5,10500,Urban,Jharkhand,23.877355519404045,84.74062473056614,Female,10.26713398
+Arnav Patel,Komal Patel,Dungargarh,27.3,88,Asthma,4,9500,Rural,Rajasthan,27.942149843155658,74.15425284791755,Male,9.581847088
+Anushka Singh,Manish Singh,Ngari Diqu,29.7,94,Normal,7,11000,Urban,Tibet Autonomous Region,32.54161937969229,79.32578481827095,Female,11.09541841
+Aarav Verma,Akanksha Verma,Islampur,1.7,96,Good,8,13000,Urban,West Bengal,26.22976556450647,88.28706396222361,Male,5.372915161
+Rohan Sharma,Monika Sharma,Roorkee,29.3,93,Excellent,8,12500,Urban,Uttarakhand,29.91770995968044,77.85109207354284,Male,11.25224743
+Ananya Singh,Siddharth Singh,Nising,27.2,89,Asthma,4,9000,Rural,Haryana,29.76387700601034,76.75004057977009,Female,9.589637231
+Ayaan Singh,Neeta Singh,Pidi,1.8,99,Good,7,11500,Urban,Arunachal Pradesh,28.717660315610402,94.41062588413824,Male,5.210044804
+Ria Shah,Raj Shah,Keolari,28.9,91,Allergies,5,10500,Urban,Madhya Pradesh,22.201944427515876,80.02536455030443,Female,10.2887556
+Arnav Patel,Komal Patel,Thiruvallur,27.4,88,Asthma,4,9500,Rural,Tamil Nadu,13.199617949809856,79.62586279711627,Male,9.603468709
+Anushka Singh,Manish Singh,Sikri,29.8,94,Normal,7,11000,Urban,Rajasthan,27.51508380174528,77.15724295039655,Female,11.11704003
+Aarav Verma,Akanksha Verma,Parasia,1.6,96,Good,8,13000,Urban,Madhya Pradesh,22.304033226303428,78.86493166066703,Male,5.35129354
+Rohan Sharma,Monika Sharma,Alwar,29.4,93,Excellent,8,12500,Urban,Rajasthan,27.710148131759965,76.6908953458637,Male,11.27386906
+Ananya Singh,Siddharth Singh,Mainpur,27.3,89,Asthma,4,9000,Rural,Chhattisgarh,20.08331922509892,82.1066230267369,Female,9.611258852
+Ayaan Singh,Neeta Singh,Leh,1.7,99,Good,7,11500,Urban,Ladakh,34.45586603630058,78.55598735400046,Male,5.188423183
+Ria Shah,Raj Shah,Chitradurga,29,91,Allergies,5,10500,Urban,Karnataka,14.209567778409227,76.97846990398469,Female,10.31037722
+Arnav Patel,Komal Patel,Buldhana,27.5,88,Asthma,4,9500,Rural,Maharashtra,20.864504063817456,76.64231674285618,Male,9.625090331
+Anushka Singh,Manish Singh,Siruguppa,29.9,94,Normal,7,11000,Urban,Karnataka,15.726022686579048,76.9276021802378,Female,11.13866166
+Aarav Verma,Akanksha Verma,Soro,1.5,96,Good,8,13000,Urban,Odisha,21.284691384312445,86.85137291787906,Male,5.329671918
+Rohan Sharma,Monika Sharma,Petlawad,29.5,93,Excellent,8,12500,Urban,Madhya Pradesh,23.133547364246834,74.91038323834208,Male,11.29549068
+Ananya Singh,Siddharth Singh,Ajmer,27.4,89,Asthma,4,9000,Rural,Rajasthan,26.49933178669228,74.82963790424968,Female,9.632880474
+Ayaan Singh,Neeta Singh,Ponda,1.6,99,Good,7,11500,Urban,Goa,15.376555685735294,74.03722116986695,Male,5.166801561
+Ria Shah,Raj Shah,Lakhimpur,29.1,91,Allergies,5,10500,Urban,Assam,27.12463816964896,94.1041229669795,Female,10.33199884
+Arnav Patel,Komal Patel,Udaipur,27.6,88,Asthma,4,9500,Rural,Himachal Pradesh,32.73376631616307,76.59035079962878,Male,9.646711953
+Anushka Singh,Manish Singh,Satna,30,94,Normal,7,11000,Urban,Madhya Pradesh,24.801404730423936,80.99915788875632,Female,11.16028328
+Aarav Verma,Akanksha Verma,Dhorimanna,1.4,96,Good,8,13000,Urban,Rajasthan,25.081345050616893,71.42394205752224,Male,5.308050296
+Rohan Sharma,Monika Sharma,Malhargarh,29.6,93,Excellent,8,12500,Urban,Madhya Pradesh,24.19023838820788,74.94935863923841,Male,11.3171123
+Ananya Singh,Siddharth Singh,Mandya,27.5,89,Asthma,4,9000,Rural,Karnataka,12.630408862661506,76.52751915426369,Female,9.654502096
+Ayaan Singh,Neeta Singh,Kambam,1.5,99,Good,7,11500,Urban,Tamil Nadu,9.752225643979454,77.3693759450597,Male,5.145179939
