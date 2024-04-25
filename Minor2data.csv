@@ -1,5 +1,5 @@
 Name of Children,Guardian Name,Area,Weight (kg),Height (cm),Health Portfolio,Age (1-11),Household Income,Urban or Rural,State,Latitude,Longitude,Gender,Scale
-Aarav Sharma,Ritu Sharma,Delhi,14.2,95,Normal,5,15000,Urban,Delhi,28.7041,77.1025,Male,9.005911259
+Aarav Sharma,Ritu Sharma,Delhi,14.2,95,Normal,5,15000,Urban,Uttar Pradesh,28.7041,77.1025,Male,9.005911259
 Ananya Patel,Sunil Patel,Mumbai,16.8,102,Allergies,8,12000,Urban,Maharashtra,19.076,72.8777,Female,7.978869779
 Arjun Reddy,Nandini Reddy,Hyderabad,18.5,98,Excellent,6,9000,Urban,Telangana,17.385,78.4867,Male,11.57326203
 Aisha Khan,Sameer Khan,Lucknow,12,85,Normal,4,11000,Rural,Uttar Pradesh,26.8467,80.9462,Female,7.906552007
@@ -15,7 +15,7 @@ Ishaan Kapoor,Sneha Kapoor,Chennai,16.2,98,Normal,9,15000,Urban,Tamil Nadu,13.08
 Tanvi Shah,Vikram Shah,Surat,11.8,85,Good,4,10000,Rural,Gujarat,21.1702,72.8311,Female,8.807452907
 Arnav Singh,Anjali Singh,Kanpur,14.6,93,Normal,7,14000,Urban,Uttar Pradesh,26.4499,80.3319,Male,9.308922291
 Kabir Mehta,Deepak Mehta,Varanasi,13.8,92,Good,6,13000,Urban,Uttar Pradesh,25.3176,82.9739,Male,9.901295948
-Arnav Sharma,Ritu Sharma,Delhi,14.3,94,Excellent,5,15000,Urban,Delhi,28.7041,77.1025,Male,10.99271571
+Arnav Sharma,Ritu Sharma,Delhi,14.3,94,Excellent,5,15000,Urban,Uttar Pradesh,28.7041,77.1025,Male,10.99271571
 Anaya Patel,Sunil Patel,Mumbai,16.7,101,Normal,8,12000,Urban,Maharashtra,19.076,72.8777,Female,9.933241798
 Arjun Reddy,Nandini Reddy,Hyderabad,18.4,97,Good,6,9000,Urban,Telangana,17.385,78.4867,Male,10.52763405
 Aisha Khan,Sameer Khan,Lucknow,12.2,86,Normal,4,11000,Rural,Uttar Pradesh,26.8467,80.9462,Female,7.968396204
@@ -31,7 +31,7 @@ Ishaan Kapoor,Sneha Kapoor,Chennai,16.3,99,Normal,9,15000,Urban,Tamil Nadu,13.08
 Tanvi Shah,Vikram Shah,Surat,11.9,86,Good,4,10000,Rural,Gujarat,21.1702,72.8311,Female,8.853080888
 Arnav Singh,Anjali Singh,Kanpur,14.7,94,Normal,7,14000,Urban,Uttar Pradesh,26.4499,80.3319,Male,9.354550272
 Kabir Mehta,Deepak Mehta,Varanasi,13.9,93,Good,6,13000,Urban,Uttar Pradesh,25.3176,82.9739,Male,9.946923929
-Arnav Sharma,Ritu Sharma,Delhi,14.4,93,Excellent,5,15000,Urban,Delhi,28.7041,77.1025,Male,10.97952016
+Arnav Sharma,Ritu Sharma,Delhi,14.4,93,Excellent,5,15000,Urban,Uttar Pradesh,28.7041,77.1025,Male,10.97952016
 Anaya Patel,Sunil Patel,Mumbai,16.6,100,Normal,8,12000,Urban,Maharashtra,19.076,72.8777,Female,9.887613817
 Arjun Reddy,Nandini Reddy,Hyderabad,18.3,96,Good,6,9000,Urban,Telangana,17.385,78.4867,Male,10.48200607
 Aisha Khan,Sameer Khan,Lucknow,12.1,87,Normal,4,11000,Rural,Uttar Pradesh,26.8467,80.9462,Female,7.981591752
@@ -606,7 +606,7 @@ Arnav Shah,Komal Shah,Ahmedabad,16.7,88,Asthma,4,9500,Rural,Gujarat,23.0225,72.5
 Anaya Gupta,Manish Gupta,Kolkata,19.6,94,Normal,7,11000,Urban,West Bengal,22.5726,88.3639,Female,9.949144867
 Aarav Singh,Akanksha Singh,Pune,11.7,96,Good,8,13000,Urban,Maharashtra,18.5204,73.8567,Male,10.04203883
 Rohan Patel,Monika Patel,Dehradun,18.8,93,Excellent,8,12500,Urban,Uttarakhand,30.3165,78.0322,Male,12.07182155
-Aarav Kumar,Anita Kumar,Delhi,14.5,95,Normal,5,15000,Urban,Delhi,28.7041,77.1025,Male,9.054559908
+Aarav Kumar,Anita Kumar,Delhi,14.5,95,Normal,5,15000,Urban,Uttar Pradesh,28.7041,77.1025,Male,9.054559908
 Ananya Pandey,Sunil Pandey,Mumbai,16.2,102,Allergies,8,12000,Urban,Maharashtra,19.076,72.8777,Female,7.881572482
 Arjun Sharma,Nandini Sharma,Hyderabad,18.8,98,Excellent,6,9000,Urban,Telangana,17.385,78.4867,Male,11.62191068
 Aisha Kumari,Sameer Kumari,Lucknow,11.5,85,Normal,4,11000,Rural,Uttar Pradesh,26.8467,80.9462,Female,7.825470925
