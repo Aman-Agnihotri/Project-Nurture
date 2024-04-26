@@ -81,7 +81,7 @@ const MapComponent = () => {
 
         L.heatLayer(coordinates, {
             radius: 30,
-            gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1.0: 'red'},
+            gradient: {0.1: 'blue', 0.15: 'cyan', 0.2: 'lime', 0.25: 'yellow', 0.3: 'red'},
             scaleRadius: true,
         }).addTo(map);
 
