@@ -1,0 +1,6 @@
+Flask
+scikit-learn
+pycristoforo
+geopy
+pandas
+joblib
