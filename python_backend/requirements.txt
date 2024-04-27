@@ -4,3 +4,4 @@ pycristoforo
 geopy
 pandas
 joblib
+python-dotenv

@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <Container maxW={'container.xl'} p='16' height="100vh"> {/* Set the height to 100vh */}
       <Flex direction={['column', 'row']} justifyContent="space-between" height="100%"> {/* Adjust the Flex container */}
-        <Box flex='2' marginRight='16'>
+        <Box flex='1' flexGrow='1' marginRight='16'>
           <MapComponent />
         </Box>
         <Box flex='1'>
