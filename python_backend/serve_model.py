@@ -1,8 +1,10 @@
 from flask import Flask, request
+from flask_cors import CORS
 import joblib
 import pandas as pd
 
 app = Flask(__name__)
+CORS(app)
 
 # Load the model
 model = joblib.load('random_forest_model.pkl')
