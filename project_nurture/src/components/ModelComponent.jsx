@@ -85,7 +85,7 @@ const ModelComponent = () => {
             DHS extract not generated
           </Heading>
           <Text fontSize="sm">
-            The map will fall back to the original demo data until the local DHS pipeline creates the dashboard extract.
+            Run <code>python python_backend/dhs_pipeline.py</code> to create the local dashboard extract from approved DHS/NFHS-5 files.
           </Text>
         </Box>
       </Alert>

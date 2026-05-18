@@ -3,3 +3,6 @@
 *.pkl
 *.pyc
 .venv
+.env
+__pycache__/
+outputs/

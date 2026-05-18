@@ -1,9 +1,3 @@
-Flask
-flask-cors
-scikit-learn
-pycristoforo
-geopy
+numpy
 pandas
-joblib
-python-dotenv
 pyshp

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster';
@@ -8,7 +8,6 @@ import 'leaflet.heat';
 
 const baseUrl = import.meta.env.BASE_URL || '/';
 const dhsDataUrl = `${baseUrl}generated/dhs_cluster_nutrition.json`;
-const legacyDataUrl = `${baseUrl}coordinates.json`;
 
 const escapeHtml = value =>
   String(value ?? '')
@@ -70,20 +69,6 @@ const dhsPopup = cluster => `
   </div>
 `;
 
-const legacyPopup = row => `
-  <div class="nutrition-popup">
-    <div class="popup-title">${escapeHtml(row['Name of Children'])}</div>
-    <div class="popup-subtitle">${escapeHtml(row.Area)} · demo generated data</div>
-    <div class="popup-grid">
-      <span>Guardian</span><strong>${escapeHtml(row['Guardian Name'])}</strong>
-      <span>Weight</span><strong>${escapeHtml(row['Weight (kg)'])} kg</strong>
-      <span>Height</span><strong>${escapeHtml(row['Height (cm)'])} cm</strong>
-      <span>Health</span><strong>${escapeHtml(row['Health Portfolio'])}</strong>
-      <span>Age</span><strong>${escapeHtml(row['Age (1-11)'])}</strong>
-    </div>
-  </div>
-`;
-
 const fetchJson = async url => {
   const response = await fetch(url, { cache: 'no-store' });
   if (!response.ok) {
@@ -93,27 +78,20 @@ const fetchJson = async url => {
 };
 
 const loadMapData = async () => {
-  try {
-    const dhsData = await fetchJson(dhsDataUrl);
-    if (Array.isArray(dhsData.clusters) && dhsData.clusters.length > 0) {
-      return { type: 'dhs', payload: dhsData };
-    }
-  } catch {
-    // Fall back to the original demo data when the local DHS pipeline has not been run.
+  const dhsData = await fetchJson(dhsDataUrl);
+  if (Array.isArray(dhsData.clusters) && dhsData.clusters.length > 0) {
+    return dhsData;
   }
 
-  const legacyData = await fetchJson(legacyDataUrl);
-  return { type: 'legacy', payload: legacyData };
+  throw new Error('DHS dashboard extract has no cluster records.');
 };
 
-const addLegend = (map, mode) => {
+const addLegend = map => {
   const legend = L.control({ position: 'bottomright' });
 
   legend.onAdd = () => {
     const div = L.DomUtil.create('div', 'nutrition-legend');
-    div.innerHTML =
-      mode === 'dhs'
-        ? `
+    div.innerHTML = `
           <strong>Nutrition Risk</strong>
           <span><i style="background:#b42318"></i>45%+</span>
           <span><i style="background:#e5532d"></i>35-45%</span>
@@ -121,10 +99,6 @@ const addLegend = (map, mode) => {
           <span><i style="background:#2f9e7e"></i>15-25%</span>
           <span><i style="background:#277da1"></i>&lt;15%</span>
           <span><i style="background:#7a8794"></i>sparse sample</span>
-        `
-        : `
-          <strong>Demo Data</strong>
-          <span><i style="background:#e5532d"></i>Generated records</span>
         `;
     return div;
   };
@@ -135,6 +109,7 @@ const addLegend = (map, mode) => {
 
 const MapComponent = () => {
   const mapRef = useRef(null);
+  const [mapMessage, setMapMessage] = useState('');
 
   useEffect(() => {
     let disposed = false;
@@ -164,52 +139,32 @@ const MapComponent = () => {
     });
 
     loadMapData()
-      .then(({ type, payload }) => {
+      .then(payload => {
         if (disposed) return;
 
         const heatPoints = [];
 
-        if (type === 'dhs') {
-          payload.clusters.forEach(cluster => {
-            const lat = Number(cluster.latitude);
-            const lon = Number(cluster.longitude);
-            if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+        payload.clusters.forEach(cluster => {
+          const lat = Number(cluster.latitude);
+          const lon = Number(cluster.longitude);
+          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
 
-            const marker = L.marker([lat, lon], {
-              icon: createRiskIcon(cluster),
-              title: `${cluster.district_name || 'DHS cluster'} ${formatPercent(cluster.risk_score)}`,
-            });
-            marker.bindPopup(dhsPopup(cluster));
-            markers.addLayer(marker);
-
-            const risk = Number(cluster.risk_score);
-            if (Number.isFinite(risk)) {
-              heatPoints.push([lat, lon, Math.max(0.15, Math.min(1, risk / 55))]);
-            }
+          const marker = L.marker([lat, lon], {
+            icon: createRiskIcon(cluster),
+            title: `${cluster.district_name || 'DHS cluster'} ${formatPercent(cluster.risk_score)}`,
           });
-        } else {
-          const customIcon = L.icon({
-            iconUrl: `${baseUrl}marker.png`,
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-          });
+          marker.bindPopup(dhsPopup(cluster));
+          markers.addLayer(marker);
 
-          payload.forEach(row => {
-            const lat = Number(row.Latitude);
-            const lon = Number(row.Longitude);
-            if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
-
-            const marker = L.marker([lat, lon], { icon: customIcon });
-            marker.bindPopup(legacyPopup(row));
-            markers.addLayer(marker);
-            heatPoints.push([lat, lon, Number(row.Scale) / 10 || 0.3]);
-          });
-        }
+          const risk = Number(cluster.risk_score);
+          if (Number.isFinite(risk)) {
+            heatPoints.push([lat, lon, Math.max(0.15, Math.min(1, risk / 55))]);
+          }
+        });
 
         markers.addTo(map);
         heatLayer = L.heatLayer(heatPoints, {
-          radius: type === 'dhs' ? 24 : 30,
+          radius: 24,
           blur: 18,
           maxZoom: 8,
           gradient: {
@@ -225,10 +180,11 @@ const MapComponent = () => {
           map.fitBounds(markers.getBounds().pad(0.08), { maxZoom: 6 });
         }
 
-        legend = addLegend(map, type);
+        legend = addLegend(map);
       })
       .catch(error => {
         console.error(error);
+        setMapMessage('Run `python python_backend/dhs_pipeline.py` to generate the local NFHS-5 dashboard extract.');
       });
 
     return () => {
@@ -244,6 +200,7 @@ const MapComponent = () => {
       <style>
         {`
           .map-container {
+            position: relative;
             min-height: 640px;
             height: calc(100vh - 8rem);
             width: 100%;
@@ -328,9 +285,29 @@ const MapComponent = () => {
             display: inline-block;
             border-radius: 999px;
           }
+
+          .map-message {
+            position: absolute;
+            z-index: 500;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 420px;
+            padding: 18px 20px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+            color: #172033;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+          }
         `}
       </style>
-      <div ref={mapRef} className="map-container" />
+      <div className="map-container">
+        {mapMessage && <div className="map-message">{mapMessage}</div>}
+        <div ref={mapRef} style={{ height: '100%', width: '100%' }} />
+      </div>
     </>
   );
 };
