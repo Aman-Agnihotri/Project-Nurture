@@ -1,6 +1,25 @@
 # Minor_2
 Project Nurture: Malnutrition Watch
 
+## DHS/NFHS-5 data pipeline
+
+The real dashboard data is generated locally from approved DHS/NFHS-5 downloads. Raw DHS files, GPS files, PDFs, and generated microdata-derived JSON are intentionally not committed.
+
+Expected local inputs:
+
+- `dhs_data/IAPR7EDT/IAPR7EFL.DTA` - Household Member Recode (PR)
+- `dhs_data/IAGE7AFL/IAGE7AFL.shp` - DHS GPS cluster shapefile
+
+Generate the dashboard extract:
+
+```bash
+python python_backend/dhs_pipeline.py
+```
+
+This writes `project_nurture/public/generated/dhs_cluster_nutrition.json`, which the dashboard map uses at runtime. If the extract is missing, the app falls back to the original demo coordinates.
+
+The generated extract is local-only because it is derived from restricted DHS microdata and displaced GPS cluster data.
+
 The project link on vercel - https://vercel.com/aman-agnihotris-projects/minor-2
 
 Instructions for running the app - 

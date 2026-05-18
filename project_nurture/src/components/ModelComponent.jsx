@@ -1,119 +1,176 @@
-import { Container, VStack, Heading, Input, Select, Button } from '@chakra-ui/react';
-import { useState } from 'react';
+import {
+  Alert,
+  AlertIcon,
+  Badge,
+  Box,
+  Divider,
+  Heading,
+  HStack,
+  SimpleGrid,
+  Spinner,
+  Stat,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
+import { useEffect, useMemo, useState } from 'react';
+
+const baseUrl = import.meta.env.BASE_URL || '/';
+const dhsDataUrl = `${baseUrl}generated/dhs_cluster_nutrition.json`;
+
+const metrics = [
+  ['stunting_rate', 'Stunted'],
+  ['underweight_rate', 'Underweight'],
+  ['wasting_rate', 'Wasted'],
+  ['anemia_rate', 'Anemia'],
+];
+
+const formatPercent = value => {
+  const number = Number(value);
+  return Number.isFinite(number) ? `${number.toFixed(1)}%` : 'No data';
+};
+
+const formatCount = value => {
+  const number = Number(value);
+  return Number.isFinite(number) ? number.toLocaleString('en-IN') : '0';
+};
 
 const ModelComponent = () => {
-    const [inputValues, setInputValues] = useState({
-        "Age (1-11)": '',
-        "Weight (kg)": '',
-        "Height (cm)": '',
-        "Household Income": '',
-        "Health Portfolio": '',
-        "Urban or Rural": ''
-    });
-    const [result, setResult] = useState('');
+  const [dashboardData, setDashboardData] = useState(null);
+  const [status, setStatus] = useState('loading');
 
-    const handleInputChange = (e) => {
-        setInputValues({
-            ...inputValues,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        if (inputValues["Health Portfolio"] === '' || inputValues["Urban or Rural"] === '') {
-            alert('Please select all options');
-            return;
+  useEffect(() => {
+    fetch(dhsDataUrl, { cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('DHS extract missing');
         }
-        fetch('http://localhost:8000/predict', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(inputValues)
-        })
-            .then(response => response.json())
-            .then(data => setResult(data.prediction))
-            .catch(error => console.error(error)); 
-        };
+        return response.json();
+      })
+      .then(data => {
+        setDashboardData(data);
+        setStatus('ready');
+      })
+      .catch(() => {
+        setStatus('missing');
+      });
+  }, []);
 
+  const highestRiskStates = useMemo(() => {
+    if (!dashboardData?.states) return [];
+
+    return [...dashboardData.states]
+      .filter(state => Number.isFinite(Number(state.risk_score)))
+      .sort((a, b) => Number(b.risk_score) - Number(a.risk_score))
+      .slice(0, 5);
+  }, [dashboardData]);
+
+  if (status === 'loading') {
     return (
-        <Container maxW={'container.xl'} p='16'>
-            <VStack
-                alignItems={'stretch'}
-                spacing={'8'}
-                w={['full', '96']}
-                m={'auto'}
-                my={'16'}
-            >
-                <Heading>Predictive Model Input</Heading>
-                <form onSubmit={handleFormSubmit}>
-                    <Input
-                        type="number"
-                        name="Age (1-11)"
-                        value={inputValues["Age (1-11)"]}
-                        onChange={handleInputChange}
-                        placeholder="Age (1-11)"
-                        required
-                        focusBorderColor={'teal.500'}
-                    />
-                    <Input
-                        type="number"
-                        name="Weight (kg)"
-                        value={inputValues["Weight (kg)"]}
-                        onChange={handleInputChange}
-                        placeholder="Weight (kg)"
-                        required
-                        focusBorderColor={'teal.500'}
-                    />
-                    <Input
-                        type="number"
-                        name="Height (cm)"
-                        value={inputValues["Height (cm)"]}
-                        onChange={handleInputChange}
-                        placeholder="Height (cm)"
-                        required
-                        focusBorderColor={'teal.500'}
-                    />
-                    <Input
-                        type="number"
-                        name="Household Income"
-                        value={inputValues["Household Income"]}
-                        onChange={handleInputChange}
-                        placeholder="Household Income"
-                        required
-                        focusBorderColor={'teal.500'}
-                    />
-                    <Select
-                        name="Health Portfolio"
-                        value={inputValues["Health Portfolio"]}
-                        onChange={handleInputChange}
-                        placeholder="Health Portfolio"
-                        required
-                        focusBorderColor={'teal.500'}
-                    >
-                        <option value="Good">Good</option>
-                        <option value="Average">Average</option>
-                        <option value="Poor">Poor</option>
-                    </Select>
-                    <Select
-                        name="Urban or Rural"
-                        value={inputValues["Urban or Rural"]}
-                        onChange={handleInputChange}
-                        placeholder="Urban or Rural"
-                        required
-                        focusBorderColor={'teal.500'}
-                    >
-                        <option value="Urban">Urban</option>
-                        <option value="Rural">Rural</option>
-                    </Select>
-                    <Button colorScheme={'teal'} type="submit">Predict</Button>
-                </form>
-                <Heading>Prediction</Heading>
-                <p>{result}</p>
-            </VStack>
-        </Container>
+      <VStack alignItems="flex-start" spacing="4" p="6">
+        <Spinner color="teal.500" />
+        <Text color="gray.600">Loading NFHS-5 extract...</Text>
+      </VStack>
     );
+  }
+
+  if (status === 'missing') {
+    return (
+      <Alert status="info" borderRadius="md" alignItems="flex-start">
+        <AlertIcon />
+        <Box>
+          <Heading size="sm" mb="1">
+            DHS extract not generated
+          </Heading>
+          <Text fontSize="sm">
+            The map will fall back to the original demo data until the local DHS pipeline creates the dashboard extract.
+          </Text>
+        </Box>
+      </Alert>
+    );
+  }
+
+  return (
+    <VStack alignItems="stretch" spacing="6">
+      <Box>
+        <HStack justifyContent="space-between" alignItems="flex-start" gap="4">
+          <Box>
+            <Heading size="lg">NFHS-5 Child Nutrition</Heading>
+            <Text color="gray.600" mt="2">
+              India DHS 2019-21, de facto children age 0-59 months
+            </Text>
+          </Box>
+          <Badge colorScheme="teal" borderRadius="full" px="3" py="1">
+            Local DHS extract
+          </Badge>
+        </HStack>
+      </Box>
+
+      <SimpleGrid columns={[2, 2]} spacing="3">
+        {metrics.map(([key, label]) => (
+          <Stat
+            key={key}
+            p="4"
+            borderWidth="1px"
+            borderColor="blackAlpha.200"
+            borderRadius="md"
+          >
+            <StatLabel>{label}</StatLabel>
+            <StatNumber fontSize="2xl">{formatPercent(dashboardData.national[key])}</StatNumber>
+            <StatHelpText mb="0">weighted national rate</StatHelpText>
+          </Stat>
+        ))}
+      </SimpleGrid>
+
+      <Box>
+        <Heading size="sm" mb="3">
+          Highest Composite Risk
+        </Heading>
+        <VStack alignItems="stretch" spacing="3">
+          {highestRiskStates.map(state => (
+            <HStack key={state.state_code} justifyContent="space-between">
+              <Box>
+                <Text fontWeight="semibold">{state.state_name}</Text>
+                <Text fontSize="sm" color="gray.600">
+                  {formatCount(state.haz_valid_n)} valid child measurements
+                </Text>
+              </Box>
+              <Badge colorScheme="orange" borderRadius="full" px="3" py="1">
+                {formatPercent(state.risk_score)}
+              </Badge>
+            </HStack>
+          ))}
+        </VStack>
+      </Box>
+
+      <Divider />
+
+      <SimpleGrid columns={[1, 2]} spacing="3">
+        <Box>
+          <Text fontSize="sm" color="gray.600">
+            Children in extract
+          </Text>
+          <Text fontSize="xl" fontWeight="bold">
+            {formatCount(dashboardData.national.child_count)}
+          </Text>
+        </Box>
+        <Box>
+          <Text fontSize="sm" color="gray.600">
+            Mapped clusters
+          </Text>
+          <Text fontSize="xl" fontWeight="bold">
+            {formatCount(dashboardData.clusters.length)}
+          </Text>
+        </Box>
+      </SimpleGrid>
+
+      <Text fontSize="xs" color="gray.500">
+        Rates use DHS sample weights. Cluster coordinates are displaced by DHS for respondent confidentiality.
+      </Text>
+    </VStack>
+  );
 };
 
 export default ModelComponent;

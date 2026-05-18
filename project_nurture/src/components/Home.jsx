@@ -77,7 +77,13 @@ const MyCarousel = () => (
       <Heading bgColor={'whiteAlpha.700'} color={'black'} {...headingOptions}>
       &quot;Unequal Childhoods: From Screens to Empty Stomachs&quot;
       </Heading>
-      <Heading>POWER</Heading>
+    </Box>
+
+    <Box w="full" h={'100vh'}>
+      <Image src={img4} h="full" w={'full'} objectFit={'cover'} />
+      <Heading bgColor={'blackAlpha.500'} color={'white'} {...headingOptions}>
+      &quot;Turning Survey Data Into Targeted Action&quot;
+      </Heading>
     </Box>
   </Carousel>
 );
