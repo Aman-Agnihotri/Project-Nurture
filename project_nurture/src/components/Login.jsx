@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertIcon,
   Button,
   Container,
   Heading,
@@ -6,10 +8,15 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { authSessionTtlMs, createAuthSession } from '../lib/authSession';
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  authSessionTtlMs,
+  createAuthSession,
+  hasFreshAuthSession,
+} from '../lib/authSession';
 import { auth } from "../lib/firebase";
 
 const getSafeRedirectPath = search => {
@@ -26,7 +33,18 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const redirectPath = getSafeRedirectPath(location.search);
+  const sessionReason = new URLSearchParams(location.search).get('reason');
   const sessionHours = Math.round(authSessionTtlMs / 60 / 60 / 1000);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if (user && hasFreshAuthSession(user.uid)) {
+        navigate(redirectPath, { replace: true });
+      }
+    });
+
+    return unsubscribe;
+  }, [navigate, redirectPath]);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -74,6 +92,12 @@ const Login = () => {
           my={'16'}
         >
           <Heading>Welcome Back</Heading>
+          {sessionReason === 'expired' && (
+            <Alert status="warning" borderRadius="md">
+              <AlertIcon />
+              Your dashboard session expired. Sign in again to continue.
+            </Alert>
+          )}
           <Text color="gray.600" fontSize="sm">
             Dashboard access stays active for {sessionHours} hours on this device.
           </Text>

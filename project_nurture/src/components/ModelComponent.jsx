@@ -3,7 +3,7 @@ import {
   AlertIcon,
   Badge,
   Box,
-  Divider,
+  Button,
   Heading,
   HStack,
   Progress,
@@ -14,10 +14,16 @@ import {
   StatHelpText,
   StatLabel,
   StatNumber,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
   Text,
   VStack,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import { FiRotateCcw } from 'react-icons/fi';
 import {
   formatCount,
   formatPercent,
@@ -71,6 +77,7 @@ const ModelComponent = ({
   status,
   summary,
   onFilterChange,
+  onResetFilters,
 }) => {
   if (status === 'loading') {
     return (
@@ -118,183 +125,207 @@ const ModelComponent = ({
         </HStack>
       </Box>
 
-      <Box>
-        <Heading size="sm" mb="3">
-          Explorer Filters
-        </Heading>
-        <SimpleGrid columns={[1, 2]} spacing="3">
-          <Box>
-            <Text fontSize="xs" color="gray.600" mb="1" fontWeight="semibold">
-              Map indicator
-            </Text>
-            <Select
-              size="sm"
-              value={filters.indicator}
-              onChange={event => onFilterChange('indicator', event.target.value)}
-            >
-              {metricOptions.map(metric => (
-                <option key={metric.key} value={metric.key}>
-                  {metric.label}
-                </option>
-              ))}
-            </Select>
-          </Box>
+      <Tabs colorScheme="teal" isLazy variant="enclosed">
+        <TabList>
+          <Tab>Explore</Tab>
+          <Tab>Priority</Tab>
+          <Tab>Clusters</Tab>
+        </TabList>
 
-          <FilterSelect
-            label="State / UT"
-            value={filters.state}
-            options={filterOptions.states}
-            onChange={value => onFilterChange('state', value)}
-          />
-          <FilterSelect
-            label="District"
-            value={filters.district}
-            options={filterOptions.districts}
-            onChange={value => onFilterChange('district', value)}
-          />
-          <FilterSelect
-            label="Residence"
-            value={filters.residence}
-            options={filterOptions.residences}
-            onChange={value => onFilterChange('residence', value)}
-          />
-          <FilterSelect
-            label="Sex"
-            value={filters.sex}
-            options={filterOptions.sexes}
-            onChange={value => onFilterChange('sex', value)}
-          />
-          <FilterSelect
-            label="Wealth"
-            value={filters.wealth}
-            options={filterOptions.wealth}
-            onChange={value => onFilterChange('wealth', value)}
-          />
-          <FilterSelect
-            label="Age band"
-            value={filters.ageBand}
-            options={filterOptions.ageBands}
-            onChange={value => onFilterChange('ageBand', value)}
-          />
-        </SimpleGrid>
-      </Box>
+        <TabPanels>
+          <TabPanel px="0" pb="0">
+            <VStack alignItems="stretch" spacing="5">
+              <Box>
+                <HStack justifyContent="space-between" alignItems="center" mb="3">
+                  <Heading size="sm">Explorer Filters</Heading>
+                  <Button
+                    leftIcon={<FiRotateCcw />}
+                    onClick={onResetFilters}
+                    size="xs"
+                    variant="outline"
+                  >
+                    Reset
+                  </Button>
+                </HStack>
+                <SimpleGrid columns={[1, 2]} spacing="3">
+                  <Box>
+                    <Text fontSize="xs" color="gray.600" mb="1" fontWeight="semibold">
+                      Map indicator
+                    </Text>
+                    <Select
+                      size="sm"
+                      value={filters.indicator}
+                      onChange={event => onFilterChange('indicator', event.target.value)}
+                    >
+                      {metricOptions.map(metric => (
+                        <option key={metric.key} value={metric.key}>
+                          {metric.label}
+                        </option>
+                      ))}
+                    </Select>
+                  </Box>
 
-      <SimpleGrid columns={[2, 2]} spacing="3">
-        {coreMetrics.map(([key, label]) => (
-          <Stat
-            key={key}
-            p="4"
-            borderWidth="1px"
-            borderColor="blackAlpha.200"
-            borderRadius="md"
-          >
-            <StatLabel>{label}</StatLabel>
-            <StatNumber fontSize="2xl">{formatPercent(summary[key])}</StatNumber>
-            <StatHelpText mb="0">weighted mapped rate</StatHelpText>
-          </Stat>
-        ))}
-      </SimpleGrid>
+                  <FilterSelect
+                    label="State / UT"
+                    value={filters.state}
+                    options={filterOptions.states}
+                    onChange={value => onFilterChange('state', value)}
+                  />
+                  <FilterSelect
+                    label="District"
+                    value={filters.district}
+                    options={filterOptions.districts}
+                    onChange={value => onFilterChange('district', value)}
+                  />
+                  <FilterSelect
+                    label="Residence"
+                    value={filters.residence}
+                    options={filterOptions.residences}
+                    onChange={value => onFilterChange('residence', value)}
+                  />
+                  <FilterSelect
+                    label="Sex"
+                    value={filters.sex}
+                    options={filterOptions.sexes}
+                    onChange={value => onFilterChange('sex', value)}
+                  />
+                  <FilterSelect
+                    label="Wealth"
+                    value={filters.wealth}
+                    options={filterOptions.wealth}
+                    onChange={value => onFilterChange('wealth', value)}
+                  />
+                  <FilterSelect
+                    label="Age band"
+                    value={filters.ageBand}
+                    options={filterOptions.ageBands}
+                    onChange={value => onFilterChange('ageBand', value)}
+                  />
+                </SimpleGrid>
+              </Box>
 
-      <Box>
-        <HStack justifyContent="space-between" alignItems="center" mb="3">
-          <Heading size="sm">Priority Areas</Heading>
-          <Badge colorScheme="gray" borderRadius="full" px="3" py="1">
-            {priorityAreas.scope}
-          </Badge>
-        </HStack>
-        <VStack alignItems="stretch" spacing="3">
-          {priorityAreas.rows.slice(0, 5).map(area => (
-            <Box key={area.label}>
-              <HStack justifyContent="space-between" alignItems="flex-start" gap="4" mb="2">
-                <Box minW="0">
-                  <Text fontWeight="semibold" noOfLines={1}>
-                    {area.label}
+              <SimpleGrid columns={[2, 2]} spacing="3">
+                {coreMetrics.map(([key, label]) => (
+                  <Stat
+                    key={key}
+                    p="4"
+                    borderWidth="1px"
+                    borderColor="blackAlpha.200"
+                    borderRadius="md"
+                  >
+                    <StatLabel>{label}</StatLabel>
+                    <StatNumber fontSize="2xl">{formatPercent(summary[key])}</StatNumber>
+                    <StatHelpText mb="0">weighted mapped rate</StatHelpText>
+                  </Stat>
+                ))}
+              </SimpleGrid>
+
+              <SimpleGrid columns={[1, 2]} spacing="3">
+                <Box>
+                  <Text fontSize="sm" color="gray.600">
+                    Mapped children in selection
                   </Text>
-                  <Text fontSize="sm" color="gray.600" noOfLines={1}>
-                    {area.priority_subtitle}
+                  <Text fontSize="xl" fontWeight="bold">
+                    {formatCount(summary.child_count)}
                   </Text>
                 </Box>
-                <VStack alignItems="flex-end" spacing="1">
-                  <Badge
-                    colorScheme={priorityTone(area.priority_score)}
-                    borderRadius="full"
-                    px="3"
-                    py="1"
-                  >
-                    {formatPercent(area.priority_metric)}
-                  </Badge>
-                  <Text fontSize="xs" color="gray.500">
-                    score {Math.round(area.priority_score)}
+                <Box>
+                  <Text fontSize="sm" color="gray.600">
+                    Mapped clusters
                   </Text>
-                </VStack>
+                  <Text fontSize="xl" fontWeight="bold">
+                    {formatCount(filteredClusters.length)}
+                  </Text>
+                </Box>
+              </SimpleGrid>
+            </VStack>
+          </TabPanel>
+
+          <TabPanel px="0" pb="0">
+            <Box>
+              <HStack justifyContent="space-between" alignItems="center" mb="3">
+                <Heading size="sm">Priority Areas</Heading>
+                <Badge colorScheme="gray" borderRadius="full" px="3" py="1">
+                  {priorityAreas.scope}
+                </Badge>
               </HStack>
-              <Progress
-                aria-label={`${area.label} priority score`}
-                colorScheme={priorityTone(area.priority_score)}
-                size="xs"
-                value={Math.min(100, Math.max(0, area.priority_score))}
-              />
+              <VStack alignItems="stretch" spacing="3">
+                {priorityAreas.rows.slice(0, 5).map(area => (
+                  <Box key={area.label}>
+                    <HStack justifyContent="space-between" alignItems="flex-start" gap="4" mb="2">
+                      <Box minW="0">
+                        <Text fontWeight="semibold" noOfLines={1}>
+                          {area.label}
+                        </Text>
+                        <Text fontSize="sm" color="gray.600" noOfLines={1}>
+                          {area.priority_subtitle}
+                        </Text>
+                      </Box>
+                      <VStack alignItems="flex-end" spacing="1">
+                        <Badge
+                          colorScheme={priorityTone(area.priority_score)}
+                          borderRadius="full"
+                          px="3"
+                          py="1"
+                        >
+                          {formatPercent(area.priority_metric)}
+                        </Badge>
+                        <Text fontSize="xs" color="gray.500">
+                          score {Math.round(area.priority_score)}
+                        </Text>
+                      </VStack>
+                    </HStack>
+                    <Progress
+                      aria-label={`${area.label} priority score`}
+                      colorScheme={priorityTone(area.priority_score)}
+                      size="xs"
+                      value={Math.min(100, Math.max(0, area.priority_score))}
+                    />
+                  </Box>
+                ))}
+                {priorityAreas.rows.length === 0 && (
+                  <Text color="gray.600" fontSize="sm">
+                    No priority areas match the selected filters.
+                  </Text>
+                )}
+              </VStack>
+              <Text fontSize="xs" color="gray.500" mt="3">
+                Priority score combines the selected rate with mapped survey sample size.
+              </Text>
             </Box>
-          ))}
-          {priorityAreas.rows.length === 0 && (
-            <Text color="gray.600" fontSize="sm">
-              No priority areas match the selected filters.
-            </Text>
-          )}
-        </VStack>
-        <Text fontSize="xs" color="gray.500" mt="3">
-          Priority score combines the selected rate with mapped survey sample size.
-        </Text>
-      </Box>
+          </TabPanel>
 
-      <Box>
-        <Heading size="sm" mb="3">
-          Highest {metricLabel(filters.indicator)}
-        </Heading>
-        <VStack alignItems="stretch" spacing="3">
-          {topClusters.map(cluster => (
-            <HStack key={cluster.cluster_id} justifyContent="space-between" gap="4">
-              <Box minW="0">
-                <Text fontWeight="semibold" noOfLines={1}>
-                  {cluster.district_name || 'DHS cluster'}
-                </Text>
-                <Text fontSize="sm" color="gray.600" noOfLines={1}>
-                  {cluster.state_name} · {formatCount(cluster.child_count)} children
-                </Text>
-              </Box>
-              <Badge colorScheme="orange" borderRadius="full" px="3" py="1">
-                {formatPercent(cluster[filters.indicator])}
-              </Badge>
-            </HStack>
-          ))}
-          {topClusters.length === 0 && (
-            <Text color="gray.600" fontSize="sm">
-              No clusters match the selected filters.
-            </Text>
-          )}
-        </VStack>
-      </Box>
-
-      <Divider />
-
-      <SimpleGrid columns={[1, 2]} spacing="3">
-        <Box>
-          <Text fontSize="sm" color="gray.600">
-            Mapped children in selection
-          </Text>
-          <Text fontSize="xl" fontWeight="bold">
-            {formatCount(summary.child_count)}
-          </Text>
-        </Box>
-        <Box>
-          <Text fontSize="sm" color="gray.600">
-            Mapped clusters
-          </Text>
-          <Text fontSize="xl" fontWeight="bold">
-            {formatCount(filteredClusters.length)}
-          </Text>
-        </Box>
-      </SimpleGrid>
+          <TabPanel px="0" pb="0">
+            <Box>
+              <Heading size="sm" mb="3">
+                Highest {metricLabel(filters.indicator)}
+              </Heading>
+              <VStack alignItems="stretch" spacing="3">
+                {topClusters.map(cluster => (
+                  <HStack key={cluster.cluster_id} justifyContent="space-between" gap="4">
+                    <Box minW="0">
+                      <Text fontWeight="semibold" noOfLines={1}>
+                        {cluster.district_name || 'DHS cluster'}
+                      </Text>
+                      <Text fontSize="sm" color="gray.600" noOfLines={1}>
+                        {cluster.state_name} · {formatCount(cluster.child_count)} children
+                      </Text>
+                    </Box>
+                    <Badge colorScheme="orange" borderRadius="full" px="3" py="1">
+                      {formatPercent(cluster[filters.indicator])}
+                    </Badge>
+                  </HStack>
+                ))}
+                {topClusters.length === 0 && (
+                  <Text color="gray.600" fontSize="sm">
+                    No clusters match the selected filters.
+                  </Text>
+                )}
+              </VStack>
+            </Box>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
 
       <Text fontSize="xs" color="gray.500">
         Rates use DHS sample weights. Cluster coordinates are displaced by DHS for respondent confidentiality. Filtered cuts are local aggregate views, not public redistributable data.
@@ -365,6 +396,7 @@ ModelComponent.propTypes = {
     anemia_rate: PropTypes.number,
   }).isRequired,
   onFilterChange: PropTypes.func.isRequired,
+  onResetFilters: PropTypes.func.isRequired,
 };
 
 export default ModelComponent;

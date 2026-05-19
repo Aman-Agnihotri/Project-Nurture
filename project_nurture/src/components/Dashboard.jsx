@@ -69,6 +69,10 @@ const Dashboard = () => {
     }));
   };
 
+  const resetFilters = () => {
+    setFilters(defaultFilters);
+  };
+
   const clusterLookup = useMemo(
     () => buildClusterLookup(dashboardData),
     [dashboardData],
@@ -108,7 +112,13 @@ const Dashboard = () => {
     <Container maxW="container.2xl" px={['4', '6', '8']} py="20" minH="100vh">
       <DashboardGuide />
       <Flex direction={['column', 'column', 'row']} gap="6" alignItems="stretch">
-        <Box flex="1.75" minW="0">
+        <Box
+          alignSelf={['stretch', 'stretch', 'flex-start']}
+          flex="1.75"
+          minW="0"
+          position={['static', 'static', 'sticky']}
+          top="20"
+        >
           <MapComponent
             clusters={filteredClusters}
             indicator={filters.indicator}
@@ -127,6 +137,7 @@ const Dashboard = () => {
             status={status}
             summary={filteredSummary}
             onFilterChange={updateFilter}
+            onResetFilters={resetFilters}
           />
         </Box>
       </Flex>

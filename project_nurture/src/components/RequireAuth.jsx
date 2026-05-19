@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { clearAuthSession, hasFreshAuthSession } from '../lib/authSession';
+import {
+  clearAuthSession,
+  getAuthSessionStatus,
+  hasFreshAuthSession,
+} from '../lib/authSession';
 import { auth } from '../lib/firebase';
 
 const RequireAuth = ({ children }) => {
@@ -16,15 +20,21 @@ const RequireAuth = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       const isAuthorized = Boolean(user && hasFreshAuthSession(user.uid));
+      const sessionStatus = getAuthSessionStatus(user?.uid);
+      const redirectReason = sessionStatus === 'expired' ? 'expired' : '';
+
+      if (['expired', 'invalid', 'mismatch'].includes(sessionStatus)) {
+        clearAuthSession();
+      }
 
       if (user && !isAuthorized) {
-        clearAuthSession();
         signOut(auth).catch(() => {});
       }
 
       setState({
         checking: false,
         isAuthorized,
+        redirectReason,
       });
     });
 
@@ -44,10 +54,12 @@ const RequireAuth = ({ children }) => {
 
   if (!state.isAuthorized) {
     const redirectPath = `${location.pathname}${location.search}`;
+    const reasonQuery = state.redirectReason ? `&reason=${state.redirectReason}` : '';
+
     return (
       <Navigate
         replace
-        to={`/login?redirect=${encodeURIComponent(redirectPath)}`}
+        to={`/login?redirect=${encodeURIComponent(redirectPath)}${reasonQuery}`}
       />
     );
   }

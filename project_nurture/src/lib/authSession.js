@@ -12,6 +12,18 @@ const readSession = () => {
   }
 };
 
+export const getAuthSessionStatus = userId => {
+  const session = readSession();
+
+  if (!session) return 'missing';
+  if (!Number.isFinite(Number(session.expiresAt))) return 'invalid';
+  if (Number(session.expiresAt) <= Date.now()) return 'expired';
+  if (!userId) return 'fresh';
+  if (session.userId !== userId) return 'mismatch';
+
+  return 'fresh';
+};
+
 export const createAuthSession = userId => {
   const now = Date.now();
   const session = {
@@ -31,10 +43,5 @@ export const clearAuthSession = () => {
 };
 
 export const hasFreshAuthSession = userId => {
-  const session = readSession();
-
-  if (!session || session.userId !== userId) return false;
-  if (!Number.isFinite(Number(session.expiresAt))) return false;
-
-  return Number(session.expiresAt) > Date.now();
+  return getAuthSessionStatus(userId) === 'fresh';
 };
