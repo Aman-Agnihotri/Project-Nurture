@@ -1,13 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import L from 'leaflet';
+import PropTypes from 'prop-types';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet.heat';
-
-const baseUrl = import.meta.env.BASE_URL || '/';
-const dhsDataUrl = `${baseUrl}generated/dhs_cluster_nutrition.json`;
+import { formatCount, formatPercent, metricLabel } from '../lib/nutritionData';
 
 const escapeHtml = value =>
   String(value ?? '')
@@ -17,21 +16,38 @@ const escapeHtml = value =>
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
-const formatPercent = value => {
-  const number = Number(value);
-  return Number.isFinite(number) ? `${number.toFixed(1)}%` : 'No data';
+const metricMax = {
+  risk_score: 55,
+  stunting_rate: 55,
+  underweight_rate: 55,
+  wasting_rate: 35,
+  severe_wasting_rate: 15,
+  overweight_rate: 15,
+  anemia_rate: 90,
 };
 
-const formatNumber = value => {
-  const number = Number(value);
-  return Number.isFinite(number) ? number.toLocaleString('en-IN') : '0';
-};
-
-const riskColor = (riskScore, sampleQuality) => {
+const metricColor = (value, indicator, sampleQuality) => {
   if (sampleQuality === 'sparse') return '#7a8794';
 
-  const score = Number(riskScore);
+  const score = Number(value);
   if (!Number.isFinite(score)) return '#7a8794';
+
+  if (indicator === 'anemia_rate') {
+    if (score >= 70) return '#b42318';
+    if (score >= 60) return '#e5532d';
+    if (score >= 50) return '#f0a202';
+    if (score >= 35) return '#2f9e7e';
+    return '#277da1';
+  }
+
+  if (indicator === 'severe_wasting_rate' || indicator === 'overweight_rate') {
+    if (score >= 10) return '#b42318';
+    if (score >= 7) return '#e5532d';
+    if (score >= 4) return '#f0a202';
+    if (score >= 2) return '#2f9e7e';
+    return '#277da1';
+  }
+
   if (score >= 45) return '#b42318';
   if (score >= 35) return '#e5532d';
   if (score >= 25) return '#f0a202';
@@ -39,8 +55,8 @@ const riskColor = (riskScore, sampleQuality) => {
   return '#277da1';
 };
 
-const createRiskIcon = cluster => {
-  const color = riskColor(cluster.risk_score, cluster.sample_quality);
+const createMetricIcon = (cluster, indicator) => {
+  const color = metricColor(cluster[indicator], indicator, cluster.sample_quality);
   const size = cluster.sample_quality === 'stable' ? 20 : 16;
 
   return L.divIcon({
@@ -51,55 +67,50 @@ const createRiskIcon = cluster => {
   });
 };
 
-const dhsPopup = cluster => `
+const dhsPopup = (cluster, indicator) => `
   <div class="nutrition-popup">
     <div class="popup-title">${escapeHtml(cluster.district_name || 'DHS cluster')}</div>
     <div class="popup-subtitle">
       ${escapeHtml(cluster.state_name)} · ${escapeHtml(cluster.urban_rural_gps)} · Cluster ${escapeHtml(cluster.cluster_id)}
     </div>
+    <div class="popup-highlight">
+      <span>${escapeHtml(metricLabel(indicator))}</span>
+      <strong>${formatPercent(cluster[indicator])}</strong>
+    </div>
     <div class="popup-grid">
-      <span>Risk score</span><strong>${formatPercent(cluster.risk_score)}</strong>
+      <span>Composite risk</span><strong>${formatPercent(cluster.risk_score)}</strong>
       <span>Stunted</span><strong>${formatPercent(cluster.stunting_rate)}</strong>
       <span>Underweight</span><strong>${formatPercent(cluster.underweight_rate)}</strong>
       <span>Wasted</span><strong>${formatPercent(cluster.wasting_rate)}</strong>
       <span>Anemia</span><strong>${formatPercent(cluster.anemia_rate)}</strong>
-      <span>Children</span><strong>${formatNumber(cluster.child_count)}</strong>
+      <span>Children</span><strong>${formatCount(cluster.child_count)}</strong>
     </div>
     <div class="popup-note">${escapeHtml(cluster.sample_quality)} sample · displaced DHS GPS point</div>
   </div>
 `;
 
-const fetchJson = async url => {
-  const response = await fetch(url, { cache: 'no-store' });
-  if (!response.ok) {
-    throw new Error(`Unable to load ${url}`);
-  }
-  return response.json();
-};
-
-const loadMapData = async () => {
-  const dhsData = await fetchJson(dhsDataUrl);
-  if (Array.isArray(dhsData.clusters) && dhsData.clusters.length > 0) {
-    return dhsData;
-  }
-
-  throw new Error('DHS dashboard extract has no cluster records.');
-};
-
-const addLegend = map => {
+const addLegend = (map, indicator) => {
   const legend = L.control({ position: 'bottomright' });
+  const isAnemia = indicator === 'anemia_rate';
+  const isLowRange = indicator === 'severe_wasting_rate' || indicator === 'overweight_rate';
+
+  const labels = isAnemia
+    ? ['70%+', '60-70%', '50-60%', '35-50%', '<35%']
+    : isLowRange
+      ? ['10%+', '7-10%', '4-7%', '2-4%', '<2%']
+      : ['45%+', '35-45%', '25-35%', '15-25%', '<15%'];
 
   legend.onAdd = () => {
     const div = L.DomUtil.create('div', 'nutrition-legend');
     div.innerHTML = `
-          <strong>Nutrition Risk</strong>
-          <span><i style="background:#b42318"></i>45%+</span>
-          <span><i style="background:#e5532d"></i>35-45%</span>
-          <span><i style="background:#f0a202"></i>25-35%</span>
-          <span><i style="background:#2f9e7e"></i>15-25%</span>
-          <span><i style="background:#277da1"></i>&lt;15%</span>
-          <span><i style="background:#7a8794"></i>sparse sample</span>
-        `;
+      <strong>${escapeHtml(metricLabel(indicator))}</strong>
+      <span><i style="background:#b42318"></i>${labels[0]}</span>
+      <span><i style="background:#e5532d"></i>${labels[1]}</span>
+      <span><i style="background:#f0a202"></i>${labels[2]}</span>
+      <span><i style="background:#2f9e7e"></i>${labels[3]}</span>
+      <span><i style="background:#277da1"></i>${labels[4]}</span>
+      <span><i style="background:#7a8794"></i>sparse sample</span>
+    `;
     return div;
   };
 
@@ -107,12 +118,20 @@ const addLegend = map => {
   return legend;
 };
 
-const MapComponent = () => {
+const mapMessageFor = (status, clusters) => {
+  if (status === 'loading') return 'Loading India DHS dashboard extract...';
+  if (status === 'missing') {
+    return 'Run `python python_backend/dhs_pipeline.py` to generate the local India DHS dashboard extract.';
+  }
+  if (clusters.length === 0) return 'No DHS clusters match the selected filters.';
+  return '';
+};
+
+const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready' }) => {
   const mapRef = useRef(null);
-  const [mapMessage, setMapMessage] = useState('');
+  const message = mapMessageFor(status, clusters);
 
   useEffect(() => {
-    let disposed = false;
     let heatLayer = null;
     let legend = null;
 
@@ -138,62 +157,55 @@ const MapComponent = () => {
       spiderfyDistanceMultiplier: 1.2,
     });
 
-    loadMapData()
-      .then(payload => {
-        if (disposed) return;
+    const heatPoints = [];
+    const mapBounds = L.latLngBounds([]);
 
-        const heatPoints = [];
+    clusters.forEach(cluster => {
+      const lat = Number(cluster.latitude);
+      const lon = Number(cluster.longitude);
+      if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
 
-        payload.clusters.forEach(cluster => {
-          const lat = Number(cluster.latitude);
-          const lon = Number(cluster.longitude);
-          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
-
-          const marker = L.marker([lat, lon], {
-            icon: createRiskIcon(cluster),
-            title: `${cluster.district_name || 'DHS cluster'} ${formatPercent(cluster.risk_score)}`,
-          });
-          marker.bindPopup(dhsPopup(cluster));
-          markers.addLayer(marker);
-
-          const risk = Number(cluster.risk_score);
-          if (Number.isFinite(risk)) {
-            heatPoints.push([lat, lon, Math.max(0.15, Math.min(1, risk / 55))]);
-          }
-        });
-
-        markers.addTo(map);
-        heatLayer = L.heatLayer(heatPoints, {
-          radius: 24,
-          blur: 18,
-          maxZoom: 8,
-          gradient: {
-            0.1: '#277da1',
-            0.3: '#2f9e7e',
-            0.5: '#f0a202',
-            0.7: '#e5532d',
-            1: '#b42318',
-          },
-        }).addTo(map);
-
-        if (markers.getLayers().length > 0) {
-          map.fitBounds(markers.getBounds().pad(0.08), { maxZoom: 6 });
-        }
-
-        legend = addLegend(map);
-      })
-      .catch(error => {
-        console.error(error);
-        setMapMessage('Run `python python_backend/dhs_pipeline.py` to generate the local India DHS dashboard extract.');
+      const marker = L.marker([lat, lon], {
+        icon: createMetricIcon(cluster, indicator),
+        title: `${cluster.district_name || 'DHS cluster'} ${formatPercent(cluster[indicator])}`,
       });
+      marker.bindPopup(dhsPopup(cluster, indicator));
+      markers.addLayer(marker);
+      mapBounds.extend([lat, lon]);
+
+      const metricValue = Number(cluster[indicator]);
+      const maxValue = metricMax[indicator] || 55;
+      if (Number.isFinite(metricValue)) {
+        heatPoints.push([lat, lon, Math.max(0.15, Math.min(1, metricValue / maxValue))]);
+      }
+    });
+
+    markers.addTo(map);
+    heatLayer = L.heatLayer(heatPoints, {
+      radius: 24,
+      blur: 18,
+      maxZoom: 8,
+      gradient: {
+        0.1: '#277da1',
+        0.3: '#2f9e7e',
+        0.5: '#f0a202',
+        0.7: '#e5532d',
+        1: '#b42318',
+      },
+    }).addTo(map);
+
+    if (mapBounds.isValid()) {
+      map.fitBounds(mapBounds.pad(0.08), { maxZoom: 6 });
+    }
+
+    legend = addLegend(map, indicator);
 
     return () => {
-      disposed = true;
       if (heatLayer) heatLayer.remove();
       if (legend) legend.remove();
       map.remove();
     };
-  }, []);
+  }, [clusters, indicator]);
 
   return (
     <>
@@ -239,6 +251,21 @@ const MapComponent = () => {
             color: #637083;
             font-size: 12px;
             margin-top: 4px;
+          }
+
+          .popup-highlight {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 12px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            background: #f3f6f8;
+            font-size: 13px;
+          }
+
+          .popup-highlight strong {
+            color: #172033;
           }
 
           .popup-grid {
@@ -305,11 +332,17 @@ const MapComponent = () => {
         `}
       </style>
       <div className="map-container">
-        {mapMessage && <div className="map-message">{mapMessage}</div>}
+        {message && <div className="map-message">{message}</div>}
         <div ref={mapRef} style={{ height: '100%', width: '100%' }} />
       </div>
     </>
   );
+};
+
+MapComponent.propTypes = {
+  clusters: PropTypes.arrayOf(PropTypes.object),
+  indicator: PropTypes.string,
+  status: PropTypes.string,
 };
 
 export default MapComponent;

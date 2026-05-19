@@ -1,5 +1,6 @@
 import { Box, Button, HStack, Heading, Input, Stack, VStack, Text } from '@chakra-ui/react';
-import {AiOutlineSend,AiOutlineInstagram,AiFillLinkedin,AiFillGithub } from 'react-icons/ai'
+import { AiOutlineInstagram, AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
+import { FiSend } from 'react-icons/fi';
 
 const Footer = () => {
   return (
@@ -22,7 +23,7 @@ const Footer = () => {
     />
 
         <Button p={"0"} colorScheme={"teal"} variant={"ghost"}  borderRadius={"0 20px 20px 0"}>
-            <AiOutlineSend  size={"24"}/>
+            <FiSend size={"24"}/>
         </Button>
 
     </HStack>

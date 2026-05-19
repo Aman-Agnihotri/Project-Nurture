@@ -117,10 +117,13 @@ def _load_gps(gps_path: Path) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def _load_children(pr_path: Path) -> tuple[pd.DataFrame, dict[int, str], dict[int, str], dict[int, str]]:
+def _load_children(
+    pr_path: Path,
+) -> tuple[pd.DataFrame, dict[int, str], dict[int, str], dict[int, str], dict[int, str]]:
     state_labels = _stata_label_map(pr_path, "hv024")
     residence_labels = _stata_label_map(pr_path, "hv025")
     wealth_labels = _stata_label_map(pr_path, "hv270")
+    sex_labels = _stata_label_map(pr_path, "hv104")
 
     df = pd.read_stata(pr_path, columns=PR_COLUMNS, convert_categoricals=False)
 
@@ -131,6 +134,19 @@ def _load_children(pr_path: Path) -> tuple[pd.DataFrame, dict[int, str], dict[in
 
     children["sample_weight"] = children["hv005"] / 1_000_000
     children["child_count"] = 1
+    children["sex"] = children["hv104"].map({key: _title_label(value) for key, value in sex_labels.items()})
+    children["wealth"] = children["hv270"].map(
+        {key: _title_label(value) for key, value in wealth_labels.items()}
+    )
+    children["age_band"] = np.select(
+        [
+            children["hc1"].between(0, 5, inclusive="both"),
+            children["hc1"].between(6, 23, inclusive="both"),
+            children["hc1"].between(24, 59, inclusive="both"),
+        ],
+        ["0-5 months", "6-23 months", "24-59 months"],
+        default="Unknown",
+    )
 
     haz_valid = children["hc70"].notna() & (children["hc70"] < 9990)
     waz_valid = children["hc71"].notna() & (children["hc71"] < 9990)
@@ -180,7 +196,7 @@ def _load_children(pr_path: Path) -> tuple[pd.DataFrame, dict[int, str], dict[in
     children["waz_z_w"] = (children["hc71"] * children["sample_weight"]).where(waz_valid, 0)
     children["whz_z_w"] = (children["hc72"] * children["sample_weight"]).where(whz_valid, 0)
 
-    return children, state_labels, residence_labels, wealth_labels
+    return children, state_labels, residence_labels, wealth_labels, sex_labels
 
 
 AGGREGATIONS = {
@@ -277,9 +293,9 @@ def _sanitize(value: object) -> object:
         number = float(value)
         if math.isnan(number) or math.isinf(number):
             return None
-        return round(number, 3)
+        return round(number, 6)
     if isinstance(value, float):
-        return round(value, 3)
+        return round(value, 6)
     return value
 
 
@@ -287,6 +303,13 @@ def _records(df: pd.DataFrame, columns: list[str]) -> list[dict[str, object]]:
     output = []
     for row in df[columns].to_dict(orient="records"):
         output.append({key: _sanitize(value) for key, value in row.items()})
+    return output
+
+
+def _table_rows(df: pd.DataFrame, columns: list[str]) -> list[list[object]]:
+    output = []
+    for row in df[columns].to_dict(orient="records"):
+        output.append([_sanitize(row[key]) for key in columns])
     return output
 
 
@@ -318,7 +341,7 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
     if not gps_path.exists():
         raise FileNotFoundError(f"Missing GPS shapefile: {gps_path}")
 
-    children, state_labels, residence_labels, wealth_labels = _load_children(pr_path)
+    children, state_labels, residence_labels, wealth_labels, sex_labels = _load_children(pr_path)
     gps = _load_gps(gps_path)
 
     cluster_summary = _summarize(children, ["hv001"])
@@ -341,6 +364,28 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
     )
     cluster_summary = _as_integer_columns(
         cluster_summary,
+        ["cluster_id", "state_code_gps", *COUNT_COLUMNS],
+    )
+
+    segment_summary = _summarize(children, ["hv001", "sex", "wealth", "age_band"])
+    segment_summary = segment_summary.merge(
+        gps,
+        left_on="hv001",
+        right_on="cluster_id",
+        how="left",
+    )
+    segment_summary = segment_summary[segment_summary["latitude"].notna()]
+    segment_summary["state_name"] = segment_summary["state_name_gps"]
+    segment_summary["sample_quality"] = np.select(
+        [
+            segment_summary["haz_valid_n"] >= 10,
+            segment_summary["haz_valid_n"].between(5, 9, inclusive="both"),
+        ],
+        ["stable", "limited"],
+        default="sparse",
+    )
+    segment_summary = _as_integer_columns(
+        segment_summary,
         ["cluster_id", "state_code_gps", *COUNT_COLUMNS],
     )
 
@@ -404,6 +449,34 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
         "risk_score",
     ]
 
+    segment_columns = [
+        "cluster_id",
+        "sex",
+        "wealth",
+        "age_band",
+        "child_count",
+        "haz_valid_n",
+        "waz_valid_n",
+        "whz_valid_n",
+        "anemia_valid_n",
+        "haz_den_w",
+        "waz_den_w",
+        "whz_den_w",
+        "anemia_den_w",
+        "stunted_w",
+        "severely_stunted_w",
+        "underweight_w",
+        "severely_underweight_w",
+        "wasted_w",
+        "severely_wasted_w",
+        "overweight_w",
+        "anemia_w",
+        "severe_anemia_w",
+        "haz_z_w",
+        "waz_z_w",
+        "whz_z_w",
+    ]
+
     national_columns = [
         "child_count",
         "haz_valid_n",
@@ -438,6 +511,10 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
                 "Generated from restricted DHS microdata and GPS files. Use locally; "
                 "do not commit or redistribute this JSON."
             ),
+            "coverage_note": (
+                "National and state summaries use all eligible PR records. Map and filter "
+                "segments use clusters matched to DHS GPS coordinates."
+            ),
             "indicator_notes": {
                 "population": "De facto living children age 0-59 months from the PR file.",
                 "weight": "Household sample weight hv005 / 1,000,000.",
@@ -454,21 +531,35 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
                 "state": state_labels,
                 "residence": residence_labels,
                 "wealth": wealth_labels,
+                "sex": sex_labels,
+            },
+            "filter_dimensions": {
+                "sex": sorted(segment_summary["sex"].dropna().unique().tolist()),
+                "wealth": sorted(segment_summary["wealth"].dropna().unique().tolist()),
+                "age_band": ["0-5 months", "6-23 months", "24-59 months"],
             },
         },
+        "cluster_segment_columns": segment_columns,
         "national": _national_record(national, national_columns),
         "states": _records(state_summary, state_columns),
         "clusters": _records(
             cluster_summary.sort_values(["state_name", "district_name", "cluster_id"]),
             cluster_columns,
         ),
+        "cluster_segments": _table_rows(
+            segment_summary.sort_values(
+                ["state_name", "district_name", "cluster_id", "sex", "wealth", "age_band"]
+            ),
+            segment_columns,
+        ),
     }
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    output_path.write_text(json.dumps(payload, separators=(",", ":")), encoding="utf-8")
 
     print(f"Wrote {output_path}")
     print(f"Clusters: {len(payload['clusters']):,}")
+    print(f"Cluster segments: {len(payload['cluster_segments']):,}")
     print(f"States/UTs: {len(payload['states']):,}")
     print(f"Children 0-59 months: {payload['national']['child_count']:,}")
 
