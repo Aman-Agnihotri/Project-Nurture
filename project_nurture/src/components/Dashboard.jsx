@@ -4,6 +4,7 @@ import {
   aggregateRows,
   buildClusterRows,
   buildClusterLookup,
+  buildPriorityAreas,
   defaultFilters,
   getClusterSegments,
   getFilterOptions,
@@ -75,6 +76,11 @@ const Dashboard = () => {
     [filteredSegments],
   );
 
+  const priorityAreas = useMemo(
+    () => buildPriorityAreas(filteredSegments, filters, filters.indicator),
+    [filteredSegments, filters],
+  );
+
   return (
     <Container maxW="container.2xl" px={['4', '6', '8']} py="20" minH="100vh">
       <Flex direction={['column', 'column', 'row']} gap="6" alignItems="stretch">
@@ -93,6 +99,7 @@ const Dashboard = () => {
             filterOptions={filterOptions}
             filteredClusters={filteredClusters}
             filters={filters}
+            priorityAreas={priorityAreas}
             status={status}
             summary={filteredSummary}
             onFilterChange={updateFilter}

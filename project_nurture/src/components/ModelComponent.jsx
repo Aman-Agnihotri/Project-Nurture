@@ -6,6 +6,7 @@ import {
   Divider,
   Heading,
   HStack,
+  Progress,
   Select,
   SimpleGrid,
   Spinner,
@@ -30,6 +31,13 @@ const coreMetrics = [
   ['wasting_rate', 'Wasted'],
   ['anemia_rate', 'Anemia'],
 ];
+
+const priorityTone = score => {
+  if (score >= 70) return 'red';
+  if (score >= 55) return 'orange';
+  if (score >= 40) return 'yellow';
+  return 'teal';
+};
 
 const FilterSelect = ({ label, value, options, onChange }) => (
   <Box>
@@ -59,6 +67,7 @@ const ModelComponent = ({
   filterOptions,
   filteredClusters,
   filters,
+  priorityAreas,
   status,
   summary,
   onFilterChange,
@@ -187,6 +196,58 @@ const ModelComponent = ({
       </SimpleGrid>
 
       <Box>
+        <HStack justifyContent="space-between" alignItems="center" mb="3">
+          <Heading size="sm">Priority Areas</Heading>
+          <Badge colorScheme="gray" borderRadius="full" px="3" py="1">
+            {priorityAreas.scope}
+          </Badge>
+        </HStack>
+        <VStack alignItems="stretch" spacing="3">
+          {priorityAreas.rows.slice(0, 5).map(area => (
+            <Box key={area.label}>
+              <HStack justifyContent="space-between" alignItems="flex-start" gap="4" mb="2">
+                <Box minW="0">
+                  <Text fontWeight="semibold" noOfLines={1}>
+                    {area.label}
+                  </Text>
+                  <Text fontSize="sm" color="gray.600" noOfLines={1}>
+                    {area.priority_subtitle}
+                  </Text>
+                </Box>
+                <VStack alignItems="flex-end" spacing="1">
+                  <Badge
+                    colorScheme={priorityTone(area.priority_score)}
+                    borderRadius="full"
+                    px="3"
+                    py="1"
+                  >
+                    {formatPercent(area.priority_metric)}
+                  </Badge>
+                  <Text fontSize="xs" color="gray.500">
+                    score {Math.round(area.priority_score)}
+                  </Text>
+                </VStack>
+              </HStack>
+              <Progress
+                aria-label={`${area.label} priority score`}
+                colorScheme={priorityTone(area.priority_score)}
+                size="xs"
+                value={Math.min(100, Math.max(0, area.priority_score))}
+              />
+            </Box>
+          ))}
+          {priorityAreas.rows.length === 0 && (
+            <Text color="gray.600" fontSize="sm">
+              No priority areas match the selected filters.
+            </Text>
+          )}
+        </VStack>
+        <Text fontSize="xs" color="gray.500" mt="3">
+          Priority score combines the selected rate with mapped survey sample size.
+        </Text>
+      </Box>
+
+      <Box>
         <Heading size="sm" mb="3">
           Highest {metricLabel(filters.indicator)}
         </Heading>
@@ -274,6 +335,17 @@ ModelComponent.propTypes = {
       anemia_rate: PropTypes.number,
     }),
   ).isRequired,
+  priorityAreas: PropTypes.shape({
+    scope: PropTypes.string.isRequired,
+    rows: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        priority_metric: PropTypes.number,
+        priority_score: PropTypes.number,
+        priority_subtitle: PropTypes.string,
+      }),
+    ).isRequired,
+  }).isRequired,
   filters: PropTypes.shape({
     indicator: PropTypes.string.isRequired,
     mapMode: PropTypes.string.isRequired,

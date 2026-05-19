@@ -14,6 +14,16 @@ export const mapModeOptions = [
   { key: 'both', label: 'Cluster + heat' },
 ];
 
+export const metricCeilings = {
+  risk_score: 55,
+  stunting_rate: 55,
+  underweight_rate: 55,
+  wasting_rate: 35,
+  severe_wasting_rate: 15,
+  overweight_rate: 15,
+  anemia_rate: 90,
+};
+
 export const defaultFilters = {
   indicator: 'risk_score',
   mapMode: 'clusters',
@@ -202,6 +212,98 @@ export const buildClusterRows = segments => {
       };
     })
     .filter(cluster => Number.isFinite(Number(cluster.latitude)) && Number.isFinite(Number(cluster.longitude)));
+};
+
+const priorityGroupFor = filters => {
+  if (filters.state === 'All') {
+    return {
+      key: 'state_name',
+      scope: 'States / UTs',
+      subtitleFor: row => `${formatCount(row.cluster_count)} mapped clusters`,
+    };
+  }
+
+  if (filters.district === 'All') {
+    return {
+      key: 'district_name',
+      scope: `Districts in ${filters.state}`,
+      subtitleFor: row => `${row.state_name} · ${formatCount(row.cluster_count)} mapped clusters`,
+    };
+  }
+
+  return {
+    key: 'urban_rural_gps',
+    scope: `Residence groups in ${filters.district}`,
+    subtitleFor: row => `${row.district_name}, ${row.state_name}`,
+  };
+};
+
+export const buildPriorityAreas = (segments, filters, indicator) => {
+  const groupConfig = priorityGroupFor(filters);
+  const byArea = new Map();
+
+  segments.forEach(segment => {
+    const label = segment[groupConfig.key] || 'Unspecified';
+
+    if (!byArea.has(label)) {
+      byArea.set(label, {
+        label,
+        state_name: segment.state_name,
+        district_name: segment.district_name,
+        clusterIds: new Set(),
+        rows: [],
+      });
+    }
+
+    const area = byArea.get(label);
+    area.clusterIds.add(segment.cluster_id);
+    area.rows.push(segment);
+  });
+
+  const rows = [...byArea.values()].map(area => {
+    const summary = aggregateRows(area.rows);
+
+    return {
+      ...area,
+      ...summary,
+      cluster_count: area.clusterIds.size,
+      clusterIds: undefined,
+      rows: undefined,
+    };
+  });
+
+  const maxChildren = Math.max(...rows.map(row => Number(row.child_count) || 0), 0);
+  const maxLogChildren = Math.log10(maxChildren + 1) || 1;
+  const ceiling = metricCeilings[indicator] || 55;
+
+  const rankedRows = rows
+    .map(row => {
+      const metricValue = Number(row[indicator]);
+      const childCount = Number(row.child_count) || 0;
+      const severityIndex = Number.isFinite(metricValue)
+        ? Math.min(100, Math.max(0, (metricValue / ceiling) * 100))
+        : null;
+      const sampleIndex = maxChildren > 0
+        ? Math.min(100, (Math.log10(childCount + 1) / maxLogChildren) * 100)
+        : 0;
+      const priorityScore = severityIndex === null
+        ? null
+        : severityIndex * 0.75 + sampleIndex * 0.25;
+
+      return {
+        ...row,
+        priority_score: priorityScore,
+        priority_metric: metricValue,
+        priority_subtitle: groupConfig.subtitleFor(row),
+      };
+    })
+    .filter(row => Number.isFinite(row.priority_score))
+    .sort((a, b) => b.priority_score - a.priority_score);
+
+  return {
+    scope: groupConfig.scope,
+    rows: rankedRows,
+  };
 };
 
 export const getFilterOptions = (dashboardData, filters) => {
