@@ -6,7 +6,12 @@ import 'leaflet.markercluster';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet.heat';
-import { formatCount, formatPercent, metricLabel } from '../lib/nutritionData';
+import {
+  formatCount,
+  formatPercent,
+  mapModeOptions,
+  metricLabel,
+} from '../lib/nutritionData';
 
 const escapeHtml = value =>
   String(value ?? '')
@@ -55,6 +60,19 @@ const metricColor = (value, indicator, sampleQuality) => {
   return '#277da1';
 };
 
+const formatMapPercent = value => {
+  const number = Number(value);
+  return Number.isFinite(number) ? `${Math.round(number)}%` : 'N/A';
+};
+
+const formatCompactCount = value => {
+  const number = Number(value) || 0;
+  return Intl.NumberFormat('en-IN', {
+    notation: 'compact',
+    maximumFractionDigits: 1,
+  }).format(Math.round(number));
+};
+
 const createMetricIcon = (cluster, indicator) => {
   const color = metricColor(cluster[indicator], indicator, cluster.sample_quality);
   const size = cluster.sample_quality === 'stable' ? 20 : 16;
@@ -62,6 +80,61 @@ const createMetricIcon = (cluster, indicator) => {
   return L.divIcon({
     className: 'risk-marker-shell',
     html: `<span class="risk-marker" style="--marker-color:${color}; width:${size}px; height:${size}px"></span>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+  });
+};
+
+const getClusterStats = markers => {
+  const stats = {
+    childCount: 0,
+    clusterCount: markers.length,
+    validCount: 0,
+    weightedTotal: 0,
+    weight: 0,
+  };
+
+  markers.forEach(marker => {
+    const value = Number(marker.options.metricValue);
+    const childCount = Number(marker.options.childCount) || 0;
+    const weight = childCount > 0 ? childCount : 1;
+
+    stats.childCount += childCount;
+
+    if (Number.isFinite(value)) {
+      stats.validCount += 1;
+      stats.weight += weight;
+      stats.weightedTotal += value * weight;
+    }
+  });
+
+  return {
+    ...stats,
+    metricValue: stats.weight > 0 ? stats.weightedTotal / stats.weight : null,
+    sampleQuality: stats.validCount === 0 ? 'sparse' : 'stable',
+  };
+};
+
+const clusterIconSize = clusterCount => {
+  if (clusterCount >= 1000) return 78;
+  if (clusterCount >= 250) return 70;
+  if (clusterCount >= 75) return 62;
+  return 54;
+};
+
+const createClusterIcon = (cluster, indicator) => {
+  const stats = getClusterStats(cluster.getAllChildMarkers());
+  const color = metricColor(stats.metricValue, indicator, stats.sampleQuality);
+  const size = clusterIconSize(stats.clusterCount);
+
+  return L.divIcon({
+    className: 'nutrition-cluster-icon',
+    html: `
+      <div class="nutrition-cluster-bubble" style="--cluster-color:${color}; width:${size}px; height:${size}px">
+        <strong>${formatMapPercent(stats.metricValue)}</strong>
+        <span>${formatCompactCount(stats.clusterCount)} clusters</span>
+      </div>
+    `,
     iconSize: [size, size],
     iconAnchor: [size / 2, size / 2],
   });
@@ -89,10 +162,12 @@ const dhsPopup = (cluster, indicator) => `
   </div>
 `;
 
-const addLegend = (map, indicator) => {
+const addLegend = (map, indicator, mapMode) => {
   const legend = L.control({ position: 'bottomright' });
   const isAnemia = indicator === 'anemia_rate';
   const isLowRange = indicator === 'severe_wasting_rate' || indicator === 'overweight_rate';
+  const showsClusters = mapMode === 'clusters' || mapMode === 'both';
+  const showsHeat = mapMode === 'heat' || mapMode === 'both';
 
   const labels = isAnemia
     ? ['70%+', '60-70%', '50-60%', '35-50%', '<35%']
@@ -110,6 +185,8 @@ const addLegend = (map, indicator) => {
       <span><i style="background:#2f9e7e"></i>${labels[3]}</span>
       <span><i style="background:#277da1"></i>${labels[4]}</span>
       <span><i style="background:#7a8794"></i>sparse sample</span>
+      ${showsClusters ? '<small>Bubbles show weighted average across visible DHS clusters.</small>' : ''}
+      ${showsHeat ? '<small>Heat is a smoothed survey-cluster layer, not exact case locations.</small>' : ''}
     `;
     return div;
   };
@@ -127,13 +204,21 @@ const mapMessageFor = (status, clusters) => {
   return '';
 };
 
-const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready' }) => {
+const MapComponent = ({
+  clusters = [],
+  indicator = 'risk_score',
+  mapMode = 'clusters',
+  onMapModeChange,
+  status = 'ready',
+}) => {
   const mapRef = useRef(null);
   const message = mapMessageFor(status, clusters);
 
   useEffect(() => {
     let heatLayer = null;
     let legend = null;
+    const showHeat = mapMode === 'heat' || mapMode === 'both';
+    const showClusters = mapMode === 'clusters' || mapMode === 'both';
 
     const tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
@@ -152,6 +237,7 @@ const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready
 
     const markers = L.markerClusterGroup({
       chunkedLoading: true,
+      iconCreateFunction: cluster => createClusterIcon(cluster, indicator),
       maxClusterRadius: 44,
       showCoverageOnHover: false,
       spiderfyDistanceMultiplier: 1.2,
@@ -166,7 +252,10 @@ const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready
       if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
 
       const marker = L.marker([lat, lon], {
+        childCount: Number(cluster.child_count) || 0,
         icon: createMetricIcon(cluster, indicator),
+        metricValue: Number(cluster[indicator]),
+        sampleQuality: cluster.sample_quality,
         title: `${cluster.district_name || 'DHS cluster'} ${formatPercent(cluster[indicator])}`,
       });
       marker.bindPopup(dhsPopup(cluster, indicator));
@@ -180,32 +269,38 @@ const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready
       }
     });
 
-    markers.addTo(map);
-    heatLayer = L.heatLayer(heatPoints, {
-      radius: 24,
-      blur: 18,
-      maxZoom: 8,
-      gradient: {
-        0.1: '#277da1',
-        0.3: '#2f9e7e',
-        0.5: '#f0a202',
-        0.7: '#e5532d',
-        1: '#b42318',
-      },
-    }).addTo(map);
+    if (showClusters) {
+      markers.addTo(map);
+    }
+
+    if (showHeat && heatPoints.length > 0) {
+      heatLayer = L.heatLayer(heatPoints, {
+        radius: mapMode === 'heat' ? 18 : 14,
+        blur: mapMode === 'heat' ? 20 : 16,
+        maxZoom: 8,
+        minOpacity: 0.18,
+        gradient: {
+          0.1: '#277da1',
+          0.3: '#2f9e7e',
+          0.5: '#f0a202',
+          0.7: '#e5532d',
+          1: '#b42318',
+        },
+      }).addTo(map);
+    }
 
     if (mapBounds.isValid()) {
       map.fitBounds(mapBounds.pad(0.08), { maxZoom: 6 });
     }
 
-    legend = addLegend(map, indicator);
+    legend = addLegend(map, indicator, mapMode);
 
     return () => {
       if (heatLayer) heatLayer.remove();
       if (legend) legend.remove();
       map.remove();
     };
-  }, [clusters, indicator]);
+  }, [clusters, indicator, mapMode]);
 
   return (
     <>
@@ -233,6 +328,39 @@ const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready
             background: var(--marker-color);
             border: 2px solid #ffffff;
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.32);
+          }
+
+          .nutrition-cluster-icon {
+            background: transparent;
+            border: none;
+          }
+
+          .nutrition-cluster-bubble {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1px;
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--cluster-color) 88%, #ffffff);
+            border: 3px solid rgba(255, 255, 255, 0.88);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.28);
+            color: #111827;
+            line-height: 1;
+            text-align: center;
+          }
+
+          .nutrition-cluster-bubble strong {
+            font-size: 16px;
+            font-weight: 800;
+          }
+
+          .nutrition-cluster-bubble span {
+            max-width: 54px;
+            font-size: 9px;
+            font-weight: 700;
+            line-height: 1.05;
+            text-transform: uppercase;
           }
 
           .nutrition-popup {
@@ -313,6 +441,61 @@ const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready
             border-radius: 999px;
           }
 
+          .nutrition-legend small {
+            max-width: 180px;
+            color: #536176;
+            line-height: 1.35;
+          }
+
+          .map-layer-control {
+            position: absolute;
+            z-index: 650;
+            top: 14px;
+            right: 14px;
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
+          }
+
+          .map-layer-control button {
+            min-width: 72px;
+            padding: 7px 10px;
+            border: 0;
+            border-radius: 6px;
+            background: transparent;
+            color: #172033;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+          }
+
+          .map-layer-control button:hover {
+            background: #edf3f4;
+          }
+
+          .map-layer-control button.is-active {
+            background: #0f766e;
+            color: #ffffff;
+          }
+
+          @media (max-width: 640px) {
+            .map-layer-control {
+              left: 12px;
+              right: 12px;
+              top: auto;
+              bottom: 14px;
+              justify-content: center;
+            }
+
+            .map-layer-control button {
+              min-width: 0;
+              flex: 1;
+            }
+          }
+
           .map-message {
             position: absolute;
             z-index: 500;
@@ -332,6 +515,18 @@ const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready
         `}
       </style>
       <div className="map-container">
+        <div className="map-layer-control" aria-label="Map layer">
+          {mapModeOptions.map(mode => (
+            <button
+              key={mode.key}
+              className={mapMode === mode.key ? 'is-active' : ''}
+              type="button"
+              onClick={() => onMapModeChange(mode.key)}
+            >
+              {mode.key === 'clusters' ? 'Clusters' : mode.key === 'heat' ? 'Heat' : 'Both'}
+            </button>
+          ))}
+        </div>
         {message && <div className="map-message">{message}</div>}
         <div ref={mapRef} style={{ height: '100%', width: '100%' }} />
       </div>
@@ -342,6 +537,8 @@ const MapComponent = ({ clusters = [], indicator = 'risk_score', status = 'ready
 MapComponent.propTypes = {
   clusters: PropTypes.arrayOf(PropTypes.object),
   indicator: PropTypes.string,
+  mapMode: PropTypes.string,
+  onMapModeChange: PropTypes.func.isRequired,
   status: PropTypes.string,
 };
 

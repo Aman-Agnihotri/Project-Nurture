@@ -8,8 +8,15 @@ export const metricOptions = [
   { key: 'anemia_rate', label: 'Anemia' },
 ];
 
+export const mapModeOptions = [
+  { key: 'clusters', label: 'Cluster risk' },
+  { key: 'heat', label: 'Hotspot heat' },
+  { key: 'both', label: 'Cluster + heat' },
+];
+
 export const defaultFilters = {
   indicator: 'risk_score',
+  mapMode: 'clusters',
   state: 'All',
   district: 'All',
   residence: 'All',

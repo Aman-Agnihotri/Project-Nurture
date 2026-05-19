@@ -276,6 +276,7 @@ ModelComponent.propTypes = {
   ).isRequired,
   filters: PropTypes.shape({
     indicator: PropTypes.string.isRequired,
+    mapMode: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
     district: PropTypes.string.isRequired,
     residence: PropTypes.string.isRequired,

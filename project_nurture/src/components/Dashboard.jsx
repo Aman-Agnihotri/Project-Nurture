@@ -82,6 +82,8 @@ const Dashboard = () => {
           <MapComponent
             clusters={filteredClusters}
             indicator={filters.indicator}
+            mapMode={filters.mapMode}
+            onMapModeChange={value => updateFilter('mapMode', value)}
             status={status}
           />
         </Box>
