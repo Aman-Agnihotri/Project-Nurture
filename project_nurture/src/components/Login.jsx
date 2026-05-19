@@ -6,13 +6,27 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { authSessionTtlMs, createAuthSession } from '../lib/authSession';
 import { auth } from "../lib/firebase";
 
+const getSafeRedirectPath = search => {
+  const redirect = new URLSearchParams(search).get('redirect');
+
+  if (!redirect || !redirect.startsWith('/') || redirect.startsWith('//')) {
+    return '/dashboard';
+  }
+
+  return redirect;
+};
+
 const Login = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const redirectPath = getSafeRedirectPath(location.search);
+  const sessionHours = Math.round(authSessionTtlMs / 60 / 60 / 1000);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -21,9 +35,8 @@ const Login = () => {
     const { email, password } = Object.fromEntries(formData);
   
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log('Login successful');
-      // Show a notification on successful login
+      const credential = await signInWithEmailAndPassword(auth, email, password);
+      createAuthSession(credential.user.uid);
       toast.success('Login successful!', {
         position: "bottom-right",
         autoClose: 5000,
@@ -33,9 +46,8 @@ const Login = () => {
         draggable: true,
         progress: undefined,
       });
-      navigate('/dashboard');
+      navigate(redirectPath, { replace: true });
     } catch (err) {
-      // Show an error notification on failed login
       toast.error('Login failed: ' + err.message, {
         position: "bottom-right",
         autoClose: 5000,
@@ -62,6 +74,9 @@ const Login = () => {
           my={'16'}
         >
           <Heading>Welcome Back</Heading>
+          <Text color="gray.600" fontSize="sm">
+            Dashboard access stays active for {sessionHours} hours on this device.
+          </Text>
 
           <Input
             placeholder={'Email Address'}
