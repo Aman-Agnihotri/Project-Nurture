@@ -108,6 +108,7 @@ const ModelComponent = ({
     .filter(cluster => Number.isFinite(Number(cluster[filters.indicator])))
     .sort((a, b) => Number(b[filters.indicator]) - Number(a[filters.indicator]))
     .slice(0, 5);
+  const hasNoFilteredClusters = filteredClusters.length === 0;
 
   return (
     <VStack alignItems="stretch" spacing="6">
@@ -135,6 +136,27 @@ const ModelComponent = ({
         <TabPanels>
           <TabPanel px="0" pb="0">
             <VStack alignItems="stretch" spacing="5">
+              {hasNoFilteredClusters && (
+                <Alert
+                  status="warning"
+                  borderRadius="md"
+                  flexDirection={['column', 'row']}
+                  gap="3"
+                  alignItems={['flex-start', 'center']}
+                >
+                  <AlertIcon mr={['0', '2']} />
+                  <Box flex="1">
+                    <Text fontWeight="semibold">No mapped clusters match these filters</Text>
+                    <Text fontSize="sm" color="gray.700">
+                      Reset the filters or broaden the demographic cut to restore the map.
+                    </Text>
+                  </Box>
+                  <Button size="xs" variant="outline" onClick={onResetFilters}>
+                    Reset filters
+                  </Button>
+                </Alert>
+              )}
+
               <Box>
                 <HStack justifyContent="space-between" alignItems="center" mb="3">
                   <Heading size="sm">Explorer Filters</Heading>

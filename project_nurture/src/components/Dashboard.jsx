@@ -11,6 +11,7 @@ import {
   getFilteredSegments,
 } from '../lib/nutritionData';
 import DashboardGuide from './DashboardGuide';
+import DashboardStatePanel from './DashboardStatePanel';
 import MapComponent from './MapComponent';
 import ModelComponent from './ModelComponent';
 
@@ -107,6 +108,18 @@ const Dashboard = () => {
     () => buildPriorityAreas(filteredSegments, filters, filters.indicator),
     [filteredSegments, filters],
   );
+
+  const hasGeneratedRows = clusterSegments.length > 0 && Boolean(dashboardData?.clusters?.length);
+  const dashboardState = status === 'ready' && !hasGeneratedRows ? 'empty' : status;
+
+  if (dashboardState !== 'ready') {
+    return (
+      <Container maxW="container.2xl" px={['4', '6', '8']} py="20" minH="100vh">
+        <DashboardGuide />
+        <DashboardStatePanel status={dashboardState} />
+      </Container>
+    );
+  }
 
   return (
     <Container maxW="container.2xl" px={['4', '6', '8']} py="20" minH="100vh">
