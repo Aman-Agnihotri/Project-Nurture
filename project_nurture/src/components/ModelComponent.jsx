@@ -71,7 +71,7 @@ const ModelComponent = () => {
     return (
       <VStack alignItems="flex-start" spacing="4" p="6">
         <Spinner color="teal.500" />
-        <Text color="gray.600">Loading NFHS-5 extract...</Text>
+        <Text color="gray.600">Loading India DHS extract...</Text>
       </VStack>
     );
   }
@@ -85,7 +85,7 @@ const ModelComponent = () => {
             DHS extract not generated
           </Heading>
           <Text fontSize="sm">
-            Run <code>python python_backend/dhs_pipeline.py</code> to create the local dashboard extract from approved DHS/NFHS-5 files.
+            Run <code>python python_backend/dhs_pipeline.py</code> to create the local dashboard extract from approved DHS files.
           </Text>
         </Box>
       </Alert>
@@ -97,7 +97,7 @@ const ModelComponent = () => {
       <Box>
         <HStack justifyContent="space-between" alignItems="flex-start" gap="4">
           <Box>
-            <Heading size="lg">NFHS-5 Child Nutrition</Heading>
+            <Heading size="lg">India DHS Child Nutrition</Heading>
             <Text color="gray.600" mt="2">
               India DHS 2019-21, de facto children age 0-59 months
             </Text>

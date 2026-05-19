@@ -2,7 +2,7 @@
 
 Project Nurture is a child nutrition intelligence platform for exploring child malnutrition risk across India and imagining how national survey insight could connect with field-level case tracking.
 
-The project started as a college proof of concept and is being rebuilt into a more credible public health data product. Its current foundation uses India’s NFHS-5/DHS survey data to generate a local, interactive nutrition dashboard. The longer-term vision is to pair this national context with private case-following workflows for children receiving support on the ground.
+The project started as a college proof of concept and is being rebuilt into a more credible public health data product. Its current foundation uses India Standard DHS survey data from The DHS Program to generate a local, interactive nutrition dashboard. The longer-term vision is to pair this national context with private case-following workflows for children receiving support on the ground.
 
 ## Why This Exists
 
@@ -19,7 +19,7 @@ The current repository focuses on the survey intelligence layer.
 ## Current Capabilities
 
 - Interactive India map built with Leaflet
-- DHS/NFHS-5 displaced GPS cluster visualization
+- India DHS displaced GPS cluster visualization
 - Smooth marker clustering for dense survey points
 - Heatmap-style nutrition risk intensity
 - National weighted nutrition indicators
@@ -55,14 +55,14 @@ Current child nutrition indicators include:
 - pandas
 - NumPy
 - pyshp
-- DHS/NFHS-5 Household Member Recode
+- India DHS Household Member Recode
 - DHS displaced GPS cluster shapefile
 
-The dashboard data is generated locally from approved DHS/NFHS files and is not committed to the repository.
+The dashboard data is generated locally from approved DHS files and is not committed to the repository.
 
 ## Data Responsibility
 
-DHS/NFHS microdata is restricted. This repository does not include raw DHS files, generated microdata-derived extracts, or real child case records.
+DHS microdata is restricted. This repository does not include raw DHS files, generated microdata-derived extracts, or real child case records.
 
 The project intentionally separates:
 
@@ -79,7 +79,7 @@ Do not commit:
 - real field case records
 - private environment files
 
-## Local DHS/NFHS Pipeline
+## Local DHS Pipeline
 
 Expected local files:
 
@@ -99,6 +99,20 @@ project_nurture/public/generated/dhs_cluster_nutrition.json
 ```
 
 The generated file is ignored by git because it is derived from restricted survey data.
+
+Validate generated indicators against the official India DHS fact sheets:
+
+```bash
+python python_backend/validate_dhs_outputs.py
+```
+
+The validation report is written locally to:
+
+```text
+python_backend/outputs/dhs_validation_report.csv
+```
+
+That report is also ignored by git.
 
 ## Running Locally
 
@@ -127,11 +141,11 @@ pip install -r requirements.txt
 
 ## Roadmap
 
-- [x] Replace synthetic map data with a DHS/NFHS-derived local extract
+- [x] Replace synthetic map data with a DHS-derived local extract
 - [x] Preserve marker clustering and heatmap map experience
 - [x] Add national and state nutrition summary panel
 - [x] Remove fake-data model and coordinate-generation workflow
-- [ ] Validate state-level indicators against NFHS-5 fact sheets
+- [x] Validate national and state-level indicators against official India DHS fact sheets
 - [ ] Add filters for indicator, state, district, residence, wealth, sex, and age band
 - [ ] Add state and district profile views
 - [ ] Build a safe public/demo data mode for portfolio deployment

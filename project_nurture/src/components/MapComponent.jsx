@@ -184,7 +184,7 @@ const MapComponent = () => {
       })
       .catch(error => {
         console.error(error);
-        setMapMessage('Run `python python_backend/dhs_pipeline.py` to generate the local NFHS-5 dashboard extract.');
+        setMapMessage('Run `python python_backend/dhs_pipeline.py` to generate the local India DHS dashboard extract.');
       });
 
     return () => {

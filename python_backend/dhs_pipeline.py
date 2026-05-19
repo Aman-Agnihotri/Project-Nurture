@@ -35,6 +35,7 @@ PR_COLUMNS = [
     "hv023",
     "hv024",
     "hv025",
+    "hv042",
     "hv103",
     "hv104",
     "hv105",
@@ -44,6 +45,7 @@ PR_COLUMNS = [
     "hc3",
     "hc13",
     "hc53",
+    "hc55",
     "hc56",
     "hc57",
     "hc70",
@@ -134,7 +136,9 @@ def _load_children(pr_path: Path) -> tuple[pd.DataFrame, dict[int, str], dict[in
     waz_valid = children["hc71"].notna() & (children["hc71"] < 9990)
     whz_valid = children["hc72"].notna() & (children["hc72"] < 9990)
     anemia_valid = (
-        children["hc1"].between(6, 59, inclusive="both")
+        (children["hv042"] == 1)
+        & children["hc1"].between(6, 59, inclusive="both")
+        & (children["hc55"] == 0)
         & children["hc57"].isin([1, 2, 3, 4])
     )
 
@@ -370,6 +374,7 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
         "severe_stunting_rate",
         "underweight_rate",
         "wasting_rate",
+        "severe_wasting_rate",
         "overweight_rate",
         "anemia_rate",
         "mean_haz",
@@ -390,6 +395,7 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
         "severe_stunting_rate",
         "underweight_rate",
         "wasting_rate",
+        "severe_wasting_rate",
         "overweight_rate",
         "anemia_rate",
         "mean_haz",
@@ -408,6 +414,7 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
         "severe_stunting_rate",
         "underweight_rate",
         "wasting_rate",
+        "severe_wasting_rate",
         "overweight_rate",
         "anemia_rate",
         "mean_haz",
@@ -418,7 +425,7 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
 
     payload = {
         "metadata": {
-            "name": "India DHS/NFHS-5 child nutrition dashboard extract",
+            "name": "India Standard DHS child nutrition dashboard extract",
             "survey": "India Standard DHS, 2019-21",
             "source_files": {
                 "household_member_recode": str(PR_RELATIVE_PATH).replace("\\", "/"),
@@ -437,7 +444,10 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
                 "stunting": "hc70 < -200 among valid hc70 < 9990.",
                 "underweight": "hc71 < -200 among valid hc71 < 9990.",
                 "wasting": "hc72 < -200 among valid hc72 < 9990.",
-                "anemia": "hc57 in 1..3 among children age 6-59 months with hc57 in 1..4.",
+                "anemia": (
+                    "hc57 in 1..3 among children age 6-59 months selected for hemoglobin "
+                    "testing with valid hemoglobin measurement (hv042 = 1, hc55 = 0)."
+                ),
                 "gps": "DHS GPS cluster coordinates are displaced for confidentiality.",
             },
             "label_maps": {
@@ -465,7 +475,7 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Build a local DHS/NFHS-5 child nutrition dashboard dataset."
+        description="Build a local India Standard DHS child nutrition dashboard dataset."
     )
     parser.add_argument("--dhs-dir", type=Path, default=DEFAULT_DHS_DIR)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
