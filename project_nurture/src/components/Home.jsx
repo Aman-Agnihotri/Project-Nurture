@@ -1,91 +1,121 @@
-import { Box, Container, Heading, Image } from '@chakra-ui/react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import {
+  Badge,
+  Box,
+  Button,
+  Container,
+  Heading,
+  HStack,
+  SimpleGrid,
+  Stack,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
+import { FiArrowRight, FiDatabase, FiMap, FiShield, FiTrendingUp } from 'react-icons/fi';
+import heroImage from '../assets/img4.jpg';
 
-import img1 from '../assets/img1.webp';
-import img2 from '../assets/img2.png';
-import img3 from '../assets/img3.webp';
-import img4 from '../assets/img4.jpg';
-import logo from '../assets/logo.jpeg';
-
-const headingOptions={
-
-  pos:"absolute",
-  left:"50%",
-  top:"35%",
-  transform:"translate(-50%,-50%)",
-  textTransform:"uppercase",
-  p:'4'
-}
+const featureItems = [
+  {
+    icon: FiDatabase,
+    title: 'Survey-backed indicators',
+    text: 'Uses a local India Standard DHS extract to summarize child nutrition rates with survey weights.',
+  },
+  {
+    icon: FiMap,
+    title: 'Spatial exploration',
+    text: 'Maps displaced DHS clusters with filterable indicators, cluster aggregation, and optional heat layers.',
+  },
+  {
+    icon: FiTrendingUp,
+    title: 'Decision support',
+    text: 'Ranks priority areas so the dashboard answers where to look first, not just what the map looks like.',
+  },
+  {
+    icon: FiShield,
+    title: 'Privacy-aware by design',
+    text: 'Keeps restricted DHS data local and treats cluster coordinates as displaced survey locations.',
+  },
+];
 
 const Home = () => {
   return (
-     <Box >
- {/* w="80%" margin="0 auto" */}
-      <MyCarousel />
-
-        <Container
-          maxW={'container.xl'} maxH={'100vh'} p='16' 
-        >
-          <Heading 
-           textTransform={"uppercase"} 
-           py='2' w="fit-content" 
-           borderBottom={'2px solid teal'}
-           m='auto' fontSize='2xl'
-          >
-            &quot;Experience the transformative power of our platform as we work together to end childhood malnutrition. With your support, we can create a world where every child has access to the nourishment they need to live healthy, vibrant lives.&quot;
-            </Heading>
+    <Box>
+      <Box
+        minH="calc(100vh - 64px)"
+        position="relative"
+        bgImage={`linear-gradient(90deg, rgba(8, 47, 73, 0.84), rgba(8, 47, 73, 0.46)), url(${heroImage})`}
+        bgPosition="center"
+        bgSize="cover"
+        color="white"
+      >
+        <Container maxW="container.xl" minH="calc(100vh - 64px)" px={['4', '6', '8']}>
+          <Stack justifyContent="center" minH="calc(100vh - 64px)" maxW="3xl" spacing="7">
+            <Badge alignSelf="flex-start" colorScheme="teal" px="3" py="1">
+              India Standard DHS 2019-21
+            </Badge>
+            <VStack alignItems="flex-start" spacing="4">
+              <Heading as="h1" fontSize={['4xl', '5xl', '6xl']} lineHeight="1">
+                Project Nurture
+              </Heading>
+              <Text color="whiteAlpha.900" fontSize={['lg', 'xl']} maxW="2xl">
+                A child nutrition intelligence dashboard that turns survey microdata into
+                map-based exploration, priority ranking, and a foundation for future field follow-up.
+              </Text>
+            </VStack>
+            <HStack flexWrap="wrap" gap="3">
+              <Button
+                as={RouterLink}
+                to="/dashboard"
+                colorScheme="teal"
+                rightIcon={<FiArrowRight />}
+                size="lg"
+              >
+                Open Explorer
+              </Button>
+              <Button
+                as={RouterLink}
+                to="/about"
+                bg="whiteAlpha.200"
+                color="white"
+                size="lg"
+                _hover={{ bg: 'whiteAlpha.300' }}
+              >
+                Project Context
+              </Button>
+            </HStack>
+          </Stack>
         </Container>
-
       </Box>
+
+      <Box bg="gray.50" py={['12', '16']}>
+        <Container maxW="container.xl" px={['4', '6', '8']}>
+          <SimpleGrid columns={[1, 2, 4]} spacing="5">
+            {featureItems.map(item => {
+              const Icon = item.icon;
+              return (
+                <Box
+                  key={item.title}
+                  bg="white"
+                  borderRadius="md"
+                  borderWidth="1px"
+                  borderColor="blackAlpha.100"
+                  p="5"
+                >
+                  <Icon color="#0f766e" size="24" />
+                  <Heading color="gray.800" mt="4" size="sm">
+                    {item.title}
+                  </Heading>
+                  <Text color="gray.600" fontSize="sm" mt="2">
+                    {item.text}
+                  </Text>
+                </Box>
+              );
+            })}
+          </SimpleGrid>
+        </Container>
+      </Box>
+    </Box>
   );
 };
-
-const MyCarousel = () => (
-  <Carousel 
-    autoPlay={true}
-    infiniteLoop
-    interval={1300}
-    showStatus={false}
-    showThumbs={false}
-    >
-      
-    <Box w="full" h={"100vh"}  >
-      <Image src={logo} h="full" w={['full','50%']}  objectFit={'cover'} />
-      <Heading bgColor={'blackAlpha.700'} color={'white'} fontSize="30px" {...headingOptions} justifyContent={"center"}  textAlign={"center"} >
-      &quot;Welcome&quot;
-      </Heading>
-    </Box>
-
-    <Box w="full" h={'100vh'}>
-      <Image src={img1} h="full" w={['full','50%']}  objectFit={'cover'} />
-      <Heading bgColor={'blackAlpha.400'} color={'white'} {...headingOptions}>
-      &quot;Empty Bowl, Full Heart: A Cry for Compassion&quot;
-      </Heading>
-    </Box>
-
-    <Box w="full" h={'100vh'}>
-      <Image src={img2} h="full" w={'full'} objectFit={'cover'} />
-      <Heading bgColor={'blackAlpha.500'} color={'white'} {...headingOptions}>
-      &quot;Nutrient Deficiency Impacting Child Growth&quot;
-      </Heading>
-
-    </Box>
-
-    <Box w="full" h={'100vh'}>
-      <Image src={img3} h="full" w={'full'} objectFit={'cover'} />
-      <Heading bgColor={'whiteAlpha.700'} color={'black'} {...headingOptions}>
-      &quot;Unequal Childhoods: From Screens to Empty Stomachs&quot;
-      </Heading>
-    </Box>
-
-    <Box w="full" h={'100vh'}>
-      <Image src={img4} h="full" w={'full'} objectFit={'cover'} />
-      <Heading bgColor={'blackAlpha.500'} color={'white'} {...headingOptions}>
-      &quot;Turning Survey Data Into Targeted Action&quot;
-      </Heading>
-    </Box>
-  </Carousel>
-);
 
 export default Home;

@@ -1,72 +1,31 @@
-import { Box, Button, HStack, Heading, Input, Stack, VStack, Text } from '@chakra-ui/react';
-import { AiOutlineInstagram, AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
-import { FiSend } from 'react-icons/fi';
+import { Box, Button, Container, HStack, Text } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
-   <Box bgColor={"blackAlpha.100"} minH={'40'} p='16'>
+    <Box as="footer" borderTopWidth="1px" borderColor="blackAlpha.200" bg="gray.50">
+      <Container maxW="container.2xl" px={['4', '6', '8']} py="6">
+        <HStack justifyContent="space-between" alignItems="center" flexWrap="wrap" gap="3">
+          <Box>
+            <Text color="gray.800" fontWeight="800">
+              Project Nurture
+            </Text>
+            <Text color="gray.500" fontSize="sm">
+              A local DHS child nutrition explorer and portfolio data product.
+            </Text>
+          </Box>
+          <HStack spacing="2">
+            <Button as={RouterLink} to="/dashboard" colorScheme="teal" size="sm" variant="ghost">
+              Explorer
+            </Button>
+            <Button as={RouterLink} to="/about" colorScheme="teal" size="sm" variant="ghost">
+              About
+            </Button>
+          </HStack>
+        </HStack>
+      </Container>
+    </Box>
+  );
+};
 
-
-<Stack direction={['column','row']} >
-
-<VStack alignItems={"stretch"} w={"full"} px={"4"}>
-   
-    <Heading 
-    color={'blue.600'} size={"lg"} textTransform={"uppercase"} textAlign={["center",'left']} 
-    > CONTACT US
-    </Heading>
-
-    <HStack 
-    borderBottom={"2px solid teal"} py='2' 
-    >
-        <Input color={'blue.600'} placeholder='enter your email' border={"none"} borderRadius={"none"} outline={"none"} 
-    />
-
-        <Button p={"0"} colorScheme={"teal"} variant={"ghost"}  borderRadius={"0 20px 20px 0"}>
-            <FiSend size={"24"}/>
-        </Button>
-
-    </HStack>
-</VStack>
-
-<VStack w={"full"} 
-borderLeft={['none','2px solid teal']} 
-borderRight={['none','2px solid teal']}>
-    <Heading color={'blue.600'} textTransform={"uppercase"}
-    size='lg' textAlign={"center"} >MALNUTRITION WATCH</Heading>
-    <Text size='lg' color={'blue.600'}>@All Rights Reserved</Text>
-</VStack>
-
-<VStack w={"full"}  >
-
-    <Heading 
-      color={'blue.600'} 
-      textTransform={"uppercase"}
-      size={"md"} 
-      >
-      Social Media
-    </Heading>
-
-    <Button color={'red.300'} variant={"link"} colorScheme={"white"}>
-        <a href='https://www.instagram.com/sach_18_in/' target={'blank'}><AiOutlineInstagram size={"24"} /></a>
-    </Button>
-
-    <Button color={'blue.500'} variant={"link"} py='2' colorScheme={"white"}>
-        <a href='https://www.linkedin.com/in/sachin-aggarwal-32b162227/' target={'blank'}><AiFillLinkedin size={"24"} /></a>
-    </Button>
-    
-    <Button color={'linkedin'} variant={"link"} colorScheme={"white"}>
-        <a href='https://github.com/sachinaggarwal18' target={'blank'}><AiFillGithub size={"24"} /></a>
-    </Button>
-
-</VStack>
-
-
-
-</Stack>
-
-   </Box>
-  )
-}
-
-export default Footer
+export default Footer;

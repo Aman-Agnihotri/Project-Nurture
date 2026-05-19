@@ -10,16 +10,35 @@ import {
   getFilterOptions,
   getFilteredSegments,
 } from '../lib/nutritionData';
+import DashboardGuide from './DashboardGuide';
 import MapComponent from './MapComponent';
 import ModelComponent from './ModelComponent';
 
 const baseUrl = import.meta.env.BASE_URL || '/';
 const dhsDataUrl = `${baseUrl}generated/dhs_cluster_nutrition.json`;
+const filtersStorageKey = 'project-nurture-dashboard-filters';
+
+const readStoredFilters = () => {
+  if (typeof window === 'undefined') return defaultFilters;
+
+  try {
+    const stored = window.localStorage.getItem(filtersStorageKey);
+    if (!stored) return defaultFilters;
+
+    const parsed = JSON.parse(stored);
+    return {
+      ...defaultFilters,
+      ...parsed,
+    };
+  } catch {
+    return defaultFilters;
+  }
+};
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);
   const [status, setStatus] = useState('loading');
-  const [filters, setFilters] = useState(defaultFilters);
+  const [filters, setFilters] = useState(readStoredFilters);
 
   useEffect(() => {
     fetch(dhsDataUrl, { cache: 'no-store' })
@@ -37,6 +56,10 @@ const Dashboard = () => {
         setStatus('missing');
       });
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(filtersStorageKey, JSON.stringify(filters));
+  }, [filters]);
 
   const updateFilter = (name, value) => {
     setFilters(current => ({
@@ -83,6 +106,7 @@ const Dashboard = () => {
 
   return (
     <Container maxW="container.2xl" px={['4', '6', '8']} py="20" minH="100vh">
+      <DashboardGuide />
       <Flex direction={['column', 'column', 'row']} gap="6" alignItems="stretch">
         <Box flex="1.75" minW="0">
           <MapComponent
