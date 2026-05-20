@@ -82,7 +82,7 @@ const Login = () => {
   };
 
   return (
-    <Container maxW={'container.xl'} h={'100vh'} p={'16'}>
+    <Container maxW={'container.xl'} minH={'100vh'} p={'16'}>
       <form onSubmit={handleLogin}>
         <VStack
           alignItems={'stretch'}
@@ -91,15 +91,16 @@ const Login = () => {
           m={'auto'}
           my={'16'}
         >
-          <Heading>Welcome Back</Heading>
+          <Heading>Access Project Nurture</Heading>
           {sessionReason === 'expired' && (
             <Alert status="warning" borderRadius="md">
               <AlertIcon />
               Your dashboard session expired. Sign in again to continue.
             </Alert>
           )}
-          <Text color="gray.600" fontSize="sm">
-            Dashboard access stays active for {sessionHours} hours on this device.
+          <Text color="app.muted" fontSize="sm">
+            Sign in to open the India DHS child nutrition explorer. Dashboard access stays
+            active for {sessionHours} hours on this device.
           </Text>
 
           <Input
@@ -118,7 +119,7 @@ const Login = () => {
           />
 
           <Button variant={'link'} alignSelf={'flex-end'}>
-            <Link to={'/forgetpassword'}>Forget Password?</Link>
+            <Link to={'/forgetpassword'}>Forgot password?</Link>
           </Button>
 
           <Button colorScheme={' teal'} type={'submit'}>
@@ -126,9 +127,9 @@ const Login = () => {
           </Button>
 
           <Text textAlign={'right'}>
-            New User?{' '}
+            Need access?{' '}
             <Button variant={'link'} colorScheme={' teal'}>
-              <Link to={'/signup'}>Sign Up</Link>
+              <Link to={'/signup'}>Create account</Link>
             </Button>
           </Text>
         </VStack>

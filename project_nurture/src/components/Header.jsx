@@ -28,7 +28,7 @@ import { auth } from '../lib/firebase';
 const navItems = [
   { label: 'Home', to: '/' },
   { label: 'Explorer', to: '/dashboard' },
-  { label: 'Field Intake', to: '/form' },
+  { label: 'Private Workflow', to: '/form' },
   { label: 'About', to: '/about' },
 ];
 
@@ -80,8 +80,8 @@ const Header = () => {
       top="0"
       zIndex="sticky"
       borderBottomWidth="1px"
-      borderColor="blackAlpha.200"
-      bg="rgba(255, 255, 255, 0.95)"
+      borderColor="app.borderStrong"
+      bg="app.headerBg"
       backdropFilter="blur(14px)"
     >
       <Container maxW="container.2xl" px={['4', '6', '8']}>
@@ -99,7 +99,7 @@ const Header = () => {
               <Text
                 as={RouterLink}
                 to="/"
-                color="teal.700"
+                color="app.brand"
                 display="block"
                 fontSize="lg"
                 fontWeight="800"
@@ -107,7 +107,7 @@ const Header = () => {
               >
                 Project Nurture
               </Text>
-              <Text color="gray.500" fontSize="xs" noOfLines={1}>
+              <Text color="app.subtle" fontSize="xs" noOfLines={1}>
                 India DHS child nutrition explorer
               </Text>
             </Box>
@@ -160,7 +160,7 @@ const Header = () => {
 
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent bg="app.surface">
           <DrawerCloseButton />
           <DrawerHeader>Project Nurture</DrawerHeader>
           <DrawerBody>

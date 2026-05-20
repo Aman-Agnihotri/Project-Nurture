@@ -57,7 +57,7 @@ const Form = () => {
   const handleSubmit = event => {
     event.preventDefault();
     setDraftSaved(true);
-    toast.info('Prototype intake captured locally for this session only.', {
+    toast.info('Private workflow draft captured locally for this session only.', {
       position: 'bottom-right',
       autoClose: 4000,
     });
@@ -69,20 +69,20 @@ const Form = () => {
   };
 
   return (
-    <Box bg="gray.50" minH="calc(100vh - 64px)" py={['10', '14']}>
+    <Box bg="app.bg" minH="calc(100vh - 64px)" py={['10', '14']}>
       <Container maxW="container.xl" px={['4', '6', '8']}>
         <Stack direction={['column', 'column', 'row']} spacing="8" alignItems="flex-start">
           <Box flex="0.95" maxW={['full', 'full', '420px']}>
             <Badge colorScheme="teal" mb="4">
-              Prototype
+              Future private workflow
             </Badge>
-            <Heading color="gray.900" size="xl">
-              Field Intake Concept
+            <Heading color="app.heading" size="xl">
+              Child Follow-up Workflow
             </Heading>
-            <Text color="gray.600" mt="4">
-              This screen sketches the private workflow Project Nurture could support later:
-              collecting field observations, tracking follow-up status, and linking local case
-              work back to broader dashboard insights.
+            <Text color="app.muted" mt="4">
+              This screen frames the secure operational layer Project Nurture could support
+              later: collecting field observations, tracking follow-up status, and linking
+              local case work back to broader dashboard insights.
             </Text>
             <Alert status="info" borderRadius="md" mt="6" alignItems="flex-start">
               <AlertIcon />
@@ -98,8 +98,8 @@ const Form = () => {
 
           <Box
             as="form"
-            bg="white"
-            borderColor="blackAlpha.100"
+            bg="app.surface"
+            borderColor="app.border"
             borderRadius="md"
             borderWidth="1px"
             boxShadow="0 16px 36px rgba(15, 23, 42, 0.08)"
@@ -111,7 +111,7 @@ const Form = () => {
             <VStack alignItems="stretch" spacing="6">
               <Box>
                 <Heading size="md">Child Follow-up Draft</Heading>
-                <Text color="gray.600" fontSize="sm" mt="1">
+                <Text color="app.muted" fontSize="sm" mt="1">
                   Capture a minimal, reviewable case snapshot for future private workflows.
                 </Text>
               </Box>
@@ -249,7 +249,7 @@ const Form = () => {
               {draftSaved && (
                 <Alert status="success" borderRadius="md">
                   <AlertIcon />
-                  Draft captured locally. This prototype does not persist or transmit records.
+                  Draft captured locally. This public version does not persist or transmit records.
                 </Alert>
               )}
 

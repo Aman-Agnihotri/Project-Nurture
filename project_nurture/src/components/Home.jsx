@@ -5,6 +5,7 @@ import {
   Container,
   Heading,
   HStack,
+  Icon,
   SimpleGrid,
   Stack,
   Text,
@@ -87,25 +88,24 @@ const Home = () => {
         </Container>
       </Box>
 
-      <Box bg="gray.50" py={['12', '16']}>
+      <Box bg="app.bg" py={['12', '16']}>
         <Container maxW="container.xl" px={['4', '6', '8']}>
           <SimpleGrid columns={[1, 2, 4]} spacing="5">
             {featureItems.map(item => {
-              const Icon = item.icon;
               return (
                 <Box
                   key={item.title}
-                  bg="white"
+                  bg="app.surface"
                   borderRadius="md"
                   borderWidth="1px"
-                  borderColor="blackAlpha.100"
+                  borderColor="app.border"
                   p="5"
                 >
-                  <Icon color="#0f766e" size="24" />
-                  <Heading color="gray.800" mt="4" size="sm">
+                  <Icon as={item.icon} color="app.icon" boxSize="6" />
+                  <Heading color="app.text" mt="4" size="sm">
                     {item.title}
                   </Heading>
-                  <Text color="gray.600" fontSize="sm" mt="2">
+                  <Text color="app.muted" fontSize="sm" mt="2">
                     {item.text}
                   </Text>
                 </Box>

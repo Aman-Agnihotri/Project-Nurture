@@ -5,6 +5,7 @@ import {
   Code,
   Heading,
   HStack,
+  Icon,
   Spinner,
   Text,
   VStack,
@@ -36,8 +37,8 @@ const DashboardStatePanel = ({ status }) => {
 
   return (
     <Box
-      bg="white"
-      borderColor="blackAlpha.200"
+      bg="app.surface"
+      borderColor="app.borderStrong"
       borderRadius="md"
       borderWidth="1px"
       boxShadow="0 14px 34px rgba(15, 23, 42, 0.08)"
@@ -45,10 +46,14 @@ const DashboardStatePanel = ({ status }) => {
     >
       <VStack alignItems="flex-start" spacing="4">
         <HStack spacing="3">
-          {isLoading ? <Spinner color="teal.500" /> : <FiDatabase color="#0f766e" size="22" />}
+          {isLoading ? (
+            <Spinner color="teal.500" />
+          ) : (
+            <Icon as={FiDatabase} color="app.icon" boxSize="5" />
+          )}
           <Heading size="md">{content.title}</Heading>
         </HStack>
-        <Text color="gray.600" maxW="760px">
+        <Text color="app.muted" maxW="760px">
           {content.body}
         </Text>
         {!isLoading && (
@@ -56,7 +61,7 @@ const DashboardStatePanel = ({ status }) => {
             <AlertIcon />
             <Box>
               <Text fontWeight="semibold">Regenerate the local dashboard data</Text>
-              <Text fontSize="sm" color="gray.700" mt="1">
+              <Text fontSize="sm" color="app.text" mt="1">
                 Run <Code>python python_backend/dhs_pipeline.py</Code> after placing the required
                 DHS files under <Code>dhs_data</Code>. The generated JSON should stay local because
                 it is derived from restricted DHS microdata.

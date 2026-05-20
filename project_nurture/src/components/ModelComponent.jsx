@@ -47,7 +47,7 @@ const priorityTone = score => {
 
 const FilterSelect = ({ label, value, options, onChange }) => (
   <Box>
-    <Text fontSize="xs" color="gray.600" mb="1" fontWeight="semibold">
+    <Text fontSize="xs" color="app.muted" mb="1" fontWeight="semibold">
       {label}
     </Text>
     <Select size="sm" value={value} onChange={event => onChange(event.target.value)}>
@@ -83,7 +83,7 @@ const ModelComponent = ({
     return (
       <VStack alignItems="flex-start" spacing="4" p="6">
         <Spinner color="teal.500" />
-        <Text color="gray.600">Loading India DHS extract...</Text>
+        <Text color="app.muted">Loading India DHS extract...</Text>
       </VStack>
     );
   }
@@ -116,7 +116,7 @@ const ModelComponent = ({
         <HStack justifyContent="space-between" alignItems="flex-start" gap="4">
           <Box>
             <Heading size="lg">India DHS Child Nutrition</Heading>
-            <Text color="gray.600" mt="2">
+            <Text color="app.muted" mt="2">
               Standard DHS 2019-21, de facto children age 0-59 months
             </Text>
           </Box>
@@ -147,7 +147,7 @@ const ModelComponent = ({
                   <AlertIcon mr={['0', '2']} />
                   <Box flex="1">
                     <Text fontWeight="semibold">No mapped clusters match these filters</Text>
-                    <Text fontSize="sm" color="gray.700">
+                    <Text fontSize="sm" color="app.text">
                       Reset the filters or broaden the demographic cut to restore the map.
                     </Text>
                   </Box>
@@ -171,7 +171,7 @@ const ModelComponent = ({
                 </HStack>
                 <SimpleGrid columns={[1, 2]} spacing="3" data-tour="demographic-filters">
                   <Box data-tour="indicator-select">
-                    <Text fontSize="xs" color="gray.600" mb="1" fontWeight="semibold">
+                    <Text fontSize="xs" color="app.muted" mb="1" fontWeight="semibold">
                       Map indicator
                     </Text>
                     <Select
@@ -232,7 +232,7 @@ const ModelComponent = ({
                     key={key}
                     p="4"
                     borderWidth="1px"
-                    borderColor="blackAlpha.200"
+                    borderColor="app.borderStrong"
                     borderRadius="md"
                   >
                     <StatLabel>{label}</StatLabel>
@@ -244,7 +244,7 @@ const ModelComponent = ({
 
               <SimpleGrid columns={[1, 2]} spacing="3">
                 <Box>
-                  <Text fontSize="sm" color="gray.600">
+                  <Text fontSize="sm" color="app.muted">
                     Mapped children in selection
                   </Text>
                   <Text fontSize="xl" fontWeight="bold">
@@ -252,7 +252,7 @@ const ModelComponent = ({
                   </Text>
                 </Box>
                 <Box>
-                  <Text fontSize="sm" color="gray.600">
+                  <Text fontSize="sm" color="app.muted">
                     Mapped clusters
                   </Text>
                   <Text fontSize="xl" fontWeight="bold">
@@ -279,7 +279,7 @@ const ModelComponent = ({
                         <Text fontWeight="semibold" noOfLines={1}>
                           {area.label}
                         </Text>
-                        <Text fontSize="sm" color="gray.600" noOfLines={1}>
+                        <Text fontSize="sm" color="app.muted" noOfLines={1}>
                           {area.priority_subtitle}
                         </Text>
                       </Box>
@@ -292,7 +292,7 @@ const ModelComponent = ({
                         >
                           {formatPercent(area.priority_metric)}
                         </Badge>
-                        <Text fontSize="xs" color="gray.500">
+                        <Text fontSize="xs" color="app.subtle">
                           score {Math.round(area.priority_score)}
                         </Text>
                       </VStack>
@@ -306,12 +306,12 @@ const ModelComponent = ({
                   </Box>
                 ))}
                 {priorityAreas.rows.length === 0 && (
-                  <Text color="gray.600" fontSize="sm">
+                  <Text color="app.muted" fontSize="sm">
                     No priority areas match the selected filters.
                   </Text>
                 )}
               </VStack>
-              <Text fontSize="xs" color="gray.500" mt="3">
+              <Text fontSize="xs" color="app.subtle" mt="3">
                 Priority score combines the selected rate with mapped survey sample size.
               </Text>
             </Box>
@@ -329,7 +329,7 @@ const ModelComponent = ({
                       <Text fontWeight="semibold" noOfLines={1}>
                         {cluster.district_name || 'DHS cluster'}
                       </Text>
-                      <Text fontSize="sm" color="gray.600" noOfLines={1}>
+                      <Text fontSize="sm" color="app.muted" noOfLines={1}>
                         {cluster.state_name} · {formatCount(cluster.child_count)} children
                       </Text>
                     </Box>
@@ -339,7 +339,7 @@ const ModelComponent = ({
                   </HStack>
                 ))}
                 {topClusters.length === 0 && (
-                  <Text color="gray.600" fontSize="sm">
+                  <Text color="app.muted" fontSize="sm">
                     No clusters match the selected filters.
                   </Text>
                 )}
@@ -349,10 +349,10 @@ const ModelComponent = ({
         </TabPanels>
       </Tabs>
 
-      <Text fontSize="xs" color="gray.500" data-tour="privacy-note">
+      <Text fontSize="xs" color="app.subtle" data-tour="privacy-note">
         Rates use DHS sample weights. Cluster coordinates are displaced by DHS for respondent confidentiality. Filtered cuts are local aggregate views, not public redistributable data.
       </Text>
-      <Text fontSize="xs" color="gray.400">
+      <Text fontSize="xs" color="app.subtle">
         Source: {dashboardData?.metadata?.survey || 'India Standard DHS, 2019-21'}
       </Text>
     </VStack>

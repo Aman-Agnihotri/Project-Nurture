@@ -72,7 +72,7 @@ const Signup = () => {
   };
 
   return (
-    <Container maxW={'container.xl'} h={'100vh'} p={'16'}>
+    <Container maxW={'container.xl'} minH={'100vh'} p={'16'}>
       <form onSubmit={handleRegister}>
         <VStack
           alignItems={'stretch'}
@@ -81,7 +81,7 @@ const Signup = () => {
           m={'auto'}
           my={'16'}
         >
-          <Heading lineHeight={"38px"}>Create a Project Nurture Account</Heading>
+          <Heading lineHeight={"38px"}>Create Project Nurture Access</Heading>
           <Avatar alignSelf={'center'} boxSize={'32'} />
 
           <Input
@@ -106,9 +106,9 @@ const Signup = () => {
             name = {"password"}
           />
           <Text textAlign={'right'}>
-              Already Signed Up?{' '}
+              Already have access?{' '}
               <Button variant={'link'} colorScheme={' teal'}>
-                <Link to={'/login'}>Login In</Link>
+                <Link to={'/login'}>Log in</Link>
               </Button>
             </Text>
           <Button colorScheme={' teal'} type="submit">Sign Up</Button>

@@ -3,15 +3,15 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <Box as="footer" borderTopWidth="1px" borderColor="blackAlpha.200" bg="gray.50">
+    <Box as="footer" borderTopWidth="1px" borderColor="app.borderStrong" bg="app.bg">
       <Container maxW="container.2xl" px={['4', '6', '8']} py="6">
         <HStack justifyContent="space-between" alignItems="center" flexWrap="wrap" gap="3">
           <Box>
-            <Text color="gray.800" fontWeight="800">
+            <Text color="app.text" fontWeight="800">
               Project Nurture
             </Text>
-            <Text color="gray.500" fontSize="sm">
-              A local DHS child nutrition explorer and portfolio data product.
+            <Text color="app.subtle" fontSize="sm">
+              A local DHS child nutrition explorer with a privacy-aware data boundary.
             </Text>
           </Box>
           <HStack spacing="2">

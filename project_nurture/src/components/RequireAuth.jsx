@@ -46,7 +46,7 @@ const RequireAuth = ({ children }) => {
       <Container maxW="container.md" py="24">
         <VStack spacing="4">
           <Spinner color="teal.500" />
-          <Text color="gray.600">Checking dashboard access...</Text>
+          <Text color="app.muted">Checking dashboard access...</Text>
         </VStack>
       </Container>
     );

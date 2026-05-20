@@ -102,8 +102,10 @@ const DashboardTour = () => {
       <style>
         {`
           .dashboard-tour-popover {
-            color: #172033;
+            background: var(--chakra-colors-app-surface);
+            color: var(--chakra-colors-app-text);
             border-radius: 8px;
+            border: 1px solid var(--chakra-colors-app-borderStrong);
             box-shadow: 0 18px 46px rgba(15, 23, 42, 0.22);
           }
 
@@ -113,7 +115,7 @@ const DashboardTour = () => {
           }
 
           .dashboard-tour-popover .driver-popover-description {
-            color: #4b5563;
+            color: var(--chakra-colors-app-muted);
             line-height: 1.5;
           }
 
@@ -140,20 +142,20 @@ const DashboardTour = () => {
           }
 
           .dashboard-tour-popover .driver-popover-prev-btn:not(:disabled) {
-            background: #e2e8f0 !important;
-            color: #172033 !important;
+            background: var(--chakra-colors-app-surfaceMuted) !important;
+            color: var(--chakra-colors-app-text) !important;
           }
 
           .dashboard-tour-popover .driver-popover-prev-btn:not(:disabled):hover,
           .dashboard-tour-popover .driver-popover-prev-btn:not(:disabled):focus {
-            background: #cbd5e1 !important;
-            color: #172033 !important;
+            background: var(--chakra-colors-app-borderStrong) !important;
+            color: var(--chakra-colors-app-text) !important;
           }
 
           .dashboard-tour-popover .driver-popover-next-btn:disabled,
           .dashboard-tour-popover .driver-popover-prev-btn:disabled {
-            background: #f1f5f9 !important;
-            color: #94a3b8 !important;
+            background: var(--chakra-colors-app-surfaceMuted) !important;
+            color: var(--chakra-colors-app-subtle) !important;
             cursor: not-allowed;
             opacity: 0.72;
           }

@@ -8,6 +8,7 @@ import {
   Box,
   Heading,
   HStack,
+  Icon,
   SimpleGrid,
   Text,
 } from '@chakra-ui/react';
@@ -17,7 +18,7 @@ const guideItems = [
   {
     icon: FiInfo,
     title: 'What this dashboard is',
-    text: 'A local explorer for India Standard DHS 2019-21 child nutrition indicators. It is meant for aggregate insight, portfolio demonstration, and planning-style analysis.',
+    text: 'A local explorer for India Standard DHS 2019-21 child nutrition indicators. It is meant for aggregate insight and planning-style analysis.',
   },
   {
     icon: FiMap,
@@ -45,8 +46,8 @@ const DashboardGuide = () => {
   return (
     <Accordion allowToggle defaultIndex={[0]} data-tour="dashboard-guide" mb="6">
       <AccordionItem
-        bg="white"
-        borderColor="blackAlpha.200"
+        bg="app.surface"
+        borderColor="app.borderStrong"
         borderRadius="md"
         borderWidth="1px"
       >
@@ -57,7 +58,7 @@ const DashboardGuide = () => {
                 <Badge colorScheme="teal">Guide</Badge>
                 <Heading size="sm">How To Read This Dashboard</Heading>
               </HStack>
-              <Text color="gray.600" fontSize="sm" mt="1">
+              <Text color="app.muted" fontSize="sm" mt="1">
                 Data source, map behavior, filters, priority ranking, and privacy limits.
               </Text>
             </Box>
@@ -66,20 +67,17 @@ const DashboardGuide = () => {
         </h2>
         <AccordionPanel px="5" pb="5">
           <SimpleGrid columns={[1, 1, 5]} spacing="4">
-            {guideItems.map(item => {
-              const Icon = item.icon;
-              return (
-                <Box key={item.title}>
-                  <Icon color="#0f766e" size="20" />
-                  <Heading color="gray.800" mt="3" size="xs">
-                    {item.title}
-                  </Heading>
-                  <Text color="gray.600" fontSize="sm" mt="2">
-                    {item.text}
-                  </Text>
-                </Box>
-              );
-            })}
+            {guideItems.map(item => (
+              <Box key={item.title}>
+                <Icon as={item.icon} color="app.icon" boxSize="5" />
+                <Heading color="app.text" mt="3" size="xs">
+                  {item.title}
+                </Heading>
+                <Text color="app.muted" fontSize="sm" mt="2">
+                  {item.text}
+                </Text>
+              </Box>
+            ))}
           </SimpleGrid>
         </AccordionPanel>
       </AccordionItem>

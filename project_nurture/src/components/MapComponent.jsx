@@ -365,7 +365,13 @@ const MapComponent = ({
 
           .nutrition-popup {
             min-width: 230px;
-            color: #172033;
+            color: var(--chakra-colors-app-text);
+          }
+
+          .leaflet-popup-content-wrapper,
+          .leaflet-popup-tip {
+            background: var(--chakra-colors-app-surface);
+            color: var(--chakra-colors-app-text);
           }
 
           .popup-title {
@@ -388,12 +394,12 @@ const MapComponent = ({
             margin-top: 12px;
             padding: 8px 10px;
             border-radius: 6px;
-            background: #f3f6f8;
+            background: var(--chakra-colors-app-surfaceMuted);
             font-size: 13px;
           }
 
           .popup-highlight strong {
-            color: #172033;
+            color: var(--chakra-colors-app-text);
           }
 
           .popup-grid {
@@ -405,11 +411,11 @@ const MapComponent = ({
           }
 
           .popup-grid span {
-            color: #536176;
+            color: var(--chakra-colors-app-muted);
           }
 
           .popup-grid strong {
-            color: #172033;
+            color: var(--chakra-colors-app-text);
           }
 
           .nutrition-legend {
@@ -417,9 +423,10 @@ const MapComponent = ({
             gap: 6px;
             padding: 10px 12px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.94);
+            background: var(--chakra-colors-app-surface);
+            border: 1px solid var(--chakra-colors-app-borderStrong);
             box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18);
-            color: #172033;
+            color: var(--chakra-colors-app-text);
             font-size: 12px;
           }
 
@@ -443,7 +450,7 @@ const MapComponent = ({
 
           .nutrition-legend small {
             max-width: 180px;
-            color: #536176;
+            color: var(--chakra-colors-app-muted);
             line-height: 1.35;
           }
 
@@ -456,7 +463,8 @@ const MapComponent = ({
             gap: 4px;
             padding: 4px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.94);
+            background: var(--chakra-colors-app-surface);
+            border: 1px solid var(--chakra-colors-app-borderStrong);
             box-shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
           }
 
@@ -466,14 +474,14 @@ const MapComponent = ({
             border: 0;
             border-radius: 6px;
             background: transparent;
-            color: #172033;
+            color: var(--chakra-colors-app-text);
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
           }
 
           .map-layer-control button:hover {
-            background: #edf3f4;
+            background: var(--chakra-colors-app-surfaceMuted);
           }
 
           .map-layer-control button.is-active {
@@ -505,9 +513,10 @@ const MapComponent = ({
             max-width: 420px;
             padding: 18px 20px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.96);
+            background: var(--chakra-colors-app-surface);
+            border: 1px solid var(--chakra-colors-app-borderStrong);
             box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
-            color: #172033;
+            color: var(--chakra-colors-app-text);
             font-size: 14px;
             line-height: 1.5;
             text-align: center;
