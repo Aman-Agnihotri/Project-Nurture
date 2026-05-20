@@ -177,17 +177,49 @@ const addLegend = (map, indicator, mapMode) => {
 
   legend.onAdd = () => {
     const div = L.DomUtil.create('div', 'nutrition-legend');
+    const startsCollapsed = typeof window !== 'undefined'
+      && window.matchMedia('(max-width: 768px)').matches;
+
     div.innerHTML = `
-      <strong>${escapeHtml(metricLabel(indicator))}</strong>
-      <span><i style="background:#b42318"></i>${labels[0]}</span>
-      <span><i style="background:#e5532d"></i>${labels[1]}</span>
-      <span><i style="background:#f0a202"></i>${labels[2]}</span>
-      <span><i style="background:#2f9e7e"></i>${labels[3]}</span>
-      <span><i style="background:#277da1"></i>${labels[4]}</span>
-      <span><i style="background:#7a8794"></i>sparse sample</span>
-      ${showsClusters ? '<small>Bubbles show weighted average across visible DHS clusters.</small>' : ''}
-      ${showsHeat ? '<small>Heat is a smoothed survey-cluster layer, not exact case locations.</small>' : ''}
+      <div class="legend-header">
+        <strong>${escapeHtml(metricLabel(indicator))}</strong>
+        <button
+          type="button"
+          class="legend-toggle"
+          aria-expanded="${startsCollapsed ? 'false' : 'true'}"
+          aria-label="${startsCollapsed ? 'Expand legend' : 'Collapse legend'}"
+        >
+          <span class="legend-toggle-expanded">Minimize</span>
+          <span class="legend-toggle-collapsed">Show</span>
+        </button>
+      </div>
+      <div class="legend-body">
+        <span><i style="background:#b42318"></i>${labels[0]}</span>
+        <span><i style="background:#e5532d"></i>${labels[1]}</span>
+        <span><i style="background:#f0a202"></i>${labels[2]}</span>
+        <span><i style="background:#2f9e7e"></i>${labels[3]}</span>
+        <span><i style="background:#277da1"></i>${labels[4]}</span>
+        <span><i style="background:#7a8794"></i>sparse sample</span>
+        ${showsClusters ? '<small>Bubbles show weighted average across visible DHS clusters.</small>' : ''}
+        ${showsHeat ? '<small>Heat is a smoothed survey-cluster layer, not exact case locations.</small>' : ''}
+      </div>
     `;
+
+    const button = div.querySelector('.legend-toggle');
+    const setCollapsed = collapsed => {
+      div.classList.toggle('is-collapsed', collapsed);
+      button.setAttribute('aria-expanded', String(!collapsed));
+      button.setAttribute('aria-label', collapsed ? 'Expand legend' : 'Collapse legend');
+    };
+
+    setCollapsed(startsCollapsed);
+    L.DomEvent.disableClickPropagation(div);
+    L.DomEvent.disableScrollPropagation(div);
+    L.DomEvent.on(button, 'click', event => {
+      L.DomEvent.stop(event);
+      setCollapsed(!div.classList.contains('is-collapsed'));
+    });
+
     return div;
   };
 
@@ -425,7 +457,7 @@ const MapComponent = ({
 
           .nutrition-legend {
             display: grid;
-            gap: 6px;
+            gap: 8px;
             max-width: min(220px, calc(100vw - 40px));
             padding: 10px 12px;
             border-radius: 8px;
@@ -436,28 +468,78 @@ const MapComponent = ({
             font-size: 12px;
           }
 
-          .nutrition-legend strong {
+          .legend-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            min-width: 0;
+          }
+
+          .legend-header strong {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             font-size: 13px;
           }
 
-          .nutrition-legend span {
+          .legend-toggle {
+            flex: 0 0 auto;
+            border: 0;
+            border-radius: 999px;
+            background: var(--chakra-colors-app-surfaceMuted);
+            color: var(--chakra-colors-app-text);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1;
+            padding: 6px 8px;
+          }
+
+          .legend-toggle:hover,
+          .legend-toggle:focus {
+            background: var(--chakra-colors-app-borderStrong);
+            outline: none;
+          }
+
+          .legend-body {
+            display: grid;
+            gap: 6px;
+          }
+
+          .legend-body span {
             display: flex;
             align-items: center;
             gap: 7px;
             white-space: nowrap;
           }
 
-          .nutrition-legend i {
+          .legend-body i {
             width: 12px;
             height: 12px;
             display: inline-block;
             border-radius: 999px;
           }
 
-          .nutrition-legend small {
+          .legend-body small {
             max-width: 180px;
             color: var(--chakra-colors-app-muted);
             line-height: 1.35;
+          }
+
+          .legend-toggle-collapsed,
+          .nutrition-legend.is-collapsed .legend-toggle-expanded,
+          .nutrition-legend.is-collapsed .legend-body {
+            display: none;
+          }
+
+          .nutrition-legend.is-collapsed {
+            gap: 0;
+          }
+
+          .nutrition-legend.is-collapsed .legend-toggle-collapsed {
+            display: inline;
           }
 
           .map-layer-control {
@@ -523,7 +605,7 @@ const MapComponent = ({
               font-size: 11px;
             }
 
-            .nutrition-legend small {
+            .legend-body small {
               max-width: 160px;
             }
 
