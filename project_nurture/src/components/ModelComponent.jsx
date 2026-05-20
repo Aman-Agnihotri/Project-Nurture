@@ -126,10 +126,10 @@ const ModelComponent = ({
         </HStack>
       </Box>
 
-      <Tabs colorScheme="teal" isLazy variant="enclosed">
+      <Tabs colorScheme="teal" isLazy variant="enclosed" data-tour="dashboard-panel">
         <TabList>
           <Tab>Explore</Tab>
-          <Tab>Priority</Tab>
+          <Tab data-tour="priority-tab">Priority</Tab>
           <Tab>Clusters</Tab>
         </TabList>
 
@@ -169,8 +169,8 @@ const ModelComponent = ({
                     Reset
                   </Button>
                 </HStack>
-                <SimpleGrid columns={[1, 2]} spacing="3">
-                  <Box>
+                <SimpleGrid columns={[1, 2]} spacing="3" data-tour="demographic-filters">
+                  <Box data-tour="indicator-select">
                     <Text fontSize="xs" color="gray.600" mb="1" fontWeight="semibold">
                       Map indicator
                     </Text>
@@ -349,7 +349,7 @@ const ModelComponent = ({
         </TabPanels>
       </Tabs>
 
-      <Text fontSize="xs" color="gray.500">
+      <Text fontSize="xs" color="gray.500" data-tour="privacy-note">
         Rates use DHS sample weights. Cluster coordinates are displaced by DHS for respondent confidentiality. Filtered cuts are local aggregate views, not public redistributable data.
       </Text>
       <Text fontSize="xs" color="gray.400">

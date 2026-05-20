@@ -515,7 +515,7 @@ const MapComponent = ({
         `}
       </style>
       <div className="map-container">
-        <div className="map-layer-control" aria-label="Map layer">
+        <div className="map-layer-control" aria-label="Map layer" data-tour="map-layer-control">
           {mapModeOptions.map(mode => (
             <button
               key={mode.key}

@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "driver.js": "^1.4.0",
     "firebase": "^10.11.0",
     "framer-motion": "^6.5.1",
     "leaflet": "^1.9.4",

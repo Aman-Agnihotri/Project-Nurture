@@ -1,4 +1,4 @@
-import { Box, Container, Flex } from '@chakra-ui/react';
+import { Box, Container, Flex, HStack } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
 import {
   aggregateRows,
@@ -12,6 +12,7 @@ import {
 } from '../lib/nutritionData';
 import DashboardGuide from './DashboardGuide';
 import DashboardStatePanel from './DashboardStatePanel';
+import DashboardTour from './DashboardTour';
 import MapComponent from './MapComponent';
 import ModelComponent from './ModelComponent';
 
@@ -123,6 +124,9 @@ const Dashboard = () => {
 
   return (
     <Container maxW="container.2xl" px={['4', '6', '8']} py="20" minH="100vh">
+      <HStack justifyContent="flex-end" mb="4">
+        <DashboardTour />
+      </HStack>
       <DashboardGuide />
       <Flex direction={['column', 'column', 'row']} gap="6" alignItems="stretch">
         <Box
@@ -131,6 +135,7 @@ const Dashboard = () => {
           minW="0"
           position={['static', 'static', 'sticky']}
           top="20"
+          data-tour="dashboard-map"
         >
           <MapComponent
             clusters={filteredClusters}

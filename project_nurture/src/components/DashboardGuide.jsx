@@ -43,7 +43,7 @@ const guideItems = [
 
 const DashboardGuide = () => {
   return (
-    <Accordion allowToggle defaultIndex={[0]} mb="6">
+    <Accordion allowToggle defaultIndex={[0]} data-tour="dashboard-guide" mb="6">
       <AccordionItem
         bg="white"
         borderColor="blackAlpha.200"
