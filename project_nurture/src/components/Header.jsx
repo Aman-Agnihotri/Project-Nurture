@@ -17,12 +17,16 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiMenu } from 'react-icons/fi';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ColorModeSwitcher from '../ColorModeSwitcher';
-import { clearAuthSession, hasFreshAuthSession } from '../lib/authSession';
+import {
+  authSessionChangedEvent,
+  clearAuthSession,
+  hasFreshAuthSession,
+} from '../lib/authSession';
 import { auth } from '../lib/firebase';
 
 const navItems = [
@@ -55,16 +59,33 @@ NavButton.propTypes = {
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const location = useLocation();
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useState(null);
 
+  const syncAuthUser = useCallback((user = auth.currentUser) => {
+    setAuthUser(user && hasFreshAuthSession(user.uid) ? user : null);
+  }, []);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
-      setAuthUser(user && hasFreshAuthSession(user.uid) ? user : null);
+      syncAuthUser(user);
     });
 
-    return unsubscribe;
-  }, []);
+    const handleSessionChange = () => syncAuthUser();
+    window.addEventListener(authSessionChangedEvent, handleSessionChange);
+    window.addEventListener('storage', handleSessionChange);
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener(authSessionChangedEvent, handleSessionChange);
+      window.removeEventListener('storage', handleSessionChange);
+    };
+  }, [syncAuthUser]);
+
+  useEffect(() => {
+    syncAuthUser();
+  }, [location.pathname, syncAuthUser]);
 
   const handleLogout = async () => {
     clearAuthSession();
@@ -89,7 +110,7 @@ const Header = () => {
           <HStack spacing="3" minW="0">
             <IconButton
               aria-label="Open navigation"
-              display={['inline-flex', 'inline-flex', 'none']}
+              display={['inline-flex', 'inline-flex', 'inline-flex', 'none']}
               icon={<FiMenu />}
               onClick={onOpen}
               size="sm"
@@ -113,7 +134,7 @@ const Header = () => {
             </Box>
           </HStack>
 
-          <HStack spacing="2" display={['none', 'none', 'flex']}>
+          <HStack spacing="2" display={['none', 'none', 'none', 'flex']}>
             {navItems.map(item => (
               <NavButton key={item.to} item={item} />
             ))}
@@ -165,6 +186,11 @@ const Header = () => {
           <DrawerHeader>Project Nurture</DrawerHeader>
           <DrawerBody>
             <VStack alignItems="stretch" spacing="2">
+              {authUser && (
+                <Badge alignSelf="flex-start" colorScheme="teal" mb="2" px="3" py="1">
+                  Signed in
+                </Badge>
+              )}
               {navItems.map(item => (
                 <NavButton key={item.to} item={item} onClick={onClose} />
               ))}

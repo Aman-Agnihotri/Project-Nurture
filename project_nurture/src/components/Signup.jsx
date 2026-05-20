@@ -72,14 +72,14 @@ const Signup = () => {
   };
 
   return (
-    <Container maxW={'container.xl'} minH={'100vh'} p={'16'}>
+    <Container maxW={'container.xl'} minH={'100vh'} p={['6', '10', '16']}>
       <form onSubmit={handleRegister}>
         <VStack
           alignItems={'stretch'}
           spacing={'8'}
           w={['full', '96']}
           m={'auto'}
-          my={'16'}
+          my={['10', '14', '16']}
         >
           <Heading lineHeight={"38px"}>Create Project Nurture Access</Heading>
           <Avatar alignSelf={'center'} boxSize={'32'} />

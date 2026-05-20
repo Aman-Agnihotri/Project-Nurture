@@ -82,14 +82,14 @@ const Login = () => {
   };
 
   return (
-    <Container maxW={'container.xl'} minH={'100vh'} p={'16'}>
+    <Container maxW={'container.xl'} minH={'100vh'} p={['6', '10', '16']}>
       <form onSubmit={handleLogin}>
         <VStack
           alignItems={'stretch'}
           spacing={'8'}
           w={['full', '96']}
           m={'auto'}
-          my={'16'}
+          my={['10', '14', '16']}
         >
           <Heading>Access Project Nurture</Heading>
           {sessionReason === 'expired' && (

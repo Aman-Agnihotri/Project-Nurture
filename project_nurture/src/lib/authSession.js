@@ -1,5 +1,12 @@
 const authSessionKey = 'project-nurture-auth-session';
+export const authSessionChangedEvent = 'project-nurture-auth-session-changed';
 export const authSessionTtlMs = 12 * 60 * 60 * 1000;
+
+const emitSessionChange = () => {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new Event(authSessionChangedEvent));
+  }
+};
 
 const readSession = () => {
   if (typeof window === 'undefined') return null;
@@ -33,12 +40,14 @@ export const createAuthSession = userId => {
   };
 
   window.localStorage.setItem(authSessionKey, JSON.stringify(session));
+  emitSessionChange();
   return session;
 };
 
 export const clearAuthSession = () => {
   if (typeof window !== 'undefined') {
     window.localStorage.removeItem(authSessionKey);
+    emitSessionChange();
   }
 };
 

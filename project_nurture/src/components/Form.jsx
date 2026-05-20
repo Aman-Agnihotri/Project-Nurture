@@ -253,11 +253,11 @@ const Form = () => {
                 </Alert>
               )}
 
-              <HStack justifyContent="flex-end" spacing="3">
-                <Button onClick={resetForm} variant="outline">
+              <HStack justifyContent="flex-end" flexWrap="wrap" spacing="3">
+                <Button onClick={resetForm} variant="outline" w={['full', 'auto']}>
                   Clear
                 </Button>
-                <Button colorScheme="teal" type="submit">
+                <Button colorScheme="teal" type="submit" w={['full', 'auto']}>
                   Review Draft
                 </Button>
               </HStack>

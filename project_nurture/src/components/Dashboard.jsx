@@ -115,7 +115,7 @@ const Dashboard = () => {
 
   if (dashboardState !== 'ready') {
     return (
-      <Container maxW="container.2xl" px={['4', '6', '8']} py="20" minH="100vh">
+      <Container maxW="container.2xl" px={['4', '6', '8']} py={['8', '12', '20']} minH="100vh">
         <DashboardGuide />
         <DashboardStatePanel status={dashboardState} />
       </Container>
@@ -123,8 +123,8 @@ const Dashboard = () => {
   }
 
   return (
-    <Container maxW="container.2xl" px={['4', '6', '8']} py="20" minH="100vh">
-      <HStack justifyContent="flex-end" mb="4">
+    <Container maxW="container.2xl" px={['4', '6', '8']} py={['8', '12', '20']} minH="100vh">
+      <HStack justifyContent={['flex-start', 'flex-end']} mb="4">
         <DashboardTour />
       </HStack>
       <DashboardGuide />

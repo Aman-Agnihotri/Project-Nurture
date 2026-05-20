@@ -317,6 +317,11 @@ const MapComponent = ({
             background: #e8eef2;
           }
 
+          .map-container .leaflet-control-zoom {
+            border: 0;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
+          }
+
           .risk-marker-shell {
             background: transparent;
             border: none;
@@ -382,7 +387,7 @@ const MapComponent = ({
 
           .popup-subtitle,
           .popup-note {
-            color: #637083;
+            color: var(--chakra-colors-app-muted);
             font-size: 12px;
             margin-top: 4px;
           }
@@ -421,6 +426,7 @@ const MapComponent = ({
           .nutrition-legend {
             display: grid;
             gap: 6px;
+            max-width: min(220px, calc(100vw - 40px));
             padding: 10px 12px;
             border-radius: 8px;
             background: var(--chakra-colors-app-surface);
@@ -489,18 +495,65 @@ const MapComponent = ({
             color: #ffffff;
           }
 
-          @media (max-width: 640px) {
+          @media (max-width: 768px) {
+            .map-container {
+              min-height: 430px;
+              height: 62vh;
+              max-height: 560px;
+            }
+
             .map-layer-control {
-              left: 12px;
+              left: 62px;
               right: 12px;
-              top: auto;
-              bottom: 14px;
+              top: 12px;
+              bottom: auto;
               justify-content: center;
             }
 
             .map-layer-control button {
               min-width: 0;
               flex: 1;
+              padding-inline: 6px;
+            }
+
+            .nutrition-legend {
+              max-height: 36vh;
+              overflow: auto;
+              padding: 9px 10px;
+              font-size: 11px;
+            }
+
+            .nutrition-legend small {
+              max-width: 160px;
+            }
+
+            .leaflet-bottom.leaflet-right {
+              bottom: 8px;
+              right: 8px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .map-container {
+              min-height: 360px;
+              height: 58vh;
+            }
+
+            .map-layer-control {
+              left: 56px;
+              right: 8px;
+              top: 10px;
+              gap: 3px;
+              padding: 3px;
+            }
+
+            .map-layer-control button {
+              font-size: 11px;
+              padding: 7px 4px;
+            }
+
+            .nutrition-legend {
+              max-width: calc(100vw - 32px);
             }
           }
 

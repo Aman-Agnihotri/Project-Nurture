@@ -113,7 +113,7 @@ const ModelComponent = ({
   return (
     <VStack alignItems="stretch" spacing="6">
       <Box>
-        <HStack justifyContent="space-between" alignItems="flex-start" gap="4">
+        <HStack justifyContent="space-between" alignItems="flex-start" flexWrap="wrap" gap="4">
           <Box>
             <Heading size="lg">India DHS Child Nutrition</Heading>
             <Text color="app.muted" mt="2">
@@ -127,7 +127,7 @@ const ModelComponent = ({
       </Box>
 
       <Tabs colorScheme="teal" isLazy variant="enclosed" data-tour="dashboard-panel">
-        <TabList>
+        <TabList overflowX="auto" overflowY="hidden" whiteSpace="nowrap">
           <Tab>Explore</Tab>
           <Tab data-tour="priority-tab">Priority</Tab>
           <Tab>Clusters</Tab>
@@ -151,14 +151,14 @@ const ModelComponent = ({
                       Reset the filters or broaden the demographic cut to restore the map.
                     </Text>
                   </Box>
-                  <Button size="xs" variant="outline" onClick={onResetFilters}>
+                  <Button size="xs" variant="outline" onClick={onResetFilters} w={['full', 'auto']}>
                     Reset filters
                   </Button>
                 </Alert>
               )}
 
               <Box>
-                <HStack justifyContent="space-between" alignItems="center" mb="3">
+                <HStack justifyContent="space-between" alignItems="center" flexWrap="wrap" gap="2" mb="3">
                   <Heading size="sm">Explorer Filters</Heading>
                   <Button
                     leftIcon={<FiRotateCcw />}
@@ -226,7 +226,7 @@ const ModelComponent = ({
                 </SimpleGrid>
               </Box>
 
-              <SimpleGrid columns={[2, 2]} spacing="3">
+              <SimpleGrid columns={[1, 2]} spacing="3">
                 {coreMetrics.map(([key, label]) => (
                   <Stat
                     key={key}
@@ -236,7 +236,7 @@ const ModelComponent = ({
                     borderRadius="md"
                   >
                     <StatLabel>{label}</StatLabel>
-                    <StatNumber fontSize="2xl">{formatPercent(summary[key])}</StatNumber>
+                    <StatNumber fontSize={['xl', '2xl']}>{formatPercent(summary[key])}</StatNumber>
                     <StatHelpText mb="0">weighted mapped rate</StatHelpText>
                   </Stat>
                 ))}
@@ -265,7 +265,7 @@ const ModelComponent = ({
 
           <TabPanel px="0" pb="0">
             <Box>
-              <HStack justifyContent="space-between" alignItems="center" mb="3">
+              <HStack justifyContent="space-between" alignItems="center" flexWrap="wrap" gap="2" mb="3">
                 <Heading size="sm">Priority Areas</Heading>
                 <Badge colorScheme="gray" borderRadius="full" px="3" py="1">
                   {priorityAreas.scope}

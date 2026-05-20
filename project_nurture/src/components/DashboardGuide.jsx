@@ -66,7 +66,7 @@ const DashboardGuide = () => {
           </AccordionButton>
         </h2>
         <AccordionPanel px="5" pb="5">
-          <SimpleGrid columns={[1, 1, 5]} spacing="4">
+          <SimpleGrid columns={[1, 1, 2, 5]} spacing="4">
             {guideItems.map(item => (
               <Box key={item.title}>
                 <Icon as={item.icon} color="app.icon" boxSize="5" />

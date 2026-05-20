@@ -106,6 +106,7 @@ const DashboardTour = () => {
             color: var(--chakra-colors-app-text);
             border-radius: 8px;
             border: 1px solid var(--chakra-colors-app-borderStrong);
+            max-width: min(360px, calc(100vw - 32px));
             box-shadow: 0 18px 46px rgba(15, 23, 42, 0.22);
           }
 
@@ -158,6 +159,17 @@ const DashboardTour = () => {
             color: var(--chakra-colors-app-subtle) !important;
             cursor: not-allowed;
             opacity: 0.72;
+          }
+
+          @media (max-width: 480px) {
+            .dashboard-tour-popover .driver-popover-footer {
+              gap: 8px;
+              flex-wrap: wrap;
+            }
+
+            .dashboard-tour-popover .driver-popover-progress-text {
+              flex: 1 0 100%;
+            }
           }
         `}
       </style>
