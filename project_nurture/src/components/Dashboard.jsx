@@ -2,6 +2,7 @@ import { Box, Container, Flex, HStack } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
 import {
   aggregateRows,
+  buildAreaInsight,
   buildClusterRows,
   buildClusterLookup,
   buildPriorityAreas,
@@ -41,6 +42,7 @@ const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);
   const [status, setStatus] = useState('loading');
   const [filters, setFilters] = useState(readStoredFilters);
+  const [selectedPriorityAreaLabel, setSelectedPriorityAreaLabel] = useState(null);
 
   useEffect(() => {
     fetch(dhsDataUrl, { cache: 'no-store' })
@@ -110,6 +112,56 @@ const Dashboard = () => {
     [filteredSegments, filters],
   );
 
+  useEffect(() => {
+    setSelectedPriorityAreaLabel(current => {
+      if (priorityAreas.rows.some(area => area.label === current)) {
+        return current;
+      }
+
+      return priorityAreas.rows[0]?.label || null;
+    });
+  }, [priorityAreas]);
+
+  const selectedPriorityArea = useMemo(
+    () => priorityAreas.rows.find(area => area.label === selectedPriorityAreaLabel) || null,
+    [priorityAreas, selectedPriorityAreaLabel],
+  );
+
+  const areaInsight = useMemo(
+    () => buildAreaInsight(filteredSegments, filters, filters.indicator, selectedPriorityArea),
+    [filteredSegments, filters, selectedPriorityArea],
+  );
+
+  const drillIntoArea = () => {
+    if (!areaInsight) return;
+
+    setFilters(current => {
+      if (areaInsight.drillDownFilter === 'state') {
+        return {
+          ...current,
+          state: areaInsight.label,
+          district: 'All',
+        };
+      }
+
+      if (areaInsight.drillDownFilter === 'district') {
+        return {
+          ...current,
+          district: areaInsight.label,
+        };
+      }
+
+      if (areaInsight.drillDownFilter === 'residence') {
+        return {
+          ...current,
+          residence: areaInsight.label,
+        };
+      }
+
+      return current;
+    });
+  };
+
   const hasGeneratedRows = clusterSegments.length > 0 && Boolean(dashboardData?.clusters?.length);
   const dashboardState = status === 'ready' && !hasGeneratedRows ? 'empty' : status;
 
@@ -152,10 +204,14 @@ const Dashboard = () => {
             filteredClusters={filteredClusters}
             filters={filters}
             priorityAreas={priorityAreas}
+            selectedPriorityArea={selectedPriorityArea}
             status={status}
             summary={filteredSummary}
+            areaInsight={areaInsight}
             onFilterChange={updateFilter}
             onResetFilters={resetFilters}
+            onDrillIntoArea={drillIntoArea}
+            onSelectPriorityArea={area => setSelectedPriorityAreaLabel(area.label)}
           />
         </Box>
       </Flex>

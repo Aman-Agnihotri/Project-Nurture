@@ -71,6 +71,57 @@ export const sumFields = [
 const uniqueSorted = values =>
   [...new Set(values.filter(Boolean))].sort((a, b) => String(a).localeCompare(String(b)));
 
+const insightMetrics = [
+  { key: 'risk_score', label: 'Composite risk' },
+  { key: 'stunting_rate', label: 'Stunting' },
+  { key: 'underweight_rate', label: 'Underweight' },
+  { key: 'wasting_rate', label: 'Wasting' },
+  { key: 'anemia_rate', label: 'Anemia' },
+];
+
+const demographicDimensions = [
+  { key: 'urban_rural_gps', label: 'Residence' },
+  { key: 'sex', label: 'Sex' },
+  { key: 'wealth', label: 'Wealth' },
+  { key: 'age_band', label: 'Age band' },
+];
+
+const planningFocusRules = [
+  {
+    label: 'Growth monitoring',
+    colorScheme: 'teal',
+    description: 'Use this area for growth-monitoring and nutrition-screening planning.',
+    matches: driverByKey => {
+      const stunting = driverByKey.get('stunting_rate');
+      const underweight = driverByKey.get('underweight_rate');
+      return (
+        (stunting?.delta ?? 0) >= 2.5 ||
+        (underweight?.delta ?? 0) >= 2.5 ||
+        (stunting?.value ?? 0) >= 30 ||
+        (underweight?.value ?? 0) >= 25
+      );
+    },
+  },
+  {
+    label: 'Acute nutrition screening',
+    colorScheme: 'orange',
+    description: 'Wasting stands out enough to inspect acute nutrition screening needs.',
+    matches: driverByKey => {
+      const wasting = driverByKey.get('wasting_rate');
+      return (wasting?.delta ?? 0) >= 1.5 || (wasting?.value ?? 0) >= 10;
+    },
+  },
+  {
+    label: 'Anemia follow-up',
+    colorScheme: 'red',
+    description: 'Anemia is a visible driver for program-planning review.',
+    matches: driverByKey => {
+      const anemia = driverByKey.get('anemia_rate');
+      return (anemia?.delta ?? 0) >= 5 || (anemia?.value ?? 0) >= 50;
+    },
+  },
+];
+
 export const buildClusterLookup = dashboardData =>
   new Map((dashboardData?.clusters || []).map(cluster => [Number(cluster.cluster_id), cluster]));
 
@@ -219,6 +270,9 @@ const priorityGroupFor = filters => {
     return {
       key: 'state_name',
       scope: 'States / UTs',
+      comparisonLabel: 'all mapped India DHS clusters',
+      drillDownFilter: 'state',
+      drillDownLabel: 'Drill into this state',
       subtitleFor: row => `${formatCount(row.cluster_count)} mapped clusters`,
     };
   }
@@ -227,13 +281,19 @@ const priorityGroupFor = filters => {
     return {
       key: 'district_name',
       scope: `Districts in ${filters.state}`,
-      subtitleFor: row => `${row.state_name} · ${formatCount(row.cluster_count)} mapped clusters`,
+      comparisonLabel: filters.state,
+      drillDownFilter: 'district',
+      drillDownLabel: 'Drill into this district',
+      subtitleFor: row => `${row.state_name} - ${formatCount(row.cluster_count)} mapped clusters`,
     };
   }
 
   return {
     key: 'urban_rural_gps',
     scope: `Residence groups in ${filters.district}`,
+    comparisonLabel: `${filters.district}, ${filters.state}`,
+    drillDownFilter: 'residence',
+    drillDownLabel: 'Apply this residence filter',
     subtitleFor: row => `${row.district_name}, ${row.state_name}`,
   };
 };
@@ -303,6 +363,217 @@ export const buildPriorityAreas = (segments, filters, indicator) => {
   return {
     scope: groupConfig.scope,
     rows: rankedRows,
+  };
+};
+
+const finiteNumber = value => {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+};
+
+const metricValidCount = (summary, indicator) => {
+  if (indicator === 'risk_score') {
+    return Math.min(
+      Number(summary.haz_valid_n) || 0,
+      Number(summary.waz_valid_n) || 0,
+      Number(summary.whz_valid_n) || 0,
+    );
+  }
+
+  const validFieldByMetric = {
+    stunting_rate: 'haz_valid_n',
+    severe_stunting_rate: 'haz_valid_n',
+    underweight_rate: 'waz_valid_n',
+    severe_underweight_rate: 'waz_valid_n',
+    wasting_rate: 'whz_valid_n',
+    severe_wasting_rate: 'whz_valid_n',
+    overweight_rate: 'whz_valid_n',
+    anemia_rate: 'anemia_valid_n',
+    severe_anemia_rate: 'anemia_valid_n',
+  };
+
+  return Number(summary[validFieldByMetric[indicator]]) || Number(summary.child_count) || 0;
+};
+
+const sampleQualityFor = (summary, indicator) => {
+  const validCount = metricValidCount(summary, indicator);
+
+  if (validCount >= 100) {
+    return {
+      label: 'stronger sample',
+      colorScheme: 'green',
+      description: 'Enough mapped DHS records for a steadier aggregate read.',
+      validCount,
+    };
+  }
+
+  if (validCount >= 30) {
+    return {
+      label: 'limited sample',
+      colorScheme: 'yellow',
+      description: 'Useful for scanning, but compare with nearby context before acting.',
+      validCount,
+    };
+  }
+
+  return {
+    label: 'sparse sample',
+    colorScheme: 'red',
+    description: 'Interpret this cut cautiously because the mapped denominator is small.',
+    validCount,
+  };
+};
+
+const buildDriverRows = (summary, comparison, selectedIndicator) =>
+  insightMetrics
+    .map(metric => {
+      const value = finiteNumber(summary[metric.key]);
+      const comparisonValue = finiteNumber(comparison[metric.key]);
+      const delta = value !== null && comparisonValue !== null
+        ? value - comparisonValue
+        : null;
+      const ceiling = metricCeilings[metric.key] || 55;
+
+      return {
+        ...metric,
+        value,
+        comparisonValue,
+        delta,
+        severity: value !== null ? Math.min(100, Math.max(0, (value / ceiling) * 100)) : 0,
+        isSelected: metric.key === selectedIndicator,
+      };
+    })
+    .filter(metric => metric.value !== null)
+    .sort((a, b) => {
+      if (a.isSelected) return -1;
+      if (b.isSelected) return 1;
+      return Math.abs(b.delta || 0) - Math.abs(a.delta || 0);
+    });
+
+const buildInsightSummary = (label, drivers, comparisonLabel, sampleQuality) => {
+  const positiveDrivers = drivers
+    .filter(driver => driver.key !== 'risk_score' && Number(driver.delta) >= 2)
+    .slice(0, 2);
+
+  const driverText = positiveDrivers.length > 0
+    ? positiveDrivers.map(driver => driver.label.toLowerCase()).join(' and ')
+    : 'the selected DHS indicators';
+  const comparisonText = positiveDrivers.length > 0
+    ? `above ${comparisonLabel}`
+    : `similar to ${comparisonLabel}`;
+
+  return `${label} ranks high mainly because ${driverText} read ${comparisonText}, with a ${sampleQuality.label} for this view.`;
+};
+
+const buildPlanningFocuses = (drivers, sampleQuality) => {
+  const driverByKey = new Map(drivers.map(driver => [driver.key, driver]));
+  const focuses = planningFocusRules
+    .filter(rule => rule.matches(driverByKey))
+    .map(({ label, colorScheme, description }) => ({ label, colorScheme, description }));
+
+  if (sampleQuality.label === 'sparse sample') {
+    focuses.unshift({
+      label: 'Validate locally',
+      colorScheme: 'gray',
+      description: 'Use this cut as a prompt for review, not a standalone decision.',
+    });
+  }
+
+  if (!focuses.length) {
+    focuses.push({
+      label: 'Context review',
+      colorScheme: 'blue',
+      description: 'No single driver dominates; compare with local program context.',
+    });
+  }
+
+  return focuses.slice(0, 3);
+};
+
+export const buildDemographicBreakdowns = (segments, indicator) =>
+  demographicDimensions
+    .map(dimension => {
+      const byValue = new Map();
+
+      segments.forEach(segment => {
+        const label = segment[dimension.key] || 'Unspecified';
+
+        if (!byValue.has(label)) {
+          byValue.set(label, []);
+        }
+
+        byValue.get(label).push(segment);
+      });
+
+      const rows = [...byValue.entries()]
+        .map(([label, rowsForValue]) => {
+          const summary = aggregateRows(rowsForValue);
+
+          return {
+            label,
+            value: finiteNumber(summary[indicator]),
+            child_count: summary.child_count,
+            summary,
+          };
+        })
+        .filter(row => row.value !== null)
+        .sort((a, b) => b.value - a.value);
+
+      if (rows.length < 2) return null;
+
+      return {
+        dimension: dimension.label,
+        topLabel: rows[0].label,
+        topValue: rows[0].value,
+        childCount: rows[0].child_count,
+        subgroupCount: rows.length,
+      };
+    })
+    .filter(Boolean);
+
+export const buildAreaInsight = (segments, filters, indicator, selectedArea) => {
+  const selectedLabel = typeof selectedArea === 'string' ? selectedArea : selectedArea?.label;
+  if (!selectedLabel) return null;
+
+  const groupConfig = priorityGroupFor(filters);
+  const areaRows = segments.filter(segment => {
+    const label = segment[groupConfig.key] || 'Unspecified';
+    return label === selectedLabel;
+  });
+
+  if (!areaRows.length) return null;
+
+  const summary = aggregateRows(areaRows);
+  const comparison = aggregateRows(segments);
+  const clusterCount = new Set(areaRows.map(row => row.cluster_id)).size;
+  const selectedMetric = finiteNumber(summary[indicator]);
+  const comparisonMetric = finiteNumber(comparison[indicator]);
+  const sampleQuality = sampleQualityFor(summary, indicator);
+  const drivers = buildDriverRows(summary, comparison, indicator);
+
+  return {
+    label: selectedLabel,
+    subtitle: selectedArea?.priority_subtitle || '',
+    scope: groupConfig.scope,
+    comparisonLabel: groupConfig.comparisonLabel,
+    drillDownFilter: groupConfig.drillDownFilter,
+    drillDownLabel: groupConfig.drillDownLabel,
+    indicator,
+    selectedMetric,
+    comparisonMetric,
+    selectedDelta: selectedMetric !== null && comparisonMetric !== null
+      ? selectedMetric - comparisonMetric
+      : null,
+    priorityScore: finiteNumber(selectedArea?.priority_score),
+    childCount: summary.child_count,
+    clusterCount,
+    sampleQuality,
+    summary,
+    comparison,
+    summaryText: buildInsightSummary(selectedLabel, drivers, groupConfig.comparisonLabel, sampleQuality),
+    planningFocuses: buildPlanningFocuses(drivers, sampleQuality),
+    drivers,
+    demographics: buildDemographicBreakdowns(areaRows, indicator),
   };
 };
 
