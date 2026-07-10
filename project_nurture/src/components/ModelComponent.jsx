@@ -3,75 +3,118 @@ import {
   AlertIcon,
   Badge,
   Box,
-  Divider,
+  Button,
   Heading,
   HStack,
+  Progress,
+  Select,
   SimpleGrid,
   Spinner,
   Stat,
   StatHelpText,
   StatLabel,
   StatNumber,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { useEffect, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
+import { FiArrowRight, FiRotateCcw } from 'react-icons/fi';
+import {
+  formatCount,
+  formatPercent,
+  metricLabel,
+  metricOptions,
+} from '../lib/nutritionData';
 
-const baseUrl = import.meta.env.BASE_URL || '/';
-const dhsDataUrl = `${baseUrl}generated/dhs_cluster_nutrition.json`;
-
-const metrics = [
+const coreMetrics = [
   ['stunting_rate', 'Stunted'],
   ['underweight_rate', 'Underweight'],
   ['wasting_rate', 'Wasted'],
   ['anemia_rate', 'Anemia'],
 ];
 
-const formatPercent = value => {
-  const number = Number(value);
-  return Number.isFinite(number) ? `${number.toFixed(1)}%` : 'No data';
+const priorityTone = score => {
+  if (score >= 70) return 'red';
+  if (score >= 55) return 'orange';
+  if (score >= 40) return 'yellow';
+  return 'teal';
 };
 
-const formatCount = value => {
+const asFiniteNumber = value => {
   const number = Number(value);
-  return Number.isFinite(number) ? number.toLocaleString('en-IN') : '0';
+  return value !== null && value !== undefined && Number.isFinite(number) ? number : null;
 };
 
-const ModelComponent = () => {
-  const [dashboardData, setDashboardData] = useState(null);
-  const [status, setStatus] = useState('loading');
+const formatDelta = value => {
+  const number = asFiniteNumber(value);
+  if (number === null) return 'No comparison';
 
-  useEffect(() => {
-    fetch(dhsDataUrl, { cache: 'no-store' })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('DHS extract missing');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setDashboardData(data);
-        setStatus('ready');
-      })
-      .catch(() => {
-        setStatus('missing');
-      });
-  }, []);
+  const sign = number > 0 ? '+' : '';
+  return `${sign}${number.toFixed(1)} pts`;
+};
 
-  const highestRiskStates = useMemo(() => {
-    if (!dashboardData?.states) return [];
+const deltaTone = value => {
+  const number = asFiniteNumber(value);
+  if (number === null) return 'gray';
+  if (number >= 5) return 'red';
+  if (number >= 2) return 'orange';
+  if (number <= -2) return 'green';
+  return 'gray';
+};
 
-    return [...dashboardData.states]
-      .filter(state => Number.isFinite(Number(state.risk_score)))
-      .sort((a, b) => Number(b.risk_score) - Number(a.risk_score))
-      .slice(0, 5);
-  }, [dashboardData]);
+const formatScore = value => {
+  const number = asFiniteNumber(value);
+  return number === null ? 'No score' : Math.round(number);
+};
 
+const FilterSelect = ({ label, value, options, onChange }) => (
+  <Box>
+    <Text fontSize="xs" color="app.muted" mb="1" fontWeight="semibold">
+      {label}
+    </Text>
+    <Select size="sm" value={value} onChange={event => onChange(event.target.value)}>
+      <option value="All">All</option>
+      {options.map(option => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </Select>
+  </Box>
+);
+
+FilterSelect.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+const ModelComponent = ({
+  areaInsight,
+  dashboardData,
+  filterOptions,
+  filteredClusters,
+  filters,
+  priorityAreas,
+  selectedPriorityArea,
+  status,
+  summary,
+  onDrillIntoArea,
+  onFilterChange,
+  onResetFilters,
+  onSelectPriorityArea,
+}) => {
   if (status === 'loading') {
     return (
       <VStack alignItems="flex-start" spacing="4" p="6">
         <Spinner color="teal.500" />
-        <Text color="gray.600">Loading NFHS-5 extract...</Text>
+        <Text color="app.muted">Loading India DHS extract...</Text>
       </VStack>
     );
   }
@@ -85,21 +128,27 @@ const ModelComponent = () => {
             DHS extract not generated
           </Heading>
           <Text fontSize="sm">
-            The map will fall back to the original demo data until the local DHS pipeline creates the dashboard extract.
+            Run <code>python python_backend/dhs_pipeline.py</code> to create the local dashboard extract from approved DHS files.
           </Text>
         </Box>
       </Alert>
     );
   }
 
+  const topClusters = [...filteredClusters]
+    .filter(cluster => Number.isFinite(Number(cluster[filters.indicator])))
+    .sort((a, b) => Number(b[filters.indicator]) - Number(a[filters.indicator]))
+    .slice(0, 5);
+  const hasNoFilteredClusters = filteredClusters.length === 0;
+
   return (
     <VStack alignItems="stretch" spacing="6">
       <Box>
-        <HStack justifyContent="space-between" alignItems="flex-start" gap="4">
+        <HStack justifyContent="space-between" alignItems="flex-start" flexWrap="wrap" gap="4">
           <Box>
-            <Heading size="lg">NFHS-5 Child Nutrition</Heading>
-            <Text color="gray.600" mt="2">
-              India DHS 2019-21, de facto children age 0-59 months
+            <Heading size="lg">India DHS Child Nutrition</Heading>
+            <Text color="app.muted" mt="2">
+              Standard DHS 2019-21, de facto children age 0-59 months
             </Text>
           </Box>
           <Badge colorScheme="teal" borderRadius="full" px="3" py="1">
@@ -108,69 +157,606 @@ const ModelComponent = () => {
         </HStack>
       </Box>
 
-      <SimpleGrid columns={[2, 2]} spacing="3">
-        {metrics.map(([key, label]) => (
-          <Stat
-            key={key}
-            p="4"
-            borderWidth="1px"
-            borderColor="blackAlpha.200"
-            borderRadius="md"
-          >
-            <StatLabel>{label}</StatLabel>
-            <StatNumber fontSize="2xl">{formatPercent(dashboardData.national[key])}</StatNumber>
-            <StatHelpText mb="0">weighted national rate</StatHelpText>
-          </Stat>
-        ))}
-      </SimpleGrid>
+      <Tabs colorScheme="teal" isLazy variant="enclosed" data-tour="dashboard-panel">
+        <TabList overflowX="auto" overflowY="hidden" whiteSpace="nowrap">
+          <Tab>Explore</Tab>
+          <Tab data-tour="priority-tab">Priority</Tab>
+          <Tab>Insight</Tab>
+          <Tab>Clusters</Tab>
+        </TabList>
 
-      <Box>
-        <Heading size="sm" mb="3">
-          Highest Composite Risk
-        </Heading>
-        <VStack alignItems="stretch" spacing="3">
-          {highestRiskStates.map(state => (
-            <HStack key={state.state_code} justifyContent="space-between">
+        <TabPanels>
+          <TabPanel px="0" pb="0">
+            <VStack alignItems="stretch" spacing="5">
+              {hasNoFilteredClusters && (
+                <Alert
+                  status="warning"
+                  borderRadius="md"
+                  flexDirection={['column', 'row']}
+                  gap="3"
+                  alignItems={['flex-start', 'center']}
+                >
+                  <AlertIcon mr={['0', '2']} />
+                  <Box flex="1">
+                    <Text fontWeight="semibold">No mapped clusters match these filters</Text>
+                    <Text fontSize="sm" color="app.text">
+                      Reset the filters or broaden the demographic cut to restore the map.
+                    </Text>
+                  </Box>
+                  <Button size="xs" variant="outline" onClick={onResetFilters} w={['full', 'auto']}>
+                    Reset filters
+                  </Button>
+                </Alert>
+              )}
+
               <Box>
-                <Text fontWeight="semibold">{state.state_name}</Text>
-                <Text fontSize="sm" color="gray.600">
-                  {formatCount(state.haz_valid_n)} valid child measurements
-                </Text>
+                <HStack justifyContent="space-between" alignItems="center" flexWrap="wrap" gap="2" mb="3">
+                  <Heading size="sm">Explorer Filters</Heading>
+                  <Button
+                    leftIcon={<FiRotateCcw />}
+                    onClick={onResetFilters}
+                    size="xs"
+                    variant="outline"
+                  >
+                    Reset
+                  </Button>
+                </HStack>
+                <SimpleGrid columns={[1, 2]} spacing="3" data-tour="demographic-filters">
+                  <Box data-tour="indicator-select">
+                    <Text fontSize="xs" color="app.muted" mb="1" fontWeight="semibold">
+                      Map indicator
+                    </Text>
+                    <Select
+                      size="sm"
+                      value={filters.indicator}
+                      onChange={event => onFilterChange('indicator', event.target.value)}
+                    >
+                      {metricOptions.map(metric => (
+                        <option key={metric.key} value={metric.key}>
+                          {metric.label}
+                        </option>
+                      ))}
+                    </Select>
+                  </Box>
+
+                  <FilterSelect
+                    label="State / UT"
+                    value={filters.state}
+                    options={filterOptions.states}
+                    onChange={value => onFilterChange('state', value)}
+                  />
+                  <FilterSelect
+                    label="District"
+                    value={filters.district}
+                    options={filterOptions.districts}
+                    onChange={value => onFilterChange('district', value)}
+                  />
+                  <FilterSelect
+                    label="Residence"
+                    value={filters.residence}
+                    options={filterOptions.residences}
+                    onChange={value => onFilterChange('residence', value)}
+                  />
+                  <FilterSelect
+                    label="Sex"
+                    value={filters.sex}
+                    options={filterOptions.sexes}
+                    onChange={value => onFilterChange('sex', value)}
+                  />
+                  <FilterSelect
+                    label="Wealth"
+                    value={filters.wealth}
+                    options={filterOptions.wealth}
+                    onChange={value => onFilterChange('wealth', value)}
+                  />
+                  <FilterSelect
+                    label="Age band"
+                    value={filters.ageBand}
+                    options={filterOptions.ageBands}
+                    onChange={value => onFilterChange('ageBand', value)}
+                  />
+                </SimpleGrid>
               </Box>
-              <Badge colorScheme="orange" borderRadius="full" px="3" py="1">
-                {formatPercent(state.risk_score)}
-              </Badge>
-            </HStack>
-          ))}
-        </VStack>
-      </Box>
 
-      <Divider />
+              <SimpleGrid columns={[1, 2]} spacing="3">
+                {coreMetrics.map(([key, label]) => (
+                  <Stat
+                    key={key}
+                    p="4"
+                    borderWidth="1px"
+                    borderColor="app.borderStrong"
+                    borderRadius="md"
+                  >
+                    <StatLabel>{label}</StatLabel>
+                    <StatNumber fontSize={['xl', '2xl']}>{formatPercent(summary[key])}</StatNumber>
+                    <StatHelpText mb="0">weighted mapped rate</StatHelpText>
+                  </Stat>
+                ))}
+              </SimpleGrid>
 
-      <SimpleGrid columns={[1, 2]} spacing="3">
-        <Box>
-          <Text fontSize="sm" color="gray.600">
-            Children in extract
-          </Text>
-          <Text fontSize="xl" fontWeight="bold">
-            {formatCount(dashboardData.national.child_count)}
-          </Text>
-        </Box>
-        <Box>
-          <Text fontSize="sm" color="gray.600">
-            Mapped clusters
-          </Text>
-          <Text fontSize="xl" fontWeight="bold">
-            {formatCount(dashboardData.clusters.length)}
-          </Text>
-        </Box>
-      </SimpleGrid>
+              <SimpleGrid columns={[1, 2]} spacing="3">
+                <Box>
+                  <Text fontSize="sm" color="app.muted">
+                    Mapped children in selection
+                  </Text>
+                  <Text fontSize="xl" fontWeight="bold">
+                    {formatCount(summary.child_count)}
+                  </Text>
+                </Box>
+                <Box>
+                  <Text fontSize="sm" color="app.muted">
+                    Mapped clusters
+                  </Text>
+                  <Text fontSize="xl" fontWeight="bold">
+                    {formatCount(filteredClusters.length)}
+                  </Text>
+                </Box>
+              </SimpleGrid>
+            </VStack>
+          </TabPanel>
 
-      <Text fontSize="xs" color="gray.500">
-        Rates use DHS sample weights. Cluster coordinates are displaced by DHS for respondent confidentiality.
+          <TabPanel px="0" pb="0">
+            <Box>
+              <HStack justifyContent="space-between" alignItems="center" flexWrap="wrap" gap="2" mb="3">
+                <Heading size="sm">Priority Areas</Heading>
+                <Badge colorScheme="gray" borderRadius="full" px="3" py="1">
+                  {priorityAreas.scope}
+                </Badge>
+              </HStack>
+              <VStack alignItems="stretch" spacing="3">
+                {priorityAreas.rows.slice(0, 5).map(area => {
+                  const isSelected = selectedPriorityArea?.label === area.label;
+
+                  return (
+                    <Box
+                      key={area.label}
+                      role="button"
+                      tabIndex={0}
+                      textAlign="left"
+                      p="3"
+                      borderWidth="1px"
+                      borderColor={isSelected ? 'teal.400' : 'app.borderStrong'}
+                      borderRadius="md"
+                      bg={isSelected ? 'teal.50' : 'app.surface'}
+                      boxShadow={isSelected ? 'sm' : 'none'}
+                      cursor="pointer"
+                      transition="border-color 0.15s ease, background 0.15s ease"
+                      w="full"
+                      aria-pressed={isSelected}
+                      onClick={() => onSelectPriorityArea(area)}
+                      onKeyDown={event => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          onSelectPriorityArea(area);
+                        }
+                      }}
+                      _dark={{
+                        bg: isSelected ? 'whiteAlpha.100' : 'app.surface',
+                        borderColor: isSelected ? 'teal.300' : 'app.borderStrong',
+                      }}
+                      _hover={{
+                        borderColor: 'teal.400',
+                      }}
+                      _focusVisible={{
+                        boxShadow: 'outline',
+                      }}
+                    >
+                      <HStack justifyContent="space-between" alignItems="flex-start" gap="4" mb="2">
+                        <Box minW="0">
+                          <HStack spacing="2" minW="0">
+                            <Text fontWeight="semibold" noOfLines={1}>
+                              {area.label}
+                            </Text>
+                            {isSelected && (
+                              <Badge colorScheme="teal" borderRadius="full" flexShrink="0">
+                                Insight
+                              </Badge>
+                            )}
+                          </HStack>
+                          <Text fontSize="sm" color="app.muted" noOfLines={1}>
+                            {area.priority_subtitle}
+                          </Text>
+                        </Box>
+                        <VStack alignItems="flex-end" spacing="1">
+                          <Badge
+                            colorScheme={priorityTone(area.priority_score)}
+                            borderRadius="full"
+                            px="3"
+                            py="1"
+                          >
+                            {formatPercent(area.priority_metric)}
+                          </Badge>
+                          <Text fontSize="xs" color="app.subtle">
+                            score {formatScore(area.priority_score)}
+                          </Text>
+                        </VStack>
+                      </HStack>
+                      <Progress
+                        aria-label={`${area.label} priority score`}
+                        colorScheme={priorityTone(area.priority_score)}
+                        size="xs"
+                        value={Math.min(100, Math.max(0, area.priority_score))}
+                      />
+                    </Box>
+                  );
+                })}
+                {priorityAreas.rows.length === 0 && (
+                  <Text color="app.muted" fontSize="sm">
+                    No priority areas match the selected filters.
+                  </Text>
+                )}
+              </VStack>
+              <Text fontSize="xs" color="app.subtle" mt="3">
+                Priority score combines the selected rate with mapped survey sample size. Select an area to read the driver breakdown.
+              </Text>
+            </Box>
+          </TabPanel>
+
+          <TabPanel px="0" pb="0">
+            <VStack alignItems="stretch" spacing="4">
+              {!areaInsight ? (
+                <Alert status="info" borderRadius="md">
+                  <AlertIcon />
+                  <Box>
+                    <Text fontWeight="semibold">No area insight available</Text>
+                    <Text fontSize="sm">
+                      Broaden the filters or select a priority area with enough mapped DHS data.
+                    </Text>
+                  </Box>
+                </Alert>
+              ) : (
+                <>
+                  <Box
+                    p="4"
+                    borderWidth="1px"
+                    borderColor="app.borderStrong"
+                    borderRadius="md"
+                    bg="app.surface"
+                  >
+                    <HStack justifyContent="space-between" alignItems="flex-start" gap="4" mb="4">
+                      <Box minW="0">
+                        <Heading size="sm" noOfLines={2}>
+                          {areaInsight.label}
+                        </Heading>
+                        <Text fontSize="sm" color="app.muted" mt="1">
+                          Compared with {areaInsight.comparisonLabel}
+                        </Text>
+                      </Box>
+                      <VStack alignItems={['stretch', 'flex-end']} spacing="2" flexShrink="0">
+                        <Badge colorScheme="teal" borderRadius="full" px="3" py="1">
+                          {metricLabel(filters.indicator)}
+                        </Badge>
+                        <Button
+                          size="xs"
+                          variant="outline"
+                          colorScheme="teal"
+                          rightIcon={<FiArrowRight />}
+                          onClick={onDrillIntoArea}
+                          w={['full', 'auto']}
+                        >
+                          {areaInsight.drillDownLabel}
+                        </Button>
+                      </VStack>
+                    </HStack>
+
+                    <Text fontSize="sm" color="app.text" mb="4">
+                      {areaInsight.summaryText}
+                    </Text>
+
+                    <SimpleGrid columns={[1, 2]} spacing="3">
+                      <Stat>
+                        <StatLabel>Selected metric</StatLabel>
+                        <StatNumber fontSize="2xl">
+                          {formatPercent(areaInsight.selectedMetric)}
+                        </StatNumber>
+                        <StatHelpText mb="0">
+                          {formatDelta(areaInsight.selectedDelta)} vs context
+                        </StatHelpText>
+                      </Stat>
+                      <Stat>
+                        <StatLabel>Priority score</StatLabel>
+                        <StatNumber fontSize="2xl">
+                          {formatScore(areaInsight.priorityScore)}
+                        </StatNumber>
+                        <StatHelpText mb="0">{areaInsight.scope}</StatHelpText>
+                      </Stat>
+                      <Stat>
+                        <StatLabel>Mapped children</StatLabel>
+                        <StatNumber fontSize="2xl">
+                          {formatCount(areaInsight.childCount)}
+                        </StatNumber>
+                        <StatHelpText mb="0">
+                          {formatCount(areaInsight.clusterCount)} clusters
+                        </StatHelpText>
+                      </Stat>
+                      <Stat>
+                        <StatLabel>Sample read</StatLabel>
+                        <StatNumber fontSize="xl">
+                          <Badge
+                            colorScheme={areaInsight.sampleQuality.colorScheme}
+                            borderRadius="full"
+                            px="3"
+                            py="1"
+                          >
+                            {areaInsight.sampleQuality.label}
+                          </Badge>
+                        </StatNumber>
+                        <StatHelpText mb="0">
+                          {formatCount(areaInsight.sampleQuality.validCount)} valid records
+                        </StatHelpText>
+                      </Stat>
+                    </SimpleGrid>
+                  </Box>
+
+                  <Box>
+                    <Heading size="sm" mb="3">
+                      Planning Focus
+                    </Heading>
+                    <VStack alignItems="stretch" spacing="3">
+                      {areaInsight.planningFocuses.map(focus => (
+                        <Box
+                          key={focus.label}
+                          p="3"
+                          borderWidth="1px"
+                          borderColor="app.borderStrong"
+                          borderRadius="md"
+                          bg="app.surfaceMuted"
+                        >
+                          <Badge colorScheme={focus.colorScheme} borderRadius="full" px="3" py="1">
+                            {focus.label}
+                          </Badge>
+                          <Text fontSize="sm" color="app.muted" mt="2">
+                            {focus.description}
+                          </Text>
+                        </Box>
+                      ))}
+                    </VStack>
+                  </Box>
+
+                  <Box>
+                    <Heading size="sm" mb="3">
+                      Risk Drivers
+                    </Heading>
+                    <VStack alignItems="stretch" spacing="3">
+                      {areaInsight.drivers.map(driver => (
+                        <Box key={driver.key}>
+                          <HStack justifyContent="space-between" alignItems="flex-start" gap="3" mb="2">
+                            <Box minW="0">
+                              <HStack spacing="2">
+                                <Text fontWeight="semibold">{driver.label}</Text>
+                                {driver.isSelected && (
+                                  <Badge colorScheme="teal" borderRadius="full">
+                                    selected
+                                  </Badge>
+                                )}
+                              </HStack>
+                              <Text fontSize="xs" color="app.subtle">
+                                {formatDelta(driver.delta)} vs {areaInsight.comparisonLabel}
+                              </Text>
+                            </Box>
+                            <Badge
+                              colorScheme={deltaTone(driver.delta)}
+                              borderRadius="full"
+                              px="3"
+                              py="1"
+                            >
+                              {formatPercent(driver.value)}
+                            </Badge>
+                          </HStack>
+                          <Progress
+                            aria-label={`${driver.label} severity`}
+                            value={driver.severity}
+                            size="xs"
+                            colorScheme={deltaTone(driver.delta)}
+                          />
+                        </Box>
+                      ))}
+                    </VStack>
+                  </Box>
+
+                  <Box>
+                    <Heading size="sm" mb="3">
+                      Demographic Hotspots
+                    </Heading>
+                    {areaInsight.demographics.length > 0 ? (
+                      <VStack alignItems="stretch" spacing="3">
+                        {areaInsight.demographics.map(row => (
+                          <HStack
+                            key={row.dimension}
+                            justifyContent="space-between"
+                            alignItems="flex-start"
+                            gap="3"
+                          >
+                            <Box minW="0">
+                              <Text fontWeight="semibold">{row.dimension}</Text>
+                              <Text fontSize="sm" color="app.muted" noOfLines={1}>
+                                Highest visible cut: {row.topLabel}
+                              </Text>
+                            </Box>
+                            <VStack alignItems="flex-end" spacing="1">
+                              <Badge colorScheme="orange" borderRadius="full" px="3" py="1">
+                                {formatPercent(row.topValue)}
+                              </Badge>
+                              <Text fontSize="xs" color="app.subtle">
+                                {formatCount(row.childCount)} children
+                              </Text>
+                            </VStack>
+                          </HStack>
+                        ))}
+                      </VStack>
+                    ) : (
+                      <Text color="app.muted" fontSize="sm">
+                        Current filters leave no multi-group demographic split to compare.
+                      </Text>
+                    )}
+                  </Box>
+
+                  <Alert status="info" borderRadius="md" alignItems="flex-start">
+                    <AlertIcon />
+                    <Box>
+                      <Text fontWeight="semibold">Survey context only</Text>
+                      <Text fontSize="sm">
+                        This explains India DHS aggregate patterns for planning. DHS GPS points are displaced for confidentiality, so this should not be read as exact case location or real-time field tracking.
+                      </Text>
+                    </Box>
+                  </Alert>
+                </>
+              )}
+            </VStack>
+          </TabPanel>
+
+          <TabPanel px="0" pb="0">
+            <Box>
+              <Heading size="sm" mb="3">
+                Highest {metricLabel(filters.indicator)}
+              </Heading>
+              <VStack alignItems="stretch" spacing="3">
+                {topClusters.map(cluster => (
+                  <HStack key={cluster.cluster_id} justifyContent="space-between" gap="4">
+                    <Box minW="0">
+                      <Text fontWeight="semibold" noOfLines={1}>
+                        {cluster.district_name || 'DHS cluster'}
+                      </Text>
+                      <Text fontSize="sm" color="app.muted" noOfLines={1}>
+                        {cluster.state_name} - {formatCount(cluster.child_count)} children
+                      </Text>
+                    </Box>
+                    <Badge colorScheme="orange" borderRadius="full" px="3" py="1">
+                      {formatPercent(cluster[filters.indicator])}
+                    </Badge>
+                  </HStack>
+                ))}
+                {topClusters.length === 0 && (
+                  <Text color="app.muted" fontSize="sm">
+                    No clusters match the selected filters.
+                  </Text>
+                )}
+              </VStack>
+            </Box>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+
+      <Text fontSize="xs" color="app.subtle" data-tour="privacy-note">
+        Rates use DHS sample weights. Cluster coordinates are displaced by DHS for respondent confidentiality. Filtered cuts are local aggregate views, not public redistributable data.
+      </Text>
+      <Text fontSize="xs" color="app.subtle">
+        Source: {dashboardData?.metadata?.survey || 'India Standard DHS, 2019-21'}
       </Text>
     </VStack>
   );
+};
+
+ModelComponent.propTypes = {
+  areaInsight: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    scope: PropTypes.string.isRequired,
+    comparisonLabel: PropTypes.string.isRequired,
+    drillDownLabel: PropTypes.string.isRequired,
+    summaryText: PropTypes.string.isRequired,
+    selectedMetric: PropTypes.number,
+    selectedDelta: PropTypes.number,
+    priorityScore: PropTypes.number,
+    childCount: PropTypes.number,
+    clusterCount: PropTypes.number,
+    sampleQuality: PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      colorScheme: PropTypes.string.isRequired,
+      validCount: PropTypes.number.isRequired,
+    }).isRequired,
+    drivers: PropTypes.arrayOf(
+      PropTypes.shape({
+        key: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        value: PropTypes.number,
+        delta: PropTypes.number,
+        severity: PropTypes.number.isRequired,
+        isSelected: PropTypes.bool.isRequired,
+      }),
+    ).isRequired,
+    planningFocuses: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        colorScheme: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    demographics: PropTypes.arrayOf(
+      PropTypes.shape({
+        dimension: PropTypes.string.isRequired,
+        topLabel: PropTypes.string.isRequired,
+        topValue: PropTypes.number,
+        childCount: PropTypes.number,
+      }),
+    ).isRequired,
+  }),
+  dashboardData: PropTypes.shape({
+    metadata: PropTypes.shape({
+      survey: PropTypes.string,
+    }),
+  }),
+  filterOptions: PropTypes.shape({
+    states: PropTypes.arrayOf(PropTypes.string).isRequired,
+    districts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    residences: PropTypes.arrayOf(PropTypes.string).isRequired,
+    sexes: PropTypes.arrayOf(PropTypes.string).isRequired,
+    wealth: PropTypes.arrayOf(PropTypes.string).isRequired,
+    ageBands: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  filteredClusters: PropTypes.arrayOf(
+    PropTypes.shape({
+      cluster_id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      district_name: PropTypes.string,
+      state_name: PropTypes.string,
+      child_count: PropTypes.number,
+      risk_score: PropTypes.number,
+      stunting_rate: PropTypes.number,
+      underweight_rate: PropTypes.number,
+      wasting_rate: PropTypes.number,
+      severe_wasting_rate: PropTypes.number,
+      overweight_rate: PropTypes.number,
+      anemia_rate: PropTypes.number,
+    }),
+  ).isRequired,
+  priorityAreas: PropTypes.shape({
+    scope: PropTypes.string.isRequired,
+    rows: PropTypes.arrayOf(
+      PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        priority_metric: PropTypes.number,
+        priority_score: PropTypes.number,
+        priority_subtitle: PropTypes.string,
+      }),
+    ).isRequired,
+  }).isRequired,
+  selectedPriorityArea: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    priority_metric: PropTypes.number,
+    priority_score: PropTypes.number,
+    priority_subtitle: PropTypes.string,
+  }),
+  filters: PropTypes.shape({
+    indicator: PropTypes.string.isRequired,
+    mapMode: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    district: PropTypes.string.isRequired,
+    residence: PropTypes.string.isRequired,
+    sex: PropTypes.string.isRequired,
+    wealth: PropTypes.string.isRequired,
+    ageBand: PropTypes.string.isRequired,
+  }).isRequired,
+  status: PropTypes.string.isRequired,
+  summary: PropTypes.shape({
+    child_count: PropTypes.number,
+    stunting_rate: PropTypes.number,
+    underweight_rate: PropTypes.number,
+    wasting_rate: PropTypes.number,
+    anemia_rate: PropTypes.number,
+  }).isRequired,
+  onDrillIntoArea: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  onResetFilters: PropTypes.func.isRequired,
+  onSelectPriorityArea: PropTypes.func.isRequired,
 };
 
 export default ModelComponent;

@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertIcon,
   Button,
   Container,
   Heading,
@@ -6,13 +8,43 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  authSessionTtlMs,
+  createAuthSession,
+  hasFreshAuthSession,
+} from '../lib/authSession';
 import { auth } from "../lib/firebase";
 
+const getSafeRedirectPath = search => {
+  const redirect = new URLSearchParams(search).get('redirect');
+
+  if (!redirect || !redirect.startsWith('/') || redirect.startsWith('//')) {
+    return '/dashboard';
+  }
+
+  return redirect;
+};
+
 const Login = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const redirectPath = getSafeRedirectPath(location.search);
+  const sessionReason = new URLSearchParams(location.search).get('reason');
+  const sessionHours = Math.round(authSessionTtlMs / 60 / 60 / 1000);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if (user && hasFreshAuthSession(user.uid)) {
+        navigate(redirectPath, { replace: true });
+      }
+    });
+
+    return unsubscribe;
+  }, [navigate, redirectPath]);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -21,9 +53,8 @@ const Login = () => {
     const { email, password } = Object.fromEntries(formData);
   
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log('Login successful');
-      // Show a notification on successful login
+      const credential = await signInWithEmailAndPassword(auth, email, password);
+      createAuthSession(credential.user.uid);
       toast.success('Login successful!', {
         position: "bottom-right",
         autoClose: 5000,
@@ -33,9 +64,8 @@ const Login = () => {
         draggable: true,
         progress: undefined,
       });
-      navigate('/dashboard');
+      navigate(redirectPath, { replace: true });
     } catch (err) {
-      // Show an error notification on failed login
       toast.error('Login failed: ' + err.message, {
         position: "bottom-right",
         autoClose: 5000,
@@ -52,16 +82,26 @@ const Login = () => {
   };
 
   return (
-    <Container maxW={'container.xl'} h={'100vh'} p={'16'}>
+    <Container maxW={'container.xl'} minH={'100vh'} p={['6', '10', '16']}>
       <form onSubmit={handleLogin}>
         <VStack
           alignItems={'stretch'}
           spacing={'8'}
           w={['full', '96']}
           m={'auto'}
-          my={'16'}
+          my={['10', '14', '16']}
         >
-          <Heading>Welcome Back</Heading>
+          <Heading>Access Project Nurture</Heading>
+          {sessionReason === 'expired' && (
+            <Alert status="warning" borderRadius="md">
+              <AlertIcon />
+              Your dashboard session expired. Sign in again to continue.
+            </Alert>
+          )}
+          <Text color="app.muted" fontSize="sm">
+            Sign in to open the India DHS child nutrition explorer. Dashboard access stays
+            active for {sessionHours} hours on this device.
+          </Text>
 
           <Input
             placeholder={'Email Address'}
@@ -79,7 +119,7 @@ const Login = () => {
           />
 
           <Button variant={'link'} alignSelf={'flex-end'}>
-            <Link to={'/forgetpassword'}>Forget Password?</Link>
+            <Link to={'/forgetpassword'}>Forgot password?</Link>
           </Button>
 
           <Button colorScheme={' teal'} type={'submit'}>
@@ -87,9 +127,9 @@ const Login = () => {
           </Button>
 
           <Text textAlign={'right'}>
-            New User?{' '}
+            Need access?{' '}
             <Button variant={'link'} colorScheme={' teal'}>
-              <Link to={'/signup'}>Sign Up</Link>
+              <Link to={'/signup'}>Create account</Link>
             </Button>
           </Text>
         </VStack>

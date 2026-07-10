@@ -1,79 +1,160 @@
-# Minor_2
-Project Nurture: Malnutrition Watch
+# Project Nurture
 
-## DHS/NFHS-5 data pipeline
+Project Nurture is a child nutrition intelligence platform for exploring child malnutrition risk across India and imagining how national survey insight could connect with field-level case tracking.
 
-The real dashboard data is generated locally from approved DHS/NFHS-5 downloads. Raw DHS files, GPS files, PDFs, and generated microdata-derived JSON are intentionally not committed.
+The project started as a college proof of concept and is being rebuilt into a more credible public health data product. Its current foundation uses India Standard DHS survey data from The DHS Program to generate a local, interactive nutrition dashboard. The longer-term vision is to pair this national context with private case-following workflows for children receiving support on the ground.
 
-Expected local inputs:
+## Why This Exists
+
+Child malnutrition is not only a national statistic. It is also a local operational problem: programs need to know where risk is concentrated, what kind of nutrition burden exists in each area, and which children need continued follow-up after intervention.
+
+Project Nurture explores that bridge:
+
+- **Survey intelligence** for broad population-level patterns
+- **Decision support** for prioritizing attention and resources
+- **Case tracking** for monitoring individual children over time
+
+The current repository focuses on the survey intelligence layer.
+
+## Current Capabilities
+
+- Interactive India map built with Leaflet
+- India DHS displaced GPS cluster visualization
+- Smooth marker clustering for dense survey points
+- Heatmap-style nutrition risk intensity
+- National weighted nutrition indicators
+- Highest-risk state summary panel
+- Local Python pipeline for converting DHS files into dashboard-ready JSON
+- Clear separation between restricted local data and code that can be shared publicly
+
+Current child nutrition indicators include:
+
+- stunting
+- severe stunting
+- wasting
+- underweight
+- overweight
+- anemia
+- mean height-for-age, weight-for-age, and weight-for-height z-scores
+
+## Technical Overview
+
+**Frontend**
+
+- React
+- Vite
+- Chakra UI
+- Leaflet
+- leaflet.markercluster
+- leaflet.heat
+- Firebase authentication foundation
+
+**Data/Pipeline**
+
+- Python
+- pandas
+- NumPy
+- pyshp
+- India DHS Household Member Recode
+- DHS displaced GPS cluster shapefile
+
+The dashboard data is generated locally from approved DHS files and is not committed to the repository.
+
+## Data Responsibility
+
+DHS microdata is restricted. This repository does not include raw DHS files, generated microdata-derived extracts, or real child case records.
+
+The project intentionally separates:
+
+- **committable code and documentation**
+- **local restricted research data**
+- **future public/demo data**
+- **future private operational case records**
+
+Do not commit:
+
+- `dhs_data/`
+- generated DHS extracts
+- raw child, household, woman, or cluster-level records
+- real field case records
+- private environment files
+
+## Local DHS Pipeline
+
+Expected local files:
 
 - `dhs_data/IAPR7EDT/IAPR7EFL.DTA` - Household Member Recode (PR)
 - `dhs_data/IAGE7AFL/IAGE7AFL.shp` - DHS GPS cluster shapefile
 
-Generate the dashboard extract:
+Generate the local dashboard extract from the repository root:
 
 ```bash
 python python_backend/dhs_pipeline.py
 ```
 
-This writes `project_nurture/public/generated/dhs_cluster_nutrition.json`, which the dashboard map uses at runtime. If the extract is missing, the app falls back to the original demo coordinates.
+This creates:
 
-The generated extract is local-only because it is derived from restricted DHS microdata and displaced GPS cluster data.
+```text
+project_nurture/public/generated/dhs_cluster_nutrition.json
+```
 
-The project link on vercel - https://vercel.com/aman-agnihotris-projects/minor-2
+The generated file is ignored by git because it is derived from restricted survey data.
 
-Instructions for running the app - 
+Validate generated indicators against the official India DHS fact sheets:
 
-Step 1: Clone the repository in the any suitable directory using this command - 
+```bash
+python python_backend/validate_dhs_outputs.py
+```
 
-git clone https://github.com/Aman-Agnihotri/Minor_2
+The validation report is written locally to:
 
-Step 2: Change directory to the project_nurture folder - 
+```text
+python_backend/outputs/dhs_validation_report.csv
+```
 
+That report is also ignored by git.
+
+## Running Locally
+
+Install and run the frontend:
+
+```bash
 cd project_nurture
-
-Step 3: Make sure you have node installed on your system, at least node version 20.x.
-
-Step 4: Install all the dependencies - 
-
-npm i
-
-Step 5: Now run the command to launch the app - 
-
+npm install
 npm run dev
+```
 
-The app is operational now on the address - http://localhost:5173/
+Open:
 
-Now, in order to see the random forest model interact with the app interface, you need to run the flask server that is in the python_backend folder. Make sure that python is properly installed on the system. Here's how to run the flask server - 
+```text
+http://localhost:5173/
+```
 
-Step 1: Change directory to python_backend - 
+Set up the Python environment:
 
+```bash
 cd python_backend
-
-Step 2: Create a python virtual environment - 
-
-For Linux and Mac - python -m venv .venv
-
-For Windows - python -m venv venv
-
-Step 3: Activate the virtual environment to work with the terminal - 
-
-For Linux - 
-1. With bash shell - source .venv/bin/activate
-2. With fish shell - source .venv/bin/activate.fish
-
-For Mac - source venv/bin/activate
-
-For Windows - 
-1. With Windows Powershell - .\venv\Scripts\Activate.ps1
-2. With CMD - venv/Scripts/activate
-
-Step 4: Install the python package dependencies - 
-
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+```
 
-Step 5: Now the other scripts besides the flask app can be run directly, just as you would run any python program. Now, before running the flask server, you would need to run the random_forest.py script, so that the model is created first and is ready to be served by the flask server. Now, to run the flask app, you need to just run this command - 
+## Roadmap
 
-flask run
+- [x] Replace synthetic map data with a DHS-derived local extract
+- [x] Preserve marker clustering and heatmap map experience
+- [x] Add national and state nutrition summary panel
+- [x] Remove fake-data model and coordinate-generation workflow
+- [x] Validate national and state-level indicators against official India DHS fact sheets
+- [ ] Add filters for indicator, state, district, residence, wealth, sex, and age band
+- [ ] Add state and district profile views
+- [ ] Build a safe public/demo data mode for portfolio deployment
+- [ ] Design private field case-tracking data model
+- [ ] Add role-aware authentication and protected workflows
+- [ ] Reframe ML around explainable risk, prioritization, and driver analysis
 
-And Voila! The server now runs on the port 8000. Now, every functionality of the app is working as intended.
+## Long-Term Vision
+
+The intended end state is a platform where national survey data helps identify risk patterns, while field teams can privately monitor real cases, follow up over time, and understand whether care is improving a child’s nutrition trajectory.
+
+Project Nurture is not a diagnostic tool. It is a data product for exploration, prioritization, and responsible public health decision support.
