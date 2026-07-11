@@ -17,16 +17,11 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiMenu } from 'react-icons/fi';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ColorModeSwitcher from '../ColorModeSwitcher';
-import {
-  authSessionChangedEvent,
-  clearAuthSession,
-  hasFreshAuthSession,
-} from '../lib/authSession';
 import { auth } from '../lib/firebase';
 
 const navItems = [
@@ -59,36 +54,18 @@ NavButton.propTypes = {
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const location = useLocation();
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useState(null);
 
-  const syncAuthUser = useCallback((user = auth.currentUser) => {
-    setAuthUser(user && hasFreshAuthSession(user.uid) ? user : null);
-  }, []);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
-      syncAuthUser(user);
+      setAuthUser(user);
     });
 
-    const handleSessionChange = () => syncAuthUser();
-    window.addEventListener(authSessionChangedEvent, handleSessionChange);
-    window.addEventListener('storage', handleSessionChange);
-
-    return () => {
-      unsubscribe();
-      window.removeEventListener(authSessionChangedEvent, handleSessionChange);
-      window.removeEventListener('storage', handleSessionChange);
-    };
-  }, [syncAuthUser]);
-
-  useEffect(() => {
-    syncAuthUser();
-  }, [location.pathname, syncAuthUser]);
+    return unsubscribe;
+  }, []);
 
   const handleLogout = async () => {
-    clearAuthSession();
     await signOut(auth).catch(() => {});
     onClose();
     navigate('/login', { replace: true });

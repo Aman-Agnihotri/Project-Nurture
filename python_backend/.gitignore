@@ -1,4 +1,6 @@
 *.csv
+# Exception: data/ holds committed T2 public inputs (see docs/00-shared-context.md)
+!data/*.csv
 *.json
 *.pkl
 *.pyc

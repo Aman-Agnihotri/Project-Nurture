@@ -18,4 +18,10 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  overrides: [
+    {
+      files: ['vite.config.js'],
+      env: { node: true },
+    },
+  ],
 }

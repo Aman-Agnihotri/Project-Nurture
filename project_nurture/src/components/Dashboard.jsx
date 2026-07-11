@@ -11,14 +11,15 @@ import {
   getFilterOptions,
   getFilteredSegments,
 } from '../lib/nutritionData';
+import { loadDashboardData } from '../lib/dataSource';
 import DashboardGuide from './DashboardGuide';
 import DashboardStatePanel from './DashboardStatePanel';
 import DashboardTour from './DashboardTour';
+import DemoBanner from './DemoBanner';
 import MapComponent from './MapComponent';
 import ModelComponent from './ModelComponent';
 
 const baseUrl = import.meta.env.BASE_URL || '/';
-const dhsDataUrl = `${baseUrl}generated/dhs_cluster_nutrition.json`;
 const filtersStorageKey = 'project-nurture-dashboard-filters';
 
 const readStoredFilters = () => {
@@ -41,19 +42,15 @@ const readStoredFilters = () => {
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);
   const [status, setStatus] = useState('loading');
+  const [tier, setTier] = useState(null);
   const [filters, setFilters] = useState(readStoredFilters);
   const [selectedPriorityAreaLabel, setSelectedPriorityAreaLabel] = useState(null);
 
   useEffect(() => {
-    fetch(dhsDataUrl, { cache: 'no-store' })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('DHS extract missing');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setDashboardData(data);
+    loadDashboardData(baseUrl)
+      .then(result => {
+        setDashboardData(result.data);
+        setTier(result.tier);
         setStatus('ready');
       })
       .catch(() => {
@@ -176,6 +173,7 @@ const Dashboard = () => {
 
   return (
     <Container maxW="container.2xl" px={['4', '6', '8']} pt="4" pb="8" minH="100vh">
+      {tier === 'demo' && <DemoBanner message={dashboardData?.metadata?.disclaimer} />}
       <HStack justifyContent={['flex-start', 'flex-end']} mb="4">
         <DashboardTour />
       </HStack>
