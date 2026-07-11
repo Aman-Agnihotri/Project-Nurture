@@ -23,7 +23,7 @@ def child_records_schema(variable_map) -> pa.DataFrameSchema:
                 coerce=True,
             ),
             variable_map.weight: Column(
-                float, checks=Check.greater_than(0), nullable=False, coerce=True
+                float, checks=Check.greater_than_or_equal_to(0), nullable=False, coerce=True
             ),
             variable_map.haz: Column(float, nullable=True, coerce=True),
             variable_map.waz: Column(float, nullable=True, coerce=True),

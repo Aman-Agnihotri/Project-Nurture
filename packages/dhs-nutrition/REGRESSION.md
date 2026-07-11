@@ -23,7 +23,6 @@ files on their own machine can run it.
   python -m venv .venv-regression
   source .venv-regression/Scripts/activate   # or bin/activate on macOS/Linux
   pip install -e packages/dhs-nutrition
-  pip install -r python_backend/requirements.txt
   ```
 
 ## Step 1: generate the old (pre-Phase-2) output
