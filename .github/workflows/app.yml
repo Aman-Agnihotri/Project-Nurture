@@ -1,0 +1,95 @@
+name: App CI/CD
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  # Reusable T1-firewall pattern: fails the run if a PR or push touches
+  # restricted, pipeline-generated data paths. Copy this job into future
+  # workflows that need the same protection.
+  firewall:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enforce T1 data firewall
+        shell: bash
+        run: |
+          set -e
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin main
+            FILES=$(git diff --name-only origin/main...HEAD)
+          else
+            BEFORE="${{ github.event.before }}"
+            if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BEFORE" 2>/dev/null; then
+              FILES=$(git show --name-only --format= HEAD)
+            else
+              FILES=$(git diff --name-only "$BEFORE" "${{ github.sha }}")
+            fi
+          fi
+
+          if echo "$FILES" | grep -E '^dhs_data/|^project_nurture/public/generated/|^python_backend/outputs/'; then
+            echo "T1 firewall: restricted data paths touched"
+            exit 1
+          else
+            echo "T1 firewall clean"
+          fi
+
+  build:
+    runs-on: ubuntu-latest
+    needs: firewall
+    defaults:
+      run:
+        working-directory: project_nurture
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: project_nurture/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build (main deploy)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          export VITE_BASE_PATH=/Project-Nurture/
+          export SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)
+          npm run build
+
+      - name: Build (preview)
+        if: "!(github.event_name == 'push' && github.ref == 'refs/heads/main')"
+        run: npm run build
+
+      - name: Upload Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: project_nurture/dist
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
