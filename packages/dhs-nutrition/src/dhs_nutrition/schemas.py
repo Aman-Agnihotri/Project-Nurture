@@ -14,7 +14,7 @@ def child_records_schema(variable_map) -> pa.DataFrameSchema:
     return pa.DataFrameSchema(
         {
             variable_map.de_facto: Column(
-                int, checks=Check.isin([1]), nullable=False, coerce=False
+                int, checks=Check.isin([1]), nullable=False, coerce=True
             ),
             variable_map.age_months: Column(
                 float,
