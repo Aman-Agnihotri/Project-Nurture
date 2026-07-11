@@ -1,0 +1,15 @@
+{
+  "artifacts": [
+    {
+      "built_at": "2026-07-11T00:00:00+00:00",
+      "file": "demo_cluster_nutrition.json",
+      "generator": "python_backend/demo_data_builder.py",
+      "generator_args": {
+        "clusters_per_district": 10,
+        "seed": 42
+      },
+      "schema_version": "legacy",
+      "sha256": "dee62aada78808e15d2922284e91bfcdc6dff56762ec5ea1ee1e798a6c4cd501"
+    }
+  ]
+}
