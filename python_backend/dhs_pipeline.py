@@ -505,6 +505,9 @@ def build_dashboard_data(dhs_dir: Path, output_path: Path) -> None:
                 "gps_clusters": str(GPS_RELATIVE_PATH).replace("\\", "/"),
             },
             "generated_at": datetime.now(timezone.utc).isoformat(),
+            "schema_version": "legacy",
+            "tier": "restricted-local",
+            "seed": None,
             "unit": "DHS displaced survey cluster",
             "local_only": True,
             "privacy_note": (
