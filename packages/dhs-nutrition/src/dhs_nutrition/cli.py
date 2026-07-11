@@ -20,8 +20,6 @@ from dhs_nutrition.validation import validate_against_factsheet
 def _cmd_compute(args: argparse.Namespace) -> int:
     gps = load_gps_clusters(args.gps) if args.gps else None
     levels = tuple(args.levels)
-    if gps is None:
-        levels = tuple(level for level in levels if level != "cluster")
 
     children = load_pr_recode(args.pr)
     result = compute_indicators(children, gps=gps, levels=levels, segments=tuple(args.segments))
