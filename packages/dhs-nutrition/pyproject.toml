@@ -23,6 +23,7 @@ dependencies = [
     "numpy>=1.24",
     "pyshp>=2.3",
     "pandera>=0.19",
+    "tomli>=2.0; python_version < '3.11'",
 ]
 
 [project.optional-dependencies]
