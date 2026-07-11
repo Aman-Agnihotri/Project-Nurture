@@ -8,7 +8,6 @@ import About from './components/About.jsx';
 import Form from './components/Form.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import Notification from './components/Notification.jsx';
-import RequireAuth from './components/RequireAuth.jsx';
 
 function App() {
   return (
@@ -21,14 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/form" element={<Form />} />
-          <Route
-            path="/dashboard"
-            element={(
-              <RequireAuth>
-                <Dashboard />
-              </RequireAuth>
-            )}
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

@@ -1,6 +1,4 @@
 import {
-  Alert,
-  AlertIcon,
   Button,
   Container,
   Heading,
@@ -12,11 +10,6 @@ import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
-import {
-  authSessionTtlMs,
-  createAuthSession,
-  hasFreshAuthSession,
-} from '../lib/authSession';
 import { auth } from "../lib/firebase";
 
 const getSafeRedirectPath = search => {
@@ -33,12 +26,10 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const redirectPath = getSafeRedirectPath(location.search);
-  const sessionReason = new URLSearchParams(location.search).get('reason');
-  const sessionHours = Math.round(authSessionTtlMs / 60 / 60 / 1000);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, user => {
-      if (user && hasFreshAuthSession(user.uid)) {
+      if (user) {
         navigate(redirectPath, { replace: true });
       }
     });
@@ -53,8 +44,7 @@ const Login = () => {
     const { email, password } = Object.fromEntries(formData);
   
     try {
-      const credential = await signInWithEmailAndPassword(auth, email, password);
-      createAuthSession(credential.user.uid);
+      await signInWithEmailAndPassword(auth, email, password);
       toast.success('Login successful!', {
         position: "bottom-right",
         autoClose: 5000,
@@ -92,15 +82,8 @@ const Login = () => {
           my={['10', '14', '16']}
         >
           <Heading>Access Project Nurture</Heading>
-          {sessionReason === 'expired' && (
-            <Alert status="warning" borderRadius="md">
-              <AlertIcon />
-              Your dashboard session expired. Sign in again to continue.
-            </Alert>
-          )}
           <Text color="app.muted" fontSize="sm">
-            Sign in to open the India DHS child nutrition explorer. Dashboard access stays
-            active for {sessionHours} hours on this device.
+            Sign in to open the India DHS child nutrition explorer.
           </Text>
 
           <Input
