@@ -49,6 +49,13 @@ jobs:
             echo "T1 firewall clean"
           fi
 
+          if git ls-files | grep -E '(^|/)(\.venv[^/]*|venv|env)/'; then
+            echo "Repository hygiene: committed virtual environment detected"
+            exit 1
+          else
+            echo "Repository hygiene: no committed virtual environments"
+          fi
+
   test:
     needs: firewall
     runs-on: ubuntu-latest
