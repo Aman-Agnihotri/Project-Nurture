@@ -50,117 +50,37 @@ python python_backend/india_pipeline.py \
 
 ## Step 3: compare
 
-Run the following script (adjust the two paths if you used different
-`--output` locations). It ignores all metadata and compares only indicator
-columns present in both schemas.
+Run the committed comparison tool. It ignores metadata, requires identical
+state/cluster/segment key sets, requires at least one matched row and shared
+numeric indicator, and compares shared numeric values within the export's
+six-decimal rounding tolerance:
 
-```python
-"""Compare old (legacy-schema) vs new (v1.0-schema) India dashboard extracts.
+```sh
+python packages/dhs-nutrition/scripts/compare_legacy_output.py
+```
 
-Values in the new schema are rounded to 6 decimal places by
-IndicatorResult.to_json; the tolerance below accounts for that rounding.
-"""
-import json
-import sys
-from pathlib import Path
+If you used different output locations:
 
-OLD_PATH = Path("python_backend/outputs/regression_old.json")
-NEW_PATH = Path("python_backend/outputs/regression_new.json")
-TOLERANCE = 1e-6
-
-EXCLUDE = {"risk_score", "sample_quality"}
-
-
-def shared_numeric_diffs(old_row, new_row):
-    diffs = {}
-    for key in old_row.keys() & new_row.keys():
-        if key in EXCLUDE:
-            continue
-        old_val, new_val = old_row[key], new_row[key]
-        if isinstance(old_val, (int, float)) and isinstance(new_val, (int, float)):
-            diffs[key] = abs(old_val - new_val)
-    return diffs
-
-
-def max_delta(deltas_list):
-    flat = [d for deltas in deltas_list for d in deltas.values()]
-    return max(flat) if flat else 0.0
-
-
-def main() -> int:
-    old = json.loads(OLD_PATH.read_text(encoding="utf-8"))
-    new = json.loads(NEW_PATH.read_text(encoding="utf-8"))
-
-    failures = []
-
-    national_diffs = [shared_numeric_diffs(old["national"], new["levels"]["national"])]
-    print(f"national: max delta = {max_delta(national_diffs):.8f}")
-    if max_delta(national_diffs) >= TOLERANCE:
-        failures.append("national")
-
-    old_states = {row["state_name"]: row for row in old["states"]}
-    new_states = {row["admin1_name"]: row for row in new["levels"]["admin1"]}
-    state_diffs = [
-        shared_numeric_diffs(old_states[name], new_states[name])
-        for name in old_states.keys() & new_states.keys()
-    ]
-    print(f"states: max delta = {max_delta(state_diffs):.8f} ({len(state_diffs)} matched)")
-    if max_delta(state_diffs) >= TOLERANCE:
-        failures.append("states")
-
-    old_clusters = {row["cluster_id"]: row for row in old["clusters"]}
-    new_clusters = {row["cluster_id"]: row for row in new["levels"]["cluster"]}
-    cluster_diffs = [
-        shared_numeric_diffs(old_clusters[cid], new_clusters[cid])
-        for cid in old_clusters.keys() & new_clusters.keys()
-    ]
-    print(f"clusters: max delta = {max_delta(cluster_diffs):.8f} ({len(cluster_diffs)} matched)")
-    if max_delta(cluster_diffs) >= TOLERANCE:
-        failures.append("clusters")
-
-    old_seg_cols = old["cluster_segment_columns"]
-    old_segments = {
-        (row[old_seg_cols.index(k)] for k in ("cluster_id", "sex", "wealth", "age_band")): dict(
-            zip(old_seg_cols, row)
-        )
-        for row in old["cluster_segments"]
-    }
-    old_segments = {tuple(k): v for k, v in old_segments.items()}
-
-    new_seg_cols = new["segments"]["cluster"]["columns"]
-    new_segments = {}
-    for row in new["segments"]["cluster"]["rows"]:
-        record = dict(zip(new_seg_cols, row))
-        key = (record["cluster_id"], record["sex"], record["wealth"], record["age_band"])
-        new_segments[key] = record
-
-    segment_diffs = [
-        shared_numeric_diffs(old_segments[key], new_segments[key])
-        for key in old_segments.keys() & new_segments.keys()
-    ]
-    print(
-        f"cluster_segments: max delta = {max_delta(segment_diffs):.8f} "
-        f"({len(segment_diffs)} matched)"
-    )
-    if max_delta(segment_diffs) >= TOLERANCE:
-        failures.append("cluster_segments")
-
-    if failures:
-        print(f"FAILED: mismatches in {failures}", file=sys.stderr)
-        return 1
-
-    print("PASSED: old and new pipelines agree within tolerance.")
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
+```sh
+python packages/dhs-nutrition/scripts/compare_legacy_output.py \
+  --old path/to/regression_old.json \
+  --new path/to/regression_new.json
 ```
 
 ## Expected outcome
 
-All five printed max-delta lines should read `0.00000000` (or values below
-`1e-6`), and the script should exit `0`.
+All four printed max-delta lines should read `0.00000000` (or values no
+greater than `1e-6`), every matched-row count must be non-zero, and the script
+should exit `0`.
+
+## Latest local verification
+
+On 2026-07-13, the legacy pipeline at commit `e87b285` and the Phase 2 India
+pipeline were run against the same maintainer-authorized local NFHS-5 PR and
+GPS inputs. The strict comparison command above exited `0`: national, admin1,
+cluster, and cluster-segment key sets matched, and all shared numeric indicator
+deltas were within tolerance. Both comparison outputs remained in the ignored
+`python_backend/outputs/` Tier 1 directory.
 
 **On mismatch:** do not adjust `dhs_nutrition` package logic to "fix" the
 diff without review. File an issue with the full script output (the
