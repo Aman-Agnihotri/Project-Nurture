@@ -19,6 +19,7 @@ import pandas as pd
 from dhs_nutrition.indicators import COUNT_COLUMNS
 
 SCHEMA_VERSION = "1.0"
+SHAPEFILE_COMPONENT_SUFFIXES = (".shp", ".shx", ".dbf")
 
 
 def _sanitize(value: object) -> object:
@@ -63,6 +64,17 @@ def _national_record(row: pd.Series, columns: list[str]) -> dict[str, object]:
         else:
             record[key] = _sanitize(value)
     return record
+
+
+def _source_components(source_path: Path) -> tuple[Path, ...]:
+    """Return every file whose bytes are consumed for a declared input path."""
+    if source_path.suffix.lower() != ".shp":
+        return (source_path,)
+    return tuple(
+        component
+        for suffix in SHAPEFILE_COMPONENT_SUFFIXES
+        if (component := source_path.with_suffix(suffix)).exists()
+    )
 
 
 @dataclass
@@ -116,10 +128,16 @@ class IndicatorResult:
             if source_path is None:
                 continue
             source_path = Path(source_path)
-            if not source_path.exists():
-                continue
-            digest = hashlib.sha256(source_path.read_bytes()).hexdigest()
-            source_files[source_path.name] = digest
+            for component in _source_components(source_path):
+                if not component.exists():
+                    continue
+                if component.name in source_files:
+                    raise ValueError(
+                        f"Duplicate source basename {component.name!r}; "
+                        "source_files cannot represent both inputs without leaking paths"
+                    )
+                digest = hashlib.sha256(component.read_bytes()).hexdigest()
+                source_files[component.name] = digest
 
         levels_payload: dict[str, object] = {}
         if "national" in self.levels:

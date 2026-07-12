@@ -34,7 +34,7 @@ import csv
 
 import pytest
 
-from dhs_nutrition.validation import validate_against_factsheet
+from dhs_nutrition.validation import ValidationReport, validate_against_factsheet
 
 ALPHALAND_STUNTING = 100 * 5 / 15
 ALPHALAND_WASTING = 100 * 5 / 18
@@ -109,6 +109,58 @@ def test_extra_region_reports_missing_generated(result, tmp_path):
     missing = [row for row in report.rows if row.status == "missing_generated_region"]
     assert len(missing) == 1
     assert missing[0].region.lower() == "gammaland"
+
+
+def test_missing_factsheet_region_fails_coverage(result, tmp_path):
+    csv_path = _write_factsheet(tmp_path / "partial.csv", [_matching_rows()[0]])
+
+    report = validate_against_factsheet(result, csv_path, level="admin1")
+
+    assert report.passed is False
+    missing = [row for row in report.rows if row.status == "missing_factsheet_region"]
+    assert len(missing) == 1
+    assert missing[0].region == "Betaland"
+
+
+def test_empty_report_never_passes():
+    report = ValidationReport(rows=[], tolerance_pp=0.15)
+
+    assert report.passed is False
+    assert "No validation checks" in report.summary()
+
+
+def test_empty_factsheet_is_rejected(result, tmp_path):
+    csv_path = _write_factsheet(tmp_path / "empty.csv", [])
+
+    with pytest.raises(ValueError, match="no regions"):
+        validate_against_factsheet(result, csv_path, level="admin1")
+
+
+def test_national_level_accepts_country_name(result, tmp_path):
+    national = result.national.iloc[0]
+    csv_path = _write_factsheet(
+        tmp_path / "national.csv",
+        [["India", national["stunting_rate"], national["wasting_rate"], national["anemia_rate"]]],
+    )
+
+    report = validate_against_factsheet(result, csv_path, level="national")
+
+    assert report.passed is True
+    assert {row.region for row in report.rows} == {"India"}
+
+
+def test_national_level_rejects_multiple_rows(result, tmp_path):
+    csv_path = _write_factsheet(tmp_path / "multiple.csv", _matching_rows())
+
+    with pytest.raises(ValueError, match="exactly one"):
+        validate_against_factsheet(result, csv_path, level="national")
+
+
+def test_negative_tolerance_is_rejected(result, tmp_path):
+    csv_path = _write_factsheet(tmp_path / "factsheet.csv", _matching_rows())
+
+    with pytest.raises(ValueError, match="non-negative"):
+        validate_against_factsheet(result, csv_path, tolerance_pp=-0.1)
 
 
 def test_to_csv_header(result, tmp_path):

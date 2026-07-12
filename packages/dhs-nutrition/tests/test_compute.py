@@ -5,7 +5,9 @@ using the synthetic fixture in tests/fixtures/synthetic_recode.py.
 from __future__ import annotations
 
 import pytest
+from pandera.errors import SchemaError
 
+from dhs_nutrition import schemas
 from dhs_nutrition.compute import (
     COUNT_COLUMNS,
     INDICATOR_SET,
@@ -87,3 +89,13 @@ def test_gps_altitude_sentinel_and_zero_coordinate_skip(gps):
 
     # The record with LATNUM=0.0/LONGNUM=0.0 (cluster 999) must be skipped.
     assert 999 not in gps.df["cluster_id"].to_numpy()
+
+
+def test_rate_schema_tolerates_only_floating_point_boundary_residue(result):
+    table = result.cluster.copy()
+    table.loc[table.index[0], "stunting_rate"] = 100.0 + 1e-12
+    schemas.level_schema("cluster").validate(table)
+
+    table.loc[table.index[0], "stunting_rate"] = 100.001
+    with pytest.raises(SchemaError):
+        schemas.level_schema("cluster").validate(table)

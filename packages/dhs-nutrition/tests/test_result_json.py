@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from datetime import datetime, timezone
 
@@ -77,6 +78,17 @@ def test_source_files_basenames_and_hex_digests(result, tmp_path):
         assert len(digest) == 64
         assert digest == digest.lower()
         int(digest, 16)  # must be valid hex
+
+
+def test_source_files_hash_every_consumed_shapefile_component(result, tmp_path):
+    out_path = result.to_json(tmp_path / "out.json", tier="restricted-local")
+    source_files = json.loads(out_path.read_text(encoding="utf-8"))["source_files"]
+    gps_path = next(path for path in result.source_paths if path.suffix.lower() == ".shp")
+
+    for suffix in (".shp", ".shx", ".dbf"):
+        component = gps_path.with_suffix(suffix)
+        assert component.name in source_files
+        assert source_files[component.name] == hashlib.sha256(component.read_bytes()).hexdigest()
 
 
 def test_json_text_does_not_leak_tmp_path(result, tmp_path):

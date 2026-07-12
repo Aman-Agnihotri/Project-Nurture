@@ -8,6 +8,8 @@ from __future__ import annotations
 import pandera.pandas as pa
 from pandera.pandas import Check, Column
 
+RATE_BOUNDARY_EPSILON = 1e-9
+
 
 def child_records_schema(variable_map) -> pa.DataFrameSchema:
     """Post-filter invariants for the child (de facto, 0-59 month) record set."""
@@ -95,7 +97,12 @@ def level_schema(level: str) -> pa.DataFrameSchema:
     for name in _RATE_COLUMNS:
         columns[name] = Column(
             float,
-            checks=Check.in_range(0, 100, include_min=True, include_max=True),
+            checks=Check.in_range(
+                -RATE_BOUNDARY_EPSILON,
+                100 + RATE_BOUNDARY_EPSILON,
+                include_min=True,
+                include_max=True,
+            ),
             nullable=True,
             coerce=True,
         )

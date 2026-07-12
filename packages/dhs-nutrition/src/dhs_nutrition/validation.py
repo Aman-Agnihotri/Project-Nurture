@@ -53,7 +53,7 @@ class ValidationReport:
 
     @property
     def passed(self) -> bool:
-        return all(row.status == "pass" for row in self.rows)
+        return bool(self.rows) and all(row.status == "pass" for row in self.rows)
 
     def to_csv(self, path: str | Path) -> Path:
         out_path = Path(path)
@@ -87,6 +87,10 @@ class ValidationReport:
             f"Max absolute difference: {max_abs_diff:.3f} percentage points",
         ]
 
+        if not self.rows:
+            lines.append("No validation checks were performed.")
+            return "\n".join(lines)
+
         if failures:
             lines.append("")
             lines.append("Failures:")
@@ -110,6 +114,9 @@ def validate_against_factsheet(
     level: str = "admin1",
     tolerance_pp: float = 0.15,
 ) -> ValidationReport:
+    if tolerance_pp < 0:
+        raise ValueError("tolerance_pp must be non-negative")
+
     if level not in ("national", "admin1"):
         raise ValueError(
             f"Unsupported level {level!r}: factsheet validation supports national/admin1"
@@ -120,6 +127,8 @@ def validate_against_factsheet(
         raise FileNotFoundError(f"Missing factsheet CSV: {csv_path}")
 
     factsheet = pd.read_csv(csv_path)
+    if factsheet.empty:
+        raise ValueError(f"Factsheet {csv_path} contains no regions to validate")
     schemas.factsheet_schema.validate(factsheet)
 
     indicator_columns = [col for col in _COMPARABLE_INDICATORS if col in factsheet.columns]
@@ -130,19 +139,33 @@ def validate_against_factsheet(
         )
 
     generated_df = result.to_dataframe(level)
+    if generated_df.empty:
+        raise ValueError(f"Generated result contains no {level} rows to validate")
 
     generated_by_region: dict[str, dict] = {}
     if level == "national":
-        row = generated_df.iloc[0].to_dict()
-        generated_by_region["national"] = row
+        if len(factsheet) != 1:
+            raise ValueError(
+                "National validation requires exactly one factsheet row; "
+                f"received {len(factsheet)}"
+            )
+        region_key = _normalize_region(factsheet.iloc[0]["region"])
+        generated_by_region[region_key] = generated_df.iloc[0].to_dict()
     else:
         for _, row in generated_df.iterrows():
             region_key = _normalize_region(row["admin1_name"])
+            if region_key in generated_by_region:
+                raise ValueError(f"Generated result contains duplicate region {region_key!r}")
             generated_by_region[region_key] = row.to_dict()
 
     factsheet_by_region: dict[str, dict] = {}
     for _, row in factsheet.iterrows():
-        factsheet_by_region[_normalize_region(row["region"])] = row.to_dict()
+        region_key = _normalize_region(row["region"])
+        if region_key in factsheet_by_region:
+            raise ValueError(f"Factsheet contains duplicate normalized region {region_key!r}")
+        factsheet_by_region[region_key] = row.to_dict()
+
+    missing_factsheet_regions = sorted(set(generated_by_region) - set(factsheet_by_region))
 
     rows: list[ValidationRow] = []
     for region_key, official_values in sorted(factsheet_by_region.items()):
@@ -207,5 +230,19 @@ def validate_against_factsheet(
                     status=status,
                 )
             )
+
+    for region_key in missing_factsheet_regions:
+        generated_values = generated_by_region[region_key]
+        region_name = str(generated_values.get("admin1_name", region_key))
+        rows.append(
+            ValidationRow(
+                region=region_name,
+                indicator="region",
+                official=None,
+                generated=None,
+                difference=None,
+                status="missing_factsheet_region",
+            )
+        )
 
     return ValidationReport(rows=rows, tolerance_pp=tolerance_pp)

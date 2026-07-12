@@ -40,6 +40,10 @@ report = validate_against_factsheet(result, "state_factsheet.csv", level="admin1
 print(report.summary())
 ```
 
+Admin1 validation requires complete region coverage in both directions; omitted
+or unexpected regions fail the report. National validation requires exactly one
+factsheet row and accepts the country's normal name in its `region` column.
+
 ## Command line
 
 ```bash
