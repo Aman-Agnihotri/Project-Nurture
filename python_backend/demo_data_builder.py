@@ -175,6 +175,8 @@ import itertools
 import json
 import math
 import os
+import re
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -183,15 +185,20 @@ import pandas as pd
 
 try:
     from manifest_utils import update_manifest
+    from name_normalization import normalize
 except ImportError:  # running as a script from repo root rather than python_backend/
     import sys
 
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from manifest_utils import update_manifest
+    from name_normalization import normalize
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = (
     REPO_ROOT / "project_nurture" / "public" / "demo" / "demo_cluster_nutrition.json"
+)
+DEFAULT_DISTRICT_OUTPUT = (
+    REPO_ROOT / "project_nurture" / "public" / "demo" / "district_indicators.json"
 )
 DEFAULT_INPUT = Path(__file__).resolve().parent / "data" / "nfhs5_district_factsheet.csv"
 DEMO_DIR = REPO_ROOT / "project_nurture" / "public" / "demo"
@@ -396,6 +403,13 @@ def _sanitize(value: object) -> object:
     if isinstance(value, float):
         return round(value, 6)
     return value
+
+
+def _slug(value: object) -> str:
+    """Stable public route key; the source name remains in each record."""
+    text = unicodedata.normalize("NFKD", str(value or "")).encode("ascii", "ignore").decode()
+    text = text.lower().replace("&", " and ")
+    return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", text)).strip("-")
 
 
 def _sample_quality(haz_valid_n: int) -> str:
@@ -747,6 +761,99 @@ def build_demo_data(input_path: Path, output_path: Path, seed: int, clusters_per
         )
 
 
+DISTRICT_INDICATORS = [
+    "stunting_rate",
+    "severe_stunting_rate",
+    "underweight_rate",
+    "wasting_rate",
+    "severe_wasting_rate",
+    "overweight_rate",
+    "anemia_rate",
+]
+
+
+def build_district_indicators(input_path: Path, output_path: Path, seed: int) -> None:
+    """Emit public placeholder district values and unweighted demo state rollups."""
+    if not input_path.exists():
+        raise FileNotFoundError(f"Missing fact-sheet CSV: {input_path}")
+
+    districts = []
+    for row in pd.read_csv(input_path).to_dict(orient="records"):
+        state_name = str(row["state_name"])
+        district_name = str(row["district_name"])
+        record = {
+            "state_name": state_name,
+            "district_name": district_name,
+            "normalized_state_name": normalize(state_name),
+            "normalized_district_name": normalize(district_name),
+            "state_slug": _slug(state_name),
+            "district_slug": _slug(district_name),
+        }
+        for indicator in DISTRICT_INDICATORS:
+            record[indicator] = _sanitize(float(row[indicator]))
+        record["risk_score"] = _sanitize(
+            record["stunting_rate"] * 0.45
+            + record["underweight_rate"] * 0.35
+            + record["wasting_rate"] * 0.20
+        )
+        districts.append(record)
+    districts.sort(key=lambda row: (row["state_name"], row["district_name"]))
+
+    states = []
+    for state_name in sorted({row["state_name"] for row in districts}):
+        state_districts = [row for row in districts if row["state_name"] == state_name]
+        rollup = {
+            "state_name": state_name,
+            "normalized_state_name": normalize(state_name),
+            "state_slug": _slug(state_name),
+            "district_count": len(state_districts),
+        }
+        for indicator in [*DISTRICT_INDICATORS, "risk_score"]:
+            rollup[indicator] = _sanitize(
+                sum(float(row[indicator]) for row in state_districts) / len(state_districts)
+            )
+        states.append(rollup)
+
+    national = {"district_count": len(districts)}
+    for indicator in [*DISTRICT_INDICATORS, "risk_score"]:
+        national[indicator] = _sanitize(
+            sum(float(row[indicator]) for row in districts) / len(districts)
+        )
+
+    epoch = os.environ.get("SOURCE_DATE_EPOCH")
+    generated_at = (
+        datetime.fromtimestamp(int(epoch), timezone.utc).isoformat()
+        if epoch
+        else datetime.now(timezone.utc).isoformat()
+    )
+    payload = {
+        "schema_version": "1.0",
+        "metadata": {
+            "tier": "demo",
+            "aggregation": "unweighted, demo-tier",
+            "generated_at": generated_at,
+            "seed": seed,
+            "placeholder_status": "All values are documented demo placeholders, not NFHS estimates.",
+            "source": "python_backend/data/nfhs5_district_factsheet.csv",
+        },
+        "districts": districts,
+        "states": states,
+        "national": national,
+    }
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        json.dumps(payload, sort_keys=True, separators=(",", ":")), encoding="utf-8"
+    )
+    print(f"Wrote {output_path}")
+    print(f"District indicators: {len(districts):,}")
+    if output_path.resolve().parent == DEMO_DIR:
+        update_manifest(
+            output_path,
+            "python_backend/demo_data_builder.py",
+            {"seed": seed, "artifact": "district_indicators"},
+        )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Build a deterministic synthetic demo child nutrition dataset."
@@ -754,9 +861,11 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--clusters-per-district", type=int, default=10)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--district-out", type=Path, default=DEFAULT_DISTRICT_OUTPUT)
     args = parser.parse_args()
 
     build_demo_data(DEFAULT_INPUT, args.out, args.seed, args.clusters_per_district)
+    build_district_indicators(DEFAULT_INPUT, args.district_out, args.seed)
 
 
 if __name__ == "__main__":

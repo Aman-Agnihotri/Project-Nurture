@@ -10,6 +10,17 @@
       },
       "schema_version": "legacy",
       "sha256": "dee62aada78808e15d2922284e91bfcdc6dff56762ec5ea1ee1e798a6c4cd501"
+    },
+    {
+      "built_at": "2026-07-11T00:00:00+00:00",
+      "file": "district_indicators.json",
+      "generator": "python_backend/demo_data_builder.py",
+      "generator_args": {
+        "artifact": "district_indicators",
+        "seed": 42
+      },
+      "schema_version": "1.0",
+      "sha256": "17d812c76b502a9e9b05563783fffbc2b990f7ee9ae1ffb464f1e93b83d45f20"
     }
   ]
 }
