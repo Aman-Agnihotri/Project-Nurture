@@ -1,0 +1,138 @@
+name: dhs-nutrition CI
+
+on:
+  pull_request:
+    paths:
+      - "packages/dhs-nutrition/**"
+      - ".github/workflows/dhs-nutrition.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "packages/dhs-nutrition/**"
+      - ".github/workflows/dhs-nutrition.yml"
+    tags:
+      - "dhs-nutrition-v*"
+
+jobs:
+  # Reusable T1-firewall pattern: fails the run if a PR or push touches
+  # restricted, pipeline-generated data paths. Copy this job into future
+  # workflows that need the same protection.
+  firewall:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enforce T1 data firewall
+        shell: bash
+        run: |
+          set -e
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin main
+            FILES=$(git diff --name-only origin/main...HEAD)
+          else
+            BEFORE="${{ github.event.before }}"
+            if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BEFORE" 2>/dev/null; then
+              FILES=$(git show --name-only --format= HEAD)
+            else
+              FILES=$(git diff --name-only "$BEFORE" "${{ github.sha }}")
+            fi
+          fi
+
+          if echo "$FILES" | grep -E '^dhs_data/|^project_nurture/public/generated/|^python_backend/outputs/'; then
+            echo "T1 firewall: restricted data paths touched"
+            exit 1
+          else
+            echo "T1 firewall clean"
+          fi
+
+          if git ls-files | grep -E '(^|/)(\.venv[^/]*|venv|env)/'; then
+            echo "Repository hygiene: committed virtual environment detected"
+            exit 1
+          else
+            echo "Repository hygiene: no committed virtual environments"
+          fi
+
+  test:
+    needs: firewall
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/dhs-nutrition
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: packages/dhs-nutrition/pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Test
+        run: python -m pytest -q
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/dhs-nutrition
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: packages/dhs-nutrition/pyproject.toml
+
+      - name: Install build tool
+        run: pip install build
+
+      - name: Build sdist and wheel
+        run: python -m build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dhs-nutrition-dist
+          path: packages/dhs-nutrition/dist/
+
+  # MAINTAINER: before pushing the first dhs-nutrition-v* tag —
+  #   (1) create the "dhs-nutrition" project on PyPI,
+  #   (2) enable Trusted Publishing for this repository + this workflow file +
+  #       environment "pypi" (PyPI -> project -> Settings -> Publishing),
+  #   (3) create the "pypi" environment in the GitHub repo settings.
+  # Until then, tag pushes will fail at this job by design. Publishing is also
+  # blocked until the maintainer-run REGRESSION.md real-data check has passed.
+  publish:
+    if: startsWith(github.ref, 'refs/tags/dhs-nutrition-v')
+    needs: [firewall, test, build]
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/dhs-nutrition
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dhs-nutrition-dist
+          path: dist/
+
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/

@@ -3,3 +3,6 @@ project_nurture/public/generated/
 python_backend/outputs/
 .env
 *.env
+.venv*/
+venv/
+env/
