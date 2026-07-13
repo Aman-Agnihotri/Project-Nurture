@@ -1,5 +1,5 @@
 import { Box, Container, Flex, HStack } from '@chakra-ui/react';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   aggregateRows,
@@ -12,7 +12,7 @@ import {
   getFilterOptions,
   getFilteredSegments,
 } from '../lib/nutritionData';
-import { toSlug } from '../lib/slugs';
+import { stateForDashboardQuery } from '../lib/slugs';
 import { loadDashboardData, loadDistrictIndicators } from '../lib/dataSource';
 import DashboardGuide from './DashboardGuide';
 import DashboardStatePanel from './DashboardStatePanel';
@@ -73,9 +73,26 @@ const Dashboard = () => {
 
   useEffect(() => {
     const requestedState = new URLSearchParams(location.search).get('state');
-    const matchedState = (dashboardData?.clusters || []).map(row => row.state_name).find(name => toSlug(name) === requestedState);
-    if (matchedState) setFilters(current => current.state === matchedState ? current : { ...current, state: matchedState, district: 'All' });
-  }, [dashboardData, location.search]);
+    const requestedStateRecord = stateForDashboardQuery(
+      districtIndicators.states,
+      requestedState,
+    );
+    const availableStates = new Set(
+      (dashboardData?.clusters || []).map(row => row.state_name),
+    );
+    const matchedState = availableStates.has(requestedStateRecord?.state_name)
+      ? requestedStateRecord.state_name
+      : null;
+    if (matchedState) {
+      setFilters(current => current.state === matchedState
+        ? current
+        : { ...current, state: matchedState, district: 'All' });
+    }
+  }, [dashboardData, districtIndicators.states, location.search]);
+
+  const navigateToDistrict = useCallback(record => {
+    navigate(`/state/${record.state_slug}/district/${record.district_slug}`);
+  }, [navigate]);
 
   const updateFilter = (name, value) => {
     setFilters(current => ({
@@ -208,7 +225,7 @@ const Dashboard = () => {
             indicator={filters.indicator}
             mapMode={filters.mapMode}
             onMapModeChange={value => updateFilter('mapMode', value)}
-            onDistrictNavigate={record => navigate(`/state/${record.state_slug}/district/${record.district_slug}`)}
+            onDistrictNavigate={navigateToDistrict}
             status={status}
           />
         </Box>

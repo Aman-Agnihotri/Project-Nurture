@@ -407,9 +407,18 @@ def _sanitize(value: object) -> object:
 
 def _slug(value: object) -> str:
     """Stable public route key; the source name remains in each record."""
-    text = unicodedata.normalize("NFKD", str(value or "")).encode("ascii", "ignore").decode()
+    text = unicodedata.normalize("NFKD", str(value or ""))
+    text = "".join(char for char in text if not unicodedata.combining(char))
     text = text.lower().replace("&", " and ")
-    return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", text)).strip("-")
+    slug = "".join(char if char.isalnum() else "-" for char in text)
+    return re.sub(r"-+", "-", slug).strip("-") or "unnamed"
+
+
+def _unique_slug(value: object, used: dict[str, int]) -> str:
+    base = _slug(value)
+    count = used.get(base, 0)
+    used[base] = count + 1
+    return f"{base}-{count + 1}" if count else base
 
 
 def _sample_quality(haz_valid_n: int) -> str:
@@ -777,8 +786,21 @@ def build_district_indicators(input_path: Path, output_path: Path, seed: int) ->
     if not input_path.exists():
         raise FileNotFoundError(f"Missing fact-sheet CSV: {input_path}")
 
+    source_rows = sorted(
+        pd.read_csv(input_path).to_dict(orient="records"),
+        key=lambda row: (str(row["state_name"]), str(row["district_name"])),
+    )
+    used_state_slugs: dict[str, int] = {}
+    state_slugs = {
+        state_name: _unique_slug(state_name, used_state_slugs)
+        for state_name in sorted({str(row["state_name"]) for row in source_rows})
+    }
+    used_district_slugs: dict[str, dict[str, int]] = {
+        state_name: {} for state_name in state_slugs
+    }
+
     districts = []
-    for row in pd.read_csv(input_path).to_dict(orient="records"):
+    for row in source_rows:
         state_name = str(row["state_name"])
         district_name = str(row["district_name"])
         record = {
@@ -786,8 +808,10 @@ def build_district_indicators(input_path: Path, output_path: Path, seed: int) ->
             "district_name": district_name,
             "normalized_state_name": normalize(state_name),
             "normalized_district_name": normalize(district_name),
-            "state_slug": _slug(state_name),
-            "district_slug": _slug(district_name),
+            "state_slug": state_slugs[state_name],
+            "district_slug": _unique_slug(
+                district_name, used_district_slugs[state_name]
+            ),
         }
         for indicator in DISTRICT_INDICATORS:
             record[indicator] = _sanitize(float(row[indicator]))
@@ -797,15 +821,13 @@ def build_district_indicators(input_path: Path, output_path: Path, seed: int) ->
             + record["wasting_rate"] * 0.20
         )
         districts.append(record)
-    districts.sort(key=lambda row: (row["state_name"], row["district_name"]))
-
     states = []
     for state_name in sorted({row["state_name"] for row in districts}):
         state_districts = [row for row in districts if row["state_name"] == state_name]
         rollup = {
             "state_name": state_name,
             "normalized_state_name": normalize(state_name),
-            "state_slug": _slug(state_name),
+            "state_slug": state_slugs[state_name],
             "district_count": len(state_districts),
         }
         for indicator in [*DISTRICT_INDICATORS, "risk_score"]:

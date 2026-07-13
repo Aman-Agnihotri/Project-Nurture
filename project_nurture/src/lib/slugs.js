@@ -20,13 +20,14 @@ export const buildSlugLookup = records => {
   const stateBySlug = new Map();
   const districtBySlug = new Map();
   const stateSlugs = new Map();
+  const usedStateSlugs = new Map();
   const districtUsesByState = new Map();
   const sorted = [...(records || [])].sort((left, right) => `${left.state_name}|${left.district_name}`.localeCompare(`${right.state_name}|${right.district_name}`));
 
   sorted.forEach(record => {
     const stateName = record.state_name || '';
     if (!stateSlugs.has(stateName)) {
-      const stateSlug = uniqueSlug(stateName, new Map([...stateSlugs.values()].map(value => [value, 1])));
+      const stateSlug = uniqueSlug(stateName, usedStateSlugs);
       stateSlugs.set(stateName, stateSlug);
       stateBySlug.set(stateSlug, stateName);
       districtUsesByState.set(stateSlug, new Map());
@@ -37,3 +38,7 @@ export const buildSlugLookup = records => {
   });
   return { stateBySlug, districtBySlug, stateSlugs };
 };
+
+export const stateForDashboardQuery = (states, stateSlug) => (
+  (states || []).find(state => state.state_slug === stateSlug) || null
+);

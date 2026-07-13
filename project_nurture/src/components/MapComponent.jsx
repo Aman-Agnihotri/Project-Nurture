@@ -8,15 +8,27 @@ import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet.heat';
 import { colorFor } from '../lib/colorScale';
+import {
+  buildDistrictLookup,
+  createGeometryLoader,
+  districtForFeature,
+} from '../lib/districtGeo';
+import { cleanupLeafletLayers } from '../lib/mapLayers';
 import { formatPercent, mapModeOptions, metricCeilings, metricLabel } from '../lib/nutritionData';
 import MapLegend from './MapLegend';
 
 const baseUrl = import.meta.env.BASE_URL || '/';
-const normalizeName = value => String(value || '').toLowerCase().replaceAll('&', ' and ').replace(/[^\p{L}\p{N}]+/gu, ' ').trim().replace(/\s+/g, ' ');
 const escapeHtml = value => String(value ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
 
+const finiteMetricValue = value => {
+  if (value === null || value === undefined || value === '') return null;
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+};
+
 const metricIcon = (cluster, indicator) => {
-  const color = colorFor(cluster[indicator], indicator);
+  const value = cluster.sample_quality === 'sparse' ? null : cluster[indicator];
+  const color = colorFor(value, indicator);
   return L.divIcon({
     className: 'risk-marker-shell',
     html: `<span class="risk-marker" style="--marker-color:${color}"></span>`,
@@ -27,8 +39,17 @@ const metricIcon = (cluster, indicator) => {
 
 const clusterIcon = (cluster, indicator) => {
   const markers = cluster.getAllChildMarkers();
-  const values = markers.map(marker => marker.options.metricValue).filter(Number.isFinite);
-  const value = values.length ? values.reduce((sum, current) => sum + current, 0) / values.length : null;
+  const totals = markers.reduce((result, marker) => {
+    const value = finiteMetricValue(marker.options.metricValue);
+    const childCount = Number(marker.options.childCount) || 0;
+    const weight = childCount > 0 ? childCount : 1;
+    if (value !== null) {
+      result.weight += weight;
+      result.weightedValue += value * weight;
+    }
+    return result;
+  }, { weight: 0, weightedValue: 0 });
+  const value = totals.weight > 0 ? totals.weightedValue / totals.weight : null;
   const color = colorFor(value, indicator);
   return L.divIcon({
     className: 'nutrition-cluster-icon',
@@ -41,7 +62,12 @@ const MapComponent = ({ clusters, districts, indicator, mapMode, onMapModeChange
   const containerRef = useRef(null);
   const mapRef = useRef(null);
   const geometryRef = useRef(null);
+  const geometryLoaderRef = useRef(null);
   const [geometryStatus, setGeometryStatus] = useState('idle');
+
+  if (!geometryLoaderRef.current) {
+    geometryLoaderRef.current = createGeometryLoader(`${baseUrl}demo/geo/india_districts.geojson`);
+  }
 
   useEffect(() => {
     const map = L.map(containerRef.current, { center: [22.9734, 78.6569], zoom: 5, zoomSnap: 0.25, preferCanvas: true });
@@ -53,20 +79,16 @@ const MapComponent = ({ clusters, districts, indicator, mapMode, onMapModeChange
   }, []);
 
   useEffect(() => {
-    if (mapMode !== 'choropleth' || geometryRef.current || geometryStatus === 'loading') return;
-    let cancelled = false;
+    if (mapMode !== 'choropleth' || geometryRef.current) return undefined;
+    let active = true;
     setGeometryStatus('loading');
-    fetch(`${baseUrl}demo/geo/india_districts.geojson`)
-      .then(response => {
-        if (!response.ok) throw new Error(String(response.status));
-        return response.json();
-      })
+    geometryLoaderRef.current()
       .then(geometry => {
-        if (!cancelled) { geometryRef.current = geometry; setGeometryStatus('ready'); }
+        if (active) { geometryRef.current = geometry; setGeometryStatus('ready'); }
       })
-      .catch(() => { if (!cancelled) setGeometryStatus('missing'); });
-    return () => { cancelled = true; };
-  }, [geometryStatus, mapMode]);
+      .catch(() => { if (active) setGeometryStatus('missing'); });
+    return () => { active = false; };
+  }, [mapMode]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -79,7 +101,14 @@ const MapComponent = ({ clusters, districts, indicator, mapMode, onMapModeChange
       clusters.forEach(cluster => {
         const lat = Number(cluster.latitude); const lon = Number(cluster.longitude);
         if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
-        const marker = L.marker([lat, lon], { icon: metricIcon(cluster, indicator), metricValue: Number(cluster[indicator]) });
+        const markerValue = cluster.sample_quality === 'sparse'
+          ? null
+          : finiteMetricValue(cluster[indicator]);
+        const marker = L.marker([lat, lon], {
+          childCount: Number(cluster.child_count) || 0,
+          icon: metricIcon(cluster, indicator),
+          metricValue: markerValue,
+        });
         marker.bindPopup(`<strong>${escapeHtml(cluster.district_name || 'DHS cluster')}</strong><br>${escapeHtml(metricLabel(indicator))}: ${formatPercent(cluster[indicator])}`);
         markers.addLayer(marker);
       });
@@ -87,21 +116,22 @@ const MapComponent = ({ clusters, districts, indicator, mapMode, onMapModeChange
     }
     if (showHeat) {
       const ceiling = metricCeilings[indicator] || 55;
-      const points = clusters.map(row => [Number(row.latitude), Number(row.longitude), Number(row[indicator]) / ceiling])
-        .filter(([lat, lon, value]) => Number.isFinite(lat) && Number.isFinite(lon) && Number.isFinite(value));
+      const points = clusters.map(row => {
+        const value = finiteMetricValue(row[indicator]);
+        return [Number(row.latitude), Number(row.longitude), value === null ? null : value / ceiling];
+      }).filter(([lat, lon, value]) => Number.isFinite(lat) && Number.isFinite(lon) && value !== null);
       if (points.length) { const heat = L.heatLayer(points, { radius: 18, blur: 20, minOpacity: 0.18 }); heat.addTo(map); layers.push(heat); }
     }
     if (mapMode === 'choropleth' && geometryRef.current) {
-      const byName = new Map(districts.map(record => [`${record['normalized_state_name'] || normalizeName(record['state_name'])}|${record['normalized_district_name'] || normalizeName(record['district_name'])}`, record]));
+      const byName = buildDistrictLookup(districts);
       const layer = L.geoJSON(geometryRef.current, {
         style: feature => {
-          const props = feature.properties || {};
-          const record = byName.get(`${Reflect.get(props, 'normalized_state_name') || normalizeName(Reflect.get(props, 'state_name'))}|${Reflect.get(props, 'normalized_district_name') || normalizeName(Reflect.get(props, 'district_name'))}`);
+          const record = districtForFeature(feature, byName);
           return { color: '#ffffff', weight: 1, fillColor: colorFor(record?.[indicator], indicator), fillOpacity: record ? 0.72 : 0.48 };
         },
         onEachFeature: (feature, polygon) => {
           const props = feature.properties || {};
-          const record = byName.get(`${Reflect.get(props, 'normalized_state_name') || normalizeName(Reflect.get(props, 'state_name'))}|${Reflect.get(props, 'normalized_district_name') || normalizeName(Reflect.get(props, 'district_name'))}`);
+          const record = districtForFeature(feature, byName);
           const name = Reflect.get(props, 'district_name') || 'District';
           polygon.bindTooltip(record ? `${escapeHtml(name)}<br>${escapeHtml(metricLabel(indicator))}: ${formatPercent(record[indicator])}` : `${escapeHtml(name)}<br>No data`);
           polygon.on({ mouseover: () => polygon.setStyle({ weight: 3, fillOpacity: 0.9 }), mouseout: () => layer.resetStyle(polygon), click: () => { if (record) onDistrictNavigate(record); } });
@@ -109,7 +139,7 @@ const MapComponent = ({ clusters, districts, indicator, mapMode, onMapModeChange
       }).addTo(map);
       layers.push(layer);
     }
-    return () => layers.forEach(layer => layer.remove());
+    return () => cleanupLeafletLayers(layers);
   }, [clusters, districts, geometryStatus, indicator, mapMode, onDistrictNavigate]);
 
   const message = status === 'missing' ? 'Dashboard data is unavailable.' : (!clusters.length && mapMode !== 'choropleth' ? 'No DHS clusters match the selected filters.' : '');

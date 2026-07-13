@@ -8,6 +8,12 @@ export const metricOptions = [
   { key: 'anemia_rate', label: 'Anemia' },
 ];
 
+export const profileMetricOptions = [
+  ...metricOptions.slice(0, 2),
+  { key: 'severe_stunting_rate', label: 'Severe stunting' },
+  ...metricOptions.slice(2),
+];
+
 export const mapModeOptions = [
   { key: 'clusters', label: 'Cluster risk' },
   { key: 'heat', label: 'Hotspot heat' },
