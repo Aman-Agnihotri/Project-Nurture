@@ -1,5 +1,6 @@
 import { Box, Container, Flex, HStack } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   aggregateRows,
   buildAreaInsight,
@@ -11,7 +12,7 @@ import {
   getFilterOptions,
   getFilteredSegments,
 } from '../lib/nutritionData';
-import { loadDashboardData } from '../lib/dataSource';
+import { loadDashboardData, loadDistrictIndicators } from '../lib/dataSource';
 import DashboardGuide from './DashboardGuide';
 import DashboardStatePanel from './DashboardStatePanel';
 import DashboardTour from './DashboardTour';
@@ -45,6 +46,8 @@ const Dashboard = () => {
   const [tier, setTier] = useState(null);
   const [filters, setFilters] = useState(readStoredFilters);
   const [selectedPriorityAreaLabel, setSelectedPriorityAreaLabel] = useState(null);
+  const [districtIndicators, setDistrictIndicators] = useState({ districts: [] });
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadDashboardData(baseUrl)
@@ -56,6 +59,10 @@ const Dashboard = () => {
       .catch(() => {
         setStatus('missing');
       });
+  }, []);
+
+  useEffect(() => {
+    loadDistrictIndicators(baseUrl).then(setDistrictIndicators).catch(() => setDistrictIndicators({ districts: [] }));
   }, []);
 
   useEffect(() => {
@@ -189,9 +196,11 @@ const Dashboard = () => {
         >
           <MapComponent
             clusters={filteredClusters}
+            districts={districtIndicators.districts}
             indicator={filters.indicator}
             mapMode={filters.mapMode}
             onMapModeChange={value => updateFilter('mapMode', value)}
+            onDistrictNavigate={record => navigate(`/state/${record.state_slug}/district/${record.district_slug}`)}
             status={status}
           />
         </Box>

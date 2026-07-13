@@ -12,6 +12,7 @@ export const mapModeOptions = [
   { key: 'clusters', label: 'Cluster risk' },
   { key: 'heat', label: 'Hotspot heat' },
   { key: 'both', label: 'Cluster + heat' },
+  { key: 'choropleth', label: 'District choropleth' },
 ];
 
 export const metricCeilings = {
@@ -86,7 +87,7 @@ const demographicDimensions = [
   { key: 'age_band', label: 'Age band' },
 ];
 
-const planningFocusRules = [
+export const planningFocusRules = [
   {
     label: 'Growth monitoring',
     colorScheme: 'teal',

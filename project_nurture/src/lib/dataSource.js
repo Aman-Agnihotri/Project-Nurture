@@ -19,6 +19,7 @@
 
 const GENERATED_PATH = 'generated/dhs_cluster_nutrition.json';
 const DEMO_PATH = 'demo/demo_cluster_nutrition.json';
+const DISTRICT_INDICATORS_PATH = 'demo/district_indicators.json';
 
 /**
  * Compute the composite risk score from stunting/underweight/wasting rates.
@@ -133,4 +134,11 @@ export async function loadDashboardData(baseUrl) {
   throw new Error(
     `Unable to load dashboard data from either "${generatedUrl}" or "${demoUrl}".`,
   );
+}
+
+/** Load the public-only district profile artifact without touching T1 data. */
+export async function loadDistrictIndicators(baseUrl) {
+  const response = await fetch(`${baseUrl}${DISTRICT_INDICATORS_PATH}`);
+  if (!response.ok) throw new Error('District indicators unavailable');
+  return response.json();
 }
