@@ -8,6 +8,8 @@ import About from './components/About.jsx';
 import Form from './components/Form.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import Notification from './components/Notification.jsx';
+import StateProfile from './components/StateProfile.jsx';
+import DistrictProfile from './components/DistrictProfile.jsx';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/form" element={<Form />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/state/:stateSlug" element={<StateProfile />} />
+          <Route path="/state/:stateSlug/district/:districtSlug" element={<DistrictProfile />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

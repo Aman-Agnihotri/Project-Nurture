@@ -1,6 +1,6 @@
 import { Box, Container, Flex, HStack } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   aggregateRows,
   buildAreaInsight,
@@ -12,6 +12,7 @@ import {
   getFilterOptions,
   getFilteredSegments,
 } from '../lib/nutritionData';
+import { toSlug } from '../lib/slugs';
 import { loadDashboardData, loadDistrictIndicators } from '../lib/dataSource';
 import DashboardGuide from './DashboardGuide';
 import DashboardStatePanel from './DashboardStatePanel';
@@ -48,6 +49,7 @@ const Dashboard = () => {
   const [selectedPriorityAreaLabel, setSelectedPriorityAreaLabel] = useState(null);
   const [districtIndicators, setDistrictIndicators] = useState({ districts: [] });
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     loadDashboardData(baseUrl)
@@ -68,6 +70,12 @@ const Dashboard = () => {
   useEffect(() => {
     window.localStorage.setItem(filtersStorageKey, JSON.stringify(filters));
   }, [filters]);
+
+  useEffect(() => {
+    const requestedState = new URLSearchParams(location.search).get('state');
+    const matchedState = (dashboardData?.clusters || []).map(row => row.state_name).find(name => toSlug(name) === requestedState);
+    if (matchedState) setFilters(current => current.state === matchedState ? current : { ...current, state: matchedState, district: 'All' });
+  }, [dashboardData, location.search]);
 
   const updateFilter = (name, value) => {
     setFilters(current => ({
