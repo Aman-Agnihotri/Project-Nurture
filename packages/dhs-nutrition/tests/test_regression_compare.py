@@ -71,6 +71,34 @@ def test_numeric_delta_over_tolerance_fails():
     assert any("clusters: max delta" in failure for failure in failures)
 
 
+def test_missing_indicator_field_fails_structural_comparison():
+    old, new = _matching_payloads()
+    del new["levels"]["cluster"][0]["stunting_rate"]
+
+    failures = compare_outputs(old, new)
+
+    assert any("required field 'stunting_rate'" in failure for failure in failures)
+
+
+def test_numeric_value_becoming_null_fails():
+    old, new = _matching_payloads()
+    new["levels"]["cluster"][0]["stunting_rate"] = None
+
+    failures = compare_outputs(old, new)
+
+    assert any("changed type or became null" in failure for failure in failures)
+
+
+def test_non_key_label_mismatch_fails():
+    old, new = _matching_payloads()
+    old["clusters"][0]["district_name"] = "Alpha District"
+    new["levels"]["cluster"][0]["admin2_name"] = "Renamed District"
+
+    failures = compare_outputs(old, new)
+
+    assert any("field 'district_name' differs" in failure for failure in failures)
+
+
 def test_duplicate_keys_are_rejected():
     old, new = _matching_payloads()
     new["levels"]["cluster"].append(deepcopy(new["levels"]["cluster"][0]))

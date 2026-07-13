@@ -15,25 +15,18 @@ DEFAULT_OLD_PATH = Path("python_backend/outputs/regression_old.json")
 DEFAULT_NEW_PATH = Path("python_backend/outputs/regression_new.json")
 DEFAULT_TOLERANCE = 1e-6
 EXCLUDED_NUMERIC_FIELDS = {"risk_score"}
+STATE_FIELD_MAP = {"state_code": "admin1_code", "state_name": "admin1_name"}
+CLUSTER_FIELD_MAP = {
+    "state_code_gps": "admin1_code",
+    "state_name": "admin1_name",
+    "district_name": "admin2_name",
+    "urban_rural_gps": "residence",
+}
+CLUSTER_EXCLUDED_FIELDS = {"risk_score", "sample_quality"}
 
 
-def _numeric_diffs(old_row: dict, new_row: dict) -> dict[str, float]:
-    diffs: dict[str, float] = {}
-    for key in old_row.keys() & new_row.keys():
-        if key in EXCLUDED_NUMERIC_FIELDS:
-            continue
-        old_value = old_row[key]
-        new_value = new_row[key]
-        if (
-            isinstance(old_value, (int, float))
-            and not isinstance(old_value, bool)
-            and isinstance(new_value, (int, float))
-            and not isinstance(new_value, bool)
-        ):
-            if not math.isfinite(float(old_value)) or not math.isfinite(float(new_value)):
-                continue
-            diffs[key] = abs(float(old_value) - float(new_value))
-    return diffs
+def _is_number(value: object) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool)
 
 
 def _index_unique(rows: list[dict], key_field: str, label: str) -> dict[object, dict]:
@@ -51,6 +44,9 @@ def _compare_keyed_rows(
     old_rows: dict[object, dict],
     new_rows: dict[object, dict],
     tolerance: float,
+    *,
+    field_map: dict[str, str] | None = None,
+    excluded_fields: set[str] | None = None,
 ) -> list[str]:
     failures: list[str] = []
     old_keys = set(old_rows)
@@ -68,14 +64,46 @@ def _compare_keyed_rows(
         print(f"{label}: 0 matched")
         return failures
 
-    row_diffs = [_numeric_diffs(old_rows[key], new_rows[key]) for key in matched_keys]
-    if not any(row_diffs):
-        failures.append(f"{label}: matching rows have no shared numeric indicator fields")
-        max_delta = 0.0
-    else:
-        max_delta = max((value for diffs in row_diffs for value in diffs.values()), default=0.0)
-        if max_delta > tolerance:
-            failures.append(f"{label}: max delta {max_delta:.8f} exceeds {tolerance:.8f}")
+    field_map = field_map or {}
+    excluded_fields = excluded_fields or EXCLUDED_NUMERIC_FIELDS
+    field_failures: set[str] = set()
+    numeric_diffs: list[float] = []
+
+    for key in matched_keys:
+        old_row = old_rows[key]
+        new_row = new_rows[key]
+        for old_field, old_value in old_row.items():
+            if old_field in excluded_fields:
+                continue
+            new_field = field_map.get(old_field, old_field)
+            if new_field not in new_row:
+                field_failures.add(
+                    f"{label}: required field {old_field!r} is missing as {new_field!r}"
+                )
+                continue
+
+            new_value = new_row[new_field]
+            if _is_number(old_value):
+                if not _is_number(new_value):
+                    field_failures.add(
+                        f"{label}: numeric field {old_field!r} changed type or became null"
+                    )
+                    continue
+                if not math.isfinite(float(old_value)) or not math.isfinite(float(new_value)):
+                    field_failures.add(f"{label}: numeric field {old_field!r} is non-finite")
+                    continue
+                numeric_diffs.append(abs(float(old_value) - float(new_value)))
+            elif old_value != new_value:
+                field_failures.add(
+                    f"{label}: field {old_field!r} differs from mapped field {new_field!r}"
+                )
+
+    failures.extend(sorted(field_failures))
+    max_delta = max(numeric_diffs, default=0.0)
+    if not numeric_diffs:
+        failures.append(f"{label}: matching rows have no comparable numeric indicator fields")
+    elif max_delta > tolerance:
+        failures.append(f"{label}: max delta {max_delta:.8f} exceeds {tolerance:.8f}")
 
     print(f"{label}: max delta = {max_delta:.8f} ({len(matched_keys)} matched)")
     return failures
@@ -123,6 +151,7 @@ def compare_outputs(old: dict, new: dict, tolerance: float = DEFAULT_TOLERANCE) 
             _index_unique(old["states"], "state_name", "legacy states"),
             _index_unique(new["levels"]["admin1"], "admin1_name", "v1 states"),
             tolerance,
+            field_map=STATE_FIELD_MAP,
         )
     )
     failures.extend(
@@ -131,6 +160,8 @@ def compare_outputs(old: dict, new: dict, tolerance: float = DEFAULT_TOLERANCE) 
             _index_unique(old["clusters"], "cluster_id", "legacy clusters"),
             _index_unique(new["levels"]["cluster"], "cluster_id", "v1 clusters"),
             tolerance,
+            field_map=CLUSTER_FIELD_MAP,
+            excluded_fields=CLUSTER_EXCLUDED_FIELDS,
         )
     )
     failures.extend(
