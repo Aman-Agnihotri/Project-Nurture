@@ -51,9 +51,10 @@ python python_backend/india_pipeline.py \
 ## Step 3: compare
 
 Run the committed comparison tool. It ignores metadata, requires identical
-state/cluster/segment key sets, requires at least one matched row and shared
-numeric indicator, and compares shared numeric values within the export's
-six-decimal rounding tolerance:
+state/cluster/segment key sets, requires every legacy field (using the
+documented legacy-to-v1 state and cluster name mappings), rejects label,
+missing/null, and non-finite mismatches, and compares numeric values within
+the export's six-decimal rounding tolerance:
 
 ```sh
 python packages/dhs-nutrition/scripts/compare_legacy_output.py
@@ -73,14 +74,16 @@ All four printed max-delta lines should read `0.00000000` (or values no
 greater than `1e-6`), every matched-row count must be non-zero, and the script
 should exit `0`.
 
-## Latest local verification
+## Latest local verification status
 
 On 2026-07-13, the legacy pipeline at commit `e87b285` and the Phase 2 India
 pipeline were run against the same maintainer-authorized local NFHS-5 PR and
-GPS inputs. The strict comparison command above exited `0`: national, admin1,
-cluster, and cluster-segment key sets matched, and all shared numeric indicator
-deltas were within tolerance. Both comparison outputs remained in the ignored
-`python_backend/outputs/` Tier 1 directory.
+GPS inputs. The earlier comparator exited `0` for key sets and shared numeric
+fields. Commit `4304539` subsequently hardened the comparator to reject
+dropped fields, mapped-label differences, numeric-to-null changes, and
+non-finite values. The maintainer must rerun Steps 1-3 with the hardened
+comparator before final acceptance. Both comparison outputs must remain in the
+ignored `python_backend/outputs/` Tier 1 directory.
 
 **On mismatch:** do not adjust `dhs_nutrition` package logic to "fix" the
 diff without review. File an issue with the full script output (the
