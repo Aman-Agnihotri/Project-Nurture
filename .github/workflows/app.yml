@@ -92,6 +92,9 @@ jobs:
   backend-test:
     runs-on: ubuntu-latest
     needs: firewall
+    defaults:
+      run:
+        working-directory: python_backend
     steps:
       - uses: actions/checkout@v4
 
@@ -104,13 +107,13 @@ jobs:
             packages/dhs-nutrition/pyproject.toml
 
       - name: Install backend dependencies
-        run: python -m pip install -r python_backend/requirements.txt pytest ruff
+        run: python -m pip install -r requirements.txt pytest ruff
 
       - name: Lint Phase 3 backend files
-        run: ruff check python_backend/name_normalization.py python_backend/prepare_geojson.py python_backend/demo_data_builder.py python_backend/tests
+        run: ruff check name_normalization.py prepare_geojson.py demo_data_builder.py tests
 
       - name: Test public demo builders and boundary preparation
-        run: python -m pytest -q python_backend/tests
+        run: python -m pytest -q
 
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
