@@ -41,6 +41,8 @@ def _schema_version_of(path: Path) -> str:
             payload = json.load(handle)
     except (OSError, ValueError):
         return "unknown"
+    if isinstance(payload, dict) and "schema_version" in payload:
+        return str(payload["schema_version"])
     metadata = payload.get("metadata") if isinstance(payload, dict) else None
     if isinstance(metadata, dict) and "schema_version" in metadata:
         return metadata["schema_version"]
