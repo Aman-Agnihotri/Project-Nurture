@@ -7,9 +7,10 @@ Phase 2 (rewriting `python_backend/dhs_pipeline.py` as a thin consumer of the
 access to restricted NFHS-5 microdata confirms that the new pipeline
 (`python_backend/india_pipeline.py`) produces indicator values that match the
 old, pre-Phase-2 pipeline within floating-point rounding. This comparison
-uses real DHS microdata and therefore **cannot be run in CI, or by an
-assistant/agent** — only a human maintainer with the restricted `dhs_data/`
-files on their own machine can run it.
+uses real DHS microdata and therefore **cannot be run in CI**. It may only be
+run locally by the human maintainer, or by a local agent after the maintainer
+explicitly authorizes access for this regression. Derived outputs and logs must
+remain in the ignored `python_backend/outputs/` Tier 1 directory.
 
 ## Prerequisites
 
@@ -76,14 +77,13 @@ should exit `0`.
 
 ## Latest local verification status
 
-On 2026-07-13, the legacy pipeline at commit `e87b285` and the Phase 2 India
-pipeline were run against the same maintainer-authorized local NFHS-5 PR and
-GPS inputs. The earlier comparator exited `0` for key sets and shared numeric
-fields. Commit `4304539` subsequently hardened the comparator to reject
-dropped fields, mapped-label differences, numeric-to-null changes, and
-non-finite values. The maintainer must rerun Steps 1-3 with the hardened
-comparator before final acceptance. Both comparison outputs must remain in the
-ignored `python_backend/outputs/` Tier 1 directory.
+On 2026-07-21, the legacy pipeline at commit `e87b285` and the current Phase 2
+India pipeline were run against the same maintainer-authorized local NFHS-5 PR
+and GPS inputs. Both pipelines exited `0`. The hardened comparator from commit
+`4304539` also exited `0`, confirming structural and numeric parity under the
+rules documented above. Phase 2's real-data regression gate is accepted. Both
+comparison outputs and their command logs remain in the ignored
+`python_backend/outputs/` Tier 1 directory.
 
 **On mismatch:** do not adjust `dhs_nutrition` package logic to "fix" the
 diff without review. File an issue with the full script output (the
