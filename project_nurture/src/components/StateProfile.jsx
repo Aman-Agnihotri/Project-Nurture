@@ -1,7 +1,7 @@
 import { Box, Button, Container, Heading, HStack, Link, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
-import { loadDistrictIndicators } from '../lib/dataSource';
+import { loadDistrictAnalytics } from '../lib/dataSource';
 import { formatPercent, profileMetricOptions } from '../lib/nutritionData';
 import { buildSlugLookup } from '../lib/slugs';
 
@@ -11,7 +11,7 @@ const StateProfile = () => {
   const { stateSlug } = useParams();
   const [data, setData] = useState(null);
   const [sort, setSort] = useState({ key: 'risk_score', direction: 'desc' });
-  useEffect(() => { loadDistrictIndicators(baseUrl).then(setData).catch(() => setData({ districts: [], states: [] })); }, []);
+  useEffect(() => { loadDistrictAnalytics(baseUrl).then(setData).catch(() => setData({ districts: [], states: [] })); }, []);
   const lookup = useMemo(() => buildSlugLookup(data?.districts), [data]);
   const stateName = lookup.stateBySlug.get(stateSlug);
   const state = data?.states?.find(row => row.state_slug === stateSlug || row.state_name === stateName);

@@ -6,6 +6,7 @@ import {
   Button,
   Heading,
   HStack,
+  Link,
   Progress,
   Select,
   SimpleGrid,
@@ -30,6 +31,7 @@ import {
   metricLabel,
   metricOptions,
 } from '../lib/nutritionData';
+import { repositoryDocumentUrl } from '../lib/repository';
 
 const coreMetrics = [
   ['stunting_rate', 'Stunted'],
@@ -217,6 +219,14 @@ const ModelComponent = ({
                         </option>
                       ))}
                     </Select>
+                    <Link
+                      href={repositoryDocumentUrl('methodology.md')}
+                      isExternal
+                      fontSize="xs"
+                      color="teal.600"
+                    >
+                      How is risk computed?
+                    </Link>
                   </Box>
 
                   <FilterSelect

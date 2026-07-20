@@ -13,7 +13,7 @@ import {
   getFilteredSegments,
 } from '../lib/nutritionData';
 import { stateForDashboardQuery } from '../lib/slugs';
-import { loadDashboardData, loadDistrictIndicators } from '../lib/dataSource';
+import { loadDashboardData, loadDistrictAnalytics } from '../lib/dataSource';
 import DashboardGuide from './DashboardGuide';
 import DashboardStatePanel from './DashboardStatePanel';
 import DashboardTour from './DashboardTour';
@@ -64,7 +64,7 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    loadDistrictIndicators(baseUrl).then(setDistrictIndicators).catch(() => setDistrictIndicators({ districts: [] }));
+    loadDistrictAnalytics(baseUrl).then(setDistrictIndicators).catch(() => setDistrictIndicators({ districts: [] }));
   }, []);
 
   useEffect(() => {

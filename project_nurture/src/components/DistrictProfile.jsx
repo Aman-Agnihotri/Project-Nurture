@@ -1,7 +1,7 @@
 import { Badge, Box, Container, Heading, HStack, Link, Text } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
-import { loadDistrictIndicators } from '../lib/dataSource';
+import { loadDistrictAnalytics } from '../lib/dataSource';
 import { formatPercent, metricOptions, planningFocusRules, profileMetricOptions } from '../lib/nutritionData';
 import { buildSlugLookup } from '../lib/slugs';
 
@@ -10,7 +10,7 @@ const baseUrl = import.meta.env.BASE_URL || '/';
 const DistrictProfile = () => {
   const { stateSlug, districtSlug } = useParams();
   const [data, setData] = useState(null);
-  useEffect(() => { loadDistrictIndicators(baseUrl).then(setData).catch(() => setData({ districts: [], states: [] })); }, []);
+  useEffect(() => { loadDistrictAnalytics(baseUrl).then(setData).catch(() => setData({ districts: [], states: [] })); }, []);
   const lookup = useMemo(() => buildSlugLookup(data?.districts), [data]);
   const district = lookup.districtBySlug.get(`${stateSlug}/${districtSlug}`);
   const state = data?.states?.find(row => row.state_slug === stateSlug);

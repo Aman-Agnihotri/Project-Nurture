@@ -17,9 +17,12 @@
  * Tier 2 demo artifact, which stays in the legacy shape) only ever sees one schema.
  */
 
+import { applyDistrictRisk } from './districtRisk.js';
+
 const GENERATED_PATH = 'generated/dhs_cluster_nutrition.json';
 const DEMO_PATH = 'demo/demo_cluster_nutrition.json';
 const DISTRICT_INDICATORS_PATH = 'demo/district_indicators.json';
+const DISTRICT_RISK_PATH = 'demo/district_risk.json';
 
 /**
  * Compute the composite risk score from stunting/underweight/wasting rates.
@@ -141,4 +144,21 @@ export async function loadDistrictIndicators(baseUrl) {
   const response = await fetch(`${baseUrl}${DISTRICT_INDICATORS_PATH}`);
   if (!response.ok) throw new Error('District indicators unavailable');
   return response.json();
+}
+
+/** Load the public-only Phase 4 district percentile risk artifact. */
+export async function loadDistrictRisk(baseUrl) {
+  const response = await fetch(`${baseUrl}${DISTRICT_RISK_PATH}`);
+  if (!response.ok) throw new Error('District risk unavailable');
+  return response.json();
+}
+
+/** Load public district indicators with Phase 4 risk when that artifact is available. */
+export async function loadDistrictAnalytics(baseUrl) {
+  const indicators = await loadDistrictIndicators(baseUrl);
+  try {
+    return applyDistrictRisk(indicators, await loadDistrictRisk(baseUrl));
+  } catch {
+    return indicators;
+  }
 }
