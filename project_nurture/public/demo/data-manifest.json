@@ -21,6 +21,20 @@
       },
       "schema_version": "1.0",
       "sha256": "17d812c76b502a9e9b05563783fffbc2b990f7ee9ae1ffb464f1e93b83d45f20"
+    },
+    {
+      "built_at": "2026-07-21T00:00:00+00:00",
+      "file": "district_risk.json",
+      "generator": "python_backend/analytics/risk_methodology.py",
+      "generator_args": {
+        "weights": {
+          "stunting": 0.45,
+          "underweight": 0.35,
+          "wasting": 0.2
+        }
+      },
+      "schema_version": "1.0",
+      "sha256": "27a7f5bd3019d6654c7534caa595a3d00c5447e211473d062b6651fc2e20da70"
     }
   ]
 }
