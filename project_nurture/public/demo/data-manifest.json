@@ -35,6 +35,16 @@
       },
       "schema_version": "1.0",
       "sha256": "27a7f5bd3019d6654c7534caa595a3d00c5447e211473d062b6651fc2e20da70"
+    },
+    {
+      "built_at": "2026-07-21T00:00:00+00:00",
+      "file": "district_typologies.json",
+      "generator": "python_backend/analytics/district_typologies.py",
+      "generator_args": {
+        "seed": 42
+      },
+      "schema_version": "1.0",
+      "sha256": "6e297b77402996023dab02052f3115ec00182b0e82e2ad180fb87504ed96406b"
     }
   ]
 }

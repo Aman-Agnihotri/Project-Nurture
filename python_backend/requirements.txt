@@ -1,3 +1,4 @@
 -e ../packages/dhs-nutrition
 numpy
 pandas
+scikit-learn
