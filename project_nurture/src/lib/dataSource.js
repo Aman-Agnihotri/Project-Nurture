@@ -18,11 +18,13 @@
  */
 
 import { applyDistrictRisk } from './districtRisk.js';
+import { applyDistrictTypologies } from './typologies.js';
 
 const GENERATED_PATH = 'generated/dhs_cluster_nutrition.json';
 const DEMO_PATH = 'demo/demo_cluster_nutrition.json';
 const DISTRICT_INDICATORS_PATH = 'demo/district_indicators.json';
 const DISTRICT_RISK_PATH = 'demo/district_risk.json';
+const DISTRICT_TYPOLOGIES_PATH = 'demo/district_typologies.json';
 
 /**
  * Compute the composite risk score from stunting/underweight/wasting rates.
@@ -153,12 +155,25 @@ export async function loadDistrictRisk(baseUrl) {
   return response.json();
 }
 
+/** Load the public-only Phase 4 district typology artifact. */
+export async function loadDistrictTypologies(baseUrl) {
+  const response = await fetch(`${baseUrl}${DISTRICT_TYPOLOGIES_PATH}`);
+  if (!response.ok) throw new Error('District typologies unavailable');
+  return response.json();
+}
+
 /** Load public district indicators with Phase 4 risk when that artifact is available. */
 export async function loadDistrictAnalytics(baseUrl) {
-  const indicators = await loadDistrictIndicators(baseUrl);
+  let data = await loadDistrictIndicators(baseUrl);
   try {
-    return applyDistrictRisk(indicators, await loadDistrictRisk(baseUrl));
+    data = applyDistrictRisk(data, await loadDistrictRisk(baseUrl));
   } catch {
-    return indicators;
+    // The older district artifact remains usable if Phase 4 risk is unavailable.
   }
+  try {
+    data = applyDistrictTypologies(data, await loadDistrictTypologies(baseUrl));
+  } catch {
+    // Missing typologies degrade to gray/no-data without blocking numeric maps.
+  }
+  return data;
 }

@@ -8,6 +8,12 @@ export const metricOptions = [
   { key: 'anemia_rate', label: 'Anemia' },
 ];
 
+export const typologyMetricOption = { key: 'typology', label: 'Typology' };
+
+export const mapMetricOptions = mapMode => (
+  mapMode === 'choropleth' ? [...metricOptions, typologyMetricOption] : metricOptions
+);
+
 export const profileMetricOptions = [
   ...metricOptions.slice(0, 2),
   { key: 'severe_stunting_rate', label: 'Severe stunting' },
@@ -33,6 +39,7 @@ export const metricCeilings = {
 
 export const defaultFilters = {
   indicator: 'risk_score',
+  mapIndicator: 'risk_score',
   mapMode: 'clusters',
   state: 'All',
   district: 'All',
@@ -163,7 +170,9 @@ export const getClusterSegments = (dashboardData, clusterLookup = buildClusterLo
     .filter(Boolean);
 };
 
-export const metricLabel = key => metricOptions.find(metric => metric.key === key)?.label || key;
+export const metricLabel = key => (
+  [...metricOptions, typologyMetricOption].find(metric => metric.key === key)?.label || key
+);
 
 export const formatPercent = value => {
   const number = Number(value);

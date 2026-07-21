@@ -17,11 +17,15 @@ const mockLayer = () => {
 test('each mode-switch cleanup detaches handlers and removes its layer once', () => {
   const firstModeLayer = mockLayer();
   const secondModeLayer = mockLayer();
+  const thirdModeLayer = mockLayer();
+  const fourthModeLayer = mockLayer();
 
   cleanupLeafletLayers([firstModeLayer]);
   cleanupLeafletLayers([secondModeLayer]);
+  cleanupLeafletLayers([thirdModeLayer]);
+  cleanupLeafletLayers([fourthModeLayer]);
 
-  for (const layer of [firstModeLayer, secondModeLayer]) {
+  for (const layer of [firstModeLayer, secondModeLayer, thirdModeLayer, fourthModeLayer]) {
     assert.deepEqual(layer.calls, { childOff: 1, off: 1, clear: 1, remove: 1 });
   }
 });

@@ -32,10 +32,14 @@ const readStoredFilters = () => {
     if (!stored) return defaultFilters;
 
     const parsed = JSON.parse(stored);
-    return {
+    const restored = {
       ...defaultFilters,
       ...parsed,
+      mapIndicator: parsed.mapIndicator || parsed.indicator || defaultFilters.mapIndicator,
     };
+    return restored.mapMode !== 'choropleth' && restored.mapIndicator === 'typology'
+      ? { ...restored, mapIndicator: restored.indicator }
+      : restored;
   } catch {
     return defaultFilters;
   }
@@ -99,6 +103,17 @@ const Dashboard = () => {
       ...current,
       [name]: value,
       ...(name === 'state' ? { district: 'All' } : {}),
+      ...(name === 'mapMode' && value !== 'choropleth' && current.mapIndicator === 'typology'
+        ? { mapIndicator: current.indicator }
+        : {}),
+    }));
+  };
+
+  const updateMapIndicator = value => {
+    setFilters(current => ({
+      ...current,
+      mapIndicator: value,
+      ...(value === 'typology' ? {} : { indicator: value }),
     }));
   };
 
@@ -222,10 +237,12 @@ const Dashboard = () => {
           <MapComponent
             clusters={filteredClusters}
             districts={districtIndicators.districts}
-            indicator={filters.indicator}
+            indicator={filters.mapIndicator}
             mapMode={filters.mapMode}
             onMapModeChange={value => updateFilter('mapMode', value)}
             onDistrictNavigate={navigateToDistrict}
+            typologyLegend={districtIndicators.typologyLegend}
+            typologyPlaceholderStatus={districtIndicators.metadata?.typology_placeholder_status}
             status={status}
           />
         </Box>
@@ -241,6 +258,7 @@ const Dashboard = () => {
             summary={filteredSummary}
             areaInsight={areaInsight}
             onFilterChange={updateFilter}
+            onMapIndicatorChange={updateMapIndicator}
             onResetFilters={resetFilters}
             onDrillIntoArea={drillIntoArea}
             onSelectPriorityArea={area => setSelectedPriorityAreaLabel(area.label)}

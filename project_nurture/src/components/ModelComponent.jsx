@@ -28,8 +28,8 @@ import { FiArrowRight, FiRotateCcw } from 'react-icons/fi';
 import {
   formatCount,
   formatPercent,
+  mapMetricOptions,
   metricLabel,
-  metricOptions,
 } from '../lib/nutritionData';
 import { repositoryDocumentUrl } from '../lib/repository';
 
@@ -109,6 +109,7 @@ const ModelComponent = ({
   summary,
   onDrillIntoArea,
   onFilterChange,
+  onMapIndicatorChange,
   onResetFilters,
   onSelectPriorityArea,
 }) => {
@@ -210,10 +211,10 @@ const ModelComponent = ({
                     </Text>
                     <Select
                       size="sm"
-                      value={filters.indicator}
-                      onChange={event => onFilterChange('indicator', event.target.value)}
+                      value={filters.mapIndicator}
+                      onChange={event => onMapIndicatorChange(event.target.value)}
                     >
-                      {metricOptions.map(metric => (
+                      {mapMetricOptions(filters.mapMode).map(metric => (
                         <option key={metric.key} value={metric.key}>
                           {metric.label}
                         </option>
@@ -747,6 +748,7 @@ ModelComponent.propTypes = {
   }),
   filters: PropTypes.shape({
     indicator: PropTypes.string.isRequired,
+    mapIndicator: PropTypes.string.isRequired,
     mapMode: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
     district: PropTypes.string.isRequired,
@@ -765,6 +767,7 @@ ModelComponent.propTypes = {
   }).isRequired,
   onDrillIntoArea: PropTypes.func.isRequired,
   onFilterChange: PropTypes.func.isRequired,
+  onMapIndicatorChange: PropTypes.func.isRequired,
   onResetFilters: PropTypes.func.isRequired,
   onSelectPriorityArea: PropTypes.func.isRequired,
 };
